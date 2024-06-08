@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
+
+    [SerializeField] bool isPicked;
 
     [SerializeField] Transform pickUpPoint;
 
@@ -16,6 +19,8 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] GameObject pickableObject;
 
     [SerializeField] Camera camera;
+
+    [SerializeField] TextMeshProUGUI playerIndicationText; 
 
     RaycastHit hit1;
 
@@ -31,20 +36,33 @@ public class ObjectPickUp : MonoBehaviour
             Debug.Log("Object detected");
             GameObject hitObj = hit1.collider.gameObject;
 
+            if(!isPicked)
+                playerIndicationText.text = "Press E to pick up";
+
             if (Input.GetKeyDown(KeyCode.E))
             {
+                isPicked = true;
                 objectRb = hitObj.GetComponent<Rigidbody>();
                 pickableObject = hitObj.gameObject;
                 hitObj.transform.position = pickUpPoint.position;
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
+                playerIndicationText.text = string.Empty;
+                playerIndicationText.text = "Press Q to Drop";
             }
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                isPicked = false;
                 hitObj.transform.parent = null;
                 objectRb.constraints = RigidbodyConstraints.None;
+                playerIndicationText.text = string.Empty;  
             }
+        }
+
+        else
+        {
+            playerIndicationText.text = string.Empty;
         }
     }
 
