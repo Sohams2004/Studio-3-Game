@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
@@ -20,9 +21,12 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI playerIndicationText; 
+    [SerializeField] TextMeshProUGUI playerIndicationText;
+
+    [SerializeField] Image crosshair;
 
     RaycastHit hit1;
+    GameObject hitObj;
 
     private void Start()
     {
@@ -31,10 +35,12 @@ public class ObjectPickUp : MonoBehaviour
 
     void ObjectDetect()
     {
+
         if (Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, pickableObj))
         {
             Debug.Log("Object detected");
-            GameObject hitObj = hit1.collider.gameObject;
+            hitObj = hit1.collider.gameObject;
+            crosshair.color = Color.green;
 
             if(!isPicked)
                 playerIndicationText.text = "Press E to pick up";
@@ -50,20 +56,21 @@ public class ObjectPickUp : MonoBehaviour
                 playerIndicationText.text = string.Empty;
                 playerIndicationText.text = "Press Q to Drop";
             }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                isPicked = false;
-                hitObj.transform.parent = null;
-                objectRb.constraints = RigidbodyConstraints.None;
-                playerIndicationText.text = string.Empty;  
-            }
         }
 
         else
         {
             playerIndicationText.text = string.Empty;
+            crosshair.color = Color.red;
         }
+
+        if (Input.GetKeyDown(KeyCode.Q) && isPicked)
+        {
+            isPicked = false;
+            hitObj.transform.parent = null;
+            objectRb.constraints = RigidbodyConstraints.None;
+            playerIndicationText.text = string.Empty;
+        } 
     }
 
     private void OnDrawGizmos()
