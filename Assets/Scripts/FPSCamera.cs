@@ -28,7 +28,7 @@ public class FPSCamera : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSense * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -30f, 30f);
+        xRotation = Mathf.Clamp(xRotation, -70f, 70f);
         player.Rotate(Vector3.up * mouseX);
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 

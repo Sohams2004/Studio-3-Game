@@ -35,7 +35,6 @@ public class ObjectPickUp : MonoBehaviour
 
     void ObjectDetect()
     {
-
         if (Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, pickableObj))
         {
             Debug.Log("Object detected");
