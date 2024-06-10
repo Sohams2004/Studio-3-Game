@@ -9,11 +9,13 @@ public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
 
-    [SerializeField] bool isPicked;
+    [SerializeField] int paperNoteIndex;
+
+    [SerializeField] bool isPicked, isPaperNote, isPaperNotePicked;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer;
 
     [SerializeField] Rigidbody objectRb;
 
@@ -23,7 +25,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI playerIndicationText;
 
-    [SerializeField] Image crosshair;
+    [SerializeField] Image crosshair, paperNote;
 
     RaycastHit hit1;
     GameObject hitObj;
@@ -41,7 +43,7 @@ public class ObjectPickUp : MonoBehaviour
             hitObj = hit1.collider.gameObject;
             crosshair.color = Color.green;
 
-            if(!isPicked)
+            if (!isPicked)
                 playerIndicationText.text = "Press E to pick up";
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -73,7 +75,46 @@ public class ObjectPickUp : MonoBehaviour
             hitObj.transform.parent = null;
             objectRb.constraints = RigidbodyConstraints.None;
             playerIndicationText.text = string.Empty;
-        } 
+        }
+    }
+
+    void PaperNote()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer))
+        {
+            Debug.Log("Note detected");
+
+            isPaperNote = true;
+
+            if(!isPaperNotePicked)
+                playerIndicationText.text = "Press E to interact";
+        }
+
+        else
+        {
+            isPaperNote = false;
+            playerIndicationText.text = string.Empty;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && isPaperNote && paperNoteIndex % 2 != 0)
+        {
+            paperNoteIndex++;
+            isPaperNotePicked = true;
+            paperNote.gameObject.SetActive(true);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.E) && isPaperNotePicked && paperNoteIndex % 2 == 0)
+        {
+            paperNoteIndex++;
+            isPaperNote = false;
+            isPaperNotePicked = false;
+            paperNote.gameObject.SetActive(false);
+        }
+
+        if (isPaperNotePicked)
+        {
+            playerIndicationText.text = string.Empty;
+        }
     }
 
     private void OnDrawGizmos()
@@ -84,5 +125,6 @@ public class ObjectPickUp : MonoBehaviour
     private void Update()
     {
         ObjectDetect();
+        PaperNote();
     }
 }
