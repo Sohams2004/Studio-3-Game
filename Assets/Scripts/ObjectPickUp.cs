@@ -53,8 +53,12 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 playerIndicationText.text = string.Empty;
-                playerIndicationText.text = "Press Q to Drop";
             }
+        }
+
+        if (isPicked)
+        {
+            playerIndicationText.text = "Press Q to Drop";
         }
 
         else
