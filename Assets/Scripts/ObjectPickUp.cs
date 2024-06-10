@@ -11,11 +11,11 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] bool isPicked, isPaperNote, isPaperNotePicked;
+    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer;
 
     [SerializeField] Rigidbody objectRb;
 
@@ -37,36 +37,39 @@ public class ObjectPickUp : MonoBehaviour
 
     void ObjectDetect()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, pickableObj))
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, pickableObj);
+        if (isRay)
         {
             Debug.Log("Object detected");
             hitObj = hit1.collider.gameObject;
             crosshair.color = Color.green;
-
-            if (!isPicked)
-                playerIndicationText.text = "Press E to pick up";
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                isPicked = true;
-                objectRb = hitObj.GetComponent<Rigidbody>();
-                pickableObject = hitObj.gameObject;
-                hitObj.transform.position = pickUpPoint.position;
-                hitObj.transform.parent = camera.transform;
-                objectRb.constraints = RigidbodyConstraints.FreezeAll;
-                playerIndicationText.text = string.Empty;
-            }
+            isObject = true;
         }
 
-        if (isPicked)
+        else if(!isRay)
         {
-            playerIndicationText.text = "Press Q to Drop";
-        }
-
-        else
-        {
+            isObject = false;
             playerIndicationText.text = string.Empty;
             crosshair.color = Color.red;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && isObject)
+        {
+            isPicked = true;
+            objectRb = hitObj.GetComponent<Rigidbody>();
+            pickableObject = hitObj.gameObject;
+            hitObj.transform.position = pickUpPoint.position;
+            hitObj.transform.parent = camera.transform;
+            objectRb.constraints = RigidbodyConstraints.FreezeAll;
+            playerIndicationText.text = string.Empty;
+        }
+
+        if (isObject)
+            playerIndicationText.text = "Press E to pick up";
+
+        else if (isPicked)
+        {
+            playerIndicationText.text = "Press Q to Drop";
         }
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
@@ -80,21 +83,23 @@ public class ObjectPickUp : MonoBehaviour
 
     void PaperNote()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer))
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer);
+        if (isRay)
         {
             Debug.Log("Note detected");
 
             isPaperNote = true;
 
-            if(!isPaperNotePicked)
+            if (!isPaperNotePicked)
                 playerIndicationText.text = "Press E to interact";
         }
 
-        else
+        else if(!isRay)
         {
             isPaperNote = false;
             playerIndicationText.text = string.Empty;
         }
+
 
         if (Input.GetKeyDown(KeyCode.E) && isPaperNote && paperNoteIndex % 2 != 0)
         {
@@ -117,6 +122,32 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    void PlaceObjects()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer) && isPicked;
+        if (isRay)
+        {
+            Debug.Log("Place detected");
+            GameObject place = hit1.collider.gameObject;
+            crosshair.color = Color.green;
+            playerIndicationText.text = "Place object";
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                pickableObject.transform.position = place.transform.position;
+                pickableObject.transform.rotation = Quaternion.identity;
+                objectRb.constraints = RigidbodyConstraints.None;
+                hitObj.transform.parent = null;
+            }
+        }
+
+        else if(!isRay)
+        {
+            crosshair.color = Color.red;
+            playerIndicationText.text = string.Empty;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -126,5 +157,6 @@ public class ObjectPickUp : MonoBehaviour
     {
         ObjectDetect();
         PaperNote();
+        PlaceObjects();
     }
 }
