@@ -5,13 +5,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked;
+    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked, cannotPickUp;
 
     [SerializeField] Transform pickUpPoint;
 
@@ -53,8 +54,9 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.color = Color.red;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isObject)
+        if (Input.GetKeyDown(KeyCode.E) && isObject && !cannotPickUp)
         {
+            cannotPickUp = true;
             isPicked = true;
             objectRb = hitObj.GetComponent<Rigidbody>();
             pickableObject = hitObj.gameObject;
@@ -74,6 +76,7 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
+            cannotPickUp = false;
             isPicked = false;
             hitObj.transform.parent = null;
             objectRb.constraints = RigidbodyConstraints.None;
@@ -134,6 +137,7 @@ public class ObjectPickUp : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                cannotPickUp = false;
                 pickableObject.transform.position = place.transform.position;
                 pickableObject.transform.rotation = Quaternion.identity;
                 objectRb.constraints = RigidbodyConstraints.None;
