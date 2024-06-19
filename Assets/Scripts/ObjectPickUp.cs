@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
 
@@ -49,7 +45,7 @@ public class ObjectPickUp : MonoBehaviour
             isObject = true;
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             isObject = false;
             pickDropObjectText.text = string.Empty;
@@ -99,7 +95,7 @@ public class ObjectPickUp : MonoBehaviour
                 interactionText.text = "Press E to interact";
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             isPaperNote = false;
             interactionText.text = string.Empty;
@@ -141,6 +137,7 @@ public class ObjectPickUp : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 cannotPickUp = false;
+                isPicked = false;
                 pickableObject.transform.position = place.transform.position;
                 pickableObject.transform.rotation = Quaternion.identity;
                 //objectRb.constraints = RigidbodyConstraints.None;
@@ -148,7 +145,7 @@ public class ObjectPickUp : MonoBehaviour
             }
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             crosshair.color = Color.red;
             placeObjectText.text = string.Empty;
@@ -186,7 +183,7 @@ public class ObjectPickUp : MonoBehaviour
         else if (!isRay)
         {
             doorOpenText.text = string.Empty;
-        }    
+        }
     }
 
     private void OnDrawGizmos()
