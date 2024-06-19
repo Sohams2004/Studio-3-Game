@@ -32,6 +32,7 @@ public class ObjectPickUp : MonoBehaviour
     RaycastHit hit1;
     GameObject hitObj;
     GameObject hitDoor;
+    GameObject parentObj;
 
     private void Start()
     {
@@ -162,20 +163,21 @@ public class ObjectPickUp : MonoBehaviour
         {
             Debug.Log("Door detected");
             hitDoor = hit1.collider.gameObject;
+            parentObj = hitDoor.transform.parent.gameObject;
             doorOpenText.text = "Press E to open the door";
 
-            if (Input.GetKeyDown(KeyCode.E) && !isDoorOpen)
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 isDoorOpen = true;
                 door = hitDoor;
-                hitDoor.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+                parentObj.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isDoorOpen)
         {
             isDoorOpen = false;
-            hitDoor.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            parentObj.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
         }
 
         else if (isRay && isDoorOpen)
