@@ -9,7 +9,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked, cannotPickUp, isDoorOpen;
+    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor, isDoorOpen;
 
     [SerializeField] Transform pickUpPoint;
 
@@ -29,6 +29,7 @@ public class ObjectPickUp : MonoBehaviour
     GameObject hitObj;
     GameObject hitDoor;
     GameObject parentObj;
+    GameObject place;
 
     private void Start()
     {
@@ -75,9 +76,9 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
+            hitObj.transform.parent = null;
             cannotPickUp = false;
             isPicked = false;
-            hitObj.transform.parent = null;
             objectRb.constraints = RigidbodyConstraints.None;
             pickDropObjectText.text = string.Empty;
         }
@@ -126,23 +127,25 @@ public class ObjectPickUp : MonoBehaviour
 
     void PlaceObjects()
     {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer) && isPicked;
-        if (isRay)
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer);
+        if (isRay && isPicked)
         {
             Debug.Log("Place detected");
-            GameObject place = hit1.collider.gameObject;
+            place = hit1.collider.gameObject;
             crosshair.color = Color.green;
             pickDropObjectText.text = string.Empty;
             placeObjectText.text = "Place object";
+            print(pickableObject.name);
 
             if (Input.GetMouseButtonDown(0))
-            {
-                cannotPickUp = false;
-                isPicked = false;
-                pickableObject.transform.position = place.transform.position;
-                pickableObject.transform.rotation = Quaternion.identity;
-                //objectRb.constraints = RigidbodyConstraints.None;
-                hitObj.transform.parent = null;
+            {            
+                    Debug.Log("Placeddd");
+
+                    hitObj.transform.parent = null;
+                    cannotPickUp = false;
+                    isPicked = false;
+                    pickableObject.transform.position = place.transform.position;
+                    pickableObject.transform.rotation = Quaternion.identity;            
             }
         }
 
@@ -163,18 +166,7 @@ public class ObjectPickUp : MonoBehaviour
             parentObj = hitDoor.transform.parent.gameObject;
             doorOpenText.text = "Press E to open the door";
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                isDoorOpen = true;
-                door = hitDoor;
-                parentObj.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && isDoorOpen)
-        {
-            isDoorOpen = false;
-            parentObj.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            isDoor = true;
         }
 
         else if (isRay && isDoorOpen)
@@ -186,6 +178,22 @@ public class ObjectPickUp : MonoBehaviour
         {
             doorOpenText.text = string.Empty;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.E) && isDoor)
+        {
+            isDoorOpen = true;
+            door = hitDoor;
+            parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && isRay)
+        {
+            isDoorOpen = false;
+            parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+
+        
     }
 
     private void OnDrawGizmos()
