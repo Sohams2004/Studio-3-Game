@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,24 +9,26 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked, cannotPickUp;
+    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked, cannotPickUp, isDoorOpen;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer;
 
     [SerializeField] Rigidbody objectRb;
 
-    [SerializeField] GameObject pickableObject;
+    [SerializeField] GameObject pickableObject, door;
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI playerIndicationText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, doorOpenText;
 
     [SerializeField] Image crosshair, paperNote;
 
     RaycastHit hit1;
     GameObject hitObj;
+    GameObject hitDoor;
+    GameObject parentObj;
 
     private void Start()
     {
@@ -47,10 +46,10 @@ public class ObjectPickUp : MonoBehaviour
             isObject = true;
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             isObject = false;
-            playerIndicationText.text = string.Empty;
+            pickDropObjectText.text = string.Empty;
             crosshair.color = Color.red;
         }
 
@@ -63,15 +62,15 @@ public class ObjectPickUp : MonoBehaviour
             hitObj.transform.position = pickUpPoint.position;
             hitObj.transform.parent = camera.transform;
             objectRb.constraints = RigidbodyConstraints.FreezeAll;
-            playerIndicationText.text = string.Empty;
+            pickDropObjectText.text = string.Empty;
         }
 
         if (isObject)
-            playerIndicationText.text = "Press E to pick up";
+            pickDropObjectText.text = "Press E to pick up";
 
         else if (isPicked)
         {
-            playerIndicationText.text = "Press Q to Drop";
+            pickDropObjectText.text = "Press Q to Drop";
         }
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
@@ -80,7 +79,7 @@ public class ObjectPickUp : MonoBehaviour
             isPicked = false;
             hitObj.transform.parent = null;
             objectRb.constraints = RigidbodyConstraints.None;
-            playerIndicationText.text = string.Empty;
+            pickDropObjectText.text = string.Empty;
         }
     }
 
@@ -94,13 +93,13 @@ public class ObjectPickUp : MonoBehaviour
             isPaperNote = true;
 
             if (!isPaperNotePicked)
-                playerIndicationText.text = "Press E to interact";
+                interactionText.text = "Press E to interact";
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             isPaperNote = false;
-            playerIndicationText.text = string.Empty;
+            interactionText.text = string.Empty;
         }
 
 
@@ -121,7 +120,7 @@ public class ObjectPickUp : MonoBehaviour
 
         if (isPaperNotePicked)
         {
-            playerIndicationText.text = string.Empty;
+            interactionText.text = string.Empty;
         }
     }
 
@@ -133,22 +132,59 @@ public class ObjectPickUp : MonoBehaviour
             Debug.Log("Place detected");
             GameObject place = hit1.collider.gameObject;
             crosshair.color = Color.green;
-            playerIndicationText.text = "Place object";
+            pickDropObjectText.text = string.Empty;
+            placeObjectText.text = "Place object";
 
             if (Input.GetMouseButtonDown(0))
             {
                 cannotPickUp = false;
+                isPicked = false;
                 pickableObject.transform.position = place.transform.position;
                 pickableObject.transform.rotation = Quaternion.identity;
-                objectRb.constraints = RigidbodyConstraints.None;
+                //objectRb.constraints = RigidbodyConstraints.None;
                 hitObj.transform.parent = null;
             }
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             crosshair.color = Color.red;
-            playerIndicationText.text = string.Empty;
+            placeObjectText.text = string.Empty;
+        }
+    }
+
+    void OpenDoor()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
+        if (isRay && !isDoorOpen)
+        {
+            Debug.Log("Door detected");
+            hitDoor = hit1.collider.gameObject;
+            parentObj = hitDoor.transform.parent.gameObject;
+            doorOpenText.text = "Press E to open the door";
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                isDoorOpen = true;
+                door = hitDoor;
+                parentObj.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && isDoorOpen)
+        {
+            isDoorOpen = false;
+            parentObj.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+        }
+
+        else if (isRay && isDoorOpen)
+        {
+            doorOpenText.text = "Press E to close the door";
+        }
+
+        else if (!isRay)
+        {
+            doorOpenText.text = string.Empty;
         }
     }
 
@@ -162,5 +198,6 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
+        OpenDoor();
     }
 }
