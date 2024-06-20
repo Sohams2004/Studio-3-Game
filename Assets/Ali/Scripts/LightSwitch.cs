@@ -1,10 +1,10 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class LightSwitch : MonoBehaviour
 {
     public TextMeshProUGUI promptText; // TextMeshProUGUI to display the prompt
-    public string promptMessage = "Press E to switch light"; // Customizable prompt message
+
     public Animator switchAnimator; // Animator for the light switch
     public string animationTriggerName = "ToggleSwitch"; // Animation trigger name
     public Light roomLight; // Light to be controlled
@@ -15,8 +15,8 @@ public class LightSwitch : MonoBehaviour
 
     void Start()
     {
-        promptText.enabled = false; // Hide the text initially
-        promptText.text = promptMessage; // Set the prompt message
+        promptText.text = string.Empty;
+
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -37,7 +37,15 @@ public class LightSwitch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            promptText.enabled = true;
+            promptText.text = "Press E to Switch On The Light";
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+            promptText.text = "Press E to Switch On The Light";
         }
     }
 
@@ -46,7 +54,7 @@ public class LightSwitch : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            promptText.enabled = false;
+            promptText.text = string.Empty;
         }
     }
 
@@ -56,6 +64,6 @@ public class LightSwitch : MonoBehaviour
         roomLight.enabled = lightOn;
         switchAnimator.SetTrigger(animationTriggerName);
         audioSource.PlayOneShot(switchSound);
-        promptText.enabled = false; // Hide the text after interaction
+        promptText.text = "Press E to Switch Off The Light";
     }
 }
