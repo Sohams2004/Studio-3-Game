@@ -21,7 +21,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, doorOpenText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText;
 
     [SerializeField] Image crosshair, paperNote;
 
@@ -152,7 +152,6 @@ public class ObjectPickUp : MonoBehaviour
                 isPicked = false;
                 pickableObject.transform.position = place.transform.position;
                 pickableObject.transform.rotation = Quaternion.identity;
-                hotbar.items.Remove(pickableObject);
             }
         }
 
@@ -163,45 +162,45 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    void OpenDoor()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
-        if (isRay && !isDoorOpen)
-        {
-            Debug.Log("Door detected");
-            hitDoor = hit1.collider.gameObject;
-            parentObj = hitDoor.transform.parent.gameObject;
-            doorOpenText.text = "Press E to open the door";
+    /* void OpenDoor()
+     {
+         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
+         if (isRay && !isDoorOpen)
+         {
+             Debug.Log("Door detected");
+             hitDoor = hit1.collider.gameObject;
+             parentObj = hitDoor.transform.parent.gameObject;
+             doorOpenText.text = "Press E to open the door";
 
-            isDoor = true;
-        }
+             isDoor = true;
+         }
 
-        else if (isRay && isDoorOpen)
-        {
-            doorOpenText.text = "Press E to close the door";
-        }
+         else if (isRay && isDoorOpen)
+         {
+             doorOpenText.text = "Press E to close the door";
+         }
 
-        else if (!isRay)
-        {
-            doorOpenText.text = string.Empty;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.E) && isDoor)
-        {
-            isDoorOpen = true;
-            door = hitDoor;
-            parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && isRay)
-        {
-            isDoorOpen = false;
-            parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
+         else if (!isRay)
+         {
+             doorOpenText.text = string.Empty;
+         }
 
 
-    }
+         if (Input.GetKeyDown(KeyCode.E) && isDoor)
+         {
+             isDoorOpen = true;
+             door = hitDoor;
+             parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+         }
+
+         if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && isRay)
+         {
+             isDoorOpen = false;
+             parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+         }
+
+
+     }*/
 
     private void OnDrawGizmos()
     {
@@ -213,6 +212,6 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
-        OpenDoor();
+        /* OpenDoor();*/
     }
 }
