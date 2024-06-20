@@ -17,7 +17,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Rigidbody objectRb;
 
-    [SerializeField] GameObject pickableObject, door;
+    [SerializeField] public GameObject pickableObject, door;
 
     [SerializeField] Camera camera;
 
@@ -31,9 +31,12 @@ public class ObjectPickUp : MonoBehaviour
     GameObject parentObj;
     GameObject place;
 
+    HotBar hotbar;
+
     private void Start()
     {
         camera = Camera.main;
+        hotbar = FindObjectOfType<HotBar>();
     }
 
     void ObjectDetect()
@@ -54,16 +57,18 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.color = Color.red;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isObject && !cannotPickUp)
+        if (Input.GetKeyDown(KeyCode.E) && isObject)
         {
-            cannotPickUp = true;
+            //cannotPickUp = true;
             isPicked = true;
             objectRb = hitObj.GetComponent<Rigidbody>();
             pickableObject = hitObj.gameObject;
+            pickableObject.SetActive(false);
             hitObj.transform.position = pickUpPoint.position;
             hitObj.transform.parent = camera.transform;
             objectRb.constraints = RigidbodyConstraints.FreezeAll;
             pickDropObjectText.text = string.Empty;
+            hotbar.items.Add(pickableObject);
         }
 
         if (isObject)
@@ -76,11 +81,12 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
-            hitObj.transform.parent = null;
+            hotbar.currentObject = hitObj;
             cannotPickUp = false;
             isPicked = false;
             objectRb.constraints = RigidbodyConstraints.None;
             pickDropObjectText.text = string.Empty;
+            hotbar.items.Remove(pickableObject);
         }
     }
 
