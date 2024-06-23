@@ -57,18 +57,18 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.color = Color.red;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isObject)
+        if (Input.GetKeyDown(KeyCode.E) && isObject && !cannotPickUp)
         {
-            //cannotPickUp = true;
+            cannotPickUp = true;
             isPicked = true;
             objectRb = hitObj.GetComponent<Rigidbody>();
             pickableObject = hitObj.gameObject;
-            pickableObject.SetActive(false);
+            //pickableObject.SetActive(false);
             hitObj.transform.position = pickUpPoint.position;
             hitObj.transform.parent = camera.transform;
             objectRb.constraints = RigidbodyConstraints.FreezeAll;
             pickDropObjectText.text = string.Empty;
-            hotbar.items.Add(pickableObject);
+            //hotbar.items.Add(pickableObject);
         }
 
         if (isObject)
@@ -81,12 +81,13 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
-            hotbar.currentObject = hitObj;
+            //hotbar.currentObject = hitObj;
+            hitObj = hit1.collider.gameObject;
             cannotPickUp = false;
             isPicked = false;
             objectRb.constraints = RigidbodyConstraints.None;
             pickDropObjectText.text = string.Empty;
-            hotbar.items.Remove(pickableObject);
+            //hotbar.items.Remove(pickableObject);
         }
     }
 
