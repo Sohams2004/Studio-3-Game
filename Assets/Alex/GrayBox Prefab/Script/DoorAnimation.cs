@@ -7,6 +7,7 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] TMP_Text doortext;
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
+
     enum State { Close, Open };
     State state;
 

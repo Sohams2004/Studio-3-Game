@@ -65,7 +65,7 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.color = Color.red;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isObject)
+        if (Input.GetKeyDown(KeyCode.E) && isObject && !cannotPickUp)
         {
             if(hotbar.items.Count < 5) 
             {
