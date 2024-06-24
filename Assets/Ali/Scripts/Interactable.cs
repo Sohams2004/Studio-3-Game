@@ -1,10 +1,9 @@
-using UnityEngine;
 using TMPro;
-using System.Collections;
+using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public TextMeshProUGUI promptText; // TextMeshProUGUI to display the prompt
+    public TMP_Text promptText; // TextMeshProUGUI to display the prompt
     public string promptMessage = "Press E to interact"; // Customizable prompt message
     public Animator objectAnimator; // Animator for the object
     public string animationTriggerName = "Interact"; // Customizable animation trigger name
@@ -15,8 +14,8 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
-        promptText.enabled = false; // Hide the text initially
-        promptText.text = promptMessage; // Set the prompt message
+        promptText.text = string.Empty;
+        /* promptText.text = promptMessage; // Set the prompt message*/
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -28,19 +27,56 @@ public class Interactable : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
-            objectAnimator.SetTrigger(animationTriggerName);
+            objectAnimator.SetBool("Blindsup", true);
+            objectAnimator.SetBool("Blindsdown", false);
             hasInteracted = true;
-            promptText.enabled = false; // Hide the text after interaction
-            StartCoroutine(PlaySoundAfterDelay(2.0f));
+            audioSource.PlayOneShot(interactionSound);
+        }
+        else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
+        {
+            objectAnimator.SetBool("Blindsdown", true);
+            objectAnimator.SetBool("Blindsup", false);
+            hasInteracted = false;
+
+            audioSource.PlayOneShot(interactionSound);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasInteracted)
+        if (other.CompareTag("Player"))
         {
-            playerInRange = true;
-            promptText.enabled = true;
+            if (!hasInteracted)
+            {
+                playerInRange = true;
+                promptText.text = "Press E to interact";
+            }
+            else if (hasInteracted)
+            {
+                playerInRange = true;
+                promptText.text = "Press E to interact";
+            }
+
+
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            if (!hasInteracted)
+            {
+                playerInRange = true;
+                promptText.text = "Press E to interact";
+            }
+            else if (hasInteracted)
+            {
+                playerInRange = true;
+                promptText.text = "Press E to interact";
+            }
+
+
         }
     }
 
@@ -48,14 +84,11 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            promptText.text = string.Empty;
             playerInRange = false;
-            promptText.enabled = false;
+
         }
     }
 
-    IEnumerator PlaySoundAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        audioSource.PlayOneShot(interactionSound);
-    }
+
 }
