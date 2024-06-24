@@ -9,13 +9,17 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] bool isObject, isPicked, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor, isDoorOpen;
+    [SerializeField] int cubeCount, sphereCount, coneCount;
+
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor, isDoorOpen;
+
+    [SerializeField] public bool isPicked;
 
     [SerializeField] Transform pickUpPoint;
 
     [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer;
 
-    [SerializeField] Rigidbody objectRb;
+    [SerializeField] public Rigidbody objectRb;
 
     [SerializeField] public GameObject pickableObject, door;
 
@@ -23,8 +27,12 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText;
 
+    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+
     [SerializeField] Image crosshair, paperNote;
 
+    [SerializeField] Image cubeImg, sphereImg, coneImg;
+    
     RaycastHit hit1;
     GameObject hitObj;
     GameObject hitDoor;
@@ -59,16 +67,53 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
         {
-            //cannotPickUp = true;
+            if(hotbar.items.Count < 5) 
+            {
+                objectRb = hitObj.GetComponent<Rigidbody>();
+                pickableObject = hitObj.gameObject;
+                pickableObject.SetActive(false);
+                hitObj.transform.position = pickUpPoint.position;
+                hitObj.transform.parent = camera.transform;
+                objectRb.constraints = RigidbodyConstraints.FreezeAll;
+                pickDropObjectText.text = string.Empty;
+                hotbar.items.Add(pickableObject);
+
+                if (pickableObject.tag == "Cube")
+                {
+                    cubeCount++;
+
+                    cubeCountText.text = cubeCount.ToString();
+                }
+                
+                if (pickableObject.tag == "Cone")
+                {
+                    coneCount++;
+
+                    coneCountText.text = coneCount.ToString();
+                } 
+                
+                if (pickableObject.tag == "Sphere")
+                {
+                    sphereCount++;
+
+                    sphereCountText.text = sphereCount.ToString();
+                }
+            }
+     
+            if (hotbar.items.Count >= 5)
+            {
+                cannotPickUp = true;
+            }
+
+            else
+            {
+                cannotPickUp = false;
+            }
+        }
+
+        if (pickableObject != null)
+        {
             isPicked = true;
-            objectRb = hitObj.GetComponent<Rigidbody>();
-            pickableObject = hitObj.gameObject;
-            pickableObject.SetActive(false);
-            hitObj.transform.position = pickUpPoint.position;
-            hitObj.transform.parent = camera.transform;
-            objectRb.constraints = RigidbodyConstraints.FreezeAll;
-            pickDropObjectText.text = string.Empty;
-            hotbar.items.Add(pickableObject);
         }
 
         if (isObject)
@@ -81,12 +126,85 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
+            string dropObjectTag = pickableObject.tag;
+
+            pickableObject.transform.parent = null;
+            hotbar.items.Remove(pickableObject);
+            pickableObject = null;
             hotbar.currentObject = hitObj;
             cannotPickUp = false;
             isPicked = false;
             objectRb.constraints = RigidbodyConstraints.None;
             pickDropObjectText.text = string.Empty;
-            hotbar.items.Remove(pickableObject);
+
+            if (dropObjectTag == "Cube")
+            {
+                cubeCount--;
+
+                cubeCountText.text = cubeCount.ToString();
+
+                if (cubeCount == 0)
+                {
+                    cubeImg.gameObject.SetActive(false);
+                }
+            }
+            
+            if (dropObjectTag == "Cone")
+            {
+                coneCount--;
+
+                coneCountText.text = coneCount.ToString();
+
+                if (coneCount == 0)
+                {
+                    coneImg.gameObject.SetActive(false);
+                }
+            }
+            
+            if (dropObjectTag == "Sphere")
+            {
+                sphereCount--;
+
+                sphereCountText.text = sphereCount.ToString();
+
+                if (sphereCount == 0)
+                {
+                    sphereImg.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        if(pickableObject != null)
+        {
+            if (pickableObject.tag == "Cube")
+            {
+                cubeImg.gameObject.SetActive(true);
+            }
+
+            if (pickableObject.tag == "Sphere")
+            {
+                sphereImg.gameObject.SetActive(true);
+            }
+
+            if (pickableObject.tag == "Cone")
+            {
+                coneImg.gameObject.SetActive(true);
+            }
+        } 
+        
+        if (cubeCount == 0)
+        {
+            cubeImg.gameObject.SetActive(false);
+        }
+        
+        if (coneCount == 0)
+        {
+            coneImg.gameObject.SetActive(false);
+        }
+        
+        if (sphereCount == 0)
+        {
+            sphereImg.gameObject.SetActive(false);
         }
     }
 

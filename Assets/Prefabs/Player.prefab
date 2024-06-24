@@ -396,6 +396,9 @@ MonoBehaviour:
   isPicked: 0
   isPaperNote: 0
   isPaperNotePicked: 0
+  cannotPickUp: 0
+  isDoor: 0
+  isDoorOpen: 0
   pickUpPoint: {fileID: 8931831076176511210}
   pickableObj:
     serializedVersion: 2
@@ -406,10 +409,16 @@ MonoBehaviour:
   placeLayer:
     serializedVersion: 2
     m_Bits: 1024
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 0
   objectRb: {fileID: 0}
   pickableObject: {fileID: 0}
+  door: {fileID: 0}
   camera: {fileID: 0}
-  playerIndicationText: {fileID: 0}
+  pickDropObjectText: {fileID: 0}
+  interactionText: {fileID: 0}
+  placeObjectText: {fileID: 0}
   crosshair: {fileID: 0}
   paperNote: {fileID: 0}
 --- !u!81 &1715293261190442569
