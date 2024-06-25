@@ -265,7 +265,8 @@ public class ObjectPickUp : MonoBehaviour
             {
                 Debug.Log("Placeddd");
 
-                hitObj.transform.parent = null;
+                pickableObject.transform.parent = null;
+                hotbar.items.Remove(pickableObject);
                 cannotPickUp = false;
                 isPicked = false;
                 pickableObject.transform.position = place.transform.position;

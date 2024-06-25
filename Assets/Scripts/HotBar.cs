@@ -28,7 +28,7 @@ public class HotBar : MonoBehaviour
             objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             DisableItems();
             item2 = items[1];
@@ -38,7 +38,7 @@ public class HotBar : MonoBehaviour
             objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             DisableItems();
             item3 = items[2];
