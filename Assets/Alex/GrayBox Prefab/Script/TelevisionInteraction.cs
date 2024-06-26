@@ -78,5 +78,6 @@ public class TelevisionInteraction : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         tvtext.text = string.Empty;
+        playerInRange = false;
     }
 }

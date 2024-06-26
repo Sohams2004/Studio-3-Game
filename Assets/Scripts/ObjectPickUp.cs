@@ -73,6 +73,7 @@ public class ObjectPickUp : MonoBehaviour
                 pickableObject = hitObj.gameObject;
                 pickableObject.SetActive(false);
                 hitObj.transform.position = pickUpPoint.position;
+                hitObj.transform.rotation = pickUpPoint.rotation;
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
