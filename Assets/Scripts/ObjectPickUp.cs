@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
 
-    [SerializeField] int paperNoteIndex;
+    [SerializeField] int paperNoteIndex, itemIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount;
 
@@ -67,7 +68,7 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && isObject && !cannotPickUp)
         {
-            if(hotbar.items.Count < 5) 
+            if(hotbar.items.Length < 5) 
             {
                 objectRb = hitObj.GetComponent<Rigidbody>();
                 pickableObject = hitObj.gameObject;
@@ -76,7 +77,16 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
-                hotbar.items.Add(pickableObject);
+
+                for (int i = 0; i < hotbar.items.Length; i++)
+                {
+                    if (hotbar.items[i] == null)
+                    {
+                        hotbar.items[i] = pickableObject;
+
+                        break;
+                    }
+                }
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -100,7 +110,7 @@ public class ObjectPickUp : MonoBehaviour
                 }
             }
      
-            if (hotbar.items.Count >= 5)
+            if (hotbar.items.Length >= 5)
             {
                 cannotPickUp = true;
             }
@@ -129,7 +139,7 @@ public class ObjectPickUp : MonoBehaviour
             string dropObjectTag = pickableObject.tag;
 
             pickableObject.transform.parent = null;
-            hotbar.items.Remove(pickableObject);
+            hotbar.items[itemIndex] = null;
             pickableObject = null;
             hotbar.currentObject = hitObj;
             cannotPickUp = false;
