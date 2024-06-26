@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class HotBar : MonoBehaviour
 {
-    public List<GameObject> items = new List<GameObject>();
+    public GameObject[] items;
 
     [SerializeField] GameObject item1, item2, item3, item4, item5;
 
@@ -20,7 +20,7 @@ public class HotBar : MonoBehaviour
 
     void ToggleItems()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha1) && items[0] != null)
         {
             DisableItems();
             item1 = items[0];
@@ -30,7 +30,7 @@ public class HotBar : MonoBehaviour
             objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && items[1] != null)
         {
             DisableItems();
             item2 = items[1];
@@ -40,7 +40,7 @@ public class HotBar : MonoBehaviour
             objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && items[2] != null)
         {
             DisableItems();
             item3 = items[2];
@@ -73,7 +73,7 @@ public class HotBar : MonoBehaviour
 
     void DisableItems()
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < items.Length; i++)
         {
             items[i].SetActive(false);
         }
