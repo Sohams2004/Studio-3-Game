@@ -6,27 +6,33 @@ using UnityEngine.SceneManagement;
 public class DamageScript : MonoBehaviour
 {
 
-    public int maxSanity = 200;
-    public float currentSanity;
+    public int maxHP = 200;
+    public float currentHP;
     public float dmgOverTime = 10;
     [SerializeField] GameObject gameOverScreen;
 
-    public SanityBar sanityBar;
+    public BarLogic sanityBar;
+    public BarLogic hungerBar;
+    public BarLogic thirstBar;
 
     void Start()
     {
         Time.timeScale = 1f;
         gameOverScreen.SetActive(false);
-        currentSanity = maxSanity;
-        sanityBar.SetMaxValue(maxSanity);
+        currentHP = maxHP;
+        sanityBar.SetMaxValue(maxHP);
+        hungerBar.SetMaxValue(maxHP);
+        thirstBar.SetMaxValue(maxHP);
     }
 
     void Update()
     {
-        currentSanity -= dmgOverTime * Time.deltaTime;
-        sanityBar.SetValue(currentSanity);
+        currentHP -= dmgOverTime * Time.deltaTime;
+        sanityBar.SetValue(currentHP);
+        hungerBar.SetValue(currentHP);
+        thirstBar.SetValue(currentHP);
 
-        if (currentSanity < 0)
+        if (currentHP < 0)
         {
             GameOver();
         }
@@ -42,8 +48,10 @@ public class DamageScript : MonoBehaviour
 
     void DamageReceived(int damage)
     {
-        currentSanity -= damage;
-        sanityBar.SetValue(currentSanity);
+        currentHP -= damage;
+        sanityBar.SetValue(currentHP);
+        hungerBar.SetValue(currentHP);
+        thirstBar.SetValue(currentHP);
     }
 
     void GameOver()
