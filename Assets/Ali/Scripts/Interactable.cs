@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public TMP_Text promptText; // TextMeshProUGUI to display the prompt
-    public string promptMessage = "Press E to interact"; // Customizable prompt message
-    public Animator objectAnimator; // Animator for the object
-    public string animationTriggerName = "Interact"; // Customizable animation trigger name
-    public AudioClip interactionSound; // Sound effect to play after delay
+    public TMP_Text promptText;
+    public Animator objectAnimator;
+    public AudioClip interactionSound;
     private AudioSource audioSource;
     private bool playerInRange = false;
     private bool hasInteracted = false;

@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +7,7 @@ public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
 
-    [SerializeField] int paperNoteIndex, itemIndex;
+    [SerializeField] int paperNoteIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount;
 
@@ -33,7 +32,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] Image crosshair, paperNote;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
-    
+
     RaycastHit hit1;
     GameObject hitObj;
     GameObject hitDoor;
@@ -66,27 +65,19 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.color = Color.red;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isObject && !cannotPickUp)
+        if (Input.GetKeyDown(KeyCode.E) && isObject)
         {
-            if(hotbar.items.Length < 5) 
+            if (hotbar.items.Count < 5)
             {
                 objectRb = hitObj.GetComponent<Rigidbody>();
                 pickableObject = hitObj.gameObject;
                 pickableObject.SetActive(false);
                 hitObj.transform.position = pickUpPoint.position;
+                hitObj.transform.rotation = pickUpPoint.rotation;
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
-
-                for (int i = 0; i < hotbar.items.Length; i++)
-                {
-                    if (hotbar.items[i] == null)
-                    {
-                        hotbar.items[i] = pickableObject;
-
-                        break;
-                    }
-                }
+                hotbar.items.Add(pickableObject);
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -94,14 +85,14 @@ public class ObjectPickUp : MonoBehaviour
 
                     cubeCountText.text = cubeCount.ToString();
                 }
-                
+
                 if (pickableObject.tag == "Cone")
                 {
                     coneCount++;
 
                     coneCountText.text = coneCount.ToString();
-                } 
-                
+                }
+
                 if (pickableObject.tag == "Sphere")
                 {
                     sphereCount++;
@@ -109,8 +100,8 @@ public class ObjectPickUp : MonoBehaviour
                     sphereCountText.text = sphereCount.ToString();
                 }
             }
-     
-            if (hotbar.items.Length >= 5)
+
+            if (hotbar.items.Count >= 5)
             {
                 cannotPickUp = true;
             }
@@ -139,7 +130,7 @@ public class ObjectPickUp : MonoBehaviour
             string dropObjectTag = pickableObject.tag;
 
             pickableObject.transform.parent = null;
-            hotbar.items[itemIndex] = null;
+            hotbar.items.Remove(pickableObject);
             pickableObject = null;
             hotbar.currentObject = hitObj;
             cannotPickUp = false;
@@ -158,7 +149,7 @@ public class ObjectPickUp : MonoBehaviour
                     cubeImg.gameObject.SetActive(false);
                 }
             }
-            
+
             if (dropObjectTag == "Cone")
             {
                 coneCount--;
@@ -170,7 +161,7 @@ public class ObjectPickUp : MonoBehaviour
                     coneImg.gameObject.SetActive(false);
                 }
             }
-            
+
             if (dropObjectTag == "Sphere")
             {
                 sphereCount--;
@@ -184,7 +175,7 @@ public class ObjectPickUp : MonoBehaviour
             }
         }
 
-        if(pickableObject != null)
+        if (pickableObject != null)
         {
             if (pickableObject.tag == "Cube")
             {
@@ -200,18 +191,18 @@ public class ObjectPickUp : MonoBehaviour
             {
                 coneImg.gameObject.SetActive(true);
             }
-        } 
-        
+        }
+
         if (cubeCount == 0)
         {
             cubeImg.gameObject.SetActive(false);
         }
-        
+
         if (coneCount == 0)
         {
             coneImg.gameObject.SetActive(false);
         }
-        
+
         if (sphereCount == 0)
         {
             sphereImg.gameObject.SetActive(false);
@@ -275,7 +266,8 @@ public class ObjectPickUp : MonoBehaviour
             {
                 Debug.Log("Placeddd");
 
-                hitObj.transform.parent = null;
+                pickableObject.transform.parent = null;
+                hotbar.items.Remove(pickableObject);
                 cannotPickUp = false;
                 isPicked = false;
                 pickableObject.transform.position = place.transform.position;
@@ -343,3 +335,4 @@ public class ObjectPickUp : MonoBehaviour
         /* OpenDoor();*/
     }
 }
+
