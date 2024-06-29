@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DamageScript : MonoBehaviour
 {
-
     public int maxHP = 200;
-    public float currentHP;
-    public float dmgOverTime = 10;
+    public float sanity;
+    public float hunger;
+    public float thirst;
+
+    public float sanityDecreaseRate = 1;
+    public float hungerDecreaseRate = 1;
+    public float thirstDecreaseRate = 1;
+
     [SerializeField] GameObject gameOverScreen;
 
     public BarLogic sanityBar;
@@ -19,7 +23,10 @@ public class DamageScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameOverScreen.SetActive(false);
-        currentHP = maxHP;
+        sanity = maxHP;
+        hunger = maxHP;
+        thirst = maxHP;
+
         sanityBar.SetMaxValue(maxHP);
         hungerBar.SetMaxValue(maxHP);
         thirstBar.SetMaxValue(maxHP);
@@ -27,12 +34,15 @@ public class DamageScript : MonoBehaviour
 
     void Update()
     {
-        currentHP -= dmgOverTime * Time.deltaTime;
-        sanityBar.SetValue(currentHP);
-        hungerBar.SetValue(currentHP);
-        thirstBar.SetValue(currentHP);
+        sanity -= sanityDecreaseRate * Time.deltaTime;
+        hunger -= hungerDecreaseRate * Time.deltaTime;
+        thirst -= thirstDecreaseRate * Time.deltaTime;
 
-        if (currentHP < 0)
+        sanityBar.SetValue(sanity);
+        hungerBar.SetValue(hunger);
+        thirstBar.SetValue(thirst);
+
+        if (sanity < 0 || hunger < 0 || thirst < 0)
         {
             GameOver();
         }
@@ -48,10 +58,13 @@ public class DamageScript : MonoBehaviour
 
     void DamageReceived(int damage)
     {
-        currentHP -= damage;
-        sanityBar.SetValue(currentHP);
-        hungerBar.SetValue(currentHP);
-        thirstBar.SetValue(currentHP);
+        sanity -= damage;
+        sanityBar.SetValue(sanity);
+
+        if (sanity < 0 || hunger < 0 || thirst < 0)
+        {
+            GameOver();
+        }
     }
 
     void GameOver()
@@ -61,5 +74,4 @@ public class DamageScript : MonoBehaviour
         gameOverScreen.SetActive(true);
         Time.timeScale = 0f;
     }
-
 }
