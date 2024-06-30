@@ -3,50 +3,62 @@ using UnityEngine;
 
 public class HotBar : MonoBehaviour
 {
-    public List<GameObject> items = new List<GameObject>();
+    
+    public GameObject[] items;
 
     [SerializeField] GameObject item1, item2, item3, item4, item5;
 
     [SerializeField] public GameObject currentObject;
+
+    [SerializeField] public int numberOfItems;
 
     ObjectPickUp objectPickUp;
 
     private void Start()
     {
         objectPickUp = FindObjectOfType<ObjectPickUp>();
+        items = new GameObject[numberOfItems];
     }
 
     void ToggleItems()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        for (int i = 0; i < items.Length; i++)
         {
-            DisableItems();
-            item1 = items[0];
-            items[0].SetActive(true);
-            currentObject = items[0];
-            objectPickUp.pickableObject = currentObject;
-            objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+            if (items[i] != null)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1) && items[0] != null)
+                {
+                    DisableItems();
+                    item1 = items[0];
+                    items[0].SetActive(true);
+                    currentObject = items[0];
+                    objectPickUp.pickableObject = currentObject;
+                    objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+                }
+
+                else if (Input.GetKeyDown(KeyCode.Alpha2) && items[1] != null)
+                {
+                    DisableItems();
+                    item2 = items[1];
+                    items[1].SetActive(true);
+                    currentObject = items[1];
+                    objectPickUp.pickableObject = currentObject;
+                    objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+                }
+
+                else if (Input.GetKeyDown(KeyCode.Alpha3) && items[2] != null)
+                {
+                    DisableItems();
+                    item3 = items[2];
+                    items[2].SetActive(true);
+                    currentObject = items[2];
+                    objectPickUp.pickableObject = currentObject;
+                    objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+                }
+            }         
         }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            DisableItems();
-            item2 = items[1];
-            items[1].SetActive(true);
-            currentObject = items[1];
-            objectPickUp.pickableObject = currentObject;
-            objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            DisableItems();
-            item3 = items[2];
-            items[2].SetActive(true);
-            currentObject = items[2];
-            objectPickUp.pickableObject = currentObject;
-            objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
-        }
+        
 
         /* if (Input.GetKeyDown(KeyCode.Alpha4))
          {
@@ -71,9 +83,12 @@ public class HotBar : MonoBehaviour
 
     void DisableItems()
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < items.Length; i++)
         {
-            items[i].SetActive(false);
+            if (items[i] != null)
+            {
+                items[i].SetActive(false);
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,9 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] int cubeCount, sphereCount, coneCount;
+    [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
+
+    [SerializeField] int maxNumberOfItems;
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor, isDoorOpen;
 
@@ -25,13 +28,15 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText;
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
 
     [SerializeField] Image crosshair, paperNote;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
+
+    [SerializeField] Transform[] itemFrames;
 
     RaycastHit hit1;
     GameObject hitObj;
@@ -67,7 +72,7 @@ public class ObjectPickUp : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
         {
-            if (hotbar.items.Count < 5)
+            if (/*hotbar.items.Length <= hotbar.numberOfItems*/ itemCount < maxNumberOfItems)
             {
                 objectRb = hitObj.GetComponent<Rigidbody>();
                 pickableObject = hitObj.gameObject;
@@ -77,7 +82,17 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
-                hotbar.items.Add(pickableObject);
+
+                for (int i = 0; i < hotbar.items.Length; i++)
+                {
+                    if (hotbar.items[i] == null)
+                    {
+                        itemCount++;
+                        hotbar.items[i] = pickableObject;
+
+                        break;
+                    }
+                }
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -101,14 +116,9 @@ public class ObjectPickUp : MonoBehaviour
                 }
             }
 
-            if (hotbar.items.Count >= 5)
-            {
-                cannotPickUp = true;
-            }
-
             else
             {
-                cannotPickUp = false;
+                StartCoroutine(TextPopUp());
             }
         }
 
@@ -128,10 +138,20 @@ public class ObjectPickUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
             string dropObjectTag = pickableObject.tag;
-
             pickableObject.transform.parent = null;
-            hotbar.items.Remove(pickableObject);
-            pickableObject = null;
+
+            for (int i = 0; i < hotbar.items.Length; i++)
+            {
+                if (hotbar.items[i] == pickableObject)
+                {
+                    itemCount--;
+                    hotbar.items[i] = null;
+                    pickableObject = null;
+                    hotbar.currentObject = null;
+                    break;
+                }
+            }
+
             hotbar.currentObject = hitObj;
             cannotPickUp = false;
             isPicked = false;
@@ -209,6 +229,12 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    IEnumerator TextPopUp()
+    {
+        inventoryFullText.text = "Inventory Full";
+        yield return new WaitForSeconds(1);
+        inventoryFullText.text = string.Empty;
+    }
     void PaperNote()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer);
@@ -265,13 +291,27 @@ public class ObjectPickUp : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Placeddd");
-
+         
                 pickableObject.transform.parent = null;
-                hotbar.items.Remove(pickableObject);
+                //hotbar.items.Remove(pickableObject);
                 cannotPickUp = false;
                 isPicked = false;
-                pickableObject.transform.position = place.transform.position;
-                pickableObject.transform.rotation = Quaternion.identity;
+               // pickableObject.transform.position = place.transform.position;
+                //pickableObject.transform.rotation = Quaternion.identity;
+
+                for (int i = 0; i < hotbar.items.Length; i++)
+                {
+                    if (hotbar.items[i] == pickableObject)
+                    {
+                        itemCount--;
+                        hotbar.items[i].transform.position = place.transform.position;
+                        hotbar.items[i].transform.rotation = Quaternion.identity;
+                        hotbar.items[i] = null;
+                        pickableObject = null;
+                        hotbar.currentObject = null;
+                        break;
+                    }
+                }
             }
         }
 
