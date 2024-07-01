@@ -8,6 +8,8 @@ public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
 
+    [SerializeField] float moneyCount;
+
     [SerializeField] int paperNoteIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
@@ -20,7 +22,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer, moneyLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -30,7 +32,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText;
 
-    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
     [SerializeField] Image crosshair, paperNote, handSign;
 
@@ -90,17 +92,18 @@ public class ObjectPickUp : MonoBehaviour
                     if (hotbar.items[i] == null)
                     {
                         itemCount++;
-                        if (pickableObject.tag == "Cube")
+
+                        if (pickableObject.tag == "Cube" && cubeCount < 1)
                         {
                             hotbar.items[0] = pickableObject;
                         }
-
-                        if (pickableObject.tag == "Cone")
+                   
+                        if (pickableObject.tag == "Cone" && coneCount < 1)
                         {
                             hotbar.items[1] = pickableObject;
                         }
 
-                        if ((pickableObject.tag == "Sphere"))
+                        if (pickableObject.tag == "Sphere" && sphereCount < 1)
                         {
                             hotbar.items[2] = pickableObject;
                         }
@@ -400,6 +403,19 @@ public class ObjectPickUp : MonoBehaviour
 
      }*/
 
+    void Money()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
+        if(isRay)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                moneyCount += 5f;
+                moneyCountText.text = moneyCount.ToString();
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -410,6 +426,7 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
+        Money();
         /* OpenDoor();*/
     }
 }
