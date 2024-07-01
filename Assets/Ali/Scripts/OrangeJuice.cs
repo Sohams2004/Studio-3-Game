@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class OrangeJuice : MonoBehaviour
 {
-    public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
+     public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
     public Transform spawnPoint; // Spawn point for the result object
     public AudioClip interactionSound; // Sound to play during interaction
-    public AnimationClip interactionAnimation; // Animation to play during interaction
+    public Animator blenderAnimator; // Animator component for the blender animations
 
     private GameObject placedObject; // Reference to the object currently placed on the trigger
     private bool isObjectPlaced = false;
 
     private AudioSource audioSource; // AudioSource component for playing sounds
-    private Animator animator; // Animator component for playing animations
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>(); // Get AudioSource component
-        animator = GetComponent<Animator>(); // Get Animator component
+        
+        // Ensure blenderAnimator is assigned
+        if (blenderAnimator == null)
+        {
+            Debug.LogError("Blender Animator is not assigned!");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,10 +32,10 @@ public class OrangeJuice : MonoBehaviour
             placedObject = other.gameObject; // Assign the placed object
             isObjectPlaced = true;
 
-            // Play animation if animator and animation are assigned
-            if (animator != null && interactionAnimation != null)
+            // Play animation using Animator trigger
+            if (blenderAnimator != null)
             {
-                animator.Play(interactionAnimation.name);
+                blenderAnimator.SetTrigger("Blend");
             }
 
             // Play sound if AudioSource and sound clip are assigned
@@ -51,8 +55,6 @@ public class OrangeJuice : MonoBehaviour
 
         // Instantiate the result object at the spawn point
         GameObject resultObject = Instantiate(resultObjectPrefab, spawnPoint.position, spawnPoint.rotation);
-
-        // Play additional sound or animation on the result object if needed
 
         // Clean up or reset as needed
         Destroy(placedObject); // Destroy the placed object
