@@ -4,63 +4,81 @@ using UnityEngine;
 
 public class Cooking : MonoBehaviour
 {
-    public GameObject banana; // Assign the banana GameObject in the inspector
-    public GameObject apple;  // Assign the apple GameObject in the inspector
     public GameObject milkshakeCupPrefab; // Assign the milkshake cup prefab in the inspector
+    public GameObject sushiPrefab; // Assign the sushi prefab in the inspector
     public Transform spawnPoint; // Assign the desired spawn point in the inspector
 
-    private bool isBananaInBox = false;
-    private bool isAppleInBox = false;
+    private bool isFirstObjectInBox = false;
+    private bool isSecondObjectInBox = false;
+    private GameObject firstObject;
+    private GameObject secondObject;
+
+    private Dictionary<(string, string), GameObject> foodCombinations;
+
+    private void Start()
+    {
+        foodCombinations = new Dictionary<(string, string), GameObject>
+        {
+            { ("Banana", "Milk"), milkshakeCupPrefab },
+            { ("Fish", "Fish"), sushiPrefab }
+        };
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == banana)
+        if (!isFirstObjectInBox)
         {
-            isBananaInBox = true;
+            isFirstObjectInBox = true;
+            firstObject = other.gameObject;
         }
-        if (other.gameObject == apple)
+        else if (!isSecondObjectInBox)
         {
-            isAppleInBox = true;
+            isSecondObjectInBox = true;
+            secondObject = other.gameObject;
         }
 
-        CheckAndMakeMilkshake();
+        CheckAndMakeFood();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == banana)
+        if (other.gameObject == firstObject)
         {
-            isBananaInBox = false;
+            isFirstObjectInBox = false;
+            firstObject = null;
         }
-        if (other.gameObject == apple)
+        if (other.gameObject == secondObject)
         {
-            isAppleInBox = false;
-        }
-    }
-
-    private void CheckAndMakeMilkshake()
-    {
-        if (isBananaInBox && isAppleInBox)
-        {
-            // Start the coroutine to handle the delay
-            StartCoroutine(MakeMilkshakeWithDelay(2f));
+            isSecondObjectInBox = false;
+            secondObject = null;
         }
     }
 
-    private IEnumerator MakeMilkshakeWithDelay(float delay)
+    private void CheckAndMakeFood()
     {
-        // Wait for the specified delay
+        if (isFirstObjectInBox && isSecondObjectInBox)
+        {
+            string firstTag = firstObject.tag;
+            string secondTag = secondObject.tag;
+
+            if (foodCombinations.TryGetValue((firstTag, secondTag), out GameObject resultPrefab) ||
+                foodCombinations.TryGetValue((secondTag, firstTag), out resultPrefab))
+            {
+                StartCoroutine(MakeFoodWithDelay(resultPrefab, 2f));
+            }
+        }
+    }
+
+    private IEnumerator MakeFoodWithDelay(GameObject resultPrefab, float delay)
+    {
         yield return new WaitForSeconds(delay);
 
-        // Instantiate the milkshake cup at the specified spawn point
-        Instantiate(milkshakeCupPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(resultPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        // Destroy the banana and apple objects
-        Destroy(banana);
-        Destroy(apple);
+        Destroy(firstObject);
+        Destroy(secondObject);
 
-        // Reset the flags
-        isBananaInBox = false;
-        isAppleInBox = false;
+        isFirstObjectInBox = false;
+        isSecondObjectInBox = false;
     }
 }
