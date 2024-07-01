@@ -6,7 +6,7 @@ public class PickUpPlace : MonoBehaviour
 {
    private GameObject pickedObject;
     public float pickUpRange = 2.0f;
-    public float holdDistance = 2.0f;
+    public float holdDistance = 0.7f;
     public LayerMask pickUpLayer;
 
     void Update()
