@@ -88,10 +88,22 @@ public class ObjectPickUp : MonoBehaviour
                     if (hotbar.items[i] == null)
                     {
                         itemCount++;
-                        hotbar.items[i] = pickableObject;
+                        if (pickableObject.tag == "Cube")
+                        {
+                            hotbar.items[0] = pickableObject;
+                        }
 
+                        if (pickableObject.tag == "Cone")
+                        {
+                            hotbar.items[1] = pickableObject;
+                        }
+
+                        if ((pickableObject.tag == "Sphere"))
+                        {
+                            hotbar.items[2] = pickableObject;
+                        }
                         break;
-                    }
+                    }       
                 }
 
                 if (pickableObject.tag == "Cube")
