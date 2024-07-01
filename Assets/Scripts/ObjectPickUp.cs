@@ -293,38 +293,62 @@ public class ObjectPickUp : MonoBehaviour
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer);
         if (isRay && isPicked)
         {
-            Debug.Log("Place detected");
             place = hit1.collider.gameObject;
+            print(place.gameObject);
             crosshair.color = Color.green;
             pickDropObjectText.text = string.Empty;
             placeObjectText.text = "Place object";
             print(pickableObject.name);
 
-            if (Input.GetMouseButtonDown(0))
+            if (hotbar.currentObject.tag == place.tag)
             {
-                Debug.Log("Placeddd");
-         
-                pickableObject.transform.parent = null;
-                //hotbar.items.Remove(pickableObject);
-                cannotPickUp = false;
-                isPicked = false;
-               // pickableObject.transform.position = place.transform.position;
-                //pickableObject.transform.rotation = Quaternion.identity;
-
-                for (int i = 0; i < hotbar.items.Length; i++)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (hotbar.items[i] == pickableObject)
+                    Debug.Log("Placeddd");
+
+                    pickableObject.transform.parent = null;
+                    //hotbar.items.Remove(pickableObject);
+                    cannotPickUp = false;
+                    isPicked = false;
+                    // pickableObject.transform.position = place.transform.position;
+                    //pickableObject.transform.rotation = Quaternion.identity;
+
+                    for (int i = 0; i < hotbar.items.Length; i++)
                     {
-                        itemCount--;
-                        hotbar.items[i].transform.position = place.transform.position;
-                        hotbar.items[i].transform.rotation = Quaternion.identity;
-                        hotbar.items[i] = null;
-                        pickableObject = null;
-                        hotbar.currentObject = null;
-                        break;
+                        if (hotbar.items[i] == pickableObject)
+                        {
+                            itemCount--;
+                            hotbar.items[i].transform.position = place.transform.position;
+                            hotbar.items[i].transform.rotation = Quaternion.identity;
+                            hotbar.items[i] = null;
+                            pickableObject = null;
+
+                            if (hotbar.currentObject.tag == "Cube")
+                            {
+                                cubeCount--;
+                            }
+
+                            if (hotbar.currentObject.tag == "Cone")
+                            {
+                                coneCount--;
+                            }
+
+                            if (hotbar.currentObject.tag == "Sphere")
+                            {
+                                sphereCount--;
+                            }
+
+                            hotbar.currentObject = null;
+
+
+
+
+                            break;
+                        }
                     }
                 }
             }
+            
         }
 
         else if (!isRay)
