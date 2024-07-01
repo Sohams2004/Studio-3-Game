@@ -5,13 +5,15 @@ using UnityEngine;
 public class DamageScript : MonoBehaviour
 {
     public int maxHP = 200;
+    public float currentHP;
     public float sanity;
     public float hunger;
     public float thirst;
 
-    public float sanityDecreaseRate = 1;
-    public float hungerDecreaseRate = 1;
-    public float thirstDecreaseRate = 1;
+    public float dmgOverTime = 10;
+    public float sanityDecreaseRate = 2;
+    public float hungerDecreaseRate = 5;
+    public float thirstDecreaseRate = 7;
 
     [SerializeField] GameObject gameOverScreen;
 
@@ -23,6 +25,7 @@ public class DamageScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameOverScreen.SetActive(false);
+        currentHP = maxHP;
         sanity = maxHP;
         hunger = maxHP;
         thirst = maxHP;
@@ -34,6 +37,7 @@ public class DamageScript : MonoBehaviour
 
     void Update()
     {
+        currentHP -= dmgOverTime * Time.deltaTime;
         sanity -= sanityDecreaseRate * Time.deltaTime;
         hunger -= hungerDecreaseRate * Time.deltaTime;
         thirst -= thirstDecreaseRate * Time.deltaTime;
@@ -42,7 +46,7 @@ public class DamageScript : MonoBehaviour
         hungerBar.SetValue(hunger);
         thirstBar.SetValue(thirst);
 
-        if (sanity < 0 || hunger < 0 || thirst < 0)
+        if (currentHP < 0 || sanity < 0 || hunger < 0 || thirst < 0)
         {
             GameOver();
         }
@@ -59,9 +63,10 @@ public class DamageScript : MonoBehaviour
     void DamageReceived(int damage)
     {
         sanity -= damage;
+        currentHP -= damage;
         sanityBar.SetValue(sanity);
 
-        if (sanity < 0 || hunger < 0 || thirst < 0)
+        if (currentHP < 0 || sanity < 0 || hunger < 0 || thirst < 0)
         {
             GameOver();
         }
