@@ -32,7 +32,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
 
-    [SerializeField] Image crosshair, paperNote;
+    [SerializeField] Image crosshair, paperNote, handSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
@@ -59,7 +59,8 @@ public class ObjectPickUp : MonoBehaviour
         {
             Debug.Log("Object detected");
             hitObj = hit1.collider.gameObject;
-            crosshair.color = Color.green;
+            handSign.gameObject.SetActive(true);
+            crosshair.enabled = false;
             isObject = true;
         }
 
@@ -67,7 +68,8 @@ public class ObjectPickUp : MonoBehaviour
         {
             isObject = false;
             pickDropObjectText.text = string.Empty;
-            crosshair.color = Color.red;
+            handSign.gameObject.SetActive(false); 
+            crosshair.enabled = true;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
