@@ -44,6 +44,8 @@ public class FriedEgg : MonoBehaviour
                 audioSource.PlayOneShot(interactionSound);
             }
 
+            //Destroy(placedObject);
+
             // Start coroutine to wait and then spawn result object
             StartCoroutine(WaitAndSpawnObject(placedObject));
         }
