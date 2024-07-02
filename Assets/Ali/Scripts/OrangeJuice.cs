@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OrangeJuice : MonoBehaviour
 {
-     public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
+    public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
     public Transform spawnPoint; // Spawn point for the result object
     public AudioClip interactionSound; // Sound to play during interaction
     public Animator blenderAnimator; // Animator component for the blender animations
@@ -17,7 +16,7 @@ public class OrangeJuice : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>(); // Get AudioSource component
-        
+
         // Ensure blenderAnimator is assigned
         if (blenderAnimator == null)
         {
@@ -51,13 +50,14 @@ public class OrangeJuice : MonoBehaviour
 
     private IEnumerator WaitAndSpawnObject(GameObject placedObject)
     {
+        Destroy(placedObject);
         yield return new WaitForSeconds(2f); // Wait for 2 seconds
 
         // Instantiate the result object at the spawn point
         GameObject resultObject = Instantiate(resultObjectPrefab, spawnPoint.position, spawnPoint.rotation);
 
         // Clean up or reset as needed
-        Destroy(placedObject); // Destroy the placed object
+        // Destroy the placed object
         isObjectPlaced = false;
     }
 }
