@@ -30,7 +30,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText, pickUpMoneyText;
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
@@ -45,6 +45,7 @@ public class ObjectPickUp : MonoBehaviour
     GameObject hitDoor;
     GameObject parentObj;
     GameObject place;
+    GameObject money;
 
     HotBar hotbar;
 
@@ -408,11 +409,22 @@ public class ObjectPickUp : MonoBehaviour
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
         if(isRay)
         {
-            if(Input.GetMouseButtonDown(0))
+            Debug.Log("Money");
+
+            money = hit1.collider.gameObject;
+            pickUpMoneyText.text = "Press E to pick up Money";
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 moneyCount += 5f;
-                moneyCountText.text = moneyCount.ToString();
+                moneyCountText.text = string.Format("$ " + moneyCount);
+                money.SetActive(false);
             }
+        }
+
+        if(!isRay)
+        {
+            pickUpMoneyText.text = string.Empty;
         }
     }
 
