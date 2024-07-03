@@ -1,15 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FriedEgg : MonoBehaviour
 {
-     public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
+    public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
     public Transform spawnPoint; // Spawn point for the result object
     public AudioClip interactionSound; // Sound to play during interaction
     public Animator blenderAnimator; // Animator component for the blender animations
 
     private GameObject placedObject; // Reference to the object currently placed on the trigger
+    [SerializeField] GameObject parent;
     private bool isObjectPlaced = false;
 
     private AudioSource audioSource; // AudioSource component for playing sounds
@@ -17,7 +17,7 @@ public class FriedEgg : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>(); // Get AudioSource component
-        
+
         // Ensure blenderAnimator is assigned
         if (blenderAnimator == null)
         {
@@ -57,6 +57,7 @@ public class FriedEgg : MonoBehaviour
 
         // Instantiate the result object at the spawn point
         GameObject resultObject = Instantiate(resultObjectPrefab, spawnPoint.position, spawnPoint.rotation);
+        resultObject.transform.parent = parent.transform;
 
         // Clean up or reset as needed
         Destroy(placedObject); // Destroy the placed object
