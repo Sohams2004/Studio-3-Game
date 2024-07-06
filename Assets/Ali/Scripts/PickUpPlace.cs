@@ -5,7 +5,7 @@ using TMPro;
 
 public class PickUpPlace : MonoBehaviour
 {
-    private GameObject pickedObject;
+ private GameObject pickedObject;
     public float pickUpRange = 2.0f;
     public float holdDistance = 0.7f;
     public LayerMask pickUpLayer;
@@ -13,31 +13,16 @@ public class PickUpPlace : MonoBehaviour
     private GameObject orangeJuice;
     private GameObject panWithFriedEgg;
 
-    public TextMeshProUGUI eatEggTextMeshPro; // Reference to the TextMeshProUGUI for "Eat Egg"
-
-    private bool hasEatenEgg = false; // Flag to track if the egg has been eaten
-
+    public TextMeshPro drinkText;
+    public TextMeshPro eatText;
     public AudioSource drinkSound;
     public AudioSource eatSound;
 
+    public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
+public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro object
+
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
-
-    void Start()
-    {
-        // Ensure "Eat Egg" text is correctly initialized and displayed
-        if (eatEggTextMeshPro != null)
-        {
-            if (hasEatenEgg)
-            {
-                eatEggTextMeshPro.text = "Eat Egg Done"; // Set to "Eat Egg Done" if egg has been eaten
-            }
-            else
-            {
-                eatEggTextMeshPro.text = "Eat Egg"; // Set to "Eat Egg" if egg hasn't been eaten
-            }
-        }
-    }
 
     void Update()
     {
@@ -59,11 +44,6 @@ public class PickUpPlace : MonoBehaviour
         }
 
         CheckForInteraction();
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            EatEgg();
-        }
 
         if (isLookingAtOrangeJuice && Input.GetKeyDown(KeyCode.F))
         {
@@ -115,23 +95,31 @@ public class PickUpPlace : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("OrangeJuice"))
             {
                 orangeJuice = hit.collider.gameObject;
+                drinkText.transform.position = orangeJuice.transform.position + new Vector3(0, 1, 0);
+                drinkText.gameObject.SetActive(true);
                 isLookingAtOrangeJuice = true;
-                isLookingAtPanWithFriedEgg = false; // Ensure only one interaction is active
+                //Debug.Log("Looking at Orange Juice");
             }
             else if (hit.collider.gameObject.CompareTag("PanWithFriedEgg"))
             {
                 panWithFriedEgg = hit.collider.gameObject;
+                eatText.transform.position = panWithFriedEgg.transform.position + new Vector3(0, 1, 0);
+                eatText.gameObject.SetActive(true);
                 isLookingAtPanWithFriedEgg = true;
-                isLookingAtOrangeJuice = false; // Ensure only one interaction is active
+                //Debug.Log("Looking at Pan With Fried Egg");
             }
             else
             {
+                drinkText.gameObject.SetActive(false);
+                eatText.gameObject.SetActive(false);
                 isLookingAtOrangeJuice = false;
                 isLookingAtPanWithFriedEgg = false;
             }
         }
         else
         {
+            drinkText.gameObject.SetActive(false);
+            eatText.gameObject.SetActive(false);
             isLookingAtOrangeJuice = false;
             isLookingAtPanWithFriedEgg = false;
         }
@@ -139,39 +127,31 @@ public class PickUpPlace : MonoBehaviour
 
     void DrinkOrangeJuice()
     {
-        if (orangeJuice != null)
-        {
-            // Implement logic for drinking orange juice
-            Destroy(orangeJuice);
-            if (drinkSound != null)
-            {
-                drinkSound.Play();
-            }
-            isLookingAtOrangeJuice = false;
-        }
+        //Debug.Log("Drinking Orange Juice");
+        Destroy(orangeJuice);
+        drinkText.gameObject.SetActive(false);
+        drinkSound.Play();
+        isLookingAtOrangeJuice = false;
+
+        DrinkTask.text = "Drink Juice Done"; // Update TextMeshPro text
+        DrinkTask.color = Color.green;
+
+        
     }
 
     void EatPanWithFriedEgg()
     {
-        if (panWithFriedEgg != null)
-        {
-            // Implement logic for eating pan with fried egg
-            Destroy(panWithFriedEgg);
-            if (eatSound != null)
-            {
-                eatSound.Play();
-            }
-            hasEatenEgg = true; // Assuming this means the egg is eaten
-            if (eatEggTextMeshPro != null)
-            {
-                eatEggTextMeshPro.text = "Eat Egg Done";
-            }
-            isLookingAtPanWithFriedEgg = false;
-        }
+        //Debug.Log("Eating Pan With Fried Egg");
+        Destroy(panWithFriedEgg);
+        eatText.gameObject.SetActive(false);
+        eatSound.Play();
+        isLookingAtPanWithFriedEgg = false;
+
+        EatTask.text = "Eat Egg Done";
+        EatTask.color = Color.green;
+
+        
     }
 
-    void EatEgg()
-    {
-        // Placeholder for eating egg logic if needed
-    }
+   
 }
