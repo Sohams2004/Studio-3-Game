@@ -18,6 +18,9 @@ public class PickUpPlace : MonoBehaviour
     public AudioSource drinkSound;
     public AudioSource eatSound;
 
+    public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
+public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro object
+
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
 
@@ -129,6 +132,11 @@ public class PickUpPlace : MonoBehaviour
         drinkText.gameObject.SetActive(false);
         drinkSound.Play();
         isLookingAtOrangeJuice = false;
+
+        DrinkTask.text = "Drink Juice Done"; // Update TextMeshPro text
+        DrinkTask.color = Color.green;
+
+        
     }
 
     void EatPanWithFriedEgg()
@@ -138,5 +146,12 @@ public class PickUpPlace : MonoBehaviour
         eatText.gameObject.SetActive(false);
         eatSound.Play();
         isLookingAtPanWithFriedEgg = false;
+
+        EatTask.text = "Eat Egg Done";
+        EatTask.color = Color.green;
+
+        
     }
+
+   
 }
