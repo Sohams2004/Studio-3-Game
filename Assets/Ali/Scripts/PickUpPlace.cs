@@ -5,16 +5,21 @@ using TMPro;
 
 public class PickUpPlace : MonoBehaviour
 {
-  private GameObject pickedObject;
+ private GameObject pickedObject;
     public float pickUpRange = 2.0f;
     public float holdDistance = 0.7f;
     public LayerMask pickUpLayer;
 
     private GameObject orangeJuice;
+    private GameObject panWithFriedEgg;
+
     public TextMeshPro drinkText;
+    public TextMeshPro eatText;
     public AudioSource drinkSound;
+    public AudioSource eatSound;
 
     private bool isLookingAtOrangeJuice = false;
+    private bool isLookingAtPanWithFriedEgg = false;
 
     void Update()
     {
@@ -40,6 +45,11 @@ public class PickUpPlace : MonoBehaviour
         if (isLookingAtOrangeJuice && Input.GetKeyDown(KeyCode.F))
         {
             DrinkOrangeJuice();
+        }
+
+        if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))
+        {
+            EatPanWithFriedEgg();
         }
     }
 
@@ -85,25 +95,48 @@ public class PickUpPlace : MonoBehaviour
                 drinkText.transform.position = orangeJuice.transform.position + new Vector3(0, 1, 0);
                 drinkText.gameObject.SetActive(true);
                 isLookingAtOrangeJuice = true;
+                //Debug.Log("Looking at Orange Juice");
+            }
+            else if (hit.collider.gameObject.CompareTag("PanWithFriedEgg"))
+            {
+                panWithFriedEgg = hit.collider.gameObject;
+                eatText.transform.position = panWithFriedEgg.transform.position + new Vector3(0, 1, 0);
+                eatText.gameObject.SetActive(true);
+                isLookingAtPanWithFriedEgg = true;
+                //Debug.Log("Looking at Pan With Fried Egg");
             }
             else
             {
                 drinkText.gameObject.SetActive(false);
+                eatText.gameObject.SetActive(false);
                 isLookingAtOrangeJuice = false;
+                isLookingAtPanWithFriedEgg = false;
             }
         }
         else
         {
             drinkText.gameObject.SetActive(false);
+            eatText.gameObject.SetActive(false);
             isLookingAtOrangeJuice = false;
+            isLookingAtPanWithFriedEgg = false;
         }
     }
 
     void DrinkOrangeJuice()
     {
+        //Debug.Log("Drinking Orange Juice");
         Destroy(orangeJuice);
         drinkText.gameObject.SetActive(false);
         drinkSound.Play();
         isLookingAtOrangeJuice = false;
+    }
+
+    void EatPanWithFriedEgg()
+    {
+        //Debug.Log("Eating Pan With Fried Egg");
+        Destroy(panWithFriedEgg);
+        eatText.gameObject.SetActive(false);
+        eatSound.Play();
+        isLookingAtPanWithFriedEgg = false;
     }
 }
