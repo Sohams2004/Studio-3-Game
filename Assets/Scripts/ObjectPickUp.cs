@@ -48,11 +48,13 @@ public class ObjectPickUp : MonoBehaviour
     GameObject money;
 
     HotBar hotbar;
+    public Movement movement;
 
     private void Start()
     {
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
+        movement = FindObjectOfType<Movement>();
     }
 
     void ObjectDetect()
@@ -97,20 +99,25 @@ public class ObjectPickUp : MonoBehaviour
                         if (pickableObject.tag == "Cube" && cubeCount < 1)
                         {
                             hotbar.items[0] = pickableObject;
+                            pickableObject = null;
                         }
                    
                         if (pickableObject.tag == "Cone" && coneCount < 1)
                         {
                             hotbar.items[1] = pickableObject;
+                            pickableObject = null;
                         }
 
                         if (pickableObject.tag == "Sphere" && sphereCount < 1)
                         {
                             hotbar.items[2] = pickableObject;
+                            pickableObject = null;
                         }
                         break;
                     }       
                 }
+
+                hotbar.Inventory();
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -278,6 +285,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNoteIndex++;
             isPaperNotePicked = true;
             paperNote.gameObject.SetActive(true);
+            movement.enabled = false;
         }
 
         else if (Input.GetKeyDown(KeyCode.E) && isPaperNotePicked && paperNoteIndex % 2 == 0)
@@ -286,6 +294,7 @@ public class ObjectPickUp : MonoBehaviour
             isPaperNote = false;
             isPaperNotePicked = false;
             paperNote.gameObject.SetActive(false);
+            movement.enabled = true;
         }
 
         if (isPaperNotePicked)
