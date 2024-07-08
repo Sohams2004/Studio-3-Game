@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DamageScript : MonoBehaviour
@@ -52,14 +51,28 @@ public class DamageScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private async void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Hallucination"))
         {
             DamageReceived(50);
         }
+        if (collision.gameObject.CompareTag("Medicine"))
+        {
+            await Task.Delay(1000);
+            SanityRecovered(200);
+        }
     }
+    void SanityRecovered(int heal)
+    {
+        sanity += heal;
+        sanityBar.SetValue(sanity);
+        if (sanity > maxHP)
+        {
+            sanity = maxHP;
+        }
 
+    }
     void DamageReceived(int damage)
     {
         sanity -= damage;
