@@ -533,6 +533,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4055743977899574, guid: 50f20480d334edf40a55699af0463272, type: 3}
   m_PrefabInstance: {fileID: 46006338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &65470362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65470363}
+  - component: {fileID: 65470364}
+  - component: {fileID: 65470365}
+  m_Layer: 16
+  m_Name: Post Processing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65470363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65470362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 753697944}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &65470364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65470362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: e1f64a8ab58db8a47b209ef5af637bc9, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &65470365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65470362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbdb74b92ac8ae4a92b6d0b31213d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0
+  insanityBar: {fileID: 1793669942}
+  insanityThreshold: 3500
 --- !u!1 &67636697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1613,76 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &126243282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7657961348338497449, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+  m_PrefabInstance: {fileID: 565748895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &126243283 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6171292742112028480, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+  m_PrefabInstance: {fileID: 565748895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &126243287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126243282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 126243283}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 65536
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!43 &134447186
 Mesh:
   m_ObjectHideFlags: 0
@@ -6092,11 +6227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbdb74b92ac8ae4a92b6d0b31213d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 0
   insanityBar: {fileID: 1793669942}
   insanityThreshold: 3500
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  insaneColor: {r: 1, g: 0, b: 0, a: 1}
-  skyboxMaterial: {fileID: 2100000, guid: a35e8e5d044c2034c9b49745fc5a0d77, type: 2}
 --- !u!1001 &400020947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29026,6 +29159,14 @@ PrefabInstance:
       propertyPath: thirstBar
       value: 
       objectReference: {fileID: 1009690947}
+    - target: {fileID: 2933617341447669817, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+      propertyPath: insanityBar
+      value: 
+      objectReference: {fileID: 1793669942}
+    - target: {fileID: 2933617341447669817, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+      propertyPath: insanityThreshold
+      value: 3500
+      objectReference: {fileID: 0}
     - target: {fileID: 2933617341447669817, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: thirstDecreaseRate
       value: 6
@@ -60364,6 +60505,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4279195312909586350, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1538019108}
+    - targetCorrespondingSourceObject: {fileID: 8764147599966886667, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 65470363}
     - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1606586135}
@@ -60434,6 +60578,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 572092014848064921, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       insertIndex: -1
       addedObject: {fileID: 753697943}
+    - targetCorrespondingSourceObject: {fileID: 7657961348338497449, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 126243287}
   m_SourcePrefab: {fileID: 100100000, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
 --- !u!4 &565748896 stripped
 Transform:
@@ -66580,6 +66727,11 @@ MonoBehaviour:
   eggPrefab: {fileID: 9112462144247730713, guid: 9d9f5f4dfd7da4e43934996f55341583, type: 3}
   orangePrefab: {fileID: 8462944261276933237, guid: aed26b4c98d06fb42902f3aba1dd1281, type: 3}
   spawnPoint: {fileID: 544085034}
+--- !u!4 &753697944 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8764147599966886667, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+  m_PrefabInstance: {fileID: 565748895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &763020134
 Mesh:
   m_ObjectHideFlags: 0
