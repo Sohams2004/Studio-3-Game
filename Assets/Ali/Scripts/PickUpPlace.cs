@@ -98,7 +98,7 @@ public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro ob
                 drinkText.transform.position = orangeJuice.transform.position + new Vector3(0, 1, 0);
                 drinkText.gameObject.SetActive(true);
                 isLookingAtOrangeJuice = true;
-                //Debug.Log("Looking at Orange Juice");
+                Debug.Log("Looking at Orange Juice");
             }
             else if (hit.collider.gameObject.CompareTag("PanWithFriedEgg"))
             {
@@ -106,7 +106,7 @@ public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro ob
                 eatText.transform.position = panWithFriedEgg.transform.position + new Vector3(0, 1, 0);
                 eatText.gameObject.SetActive(true);
                 isLookingAtPanWithFriedEgg = true;
-                //Debug.Log("Looking at Pan With Fried Egg");
+                Debug.Log("Looking at Pan With Fried Egg");
             }
             else
             {
