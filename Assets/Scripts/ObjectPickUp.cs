@@ -8,6 +8,8 @@ public class ObjectPickUp : MonoBehaviour
 {
     [SerializeField] float rayLength;
 
+    [SerializeField] float moneyCount;
+
     [SerializeField] int paperNoteIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
@@ -20,7 +22,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer, moneyLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -28,11 +30,11 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText, pickUpMoneyText;
 
-    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
-    [SerializeField] Image crosshair, paperNote;
+    [SerializeField] Image crosshair, paperNote, handSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
@@ -43,13 +45,16 @@ public class ObjectPickUp : MonoBehaviour
     GameObject hitDoor;
     GameObject parentObj;
     GameObject place;
+    GameObject money;
 
     HotBar hotbar;
+    public Movement movement;
 
     private void Start()
     {
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
+        movement = FindObjectOfType<Movement>();
     }
 
     void ObjectDetect()
@@ -59,7 +64,8 @@ public class ObjectPickUp : MonoBehaviour
         {
             Debug.Log("Object detected");
             hitObj = hit1.collider.gameObject;
-            crosshair.color = Color.green;
+            handSign.gameObject.SetActive(true);
+            crosshair.enabled = false;
             isObject = true;
         }
 
@@ -67,7 +73,8 @@ public class ObjectPickUp : MonoBehaviour
         {
             isObject = false;
             pickDropObjectText.text = string.Empty;
-            crosshair.color = Color.red;
+            handSign.gameObject.SetActive(false); 
+            crosshair.enabled = true;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
@@ -88,11 +95,29 @@ public class ObjectPickUp : MonoBehaviour
                     if (hotbar.items[i] == null)
                     {
                         itemCount++;
-                        hotbar.items[i] = pickableObject;
 
+                        if (pickableObject.tag == "Cube" && cubeCount < 1)
+                        {
+                            hotbar.items[0] = pickableObject;
+                            pickableObject = null;
+                        }
+                   
+                        if (pickableObject.tag == "Cone" && coneCount < 1)
+                        {
+                            hotbar.items[1] = pickableObject;
+                            pickableObject = null;
+                        }
+
+                        if (pickableObject.tag == "Sphere" && sphereCount < 1)
+                        {
+                            hotbar.items[2] = pickableObject;
+                            pickableObject = null;
+                        }
                         break;
-                    }
+                    }       
                 }
+
+                hotbar.Inventory();
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -260,6 +285,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNoteIndex++;
             isPaperNotePicked = true;
             paperNote.gameObject.SetActive(true);
+            movement.enabled = false;
         }
 
         else if (Input.GetKeyDown(KeyCode.E) && isPaperNotePicked && paperNoteIndex % 2 == 0)
@@ -268,6 +294,7 @@ public class ObjectPickUp : MonoBehaviour
             isPaperNote = false;
             isPaperNotePicked = false;
             paperNote.gameObject.SetActive(false);
+            movement.enabled = true;
         }
 
         if (isPaperNotePicked)
@@ -281,38 +308,62 @@ public class ObjectPickUp : MonoBehaviour
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer);
         if (isRay && isPicked)
         {
-            Debug.Log("Place detected");
             place = hit1.collider.gameObject;
+            print(place.gameObject);
             crosshair.color = Color.green;
             pickDropObjectText.text = string.Empty;
             placeObjectText.text = "Place object";
             print(pickableObject.name);
 
-            if (Input.GetMouseButtonDown(0))
+            if (hotbar.currentObject.tag == place.tag)
             {
-                Debug.Log("Placeddd");
-         
-                pickableObject.transform.parent = null;
-                //hotbar.items.Remove(pickableObject);
-                cannotPickUp = false;
-                isPicked = false;
-               // pickableObject.transform.position = place.transform.position;
-                //pickableObject.transform.rotation = Quaternion.identity;
-
-                for (int i = 0; i < hotbar.items.Length; i++)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (hotbar.items[i] == pickableObject)
+                    Debug.Log("Placeddd");
+
+                    pickableObject.transform.parent = null;
+                    //hotbar.items.Remove(pickableObject);
+                    cannotPickUp = false;
+                    isPicked = false;
+                    // pickableObject.transform.position = place.transform.position;
+                    //pickableObject.transform.rotation = Quaternion.identity;
+
+                    for (int i = 0; i < hotbar.items.Length; i++)
                     {
-                        itemCount--;
-                        hotbar.items[i].transform.position = place.transform.position;
-                        hotbar.items[i].transform.rotation = Quaternion.identity;
-                        hotbar.items[i] = null;
-                        pickableObject = null;
-                        hotbar.currentObject = null;
-                        break;
+                        if (hotbar.items[i] == pickableObject)
+                        {
+                            itemCount--;
+                            hotbar.items[i].transform.position = place.transform.position;
+                            hotbar.items[i].transform.rotation = Quaternion.identity;
+                            hotbar.items[i] = null;
+                            pickableObject = null;
+
+                            if (hotbar.currentObject.tag == "Cube")
+                            {
+                                cubeCount--;
+                            }
+
+                            if (hotbar.currentObject.tag == "Cone")
+                            {
+                                coneCount--;
+                            }
+
+                            if (hotbar.currentObject.tag == "Sphere")
+                            {
+                                sphereCount--;
+                            }
+
+                            hotbar.currentObject = null;
+
+
+
+
+                            break;
+                        }
                     }
                 }
             }
+            
         }
 
         else if (!isRay)
@@ -362,6 +413,30 @@ public class ObjectPickUp : MonoBehaviour
 
      }*/
 
+    void Money()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
+        if(isRay)
+        {
+            Debug.Log("Money");
+
+            money = hit1.collider.gameObject;
+            pickUpMoneyText.text = "Press E to pick up Money";
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                moneyCount += 5f;
+                moneyCountText.text = string.Format("$ " + moneyCount);
+                money.SetActive(false);
+            }
+        }
+
+        if(!isRay)
+        {
+            pickUpMoneyText.text = string.Empty;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -372,6 +447,7 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
+        Money();
         /* OpenDoor();*/
     }
 }

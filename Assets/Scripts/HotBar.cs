@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class HotBar : MonoBehaviour
 {
-    
+
     public GameObject[] items;
+    public List<GameObject> inventory;
 
     [SerializeField] GameObject item1, item2, item3, item4, item5;
 
     [SerializeField] public GameObject currentObject;
 
     [SerializeField] public int numberOfItems;
+
+    [SerializeField] bool itemsFull;
 
     ObjectPickUp objectPickUp;
 
@@ -55,10 +58,10 @@ public class HotBar : MonoBehaviour
                     objectPickUp.pickableObject = currentObject;
                     objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
                 }
-            }         
+            }
         }
 
-        
+
 
         /* if (Input.GetKeyDown(KeyCode.Alpha4))
          {
@@ -81,6 +84,26 @@ public class HotBar : MonoBehaviour
          }*/
     }
 
+    public void Inventory()
+    {
+        if (items[0] != null && items[1] != null && items[2] != null)
+        {
+            itemsFull = true;
+        }
+
+        else
+        {
+            itemsFull = false;
+        }
+
+        if (itemsFull && objectPickUp.pickableObject != null)
+        {
+            print(objectPickUp.pickableObject);
+            inventory.Add(objectPickUp.pickableObject);
+        }
+    }
+
+
     void DisableItems()
     {
         for (int i = 0; i < items.Length; i++)
@@ -97,3 +120,4 @@ public class HotBar : MonoBehaviour
         ToggleItems();
     }
 }
+

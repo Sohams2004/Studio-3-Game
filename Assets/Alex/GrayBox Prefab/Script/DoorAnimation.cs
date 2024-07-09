@@ -8,8 +8,8 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
 
-    enum State { Close, Open };
-    State state;
+    public enum State { Close, Open };
+    public State state;
 
 
     private void OnTriggerEnter(Collider other)
@@ -66,7 +66,7 @@ public class DoorAnimation : MonoBehaviour
     {
         doortext.text = string.Empty;
     }
-    void ChangeDoorState()
+    public void ChangeDoorState()
     {
 
         if (state == State.Close)
