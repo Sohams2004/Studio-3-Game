@@ -66,6 +66,8 @@ public class ShopUI : MonoBehaviour
         if (other.CompareTag("Pay Station"))
         {
             shopUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -74,6 +76,8 @@ public class ShopUI : MonoBehaviour
         if (other.CompareTag("Pay Station"))
         {
             shopUI.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
