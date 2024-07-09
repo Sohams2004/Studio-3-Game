@@ -10,8 +10,11 @@ public class Interactable : MonoBehaviour
     private bool playerInRange = false;
     private bool hasInteracted = false;
 
+    ObjectPickUp objectPickUp;
+
     void Start()
     {
+        objectPickUp = FindObjectOfType<ObjectPickUp>();
         promptText.text = string.Empty;
         /* promptText.text = promptMessage; // Set the prompt message*/
         audioSource = GetComponent<AudioSource>();
@@ -23,7 +26,7 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
+        /*if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
             objectAnimator.SetBool("Blindsup", true);
             objectAnimator.SetBool("Blindsdown", false);
@@ -37,10 +40,41 @@ public class Interactable : MonoBehaviour
             hasInteracted = false;
 
             audioSource.PlayOneShot(interactionSound);
+        }*/
+        PlayBlindAnim();
+    }
+
+    void PlayBlindAnim()
+    {
+        if (objectPickUp.isBlinds)
+        {
+            promptText.text = "Press E to interact";
+
+            if (Input.GetKeyDown(KeyCode.E) && !objectPickUp.isBlindsOpen)
+            {
+                objectAnimator.SetBool("Blindsup", true);
+                objectAnimator.SetBool("Blindsdown", false);
+                hasInteracted = true;
+                audioSource.PlayOneShot(interactionSound);
+            }  
+        }
+
+        else if (!objectPickUp.isBlinds)
+        {
+            promptText.text = string.Empty;
+
+            if (Input.GetKeyDown(KeyCode.E) && objectPickUp.isBlindsOpen)
+            {
+                objectAnimator.SetBool("Blindsdown", true);
+                objectAnimator.SetBool("Blindsup", false);
+                hasInteracted = false;
+
+                audioSource.PlayOneShot(interactionSound);
+            }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -86,7 +120,5 @@ public class Interactable : MonoBehaviour
             playerInRange = false;
 
         }
-    }
-
-
+    }*/
 }

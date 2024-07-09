@@ -16,13 +16,13 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor, isDoorOpen;
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked;
+    [SerializeField] public bool isPicked,  isDoor, isDoorOpen, isBlinds, isBlindsOpen;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer, moneyLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer, moneyLayer, blindsLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -431,10 +431,50 @@ public class ObjectPickUp : MonoBehaviour
             }
         }
 
-        if(!isRay)
+        else if(!isRay)
         {
             pickUpMoneyText.text = string.Empty;
         }
+    }
+
+    void OpenDoor()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
+
+        if(isRay)
+        {
+            isDoor = true;
+            if (Input.GetKeyDown(KeyCode.E) && isDoor)
+            {
+                isDoorOpen = true;
+            }
+        }
+
+        else if (!isRay)
+        {
+            isDoor = false;
+        }
+    }
+
+    void BlindsOpen()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
+
+        if (isRay)
+        {
+            isBlinds = true;
+
+            if (Input.GetKeyDown(KeyCode.E) && isBlinds)
+            {
+                isBlindsOpen = true;
+            }
+        }
+
+        else if (!isRay)
+        {
+            isBlinds = false;
+        }
+            
     }
 
     private void OnDrawGizmos()
@@ -447,8 +487,9 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
+        OpenDoor();
+        BlindsOpen();
         Money();
-        /* OpenDoor();*/
     }
 }
 
