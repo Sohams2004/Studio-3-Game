@@ -73,10 +73,10 @@ public class DoorAnimation : MonoBehaviour
 
         }
     }*/
-    private void OnTriggerExit(Collider other)
-    {
-        doortext.text = string.Empty;
-    }
+    /* private void OnTriggerExit(Collider other)
+     {
+         doortext.text = string.Empty;
+     }*/
     public void ChangeDoorState()
     {
         if (state == State.Close)
