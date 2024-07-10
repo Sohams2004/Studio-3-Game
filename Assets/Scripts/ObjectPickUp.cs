@@ -18,7 +18,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked,  isDoor, isDoorOpen, isBlinds, isBlindsOpen;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen;
 
     [SerializeField] Transform pickUpPoint;
 
@@ -73,7 +73,7 @@ public class ObjectPickUp : MonoBehaviour
         {
             isObject = false;
             pickDropObjectText.text = string.Empty;
-            handSign.gameObject.SetActive(false); 
+            handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
         }
 
@@ -101,7 +101,7 @@ public class ObjectPickUp : MonoBehaviour
                             hotbar.items[0] = pickableObject;
                             pickableObject = null;
                         }
-                   
+
                         if (pickableObject.tag == "Cone" && coneCount < 1)
                         {
                             hotbar.items[1] = pickableObject;
@@ -114,7 +114,7 @@ public class ObjectPickUp : MonoBehaviour
                             pickableObject = null;
                         }
                         break;
-                    }       
+                    }
                 }
 
                 hotbar.Inventory();
@@ -363,7 +363,7 @@ public class ObjectPickUp : MonoBehaviour
                     }
                 }
             }
-            
+
         }
 
         else if (!isRay)
@@ -416,7 +416,7 @@ public class ObjectPickUp : MonoBehaviour
     void Money()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
-        if(isRay)
+        if (isRay)
         {
             Debug.Log("Money");
 
@@ -431,7 +431,7 @@ public class ObjectPickUp : MonoBehaviour
             }
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             pickUpMoneyText.text = string.Empty;
         }
@@ -441,7 +441,7 @@ public class ObjectPickUp : MonoBehaviour
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
 
-        if(isRay)
+        if (isRay)
         {
             isDoor = true;
             if (Input.GetKeyDown(KeyCode.E) && isDoor)
@@ -474,7 +474,7 @@ public class ObjectPickUp : MonoBehaviour
         {
             isBlinds = false;
         }
-            
+
     }
 
     private void OnDrawGizmos()
