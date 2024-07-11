@@ -59,7 +59,7 @@ public class DamageScript : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Medicine"))
         {
-            await Task.Delay(1000);
+            await Task.Delay(100);
             SanityRecovered(200);
         }
     }
