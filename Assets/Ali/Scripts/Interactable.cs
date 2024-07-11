@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        /*if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
             objectAnimator.SetBool("Blindsup", true);
             objectAnimator.SetBool("Blindsdown", false);
@@ -40,11 +40,10 @@ public class Interactable : MonoBehaviour
             hasInteracted = false;
 
             audioSource.PlayOneShot(interactionSound);
-        }*/
-        PlayBlindAnim();
+        }
     }
 
-    void PlayBlindAnim()
+    /*void PlayBlindAnim()
     {
         if (objectPickUp.isBlinds)
         {
@@ -72,9 +71,9 @@ public class Interactable : MonoBehaviour
                 audioSource.PlayOneShot(interactionSound);
             }
         }
-    }
+    }*/
 
-    /*void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -120,5 +119,5 @@ public class Interactable : MonoBehaviour
             playerInRange = false;
 
         }
-    }*/
+    }
 }
