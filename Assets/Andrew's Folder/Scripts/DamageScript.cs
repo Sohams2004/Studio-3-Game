@@ -1,15 +1,11 @@
-using System.Threading.Tasks;
 using UnityEngine;
-
 public class DamageScript : MonoBehaviour
 {
     public int maxHP = 200;
-    public float currentHP;
     public float sanity;
     public float hunger;
     public float thirst;
 
-    public float dmgOverTime = 10;
     public float sanityDecreaseRate = 2;
     public float hungerDecreaseRate = 5;
     public float thirstDecreaseRate = 7;
@@ -24,7 +20,6 @@ public class DamageScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameOverScreen.SetActive(false);
-        currentHP = maxHP;
         sanity = maxHP;
         hunger = maxHP;
         thirst = maxHP;
@@ -36,7 +31,7 @@ public class DamageScript : MonoBehaviour
 
     void Update()
     {
-        currentHP -= dmgOverTime * Time.deltaTime;
+
         sanity -= sanityDecreaseRate * Time.deltaTime;
         hunger -= hungerDecreaseRate * Time.deltaTime;
         thirst -= thirstDecreaseRate * Time.deltaTime;
@@ -45,7 +40,7 @@ public class DamageScript : MonoBehaviour
         hungerBar.SetValue(hunger);
         thirstBar.SetValue(thirst);
 
-        if (currentHP < 0 || sanity < 0 || hunger < 0 || thirst < 0)
+        if (sanity < 0 || hunger < 0 || thirst < 0)
         {
             GameOver();
         }
@@ -57,29 +52,29 @@ public class DamageScript : MonoBehaviour
         {
             DamageReceived(50);
         }
-        if (collision.gameObject.CompareTag("Medicine"))
-        {
-            await Task.Delay(100);
-            SanityRecovered(200);
-        }
-    }
-    void SanityRecovered(int heal)
-    {
-        sanity += heal;
-        sanityBar.SetValue(sanity);
-        if (sanity > maxHP)
-        {
-            sanity = maxHP;
-        }
-
+        /*   if (collision.gameObject.CompareTag("Medicine"))
+           {
+               await Task.Delay(100);
+               SanityRecovered(200);
+           }
+       }
+       void SanityRecovered(int heal)
+       {
+           sanity += heal;
+           sanityBar.SetValue(sanity);
+           if (sanity > maxHP)
+           {
+               sanity = maxHP;
+           }
+   */
     }
     void DamageReceived(int damage)
     {
         sanity -= damage;
-        currentHP -= damage;
+
         sanityBar.SetValue(sanity);
 
-        if (currentHP < 0 || sanity < 0 || hunger < 0 || thirst < 0)
+        if (sanity < 0 || hunger < 0 || thirst < 0)
         {
             GameOver();
         }

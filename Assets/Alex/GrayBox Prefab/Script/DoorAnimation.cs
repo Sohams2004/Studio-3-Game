@@ -8,48 +8,36 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
 
-    ObjectPickUp objectPickup;
-
-    private void Start()
-    {
-        objectPickup = FindObjectOfType<ObjectPickUp>();
-    }
-
     public enum State { Close, Open };
     public State state;
 
 
-    /* private void OnTriggerEnter(Collider other)
-     {
-
-
-     }*/
-
-    void PlayDoorOpenAnim()
+    private void OnTriggerEnter(Collider other)
     {
-        if (objectPickup.isDoorOpen)
-        {
-            if (state == State.Close)
-            {
-                doortext.text = "Press E to Open";
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    ChangeDoorState();
-                }
-            }
 
-            else if (state == State.Open)
+        if (state == State.Close)
+        {
+            doortext.text = "Press E to Open";
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ChangeDoorState();
+            }
+        }
+        else if (state == State.Open)
+        {
+            doortext.text = "Press E to Close";
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 doortext.text = "Press E to Close";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     ChangeDoorState();
                 }
+                ChangeDoorState();
             }
         }
     }
-
-    /*private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -72,11 +60,11 @@ public class DoorAnimation : MonoBehaviour
             }
 
         }
-    }*/
-    /* private void OnTriggerExit(Collider other)
-     {
-         doortext.text = string.Empty;
-     }*/
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        doortext.text = string.Empty;
+    }
     public void ChangeDoorState()
     {
         if (state == State.Close)
@@ -99,8 +87,4 @@ public class DoorAnimation : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        PlayDoorOpenAnim();
-    }
 }
