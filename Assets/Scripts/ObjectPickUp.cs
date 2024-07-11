@@ -41,14 +41,11 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] Transform[] itemFrames;
 
     RaycastHit hit1;
-    RaycastHit hit2;
     GameObject hitObj;
     GameObject hitDoor;
     GameObject parentObj;
     GameObject place;
     GameObject money;
-
-    public DoorAnimation doorAnim; 
 
     HotBar hotbar;
     public Movement movement;
@@ -440,7 +437,7 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    /*void OpenDoor()
+    void OpenDoor()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
 
@@ -461,12 +458,10 @@ public class ObjectPickUp : MonoBehaviour
 
     void BlindsOpen()
     {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit2, rayLength, blindsLayer);
-        
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
+
         if (isRay)
         {
-            door = hit2.collider.gameObject;
-            doorAnim = door.GetComponent<DoorAnimation>();
             isBlinds = true;
 
             if (Input.GetKeyDown(KeyCode.E) && isBlinds)
@@ -480,7 +475,7 @@ public class ObjectPickUp : MonoBehaviour
             isBlinds = false;
         }
 
-    }*/
+    }
 
     private void OnDrawGizmos()
     {
@@ -492,6 +487,8 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
+        OpenDoor();
+        BlindsOpen();
         Money();
     }
 }

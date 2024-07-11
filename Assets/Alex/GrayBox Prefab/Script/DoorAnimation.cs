@@ -8,33 +8,48 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
 
+    ObjectPickUp objectPickup;
+
+    private void Start()
+    {
+        objectPickup = FindObjectOfType<ObjectPickUp>();
+    }
+
     public enum State { Close, Open };
     public State state;
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (state == State.Close)
-        {
-            doortext.text = "Press E to Open";
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ChangeDoorState();
-            }
-        }
+    /* private void OnTriggerEnter(Collider other)
+     {
 
-        else if (state == State.Open)
+
+     }*/
+
+    void PlayDoorOpenAnim()
+    {
+        if (objectPickup.isDoorOpen)
         {
-            doortext.text = "Press E to Close";
-            if (Input.GetKeyDown(KeyCode.E))
+            if (state == State.Close)
             {
-                ChangeDoorState();
+                doortext.text = "Press E to Open";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ChangeDoorState();
+                }
+            }
+
+            else if (state == State.Open)
+            {
+                doortext.text = "Press E to Close";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ChangeDoorState();
+                }
             }
         }
     }
 
-
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -57,12 +72,11 @@ public class DoorAnimation : MonoBehaviour
             }
 
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        doortext.text = string.Empty;
-    }
-
+    }*/
+    /* private void OnTriggerExit(Collider other)
+     {
+         doortext.text = string.Empty;
+     }*/
     public void ChangeDoorState()
     {
         if (state == State.Close)
@@ -74,7 +88,6 @@ public class DoorAnimation : MonoBehaviour
             state = State.Open;
 
         }
-
         else if (state == State.Open)
         {
             opendoor.Stop();
@@ -82,10 +95,12 @@ public class DoorAnimation : MonoBehaviour
             animator.SetBool("Open", false);
             animator.SetBool("Close", true);
             state = State.Close;
+
         }
     }
 
     private void Update()
     {
+        PlayDoorOpenAnim();
     }
 }
