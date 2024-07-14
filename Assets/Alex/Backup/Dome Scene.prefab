@@ -325066,7 +325066,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8843200116450848513, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7092350328303171148, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
     - {fileID: 7090741465043630959, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
@@ -325499,6 +325500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631f4214477bd0439b751c7771fac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageScript: {fileID: 0}
 --- !u!4 &5839200588347924124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5169134551874747672, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}

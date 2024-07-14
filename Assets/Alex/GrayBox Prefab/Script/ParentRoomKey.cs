@@ -7,7 +7,11 @@ public class ParentRoomKey : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] GameObject keyCollected;
     [SerializeField] GameObject key;
-    public bool pickedkey = false;
+    public bool pickedkey;
+    private void Start()
+    {
+        pickedkey = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -18,7 +22,7 @@ public class ParentRoomKey : MonoBehaviour
                 promptText.text = string.Empty;
                 key.SetActive(false);
                 keyCollected.SetActive(true);
-                audioSource.Play();
+
                 pickedkey = true;
             }
         }
@@ -31,7 +35,7 @@ public class ParentRoomKey : MonoBehaviour
             promptText.text = string.Empty;
             key.SetActive(false);
             keyCollected.SetActive(true);
-            audioSource.Play();
+
             pickedkey = true;
         }
     }
