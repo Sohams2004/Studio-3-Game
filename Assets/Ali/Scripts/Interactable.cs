@@ -7,74 +7,70 @@ public class Interactable : MonoBehaviour
     public Animator objectAnimator;
     public AudioClip interactionSound;
     private AudioSource audioSource;
-    private bool playerInRange = false;
-    private bool hasInteracted = false;
+    [SerializeField] private bool playerInRange = false;
+    [SerializeField] private bool hasInteracted = false;
 
-    ObjectPickUp objectPickUp;
 
     void Start()
     {
-        objectPickUp = FindObjectOfType<ObjectPickUp>();
+
         promptText.text = string.Empty;
-        /* promptText.text = promptMessage; // Set the prompt message*/
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+
     }
 
     void Update()
     {
-        /*if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
             objectAnimator.SetBool("Blindsup", true);
             objectAnimator.SetBool("Blindsdown", false);
             hasInteracted = true;
             audioSource.PlayOneShot(interactionSound);
+
         }
         else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
         {
-            objectAnimator.SetBool("Blindsdown", true);
             objectAnimator.SetBool("Blindsup", false);
+            objectAnimator.SetBool("Blindsdown", true);
             hasInteracted = false;
 
             audioSource.PlayOneShot(interactionSound);
-        }*/
-        PlayBlindAnim();
-    }
-
-    void PlayBlindAnim()
-    {
-        if (objectPickUp.isBlinds)
-        {
-            promptText.text = "Press E to interact";
-
-            if (Input.GetKeyDown(KeyCode.E) && !objectPickUp.isBlindsOpen)
-            {
-                objectAnimator.SetBool("Blindsup", true);
-                objectAnimator.SetBool("Blindsdown", false);
-                hasInteracted = true;
-                audioSource.PlayOneShot(interactionSound);
-            }  
+        }
+        /*    PlayBlindAnim();
         }
 
-        else if (!objectPickUp.isBlinds)
+        void PlayBlindAnim()
         {
-            promptText.text = string.Empty;
-
-            if (Input.GetKeyDown(KeyCode.E) && objectPickUp.isBlindsOpen)
+            if (objectPickUp.isBlinds)
             {
-                objectAnimator.SetBool("Blindsdown", true);
-                objectAnimator.SetBool("Blindsup", false);
-                hasInteracted = false;
+                promptText.text = "Press E to interact";
 
-                audioSource.PlayOneShot(interactionSound);
+                if (Input.GetKeyDown(KeyCode.E) && !objectPickUp.isBlindsOpen)
+                {
+                    objectAnimator.SetBool("Blindsup", true);
+                    objectAnimator.SetBool("Blindsdown", false);
+                    hasInteracted = true;
+                    audioSource.PlayOneShot(interactionSound);
+                }  
             }
-        }
+
+            else if (!objectPickUp.isBlinds)
+            {
+                promptText.text = string.Empty;
+
+                if (Input.GetKeyDown(KeyCode.E) && objectPickUp.isBlindsOpen)
+                {
+                    objectAnimator.SetBool("Blindsdown", true);
+                    objectAnimator.SetBool("Blindsup", false);
+                    hasInteracted = false;
+
+                    audioSource.PlayOneShot(interactionSound);
+                }
+            }*/
     }
 
-    /*void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -120,5 +116,5 @@ public class Interactable : MonoBehaviour
             playerInRange = false;
 
         }
-    }*/
+    }
 }
