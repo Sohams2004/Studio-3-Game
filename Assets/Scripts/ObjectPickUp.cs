@@ -18,15 +18,15 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen;
+    [SerializeField] public bool isPicked, isDoorOpen, isBlinds, isBlindsOpen;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer, moneyLayer, blindsLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
-    [SerializeField] public GameObject pickableObject, door;
+    [SerializeField] public GameObject pickableObject;
 
     [SerializeField] Camera camera;
 
@@ -42,7 +42,7 @@ public class ObjectPickUp : MonoBehaviour
 
     RaycastHit hit1;
     GameObject hitObj;
-    GameObject hitDoor;
+
     GameObject parentObj;
     GameObject place;
     GameObject money;
@@ -437,9 +437,9 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    void OpenDoor()
+    /*void OpenDoor()
     {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
 
         if (isRay)
         {
@@ -454,28 +454,28 @@ public class ObjectPickUp : MonoBehaviour
         {
             isDoor = false;
         }
-    }
+    }*/
 
-    void BlindsOpen()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
+    /* void BlindsOpen()
+     {
+         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
 
-        if (isRay)
-        {
-            isBlinds = true;
+         if (isRay)
+         {
+             isBlinds = true;
 
-            if (Input.GetKeyDown(KeyCode.E) && isBlinds)
-            {
-                isBlindsOpen = true;
-            }
-        }
+             if (Input.GetKeyDown(KeyCode.E) && isBlinds)
+             {
+                 isBlindsOpen = true;
+             }
+         }
 
-        else if (!isRay)
-        {
-            isBlinds = false;
-        }
+         else if (!isRay)
+         {
+             isBlinds = false;
+         }
 
-    }
+     }*/
 
     private void OnDrawGizmos()
     {
@@ -487,8 +487,8 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
-        OpenDoor();
-        BlindsOpen();
+        /* OpenDoor();*/
+        /*BlindsOpen();*/
         Money();
     }
 }
