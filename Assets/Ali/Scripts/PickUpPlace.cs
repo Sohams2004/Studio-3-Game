@@ -12,17 +12,21 @@ public class PickUpPlace : MonoBehaviour
 
     private GameObject orangeJuice;
     private GameObject panWithFriedEgg;
+    private GameObject burnedToast; // Reference for burned toast
 
     public TextMeshPro drinkText;
     public TextMeshPro eatText;
     public AudioSource drinkSound;
     public AudioSource eatSound;
+    public AudioSource toastEatSound; // Change to AudioSource
 
     public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
-public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI EatEggTask; // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI EatToastTask;
 
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
+    private bool isLookingAtBurnedToast = false; // Boolean to check if looking at burned toast
 
     void Update()
     {
@@ -53,6 +57,11 @@ public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro ob
         if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))
         {
             EatPanWithFriedEgg();
+        }
+
+        if (isLookingAtBurnedToast && Input.GetKeyDown(KeyCode.F)) // Interaction for burned toast
+        {
+            EatBurnedToast();
         }
     }
 
@@ -108,12 +117,21 @@ public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro ob
                 isLookingAtPanWithFriedEgg = true;
                 Debug.Log("Looking at Pan With Fried Egg");
             }
+            else if (hit.collider.gameObject.CompareTag("BurnedToast")) // Check for burned toast
+            {
+                burnedToast = hit.collider.gameObject;
+                eatText.transform.position = burnedToast.transform.position + new Vector3(0, 1, 0);
+                eatText.gameObject.SetActive(true);
+                isLookingAtBurnedToast = true;
+                Debug.Log("Looking at Burned Toast");
+            }
             else
             {
                 drinkText.gameObject.SetActive(false);
                 eatText.gameObject.SetActive(false);
                 isLookingAtOrangeJuice = false;
                 isLookingAtPanWithFriedEgg = false;
+                isLookingAtBurnedToast = false; // Reset burned toast boolean
             }
         }
         else
@@ -122,35 +140,49 @@ public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro ob
             eatText.gameObject.SetActive(false);
             isLookingAtOrangeJuice = false;
             isLookingAtPanWithFriedEgg = false;
+            isLookingAtBurnedToast = false; // Reset burned toast boolean
         }
     }
 
     void DrinkOrangeJuice()
     {
-        //Debug.Log("Drinking Orange Juice");
+        // Debug.Log("Drinking Orange Juice");
         Destroy(orangeJuice);
         drinkText.gameObject.SetActive(false);
         drinkSound.Play();
         isLookingAtOrangeJuice = false;
 
-        DrinkTask.text = "Drink Juice Done"; // Update TextMeshPro text
+        DrinkTask.text = "Drank Juice"; // Update TextMeshPro text
         DrinkTask.color = Color.green;
-
-        
     }
 
     void EatPanWithFriedEgg()
     {
-        //Debug.Log("Eating Pan With Fried Egg");
+        // Debug.Log("Eating Pan With Fried Egg");
         Destroy(panWithFriedEgg);
         eatText.gameObject.SetActive(false);
         eatSound.Play();
         isLookingAtPanWithFriedEgg = false;
 
-        EatTask.text = "Eat Egg Done";
-        EatTask.color = Color.green;
+        EatEggTask.text = "Ate Egg";
+        EatEggTask.color = Color.green;
+    }
 
-        
+    void EatBurnedToast()
+    {
+        // Debug.Log("Eating Burned Toast");
+        Destroy(burnedToast);
+        eatText.gameObject.SetActive(false);
+        if (toastEatSound != null)
+        {
+            toastEatSound.Play();
+        }
+        isLookingAtBurnedToast = false;
+
+        EatToastTask.text = "Ate Toast";
+        EatToastTask.color = Color.green;
+
+        // Update UI or other game elements here if needed
     }
 
    

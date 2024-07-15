@@ -19,25 +19,27 @@ public class WhisperKnock : MonoBehaviour
                 knock.Play();
                 doortext.text = "Locked";
             }
-            if (doorAnimation.state == DoorAnimation.State.Close)
+            if (roomKey.pickedkey)
             {
+                whisper.Stop();
+                knock.Stop();
                 doortext.text = "Press E to Open";
-                if (Input.GetKeyDown(KeyCode.E) && roomKey.pickedkey)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-
-                    whisper.Stop();
-                    knock.Stop();
-                    doorAnimation.ChangeDoorState();
-
-
-                }
-
-                else if (doorAnimation.state == DoorAnimation.State.Open)
-                {
-                    doortext.text = "Press E to Close";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (doorAnimation.state == DoorAnimation.State.Close)
                     {
                         doorAnimation.ChangeDoorState();
+
+
+                    }
+
+                    else if (doorAnimation.state == DoorAnimation.State.Open)
+                    {
+                        doortext.text = "Press E to Close";
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            doorAnimation.ChangeDoorState();
+                        }
                     }
                 }
             }
@@ -49,31 +51,34 @@ public class WhisperKnock : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-            if (Input.GetKeyDown(KeyCode.E))
+            whisper.Play();
+            doortext.text = "Parent Room";
+            if (Input.GetKeyDown(KeyCode.E) && !roomKey.pickedkey)
             {
                 knock.Play();
                 doortext.text = "Locked";
             }
-            if (doorAnimation.state == DoorAnimation.State.Close)
+            if (roomKey.pickedkey)
             {
+                whisper.Stop();
+                knock.Stop();
                 doortext.text = "Press E to Open";
-                if (Input.GetKeyDown(KeyCode.E) && roomKey.pickedkey)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-
-                    whisper.Stop();
-                    knock.Stop();
-                    doorAnimation.ChangeDoorState();
-
-
-                }
-
-                else if (doorAnimation.state == DoorAnimation.State.Open)
-                {
-                    doortext.text = "Press E to Close";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (doorAnimation.state == DoorAnimation.State.Close)
                     {
                         doorAnimation.ChangeDoorState();
+
+
+                    }
+
+                    else if (doorAnimation.state == DoorAnimation.State.Open)
+                    {
+                        doortext.text = "Press E to Close";
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            doorAnimation.ChangeDoorState();
+                        }
                     }
                 }
             }

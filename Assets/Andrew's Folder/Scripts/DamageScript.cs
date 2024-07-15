@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using UnityEngine;
+
 public class DamageScript : MonoBehaviour
 {
     public int maxHP = 200;
@@ -16,6 +18,7 @@ public class DamageScript : MonoBehaviour
     public BarLogic hungerBar;
     public BarLogic thirstBar;
 
+    [SerializeField] bool hasInteracted;
     void Start()
     {
         Time.timeScale = 1f;
@@ -23,7 +26,7 @@ public class DamageScript : MonoBehaviour
         sanity = maxHP;
         hunger = maxHP;
         thirst = maxHP;
-
+        hasInteracted = false;
         sanityBar.SetMaxValue(maxHP);
         hungerBar.SetMaxValue(maxHP);
         thirstBar.SetMaxValue(maxHP);
@@ -40,41 +43,58 @@ public class DamageScript : MonoBehaviour
         hungerBar.SetValue(hunger);
         thirstBar.SetValue(thirst);
 
-        if (sanity < 0 || hunger < 0 || thirst < 0)
+        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
         {
             GameOver();
         }
     }
-
-    private async void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Hallucination"))
+        if (other.gameObject.CompareTag("Hallucination") && !hasInteracted)
         {
-            DamageReceived(50);
+            DamageReceived(30);
+            hasInteracted = true;
         }
-        /*   if (collision.gameObject.CompareTag("Medicine"))
-           {
-               await Task.Delay(100);
-               SanityRecovered(200);
-           }
-       }
-       void SanityRecovered(int heal)
-       {
-           sanity += heal;
-           sanityBar.SetValue(sanity);
-           if (sanity > maxHP)
-           {
-               sanity = maxHP;
-           }
-   */
+
     }
-    void DamageReceived(int damage)
+
+    public void SanityRecovered(int heal)
+    {
+        sanity += heal;
+        sanityBar.SetValue(sanity);
+        if (sanity > maxHP)
+        {
+            sanity = maxHP;
+        }
+
+    }
+    async void DamageReceived(int damage)
     {
         sanity -= damage;
 
         sanityBar.SetValue(sanity);
+        await Task.Delay(2000);
+        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
+        {
+            GameOver();
+        }
+    }
+    public async void HungerReduced(int damage)
+    {
+        hunger -= damage;
+        hungerBar.SetValue(sanity);
 
-        if (sanity < 0 || hunger < 0 || thirst < 0)
+        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
+        {
+            GameOver();
+        }
+    }
+    public async void HydrasionReduced(int damage)
+    {
+        thirst -= damage;
+        thirstBar.SetValue(sanity);
+
+        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
         {
             GameOver();
         }
