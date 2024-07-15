@@ -5,24 +5,21 @@ using UnityEngine;
 public class Cars : MonoBehaviour
 {
     [SerializeField] private float carSpeed;
+    [SerializeField] private float destroyCarIn;
 
-    [SerializeField] public int startPoint;
-    [SerializeField] public int pointIndex;
-
-    [SerializeField] public Transform[] points;
+    private void Awake()
+    {
+        StartCoroutine(DestroyCar());
+    }
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, points[pointIndex].position) < 0.01f)
-        {
-            pointIndex += 1;
+        gameObject.transform.Translate(Vector3.forward * carSpeed * Time.deltaTime);
+    }
 
-            if (pointIndex == points.Length)
-            {
-                pointIndex = 0;
-            }
-        }
-
-        transform.position = Vector2.MoveTowards(transform.position, points[pointIndex].position, carSpeed * Time.deltaTime);
+    IEnumerator DestroyCar()
+    {
+        yield return new WaitForSeconds(destroyCarIn);
+        Destroy(gameObject);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] int pauseIndex;
     [SerializeField] GameObject pauseMenu;
 
- 
+
+    private void Start()
+    {
+        pauseMenu.SetActive(false);
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0f;
@@ -21,6 +27,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         pauseMenu.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
     }
 
     void Update()
