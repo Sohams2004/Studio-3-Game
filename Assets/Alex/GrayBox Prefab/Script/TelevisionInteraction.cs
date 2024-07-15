@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TelevisionInteraction : MonoBehaviour
 {
+    public TextMeshProUGUI TvTask;
+
     [SerializeField] GameObject screen;
     public LightmapData[] lightmapsOn;
     public LightmapData[] lightmapsOff;
@@ -28,6 +30,9 @@ public class TelevisionInteraction : MonoBehaviour
             voice.Play();
             LightmapSettings.lightmaps = lightmapsOn;
             hasInteracted = true;
+
+            TvTask.text = "Tv On";
+            TvTask.color = Color.green;
         }
 
         else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
