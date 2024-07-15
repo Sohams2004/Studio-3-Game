@@ -1544,11 +1544,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3115624580659809227}
+  m_Father: {fileID: 3233613279423410427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -838.8, y: -292.2}
+  m_AnchoredPosition: {x: -7.7996826, y: 55.421875}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5837578630318962386
@@ -108480,7 +108480,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5072501825155802591}
+  - {fileID: 1018109952525365188}
   m_Father: {fileID: 3115624580659809227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -148923,11 +148925,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3115624580659809227}
+  m_Father: {fileID: 3233613279423410427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -839.8, y: -214.3}
+  m_AnchoredPosition: {x: -8.799683, y: 133.32188}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3259948942036278590
@@ -325782,6 +325784,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4165144191813332162, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4166638214721362654, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -332243,19 +332249,13 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 3233613279423410427}
     - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 5072501825155802591}
-    - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1018109952525365188}
-    - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      insertIndex: 4
       addedObject: {fileID: 5794644656285184343}
     - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      insertIndex: 5
+      insertIndex: 3
       addedObject: {fileID: 7099596641208773885}
     - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      insertIndex: 6
+      insertIndex: 4
       addedObject: {fileID: 2350098393784988836}
     - targetCorrespondingSourceObject: {fileID: 4434244151067797583, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       insertIndex: -1
