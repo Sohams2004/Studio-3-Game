@@ -4,7 +4,7 @@ using UnityEngine;
 public class HotBar : MonoBehaviour
 {
 
-    public GameObject[] items;
+    public List<GameObject> items;
     public List<GameObject> inventory;
 
     [SerializeField] GameObject item1, item2, item3, item4, item5;
@@ -13,6 +13,8 @@ public class HotBar : MonoBehaviour
 
     [SerializeField] public int numberOfItems;
 
+    [SerializeField] int direction;
+
     [SerializeField] bool itemsFull;
 
     ObjectPickUp objectPickUp;
@@ -20,12 +22,12 @@ public class HotBar : MonoBehaviour
     private void Start()
     {
         objectPickUp = FindObjectOfType<ObjectPickUp>();
-        items = new GameObject[numberOfItems];
+        //items = new GameObject[numberOfItems];
     }
 
-    void ToggleItems()
+    void ToggleItems(float mouseScroll)
     {
-        for (int i = 0; i < items.Length; i++)
+        /*for (int i = 0; i < items.Length; i++)
         {
             if (items[i] != null)
             {
@@ -59,7 +61,7 @@ public class HotBar : MonoBehaviour
                     objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
                 }
             }
-        }
+        }/
 
 
 
@@ -82,9 +84,54 @@ public class HotBar : MonoBehaviour
              objectPickUp.pickableObject = currentObject;
              objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
          }*/
+
+
+        
+        
+            int currentIndex = -1;
+
+            if( mouseScroll > 0 )
+            {
+                direction = 1;
+            }
+            else
+            {
+                direction = -1;
+            }
+
+            for ( int i = 0; i < items.Count; i++ )
+            {
+                if (items[i] != null && items[i].activeSelf)
+                {
+                    currentIndex = i;
+                    break;
+                }
+            }
+
+            if (currentIndex == -1)
+            {
+                currentIndex = 0;
+            }
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                int newIndex = (currentIndex + direction + items.Count) % items.Count;
+                if (items[newIndex] is not null)
+                {
+                    DisableItems();
+                    items[newIndex].SetActive(true);
+                    currentObject = items[newIndex];
+                    objectPickUp.pickableObject = currentObject;
+                    objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+                    break;
+                }
+            }
+        
+
+        
     }
 
-    public void Inventory()
+    /*public void Inventory()
     {
         if (items[0] != null && items[1] != null && items[2] != null)
         {
@@ -101,12 +148,12 @@ public class HotBar : MonoBehaviour
             print(objectPickUp.pickableObject);
             inventory.Add(objectPickUp.pickableObject);
         }
-    }
+    }*/
 
 
     void DisableItems()
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             if (items[i] != null)
             {
@@ -117,7 +164,11 @@ public class HotBar : MonoBehaviour
 
     private void Update()
     {
-        ToggleItems();
+        float mouseScroll = Input.GetAxis("Mouse ScrollWheel");
+        if (mouseScroll != 0)
+        {
+            ToggleItems(mouseScroll);
+        }
     }
 }
 
