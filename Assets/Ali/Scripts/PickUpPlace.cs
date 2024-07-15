@@ -12,18 +12,20 @@ public class PickUpPlace : MonoBehaviour
 
     private GameObject orangeJuice;
     private GameObject panWithFriedEgg;
+    private GameObject burnedToast; // Reference for burned toast
 
     public TextMeshPro drinkText;
     public TextMeshPro eatText;
     public AudioSource drinkSound;
     public AudioSource eatSound;
+    public AudioSource toastEatSound; // Change to AudioSource
 
     public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
-    public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro object
-    public TextMeshProUGUI LightsTask; 
+    public TextMeshProUGUI EatTask; // Reference to your Eat Egg UI TextMeshPro object
 
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
+    private bool isLookingAtBurnedToast = false; // Boolean to check if looking at burned toast
 
     void Update()
     {
@@ -54,6 +56,11 @@ public class PickUpPlace : MonoBehaviour
         if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))
         {
             EatPanWithFriedEgg();
+        }
+
+        if (isLookingAtBurnedToast && Input.GetKeyDown(KeyCode.F)) // Interaction for burned toast
+        {
+            EatBurnedToast();
         }
     }
 
@@ -109,12 +116,21 @@ public class PickUpPlace : MonoBehaviour
                 isLookingAtPanWithFriedEgg = true;
                 Debug.Log("Looking at Pan With Fried Egg");
             }
+            else if (hit.collider.gameObject.CompareTag("BurnedToast")) // Check for burned toast
+            {
+                burnedToast = hit.collider.gameObject;
+                eatText.transform.position = burnedToast.transform.position + new Vector3(0, 1, 0);
+                eatText.gameObject.SetActive(true);
+                isLookingAtBurnedToast = true;
+                Debug.Log("Looking at Burned Toast");
+            }
             else
             {
                 drinkText.gameObject.SetActive(false);
                 eatText.gameObject.SetActive(false);
                 isLookingAtOrangeJuice = false;
                 isLookingAtPanWithFriedEgg = false;
+                isLookingAtBurnedToast = false; // Reset burned toast boolean
             }
         }
         else
@@ -123,12 +139,13 @@ public class PickUpPlace : MonoBehaviour
             eatText.gameObject.SetActive(false);
             isLookingAtOrangeJuice = false;
             isLookingAtPanWithFriedEgg = false;
+            isLookingAtBurnedToast = false; // Reset burned toast boolean
         }
     }
 
     void DrinkOrangeJuice()
     {
-        //Debug.Log("Drinking Orange Juice");
+        // Debug.Log("Drinking Orange Juice");
         Destroy(orangeJuice);
         drinkText.gameObject.SetActive(false);
         drinkSound.Play();
@@ -136,13 +153,11 @@ public class PickUpPlace : MonoBehaviour
 
         DrinkTask.text = "Drink Juice Done"; // Update TextMeshPro text
         DrinkTask.color = Color.green;
-
-        
     }
 
     void EatPanWithFriedEgg()
     {
-        //Debug.Log("Eating Pan With Fried Egg");
+        // Debug.Log("Eating Pan With Fried Egg");
         Destroy(panWithFriedEgg);
         eatText.gameObject.SetActive(false);
         eatSound.Play();
@@ -150,8 +165,20 @@ public class PickUpPlace : MonoBehaviour
 
         EatTask.text = "Eat Egg Done";
         EatTask.color = Color.green;
+    }
 
-        
+    void EatBurnedToast()
+    {
+        // Debug.Log("Eating Burned Toast");
+        Destroy(burnedToast);
+        eatText.gameObject.SetActive(false);
+        if (toastEatSound != null)
+        {
+            toastEatSound.Play();
+        }
+        isLookingAtBurnedToast = false;
+
+        // Update UI or other game elements here if needed
     }
 
    

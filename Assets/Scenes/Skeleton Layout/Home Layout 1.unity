@@ -1938,6 +1938,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!82 &187838323 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8182367993294382184, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &238679313
 Mesh:
   m_ObjectHideFlags: 0
@@ -18122,6 +18127,63 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1693425170
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -33.767
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6943858
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.521
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.67143834
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7410605
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 95.644
+      objectReference: {fileID: 0}
+    - target: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436767393897217291, guid: 74c5837eeb264594d919689fda307727, type: 3}
+      propertyPath: m_Name
+      value: ToatsterTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74c5837eeb264594d919689fda307727, type: 3}
 --- !u!43 &1729488524
 Mesh:
   m_ObjectHideFlags: 0
@@ -24465,6 +24527,10 @@ PrefabInstance:
       propertyPath: drinkText
       value: 
       objectReference: {fileID: 1109226431}
+    - target: {fileID: 5864793459265931844, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: toastEatSound
+      value: 
+      objectReference: {fileID: 187838323}
     - target: {fileID: 5896688748261136127, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -25251,3 +25317,4 @@ SceneRoots:
   - {fileID: 1016008440663764325}
   - {fileID: 459212937959379555}
   - {fileID: 1927383620468626659}
+  - {fileID: 1693425170}
