@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea9f09297eebcc4eb9b87e74b7c1fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyTask: {fileID: 0}
   promptText: {fileID: 1093329735253777040}
   keyCollected: {fileID: 937901545497855972}
   key: {fileID: 8874468730986981668}
@@ -45358,6 +45359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ed0bdded900bd44b5d7e2b115fc760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurtainsTask: {fileID: 0}
   promptText: {fileID: 1093329735253777040}
   objectAnimator: {fileID: 0}
   interactionSound: {fileID: 8300000, guid: daf33b32820ab9e4992d6077ab095b57, type: 3}
@@ -109521,6 +109523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ed0bdded900bd44b5d7e2b115fc760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurtainsTask: {fileID: 0}
   promptText: {fileID: 1093329735253777040}
   objectAnimator: {fileID: 1191745623643920495}
   interactionSound: {fileID: 8300000, guid: daf33b32820ab9e4992d6077ab095b57, type: 3}
@@ -325872,10 +325875,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 5.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4308423306868065253, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      propertyPath: m_text
-      value: 3.Check Out the New Gas Station
-      objectReference: {fileID: 0}
     - target: {fileID: 4311317946638607328, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_VersionIndex
       value: 1587
@@ -325951,10 +325950,6 @@ PrefabInstance:
     - target: {fileID: 4410735092125137977, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_LocalPosition.z
       value: -28.510004
-      objectReference: {fileID: 0}
-    - target: {fileID: 4413520737143231364, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4419891200070806549, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_LocalScale.x
@@ -326603,10 +326598,6 @@ PrefabInstance:
     - target: {fileID: 5587788771947630250, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5598386962028178131, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      propertyPath: m_text
-      value: 2. Cook & Flush
       objectReference: {fileID: 0}
     - target: {fileID: 5618807515059789154, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_LocalPosition.x
@@ -330956,10 +330947,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 252.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7177981424824175801, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
-      propertyPath: m_text
-      value: 1. Exercise -Explore the House
-      objectReference: {fileID: 0}
     - target: {fileID: 7178214824866283918, guid: 6beb5d8cdbe0cc348bf5b54160b79649, type: 3}
       propertyPath: m_VersionIndex
       value: 3143
@@ -332571,6 +332558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8631f4214477bd0439b751c7771fac26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MedicineTask: {fileID: 0}
   damageScript: {fileID: 8815944882827306202}
 --- !u!82 &4167481961072370653 stripped
 AudioSource:
