@@ -93,34 +93,35 @@ public class ObjectPickUp : MonoBehaviour
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
 
-                for (int i = 0; i < hotbar.items.Length; i++)
+                for (int i = 0; i < hotbar.items.Count; i++)
                 {
                     if (hotbar.items[i] == null)
                     {
                         itemCount++;
+                        hotbar.items.Add(pickableObject);
+                        //pickableObject = null;
 
-                        if (pickableObject.tag == "Cube" && cubeCount < 1)
+                        /*if (pickableObject.tag == "Cube" && cubeCount < 1)
                         {
-                            hotbar.items[0] = pickableObject;
-                            pickableObject = null;
+                            
                         }
 
                         if (pickableObject.tag == "Cone" && coneCount < 1)
                         {
-                            hotbar.items[1] = pickableObject;
+                            hotbar.items[i] = pickableObject;
                             pickableObject = null;
                         }
 
                         if (pickableObject.tag == "Sphere" && sphereCount < 1)
                         {
-                            hotbar.items[2] = pickableObject;
+                            hotbar.items[i] = pickableObject;
                             pickableObject = null;
-                        }
+                        }*/
                         break;
                     }
                 }
 
-                hotbar.Inventory();
+                //hotbar.Inventory();
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -168,12 +169,12 @@ public class ObjectPickUp : MonoBehaviour
             string dropObjectTag = pickableObject.tag;
             pickableObject.transform.parent = null;
 
-            for (int i = 0; i < hotbar.items.Length; i++)
+            for (int i = 0; i < hotbar.items.Count; i++)
             {
                 if (hotbar.items[i] == pickableObject)
                 {
                     itemCount--;
-                    hotbar.items[i] = null;
+                    hotbar.items.Remove(hotbar.currentObject);
                     pickableObject = null;
                     hotbar.currentObject = null;
                     break;
@@ -333,29 +334,35 @@ public class ObjectPickUp : MonoBehaviour
                     // pickableObject.transform.position = place.transform.position;
                     //pickableObject.transform.rotation = Quaternion.identity;
 
-                    for (int i = 0; i < hotbar.items.Length; i++)
+                    for (int i = 0; i < hotbar.items.Count; i++)
                     {
                         if (hotbar.items[i] == pickableObject)
                         {
                             itemCount--;
                             hotbar.items[i].transform.position = place.transform.position;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
-                            hotbar.items[i] = null;
+                            hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
 
                             if (hotbar.currentObject.tag == "Cube")
                             {
                                 cubeCount--;
+
+                                cubeCountText.text = cubeCount.ToString();
                             }
 
                             if (hotbar.currentObject.tag == "Cone")
                             {
                                 coneCount--;
+
+                                coneCountText.text = coneCount.ToString();
                             }
 
                             if (hotbar.currentObject.tag == "Sphere")
                             {
                                 sphereCount--;
+
+                                sphereCountText.text = sphereCount.ToString();
                             }
 
                             hotbar.currentObject = null;
