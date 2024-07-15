@@ -21,7 +21,8 @@ public class PickUpPlace : MonoBehaviour
     public AudioSource toastEatSound; // Change to AudioSource
 
     public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
-    public TextMeshProUGUI EatTask; // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI EatEggTask; // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI EatToastTask;
 
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
@@ -151,7 +152,7 @@ public class PickUpPlace : MonoBehaviour
         drinkSound.Play();
         isLookingAtOrangeJuice = false;
 
-        DrinkTask.text = "Drink Juice Done"; // Update TextMeshPro text
+        DrinkTask.text = "Drank Juice"; // Update TextMeshPro text
         DrinkTask.color = Color.green;
     }
 
@@ -163,8 +164,8 @@ public class PickUpPlace : MonoBehaviour
         eatSound.Play();
         isLookingAtPanWithFriedEgg = false;
 
-        EatTask.text = "Eat Egg Done";
-        EatTask.color = Color.green;
+        EatEggTask.text = "Ate Egg";
+        EatEggTask.color = Color.green;
     }
 
     void EatBurnedToast()
@@ -177,6 +178,9 @@ public class PickUpPlace : MonoBehaviour
             toastEatSound.Play();
         }
         isLookingAtBurnedToast = false;
+
+        EatToastTask.text = "Ate Toast";
+        EatToastTask.color = Color.green;
 
         // Update UI or other game elements here if needed
     }
