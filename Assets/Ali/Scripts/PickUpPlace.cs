@@ -19,7 +19,8 @@ public class PickUpPlace : MonoBehaviour
     public AudioSource eatSound;
 
     public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
-public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI EatTask;   // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI LightsTask; 
 
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;

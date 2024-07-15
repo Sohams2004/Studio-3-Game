@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
-    public GameObject panel;
+    public GameObject panel; //for the task list
+    public TextMeshProUGUI CashTask; //to reference the task text
 
     [SerializeField] float rayLength;
 
@@ -298,7 +299,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNote.gameObject.SetActive(false);
             movement.enabled = true;
 
-            panel.SetActive(true);
+            panel.SetActive(true); //activate the tasklist 
         }
 
         if (isPaperNotePicked)
@@ -432,6 +433,10 @@ public class ObjectPickUp : MonoBehaviour
                 moneyCount += 5f;
                 moneyCountText.text = string.Format("$ " + moneyCount);
                 money.SetActive(false);
+
+                 CashTask.text = "Cash Collected"; //two lines to update task text
+                 CashTask.color = Color.green;
+
             }
         }
 
