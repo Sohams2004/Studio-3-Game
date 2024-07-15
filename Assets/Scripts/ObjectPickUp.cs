@@ -43,6 +43,12 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Transform[] itemFrames;
 
+    [SerializeField] Material shapeMaterial;
+
+    [SerializeField] Shader outlineShader;
+    [SerializeField] Shader standard;
+    [SerializeField] Material outlineMaterial;
+
     RaycastHit hit1;
     GameObject hitObj;
 
@@ -58,6 +64,9 @@ public class ObjectPickUp : MonoBehaviour
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
         movement = FindObjectOfType<Movement>();
+
+        //outlineShader = Shader.Find("Outline");
+        outlineMaterial = new Material(outlineShader);
     }
 
     void ObjectDetect()
@@ -70,6 +79,14 @@ public class ObjectPickUp : MonoBehaviour
             handSign.gameObject.SetActive(true);
             crosshair.enabled = false;
             isObject = true;
+
+            Renderer renderer = hitObj.GetComponent<Renderer>();
+
+            if(renderer != null)
+            {
+                shapeMaterial = renderer.material;
+                shapeMaterial.shader = outlineShader;
+            }
         }
 
         else if (!isRay)
@@ -78,6 +95,8 @@ public class ObjectPickUp : MonoBehaviour
             pickDropObjectText.text = string.Empty;
             handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
+
+            shapeMaterial.shader = standard;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
@@ -441,8 +460,8 @@ public class ObjectPickUp : MonoBehaviour
                 moneyCountText.text = string.Format("$ " + moneyCount);
                 money.SetActive(false);
 
-                 CashTask.text = "Cash Collected"; //two lines to update task text
-                 CashTask.color = Color.green;
+                CashTask.text = "Cash Collected"; //two lines to update task text
+                CashTask.color = Color.green;
 
             }
         }

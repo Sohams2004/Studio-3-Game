@@ -30,10 +30,6 @@ public class CarManager : MonoBehaviour
 
             Cars car = cars.GetComponent<Cars>();
 
-            car.startPoint = randomIndex;
-            car.pointIndex = randomIndex;
-            car.points = points;
-
             currentNoOfCars++;
             Debug.Log("Car instantiated. New number of cars: " + currentNoOfCars);
         }
