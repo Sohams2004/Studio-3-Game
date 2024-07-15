@@ -7042,6 +7042,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &589517369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3990736493307533294, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &592587283
 Mesh:
   m_ObjectHideFlags: 0
@@ -11673,7 +11678,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 459212937959379555}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
@@ -22571,6 +22576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: F to Drink (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7297873931092848612, guid: 20e028051e12e424e8994714926553c4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8330176738124327297, guid: 20e028051e12e424e8994714926553c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -23933,6 +23942,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1772031410}
+    - target: {fileID: 7183078707297755738, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7184558160878194957, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -24225,6 +24238,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 526070285}
+    - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 589517369}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: camera
       value: 

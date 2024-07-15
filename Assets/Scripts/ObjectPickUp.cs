@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
+    public GameObject panel;
+
     [SerializeField] float rayLength;
 
     [SerializeField] float moneyCount;
@@ -295,6 +297,8 @@ public class ObjectPickUp : MonoBehaviour
             isPaperNotePicked = false;
             paperNote.gameObject.SetActive(false);
             movement.enabled = true;
+
+            panel.SetActive(true);
         }
 
         if (isPaperNotePicked)
