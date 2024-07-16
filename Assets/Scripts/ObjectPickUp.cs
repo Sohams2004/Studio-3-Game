@@ -82,7 +82,7 @@ public class ObjectPickUp : MonoBehaviour
 
             Renderer renderer = hitObj.GetComponent<Renderer>();
 
-            if(renderer != null)
+            if (renderer != null)
             {
                 shapeMaterial = renderer.material;
                 shapeMaterial.shader = outlineShader;
@@ -283,6 +283,7 @@ public class ObjectPickUp : MonoBehaviour
         yield return new WaitForSeconds(1);
         inventoryFullText.text = string.Empty;
     }
+
     void PaperNote()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer);
@@ -327,7 +328,6 @@ public class ObjectPickUp : MonoBehaviour
             interactionText.text = string.Empty;
         }
     }
-
     void PlaceObjects()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer);
@@ -520,8 +520,8 @@ public class ObjectPickUp : MonoBehaviour
     private void Update()
     {
         ObjectDetect();
-        PaperNote();
         PlaceObjects();
+        PaperNote();
         /* OpenDoor();*/
         /*BlindsOpen();*/
         Money();

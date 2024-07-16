@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class PickUpPlace : MonoBehaviour
 {
- private GameObject pickedObject;
+    private GameObject pickedObject;
     public float pickUpRange = 2.0f;
     public float holdDistance = 0.7f;
     public LayerMask pickUpLayer;
 
+    [SerializeField] DamageScript damageScript;
     private GameObject orangeJuice;
     private GameObject panWithFriedEgg;
     private GameObject burnedToast; // Reference for burned toast
@@ -51,17 +50,22 @@ public class PickUpPlace : MonoBehaviour
 
         if (isLookingAtOrangeJuice && Input.GetKeyDown(KeyCode.F))
         {
+            damageScript.ThirstRecovered(40);
             DrinkOrangeJuice();
         }
 
         if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))
         {
+            damageScript.HungerRecovered(60);
             EatPanWithFriedEgg();
+
         }
 
         if (isLookingAtBurnedToast && Input.GetKeyDown(KeyCode.F)) // Interaction for burned toast
         {
+            damageScript.HungerRecovered(60);
             EatBurnedToast();
+
         }
     }
 
@@ -182,8 +186,8 @@ public class PickUpPlace : MonoBehaviour
         EatToastTask.text = "Ate Toast";
         EatToastTask.color = Color.green;
 
-        
+
     }
 
-   
+
 }

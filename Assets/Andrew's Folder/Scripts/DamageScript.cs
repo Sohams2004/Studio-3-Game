@@ -68,6 +68,26 @@ public class DamageScript : MonoBehaviour
         }
 
     }
+    public void HungerRecovered(int heal)
+    {
+        hunger += heal;
+        hungerBar.SetValue(sanity);
+        if (hunger > maxHP)
+        {
+            hunger = maxHP;
+        }
+
+    }
+    public void ThirstRecovered(int heal)
+    {
+        thirst += heal;
+        thirstBar.SetValue(sanity);
+        if (thirst > maxHP)
+        {
+            thirst = maxHP;
+        }
+
+    }
     async void DamageReceived(int damage)
     {
         sanity -= damage;
