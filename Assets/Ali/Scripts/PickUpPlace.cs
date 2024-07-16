@@ -182,7 +182,7 @@ public class PickUpPlace : MonoBehaviour
         EatToastTask.text = "Ate Toast";
         EatToastTask.color = Color.green;
 
-        // Update UI or other game elements here if needed
+        
     }
 
    

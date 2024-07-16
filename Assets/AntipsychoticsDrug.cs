@@ -1,8 +1,11 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using TMPro;
 
 public class AntipsychoticsDrug : MonoBehaviour
 {
+    public TextMeshProUGUI MedicineTask;
+
     [SerializeField] DamageScript damageScript;
     private bool playerInRange = false;
 
@@ -14,6 +17,10 @@ public class AntipsychoticsDrug : MonoBehaviour
         {
             await Task.Delay(1000);
             damageScript.SanityRecovered(100);
+
+             MedicineTask.text = "Took Medicine";
+             MedicineTask.color = Color.green;
+
         }
     }
 

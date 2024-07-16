@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public TextMeshProUGUI CurtainsTask;
+    
+
     public TMP_Text promptText;
     public Animator objectAnimator;
     public AudioClip interactionSound;
@@ -27,6 +30,9 @@ public class Interactable : MonoBehaviour
             objectAnimator.SetBool("Blindsdown", false);
             hasInteracted = true;
             audioSource.PlayOneShot(interactionSound);
+
+            CurtainsTask.text = "Curtains Opened";
+            CurtainsTask.color = Color.green;
 
         }
         else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
