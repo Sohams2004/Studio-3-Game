@@ -50,20 +50,20 @@ public class PickUpPlace : MonoBehaviour
 
         if (isLookingAtOrangeJuice && Input.GetKeyDown(KeyCode.F))
         {
-            damageScript.ThirstRecovered(20);
+            damageScript.ThirstRecovered(40);
             DrinkOrangeJuice();
         }
 
         if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))
         {
-            damageScript.HungerRecovered(30);
+            damageScript.HungerRecovered(60);
             EatPanWithFriedEgg();
 
         }
 
         if (isLookingAtBurnedToast && Input.GetKeyDown(KeyCode.F)) // Interaction for burned toast
         {
-            damageScript.HungerRecovered(30);
+            damageScript.HungerRecovered(60);
             EatBurnedToast();
 
         }
@@ -186,7 +186,7 @@ public class PickUpPlace : MonoBehaviour
         EatToastTask.text = "Ate Toast";
         EatToastTask.color = Color.green;
 
-        
+
     }
 
 
