@@ -71537,7 +71537,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1927383620468626662}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 129182688321797855, guid: aeb274f5a2226c548badf43303f5fe7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -71663,11 +71663,6 @@ PrefabInstance:
 --- !u!1 &1864169695 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3983390707303719056, guid: aeb274f5a2226c548badf43303f5fe7b, type: 3}
-  m_PrefabInstance: {fileID: 1864169694}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1864169696 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6624091600534689710, guid: aeb274f5a2226c548badf43303f5fe7b, type: 3}
   m_PrefabInstance: {fileID: 1864169694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1869237309
@@ -204718,7 +204713,7 @@ PrefabInstance:
       objectReference: {fileID: 2027380445}
     - target: {fileID: 6479792062747606453, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6517023131085889174, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
@@ -216520,6 +216515,10 @@ PrefabInstance:
       propertyPath: panel
       value: 
       objectReference: {fileID: 453591405}
+    - target: {fileID: 7400348837831343495, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7400348837831343495, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: targetObject
       value: 
@@ -289456,11 +289455,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!224 &1927383620468626662 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3115624580659809227, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-  m_PrefabInstance: {fileID: 1927383620468626659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1927383620468626663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5554946797867945165, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
@@ -289693,3 +289687,4 @@ SceneRoots:
   - {fileID: 933617570}
   - {fileID: 1869237310}
   - {fileID: 735209546}
+  - {fileID: 1864169694}
