@@ -4,7 +4,7 @@ using UnityEngine;
 public class HotBar : MonoBehaviour
 {
 
-    public GameObject[] items;
+    public List<GameObject> items;
     public List<GameObject> inventory;
 
     [SerializeField] GameObject item1, item2, item3, item4, item5;
@@ -22,7 +22,7 @@ public class HotBar : MonoBehaviour
     private void Start()
     {
         objectPickUp = FindObjectOfType<ObjectPickUp>();
-        items = new GameObject[numberOfItems];
+        //items = new GameObject[numberOfItems];
     }
 
     void ToggleItems(float mouseScroll)
@@ -99,7 +99,7 @@ public class HotBar : MonoBehaviour
                 direction = -1;
             }
 
-            for ( int i = 0; i < items.Length; i++ )
+            for ( int i = 0; i < items.Count; i++ )
             {
                 if (items[i] != null && items[i].activeSelf)
                 {
@@ -113,9 +113,9 @@ public class HotBar : MonoBehaviour
                 currentIndex = 0;
             }
 
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                int newIndex = (currentIndex + direction + items.Length) % items.Length;
+                int newIndex = (currentIndex + direction + items.Count) % items.Count;
                 if (items[newIndex] is not null)
                 {
                     DisableItems();
@@ -131,7 +131,7 @@ public class HotBar : MonoBehaviour
         
     }
 
-    public void Inventory()
+    /*public void Inventory()
     {
         if (items[0] != null && items[1] != null && items[2] != null)
         {
@@ -148,12 +148,12 @@ public class HotBar : MonoBehaviour
             print(objectPickUp.pickableObject);
             inventory.Add(objectPickUp.pickableObject);
         }
-    }
+    }*/
 
 
     void DisableItems()
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             if (items[i] != null)
             {
