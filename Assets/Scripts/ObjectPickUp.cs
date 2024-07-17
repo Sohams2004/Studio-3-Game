@@ -520,8 +520,8 @@ public class ObjectPickUp : MonoBehaviour
     private void Update()
     {
         ObjectDetect();
-        PlaceObjects();
         PaperNote();
+        PlaceObjects();
         /* OpenDoor();*/
         /*BlindsOpen();*/
         Money();
