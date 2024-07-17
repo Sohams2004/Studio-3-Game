@@ -13,19 +13,19 @@ Shader"Unlit/OutlineShader"
 
         CGPROGRAM
         #pragma surface surf Lambert
-sampler2D _MainText;
+        sampler2D _MainTex ;
 
-struct Input
-{
-    float2 uv_MainText;
-};
+        struct Input
+        {
+             float2 uv_MainTex;
+        };
 
-void surf(Input IN, inout SurfaceOutput o)
-{
-    fixed4 c = tex2D(_MainText, IN.uv_MainText);
-    o.Albedo = c.rgb;
-    o.Alpha = c.a;
-}
+        void surf(Input IN, inout SurfaceOutput o)
+        {
+            fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+            o.Albedo = c.rgb;
+            o.Alpha = c.a;
+        }
 
         ENDCG
 
@@ -38,23 +38,27 @@ void surf(Input IN, inout SurfaceOutput o)
             #pragma fragment frag
 
 
-#include "UnityCG.cginc"
-
+            #include "UnityCG.cginc"
+            
+            //defining the input structure for the vertex shader.
             struct appdata
             {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
             };
-
+            
+            //defining the output structure of the vertex shader / input to the fragment shader.
             struct v2f
             {
                 float4 pos : SV_POSITION;
             };
-
+            
+            //Defining variables for vertex and fragment shaders
             float _OutlineWidth;
             fixed4 _OutlineColor;
             float _GlowIntensity;
 
+            //Vertex shader.It expands the vertex along its normal by _OutlineWidth and transforms it to clip space.
             v2f vert(appdata v)
             {
                 v2f o;
@@ -62,7 +66,8 @@ void surf(Input IN, inout SurfaceOutput o)
                 o.pos = UnityObjectToClipPos(v.vertex);
                 return o;
             }
-
+            
+            //Fragment shader. Returning the outline color and glow.
             fixed4 frag(v2f i) : SV_Target
             {
                 return _OutlineColor * _GlowIntensity;
@@ -70,5 +75,4 @@ void surf(Input IN, inout SurfaceOutput o)
             ENDCG
         }
     }
-FallBack"Diffuse"
 }

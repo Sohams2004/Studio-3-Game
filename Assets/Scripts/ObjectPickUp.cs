@@ -111,6 +111,8 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
+                shapeMaterial.shader = standard;
+
 
                 for (int i = 0; i < hotbar.items.Count; i++)
                 {
