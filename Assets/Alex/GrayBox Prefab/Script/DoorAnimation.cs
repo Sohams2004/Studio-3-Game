@@ -61,16 +61,14 @@ public class DoorAnimation : MonoBehaviour
         if (state == State.Close)
         {
             closedoor.Stop();
-            animator.SetBool("Open", true);
-            animator.SetBool("Close", false);
+            animator.Play("Door Opening");
             state = State.Open;
             opendoor.Play();
         }
         else if (state == State.Open)
         {
             opendoor.Stop();
-            animator.SetBool("Open", false);
-            animator.SetBool("Close", true);
+            animator.Play("Door Closing");
             state = State.Close;
             closedoor.Play();
         }
