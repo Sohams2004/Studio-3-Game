@@ -5,7 +5,7 @@ public class SanityDrainOnSight : MonoBehaviour
 {
     public DamageScript damageScript;
     public string targetTag = "Hallucination";
-    public float increasedSanityDecreaseRate = 20f;
+    public float increasedSanityDecreaseRate = 100f;
     public Camera mainCamera;
     public float detectionRange = 100f;
     public Slider sanitySlider;
