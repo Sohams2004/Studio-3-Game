@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class DamageScript : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class DamageScript : MonoBehaviour
     public BarLogic thirstBar;
 
     [SerializeField] bool hasInteracted;
+
+    [SerializeField] PostProcessVolume postProcessingVolume;
+    [SerializeField] Vignette vignette;
     void Start()
     {
         Time.timeScale = 1f;
@@ -30,6 +34,8 @@ public class DamageScript : MonoBehaviour
         sanityBar.SetMaxValue(maxHP);
         hungerBar.SetMaxValue(maxHP);
         thirstBar.SetMaxValue(maxHP);
+
+        postProcessingVolume.profile.TryGetSettings(out vignette);
     }
 
     void Update()
@@ -46,6 +52,13 @@ public class DamageScript : MonoBehaviour
         if (sanity <= 0 || hunger <= 0 || thirst <= 0)
         {
             GameOver();
+        }
+
+
+        if (vignette != null)
+        {
+            float vignetteIntensity = 1 - (sanity / 1000);
+            vignette.intensity.value = vignetteIntensity;
         }
     }
     private void OnTriggerEnter(Collider other)

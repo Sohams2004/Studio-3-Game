@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
-    public GameObject panel; //for the task list
+    //public GameObject panel; //for the task list
     public TextMeshProUGUI CashTask; //to reference the task text
 
     [SerializeField] float rayLength;
@@ -111,8 +111,6 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
-                shapeMaterial.shader = standard;
-
 
                 for (int i = 0; i < hotbar.items.Count; i++)
                 {
@@ -322,7 +320,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNote.gameObject.SetActive(false);
             movement.enabled = true;
 
-            panel.SetActive(true); //activate the tasklist 
+            //panel.SetActive(true); //activate the tasklist 
         }
 
         if (isPaperNotePicked)
@@ -522,8 +520,8 @@ public class ObjectPickUp : MonoBehaviour
     private void Update()
     {
         ObjectDetect();
-        PlaceObjects();
         PaperNote();
+        PlaceObjects();
         /* OpenDoor();*/
         /*BlindsOpen();*/
         Money();
