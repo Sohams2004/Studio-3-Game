@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
-    //public GameObject panel; //for the task list
+    public GameObject panel; //for the task list
     public TextMeshProUGUI CashTask; //to reference the task text
 
     [SerializeField] float rayLength;
@@ -96,7 +96,7 @@ public class ObjectPickUp : MonoBehaviour
             handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
 
-            shapeMaterial.shader = standard;
+            /* shapeMaterial.shader = standard;*/
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
@@ -320,7 +320,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNote.gameObject.SetActive(false);
             movement.enabled = true;
 
-            //panel.SetActive(true); //activate the tasklist 
+            panel.SetActive(true); //activate the tasklist 
         }
 
         if (isPaperNotePicked)
