@@ -96,7 +96,7 @@ public class ObjectPickUp : MonoBehaviour
             handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
 
-            shapeMaterial.shader = standard;
+            /* shapeMaterial.shader = standard;*/
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
