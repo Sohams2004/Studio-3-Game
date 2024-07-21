@@ -24,10 +24,34 @@ public class FriedEgg : MonoBehaviour
             Debug.LogError("FryingPan Animator is not assigned!");
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!isObjectPlaced && other.CompareTag("Egg") && other.CompareTag("Frying Pan")) // Check if the object entering is the player's object
+        {
+            placedObject = other.gameObject; // Assign the placed object
+            isObjectPlaced = true;
 
+            // Play animation using Animator trigger
+            if (blenderAnimator != null)
+            {
+                blenderAnimator.SetTrigger("Fry");
+            }
+
+            // Play sound if AudioSource and sound clip are assigned
+            if (audioSource != null && interactionSound != null)
+            {
+                audioSource.PlayOneShot(interactionSound);
+            }
+
+            //Destroy(placedObject);
+
+            // Start coroutine to wait and then spawn result object
+            StartCoroutine(WaitAndSpawnObject(placedObject));
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (!isObjectPlaced && other.CompareTag("Egg")) // Check if the object entering is the player's object
+        if (!isObjectPlaced && other.CompareTag("Egg") && other.CompareTag("Frying Pan")) // Check if the object entering is the player's object
         {
             placedObject = other.gameObject; // Assign the placed object
             isObjectPlaced = true;
