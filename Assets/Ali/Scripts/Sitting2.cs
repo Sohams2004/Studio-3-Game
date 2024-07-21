@@ -1,25 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Sitting2 : MonoBehaviour
 {
-     public GameObject mainPlayer;
+    public GameObject mainPlayer;
     public GameObject secondPlayer;
     public bool isSecondPlayerActive = false;
-    [SerializeField] GameObject GetUp;
+    public bool isInsde = false;
+    [SerializeField] GameObject chair;
 
     void Start()
     {
-        mainPlayer.SetActive(true); // Ensure the main player is active at the start
+        chair.SetActive(false);
         secondPlayer.SetActive(false); // Ensure the second player is inactive at the start
     }
 
-    void Update()
-    {
-        
-    }
+    /* void Update()
+     {
+         if (isInsde && Input.GetKeyDown(KeyCode.F))
+         {
+             //Debug.Log("Switching to second player");
+             SwitchToSecondPlayer();
+             GetUp.SetActive(true);
+         }
 
+     }*/
+    async void Update()
+    {
+
+        if (!isSecondPlayerActive && isInsde && Input.GetKeyDown(KeyCode.F))
+        {
+            chair.SetActive(false);
+            SwitchToSecondPlayer();
+            await Task.Delay(1000);
+            isSecondPlayerActive = true;
+
+
+        }
+        if (isSecondPlayerActive && isInsde && Input.GetKeyDown(KeyCode.F))
+        {
+            chair.SetActive(true);
+            SwitchToMainPlayer();
+            await Task.Delay(1000);
+            isSecondPlayerActive = false;
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         // Check if the collider has the tag "Chair"
@@ -27,20 +52,53 @@ public class Sitting2 : MonoBehaviour
         {
             if (!isSecondPlayerActive)
             {
-                //Debug.Log("Switching to second player");
-                SwitchToSecondPlayer();
-                GetUp.SetActive(true);
-
+                chair.SetActive(true);
+                isInsde = true;
+            }
+            if (isSecondPlayerActive)
+            {
+                chair.SetActive(true);
+                isInsde = true;
             }
         }
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        // Check if the collider has the tag "Chair"
+        if (other.CompareTag("Player"))
+        {
+            if (!isSecondPlayerActive)
+            {
+                chair.SetActive(true);
+                isInsde = true;
+            }
+            if (isSecondPlayerActive)
+            {
+                chair.SetActive(true);
+                isInsde = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        chair.SetActive(false);
+        isInsde = false;
+    }
+
+    void SwitchToMainPlayer()
+    {
+        mainPlayer.SetActive(true);
+        secondPlayer.SetActive(false);
+
+    }
     void SwitchToSecondPlayer()
     {
         mainPlayer.SetActive(false);
         secondPlayer.SetActive(true);
-        isSecondPlayerActive = true;
+
     }
 
-    
+
 }
