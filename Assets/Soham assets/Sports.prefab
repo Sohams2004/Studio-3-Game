@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sports
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93d9b8d5ed9caaf47b305c3497ff9f7f, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 93d9b8d5ed9caaf47b305c3497ff9f7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8085248662437721802}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 93d9b8d5ed9caaf47b305c3497ff9f7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2011422591001843317}
   m_SourcePrefab: {fileID: 100100000, guid: 93d9b8d5ed9caaf47b305c3497ff9f7f, type: 3}
 --- !u!1 &7504133749518221062 stripped
 GameObject:
@@ -94,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 35
   destroyCarIn: 30
+  rb: {fileID: 0}
 --- !u!65 &-8085248662437721802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,5 +121,32 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.5846689, z: 5.559668}
-  m_Center: {x: 0, y: 0.9405389, z: -0.03371167}
+  m_Size: {x: 1, y: 1.787039, z: 5.5596685}
+  m_Center: {x: 0, y: 0.8393538, z: -0.033711754}
+--- !u!54 &2011422591001843317
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7504133749518221062}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

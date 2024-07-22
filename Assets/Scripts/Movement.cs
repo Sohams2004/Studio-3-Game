@@ -50,4 +50,5 @@ public class Movement : MonoBehaviour
             footSteps.Stop();
         }
     }
+
 }

@@ -58,12 +58,14 @@ public class ObjectPickUp : MonoBehaviour
 
     HotBar hotbar;
     public Movement movement;
+    ShopUI shopUI;
 
     private void Start()
     {
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
         movement = FindObjectOfType<Movement>();
+        shopUI = FindObjectOfType<ShopUI>();
 
         //outlineShader = Shader.Find("Outline");
         outlineMaterial = new Material(outlineShader);
@@ -96,7 +98,10 @@ public class ObjectPickUp : MonoBehaviour
             handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
 
-            /* shapeMaterial.shader = standard;*/
+            if (shapeMaterial != null)
+            {
+                shapeMaterial.shader = standard;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
@@ -328,6 +333,7 @@ public class ObjectPickUp : MonoBehaviour
             interactionText.text = string.Empty;
         }
     }
+
     void PlaceObjects()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer);
@@ -362,6 +368,7 @@ public class ObjectPickUp : MonoBehaviour
                             hotbar.items[i].transform.rotation = Quaternion.identity;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
+                            objectRb = null;
 
                             if (hotbar.currentObject.tag == "Cube")
                             {
@@ -385,9 +392,6 @@ public class ObjectPickUp : MonoBehaviour
                             }
 
                             hotbar.currentObject = null;
-
-
-
 
                             break;
                         }
@@ -456,8 +460,8 @@ public class ObjectPickUp : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                moneyCount += 5f;
-                moneyCountText.text = string.Format("$ " + moneyCount);
+                shopUI.moneyCount += 5f;
+                moneyCountText.text = string.Format("$ " + shopUI.moneyCount);
                 money.SetActive(false);
 
                 CashTask.text = "Cash Collected"; //two lines to update task text

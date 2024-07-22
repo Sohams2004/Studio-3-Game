@@ -12,7 +12,7 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] float rayLength;
 
-    [SerializeField] float moneyCount;
+    [SerializeField] public float moneyCount;
 
     [SerializeField] LayerMask moneyLayer;
 
@@ -35,12 +35,12 @@ public class ShopUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Money();
+        //Money();
     }
 
-    void Money()
+    /*void Money()
     {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
+        //bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
         if (isRay)
         {
 
@@ -59,7 +59,7 @@ public class ShopUI : MonoBehaviour
         {
             pickUpMoneyText.text = string.Empty;
         }
-    }
+    }*/
 
     void OnTriggerEnter(Collider other)
     {
@@ -85,6 +85,8 @@ public class ShopUI : MonoBehaviour
     {
         if (moneyCount >= breadPrice)
         {
+            Debug.Log("Purachased Bread");
+
             moneyCount -= breadPrice;
             moneyCountText.text = string.Format("$ " + moneyCount);
             Instantiate(breadPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -95,6 +97,8 @@ public class ShopUI : MonoBehaviour
     {
         if (moneyCount >= eggPrice)
         {
+            Debug.Log("Purachased eggs");
+
             moneyCount -= eggPrice;
             moneyCountText.text = string.Format("$ " + moneyCount);
             Instantiate(eggPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -105,9 +109,16 @@ public class ShopUI : MonoBehaviour
     {
         if (moneyCount >= orangePrice)
         {
+            Debug.Log("Purachased orange");
+
             moneyCount -= orangePrice;
             moneyCountText.text = string.Format("$ " + moneyCount);
             Instantiate(orangePrefab, spawnPoint.position, spawnPoint.rotation);
         }
+    }
+
+    public void CloseUI()
+    {
+        shopUI.SetActive(false);
     }
 }
