@@ -50,8 +50,9 @@ public class PickUpPlace : MonoBehaviour
 
         if (isLookingAtOrangeJuice && Input.GetKeyDown(KeyCode.F))
         {
-            damageScript.ThirstRecovered(40);
             DrinkOrangeJuice();
+            damageScript.ThirstRecovered(40);
+            
         }
 
         if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))
