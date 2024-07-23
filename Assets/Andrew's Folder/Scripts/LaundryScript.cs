@@ -3,20 +3,31 @@ using UnityEngine.UI;
 
 public class LaundryScript : MonoBehaviour
 {
-    public GameObject laundryCountText;
-    public AudioClip limitReachedClip;
+    [SerializeField] Text pointText;
+    [SerializeField] AudioClip limitReachedClip;
     private AudioSource audioSource;
-    private Text counterText;
-    private int count = 0;
-    private int limit = 20;
+    private int points = 20;
+
+    private void Awake()
+    {
+        UpdateUI();
+    }
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+    }
 
-        if (laundryCountText != null)
+    public int Points
+    {
+        get
         {
-            counterText = laundryCountText.GetComponent<Text>();
+            return points;
+        }
+        set
+        {
+            points = value;
+            UpdateUI();
         }
     }
 
@@ -24,20 +35,23 @@ public class LaundryScript : MonoBehaviour
     {
         if (other.CompareTag("Clothing"))
         {
-            count++;
-            UpdateCounterText();
-            if (count == limit)
+            if (points > 0)
             {
-                PlayLimitReachedClip();
+                Points--;
+                if (points == 0)
+                {
+                    PlayLimitReachedClip();
+                }
             }
+            Destroy(other.gameObject);
         }
     }
 
-    private void UpdateCounterText()
+    private void UpdateUI()
     {
-        if (counterText != null)
+        if (pointText != null)
         {
-            counterText.text = "Laundry: " + count.ToString() + " / " + limit.ToString();
+            pointText.text = "Laundry: " + points.ToString();
         }
     }
 
