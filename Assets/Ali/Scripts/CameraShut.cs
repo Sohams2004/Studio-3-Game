@@ -11,18 +11,40 @@ public class CameraShut : MonoBehaviour
     public float animationDuration; // Duration of the animation
     public string nextSceneName; // Name of the next scene to load
 
+    private bool animationStarted = false; // Flag to check if the animation has already started
+
     void Start()
     {
         // Start the animation after the specified delay
         Invoke("StartAnimation", delayBeforeAnimation);
     }
 
+    void Update()
+    {
+        // Check if the "C" key is pressed
+        if (Input.GetKeyDown(KeyCode.C) && !animationStarted)
+        {
+            SkipCutscene();
+        }
+    }
+
     void StartAnimation()
     {
         // Trigger the animation
         animator.SetTrigger(animationTriggerName);
+        animationStarted = true;
 
         // Start a coroutine to load the next scene after the specified duration
+        StartCoroutine(LoadNextSceneAfterAnimation());
+    }
+
+    void SkipCutscene()
+    {
+        // Trigger the animation immediately
+        animator.SetTrigger(animationTriggerName);
+        animationStarted = true;
+
+        // Start a coroutine to load the next scene immediately after the animation
         StartCoroutine(LoadNextSceneAfterAnimation());
     }
 
@@ -34,4 +56,6 @@ public class CameraShut : MonoBehaviour
         // Load the next scene
         SceneManager.LoadScene(nextSceneName);
     }
+
+    
 }
