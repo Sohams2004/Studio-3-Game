@@ -8,6 +8,7 @@ public class CameraShakeEffect : MonoBehaviour
     public Slider thirstSlider;
     public Camera mainCamera;
     public Transform player;
+    public Movement playerMovement;
 
     private Vector3 originalCameraOffset;
     private float shakeMagnitude = 0.1f;
@@ -20,20 +21,30 @@ public class CameraShakeEffect : MonoBehaviour
         {
             originalCameraOffset = mainCamera.transform.position - player.position;
         }
+
+        if (player != null)
+        {
+            playerMovement = player.GetComponent<Movement>();
+        }
     }
 
     void Update()
     {
         if (hungerSlider != null && thirstSlider != null && mainCamera != null && player != null)
         {
-            float hungerValue = hungerSlider.value / hungerSlider.maxValue;
-            float thirstValue = thirstSlider.value / thirstSlider.maxValue;
+            float hungerValue = hungerSlider.value;
+            float thirstValue = thirstSlider.value;
 
-            if (hungerValue > 0.9f || thirstValue > 0.9f)
+            if (hungerValue > 5600f || thirstValue > 5600f)
             {
                 if (!isShaking)
                 {
                     StartCoroutine(ShakeCamera());
+                }
+
+                if (playerMovement != null)
+                {
+                    playerMovement.movementSpeed = 1f;
                 }
             }
             else
@@ -43,6 +54,11 @@ public class CameraShakeEffect : MonoBehaviour
                     StopCoroutine(ShakeCamera());
                     mainCamera.transform.position = player.position + originalCameraOffset;
                     isShaking = false;
+                }
+
+                if (playerMovement != null)
+                {
+                    playerMovement.movementSpeed = 2f;
                 }
             }
         }

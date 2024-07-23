@@ -1818,6 +1818,7 @@ MonoBehaviour:
   thirstSlider: {fileID: 1962976231}
   mainCamera: {fileID: 757524690}
   player: {fileID: 757524691}
+  playerMovement: {fileID: 757524680}
 --- !u!43 &220012385
 Mesh:
   m_ObjectHideFlags: 0
@@ -8994,6 +8995,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3115624580659809227, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
   m_PrefabInstance: {fileID: 757524677}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &757524680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 757524677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757524678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2f4c8da4ab09b45a2798a8681fb740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &757524690 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6783785203940761179, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
