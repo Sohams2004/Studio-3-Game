@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class HallucinationTrigger : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class HallucinationTrigger : MonoBehaviour
 
     private void Start()
     {
-            targetGameObject.SetActive(false);
+        targetGameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +30,7 @@ public class HallucinationTrigger : MonoBehaviour
         if (targetGameObject != null)
         {
             targetGameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
