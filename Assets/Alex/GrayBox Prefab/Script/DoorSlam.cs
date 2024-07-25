@@ -9,10 +9,10 @@ public class DoorSlam : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            anim.SetBool("DoorSlam", true);
+            anim.Play("DoorSlam");
             slam.Play();
             await Task.Delay(100);
-            anim.SetBool("DoorSlam", false);
+
             Destroy(gameObject);
 
         }
