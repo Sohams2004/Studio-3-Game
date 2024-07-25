@@ -4,7 +4,7 @@ public class FPSCamera : MonoBehaviour
 {
     Vector3 direction;
 
-    [SerializeField] private float mouseSense;
+    [SerializeField] public float mouseSense;
 
     [SerializeField] Transform player;
     public Camera cam;
