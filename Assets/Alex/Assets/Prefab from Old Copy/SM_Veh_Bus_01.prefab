@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4489781820666294}
   - component: {fileID: 33782664668228320}
   - component: {fileID: 23369058216440726}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4435133902934904}
   - component: {fileID: 33388412475326472}
   - component: {fileID: 23321848107186094}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_SteeringW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4264723165302418}
   - component: {fileID: 33749889971346042}
   - component: {fileID: 23437722291406278}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 4833923145237210}
   - component: {fileID: 33466140327491158}
   - component: {fileID: 23898903903740480}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 4430980131513602}
   - component: {fileID: 33763171156787314}
   - component: {fileID: 23566932660297692}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_03_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 4095997103713172}
   - component: {fileID: 33494764581120264}
   - component: {fileID: 23632449438139056}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Wheel_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,8 @@ GameObject:
   - component: {fileID: -5610725877222063707}
   - component: {fileID: 1006253182509937656}
   - component: {fileID: 5112292861576560677}
-  m_Layer: 0
+  - component: {fileID: -3500898956832959665}
+  m_Layer: 21
   m_Name: SM_Veh_Bus_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,6 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 30
   destroyCarIn: 30
+  rb: {fileID: 0}
 --- !u!65 &1006253182509937656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -728,6 +730,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &-3500898956832959665
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276464829909656}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1422013066050804
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +768,7 @@ GameObject:
   - component: {fileID: 4144479977970002}
   - component: {fileID: 33399347541913524}
   - component: {fileID: 23834585698432166}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +852,7 @@ GameObject:
   - component: {fileID: 4392054987380320}
   - component: {fileID: 33459284458242624}
   - component: {fileID: 23161165430750932}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +935,7 @@ GameObject:
   - component: {fileID: 4133575606589936}
   - component: {fileID: 33595841348939422}
   - component: {fileID: 23094723086388354}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Wheel_rr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +1018,7 @@ GameObject:
   - component: {fileID: 4314420782084612}
   - component: {fileID: 33745453453484234}
   - component: {fileID: 23486538151927576}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Wheel_rl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1101,7 @@ GameObject:
   - component: {fileID: 4007472199196242}
   - component: {fileID: 33546925094347528}
   - component: {fileID: 23551050277910484}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_02_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1184,7 @@ GameObject:
   - component: {fileID: 4887882150567560}
   - component: {fileID: 33940543436454374}
   - component: {fileID: 23904797632467724}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_04_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1267,7 @@ GameObject:
   - component: {fileID: 4908313485698954}
   - component: {fileID: 33071057528418412}
   - component: {fileID: 23666571685448928}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Wheel_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1321,7 +1350,7 @@ GameObject:
   - component: {fileID: 4927360125156656}
   - component: {fileID: 33116333776244308}
   - component: {fileID: 23460772986693602}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Bus_Door_01_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
