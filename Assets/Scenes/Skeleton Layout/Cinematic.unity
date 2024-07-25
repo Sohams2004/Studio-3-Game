@@ -141,6 +141,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeStanding: 30
+--- !u!95 &19428492
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19428488}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c07c7d627a097844ea5097cb2699b56f, type: 3}
+  m_Controller: {fileID: 9100000, guid: a2497cb16f84eaf4fb66ad0962279e8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &134152086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -388,7 +409,7 @@ Animator:
   m_GameObject: {fileID: 152497432}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ff44c93d049b02b4db4daaf0be5e3118, type: 2}
+  m_Controller: {fileID: 9100000, guid: a562c65a2e962554daef78dcbc17140a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1175,13 +1196,17 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 00be746a7a1be2d41a2e1bcaefce5508, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: c07c7d627a097844ea5097cb2699b56f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07c7d627a097844ea5097cb2699b56f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 19428491}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07c7d627a097844ea5097cb2699b56f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 19428492}
   m_SourcePrefab: {fileID: 100100000, guid: c07c7d627a097844ea5097cb2699b56f, type: 3}
 --- !u!1 &467814698
 GameObject:
