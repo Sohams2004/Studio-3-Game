@@ -19,13 +19,13 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor;
 
     [SerializeField] public bool isPicked, isDoorOpen, isBlinds, isBlindsOpen;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -55,6 +55,7 @@ public class ObjectPickUp : MonoBehaviour
     GameObject parentObj;
     GameObject place;
     GameObject money;
+    [SerializeField] GameObject door;
 
     HotBar hotbar;
     public Movement movement;
@@ -476,24 +477,28 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    /*void OpenDoor()
+    void OpenDoor()
     {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
 
         if (isRay)
         {
             isDoor = true;
+            door = hit1.collider.gameObject;
+            door.GetComponent<DoorAnimation>();
             if (Input.GetKeyDown(KeyCode.E) && isDoor)
             {
                 isDoorOpen = true;
+               
             }
         }
 
         else if (!isRay)
         {
             isDoor = false;
+            door = null;
         }
-    }*/
+    }
 
     /* void BlindsOpen()
      {
@@ -526,7 +531,7 @@ public class ObjectPickUp : MonoBehaviour
         ObjectDetect();
         PaperNote();
         PlaceObjects();
-        /* OpenDoor();*/
+        OpenDoor();
         /*BlindsOpen();*/
         Money();
     }
