@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -7,71 +8,79 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] TMP_Text doortext;
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
+    [SerializeField] bool isOpen = false;
+    [SerializeField] bool inDoor = false;
 
-    public enum State { Close, Open };
-    public State state;
 
-
+    private async void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && !isOpen & inDoor)
+        {
+            OpenDoor();
+            await Task.Delay(2000);
+            isOpen = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E) && isOpen & inDoor)
+        {
+            CloseDoor();
+            await Task.Delay(2000);
+            isOpen = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
 
-        if (state == State.Close)
+        if (other.CompareTag("Player"))
         {
-            doortext.text = "Press E to Open";
-            if (Input.GetKeyDown(KeyCode.E))
+            if (!isOpen)
             {
-                ChangeDoorState();
+                inDoor = true;
             }
-        }
-        else if (state == State.Open)
-        {
-            doortext.text = "Press E to Close";
-            if (Input.GetKeyDown(KeyCode.E))
+            if (isOpen)
             {
-                ChangeDoorState();
+                inDoor = true;
             }
+
         }
+
     }
     private void OnTriggerStay(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            if (!isOpen)
+            {
+                inDoor = true;
+            }
+            if (isOpen)
+            {
+                inDoor = true;
+            }
 
-        if (state == State.Close)
-        {
-            doortext.text = "Press E to Open";
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ChangeDoorState();
-            }
         }
-        else if (state == State.Open)
-        {
-            doortext.text = "Press E to Close";
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ChangeDoorState();
-            }
-        }
+
     }
     private void OnTriggerExit(Collider other)
     {
+        inDoor = false;
         doortext.text = string.Empty;
     }
-    public void ChangeDoorState()
+    public void OpenDoor()
     {
-        if (state == State.Close)
-        {
-            closedoor.Stop();
-            animator.Play("Door Opening");
-            state = State.Open;
-            opendoor.Play();
-        }
-        else if (state == State.Open)
-        {
-            opendoor.Stop();
-            animator.Play("Door Closing");
-            state = State.Close;
-            closedoor.Play();
-        }
-    }
 
+        closedoor.Stop();
+        opendoor.Play();
+        animator.Play("Door Opening");
+
+
+
+    }
+    public void CloseDoor()
+    {
+        opendoor.Stop();
+        closedoor.Play();
+        animator.Play("Door Closing");
+
+
+    }
 }

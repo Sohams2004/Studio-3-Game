@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4804913090266312}
   - component: {fileID: 33755259916237642}
   - component: {fileID: 23755493203066686}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_Wheel_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4216438474971106}
   - component: {fileID: 33258567832859864}
   - component: {fileID: 23823845118873694}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_Wheel_rr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4793730632101592}
   - component: {fileID: 33561425381423618}
   - component: {fileID: 23032939520972728}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_SteeringW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4108543681628124}
   - component: {fileID: 33334203866029842}
   - component: {fileID: 23469668571516112}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_Wheel_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 4616178431518274}
   - component: {fileID: 33321196806303262}
   - component: {fileID: 23343425461937832}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,8 @@ GameObject:
   - component: {fileID: 1659624722539800498}
   - component: {fileID: 3353737648588364416}
   - component: {fileID: -3295295644979798029}
-  m_Layer: 0
+  - component: {fileID: 4957603910384241978}
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,6 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 60
   destroyCarIn: 30
+  rb: {fileID: 0}
 --- !u!65 &3353737648588364416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -638,6 +640,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &4957603910384241978
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847148240549790}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1925197282100688
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +678,7 @@ GameObject:
   - component: {fileID: 4566214152681674}
   - component: {fileID: 33098542380050482}
   - component: {fileID: 23007800941753542}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SM_Veh_Convertable_Wheel_rl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
