@@ -5,10 +5,14 @@ using TMPro;
 
 public class WaterBottle : MonoBehaviour
 {
-   public GameObject drinkText; // Assign the 3D Text object in the Inspector
+   public GameObject[] waterBottles; // Assign the water bottles in the Inspector
+    public GameObject[] drinkTexts; // Assign the corresponding 3D Text objects in the Inspector
     public KeyCode drinkKey = KeyCode.F;
+    public AudioSource audioSource; // Assign the AudioSource in the Inspector
+    public AudioClip drinkingSound; // Assign the drinking sound effect in the Inspector
 
     private GameObject currentBottle = null;
+    private GameObject currentText = null;
 
     void Update()
     {
@@ -18,28 +22,48 @@ public class WaterBottle : MonoBehaviour
         {
             if (hit.collider.CompareTag("Bottle"))
             {
-                currentBottle = hit.collider.gameObject;
-                drinkText.SetActive(true);
-                drinkText.transform.position = currentBottle.transform.position + Vector3.up; // Adjust position above the bottle
+                for (int i = 0; i < waterBottles.Length; i++)
+                {
+                    if (hit.collider.gameObject == waterBottles[i])
+                    {
+                        currentBottle = waterBottles[i];
+                        currentText = drinkTexts[i];
+                        currentText.SetActive(true);
+                        break;
+                    }
+                }
             }
             else
             {
+                if (currentText != null)
+                {
+                    currentText.SetActive(false);
+                    currentText = null;
+                }
                 currentBottle = null;
-                drinkText.SetActive(false);
             }
         }
         else
         {
+            if (currentText != null)
+            {
+                currentText.SetActive(false);
+                currentText = null;
+            }
             currentBottle = null;
-            drinkText.SetActive(false);
         }
 
         // Check if the drink key is pressed
         if (currentBottle != null && Input.GetKeyDown(drinkKey))
         {
             Destroy(currentBottle);
+            audioSource.PlayOneShot(drinkingSound); // Play the drinking sound effect
+            if (currentText != null)
+            {
+                currentText.SetActive(false);
+                currentText = null;
+            }
             currentBottle = null;
-            drinkText.SetActive(false);
         }
     }
 }
