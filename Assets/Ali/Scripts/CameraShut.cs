@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CameraShut : MonoBehaviour
 {
-     public Animator animator; // Reference to the Animator component
+    public Animator animator; // Reference to the Animator component
     public string animationTriggerName = "CameraShut"; // Name of the animation trigger
     public float delayBeforeAnimation; // Time delay before the animation starts
     public float animationDuration; // Duration of the animation
@@ -57,5 +56,5 @@ public class CameraShut : MonoBehaviour
         SceneManager.LoadScene(nextSceneName);
     }
 
-    
+
 }

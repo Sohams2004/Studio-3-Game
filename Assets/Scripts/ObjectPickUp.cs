@@ -489,7 +489,7 @@ public class ObjectPickUp : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && isDoor)
             {
                 isDoorOpen = true;
-               
+
             }
         }
 
