@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class WaterBottle : MonoBehaviour
 {
-   public GameObject[] waterBottles; // Assign the water bottles in the Inspector
+    public GameObject[] waterBottles; // Assign the water bottles in the Inspector
     public GameObject[] drinkTexts; // Assign the corresponding 3D Text objects in the Inspector
     public KeyCode drinkKey = KeyCode.F;
     public AudioSource audioSource; // Assign the AudioSource in the Inspector
     public AudioClip drinkingSound; // Assign the drinking sound effect in the Inspector
-
+    [SerializeField] DamageScript damageScript;
     private GameObject currentBottle = null;
     private GameObject currentText = null;
 
@@ -26,6 +23,7 @@ public class WaterBottle : MonoBehaviour
                 {
                     if (hit.collider.gameObject == waterBottles[i])
                     {
+
                         currentBottle = waterBottles[i];
                         currentText = drinkTexts[i];
                         currentText.SetActive(true);
@@ -56,6 +54,7 @@ public class WaterBottle : MonoBehaviour
         // Check if the drink key is pressed
         if (currentBottle != null && Input.GetKeyDown(drinkKey))
         {
+            damageScript.ThirstRecovered(40);
             Destroy(currentBottle);
             audioSource.PlayOneShot(drinkingSound); // Play the drinking sound effect
             if (currentText != null)

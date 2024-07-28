@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TherapistAnimatorController : MonoBehaviour
@@ -10,6 +8,7 @@ public class TherapistAnimatorController : MonoBehaviour
 
     void Start()
     {
+
         animator = GetComponent<Animator>();
         timer = 0f;
     }

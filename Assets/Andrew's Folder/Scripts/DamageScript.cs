@@ -112,7 +112,7 @@ public class DamageScript : MonoBehaviour
             GameOver();
         }
     }
-    public async void HungerReduced(int damage)
+    public void HungerReduced(int damage)
     {
         hunger -= damage;
         hungerBar.SetValue(sanity);
@@ -122,7 +122,7 @@ public class DamageScript : MonoBehaviour
             GameOver();
         }
     }
-    public async void HydrasionReduced(int damage)
+    public void HydrasionReduced(int damage)
     {
         thirst -= damage;
         thirstBar.SetValue(sanity);
