@@ -13,15 +13,15 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex;
+    [SerializeField] int paperNoteIndex, doorIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
     [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor;
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp ;
 
-    [SerializeField] public bool isPicked, isDoorOpen, isBlinds, isBlindsOpen;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen;
 
     [SerializeField] Transform pickUpPoint;
 
@@ -45,6 +45,9 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Material shapeMaterial;
 
+    [SerializeField] AudioSource opendoor;
+    [SerializeField] AudioSource closedoor;
+
     [SerializeField] Shader outlineShader;
     [SerializeField] Shader standard;
     [SerializeField] Material outlineMaterial;
@@ -60,6 +63,7 @@ public class ObjectPickUp : MonoBehaviour
     HotBar hotbar;
     public Movement movement;
     ShopUI shopUI;
+    DoorAnimation doorAnimation;
 
     private void Start()
     {
@@ -485,11 +489,20 @@ public class ObjectPickUp : MonoBehaviour
         {
             isDoor = true;
             door = hit1.collider.gameObject;
-            door.GetComponent<DoorAnimation>();
-            if (Input.GetKeyDown(KeyCode.E) && isDoor)
+            var animation = door.GetComponent<Animator>();
+            if (Input.GetKeyDown(KeyCode.E) && isDoor && doorIndex % 2 != 0)
             {
                 isDoorOpen = true;
+                closedoor.Stop();
+                opendoor.Play();
+                animation.Play("Door Opening");
+            }
 
+            else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0) 
+            {
+                opendoor.Stop();
+                closedoor.Play();
+                animation.Play("Door Closing");
             }
         }
 
