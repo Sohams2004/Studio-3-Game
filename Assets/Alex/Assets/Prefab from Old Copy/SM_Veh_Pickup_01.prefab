@@ -511,8 +511,8 @@ GameObject:
   - component: {fileID: 23910729170130432}
   - component: {fileID: -8967199892257966969}
   - component: {fileID: 410494828494500888}
-  - component: {fileID: 35765477612440085}
   - component: {fileID: -8696266389190879013}
+  - component: {fileID: -4822227734749111240}
   m_Layer: 21
   m_Name: SM_Veh_Pickup_01
   m_TagString: Untagged
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56acfee3c2bd9c74786c205a03cdf4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carSpeed: 50
+  carSpeed: 0
   destroyCarIn: 30
   rb: {fileID: 0}
 --- !u!65 &410494828494500888
@@ -627,7 +627,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.337614, y: 2.0367544, z: 5.43544}
   m_Center: {x: 0, y: 1.2516423, z: 0}
---- !u!82 &35765477612440085
+--- !u!54 &-8696266389190879013
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968802732931520}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!82 &-4822227734749111240
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -636,19 +663,19 @@ AudioSource:
   m_GameObject: {fileID: 1968802732931520}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1407378620714285478, guid: ef3eddaf7cbd03c4e9a67fa3007d72d4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9ade710c5659bb1419bfc95886e9f5b3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 110
+  Priority: 56
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 60
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -723,30 +750,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!54 &-8696266389190879013
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968802732931520}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
