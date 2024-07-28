@@ -13,19 +13,19 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex, doorIndex;
+    [SerializeField] int paperNoteIndex, doorIndex, sitIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
     [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp ;
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -37,7 +37,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
-    [SerializeField] Image crosshair, paperNote, handSign;
+    [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
@@ -513,6 +513,33 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    void Sit()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
+
+        if (isRay)
+        {
+            isChair = true;
+            chairSign.gameObject.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E) && isChair && sitIndex % 2 != 0)
+            {
+                isSitting = true;
+            }
+            
+            else if (Input.GetKeyDown(KeyCode.E) && isSitting && sitIndex % 2 == 0)
+            {
+                isSitting = false;
+            }
+        }
+
+        if(!isRay)
+        {
+            isChair = false;
+            chairSign.gameObject.SetActive(false);
+        }
+    }
+
     /* void BlindsOpen()
      {
          bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
@@ -547,6 +574,7 @@ public class ObjectPickUp : MonoBehaviour
         OpenDoor();
         /*BlindsOpen();*/
         Money();
+        Sit();
     }
 }
 
