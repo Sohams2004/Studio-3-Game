@@ -34,10 +34,7 @@ public class DoorAnimation : MonoBehaviour
             isOpen = false;
         }
 
-        if (objectPickUp.isDoor && objectPickUp.isDoorOpen)
-        {
 
-        }
     }
     private void OnTriggerEnter(Collider other)
     {

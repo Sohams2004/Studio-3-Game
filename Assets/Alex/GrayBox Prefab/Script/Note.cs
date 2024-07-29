@@ -1,6 +1,7 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class ListActivator : MonoBehaviour
+public class Note : MonoBehaviour
 {
     public GameObject targetObject;
     public GameObject indicator;
@@ -14,22 +15,25 @@ public class ListActivator : MonoBehaviour
         indicator.SetActive(false);
 
     }
-    private void Update()
+    private async void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !isActive && isInside)
         {
             targetObject.SetActive(true);
+            await Task.Delay(100);
+            isActive = true;
 
         }
         if (Input.GetKeyDown(KeyCode.E) && isActive && isInside)
         {
             targetObject.SetActive(false);
-
+            await Task.Delay(100);
+            isActive = false;
         }
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))  // Check if the player entered the trigger
+        if (other.CompareTag("Player"))
         {
             if (!isActive)
             {
@@ -43,12 +47,14 @@ public class ListActivator : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))  // Check if the player exited the trigger
-        {
-            isInside = false;
-            /*targetObject.SetActive(false);*/
-        }
-    }
+    /*  void OnTriggerExit(Collider other)
+      {
+          if (other.CompareTag("Player"))  // Check if the player exited the trigger
+          {
+              isInside = false;
+              targetObject.SetActive(false);
+              isActive = false;
+              *//*targetObject.SetActive(false);*//*
+          }
+      }*/
 }
