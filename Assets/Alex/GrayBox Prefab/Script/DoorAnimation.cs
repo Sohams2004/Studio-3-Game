@@ -11,23 +11,16 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] bool isOpen = false;
     [SerializeField] bool inDoor = false;
 
-    ObjectPickUp objectPickUp;
-
-    private void Start()
-    {
-        objectPickUp = FindObjectOfType<ObjectPickUp>();
-    }
-
 
     private async void Update()
     {
-        if (Input.GetKey(KeyCode.E) && !isOpen & inDoor)
+        if (Input.GetKeyDown(KeyCode.E) && !isOpen & inDoor)
         {
             OpenDoor();
             await Task.Delay(2000);
             isOpen = true;
         }
-        if (Input.GetKey(KeyCode.E) && isOpen & inDoor)
+        if (Input.GetKeyDown(KeyCode.E) && isOpen & inDoor)
         {
             CloseDoor();
             await Task.Delay(2000);

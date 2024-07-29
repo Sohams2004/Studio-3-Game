@@ -9,6 +9,9 @@ public class Node : IComparable
 
     public GameObject nodeGameObject {  get; private set; }
 
+    public bool isVisited = false;
+    public int versionNumber;
+
     bool isWalkable;
     int gCost, hCost, Fcost;
 
