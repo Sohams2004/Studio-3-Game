@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &8084742 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1839305651628058414, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &14594432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2080,6 +2085,75 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &106679426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8084742}
+    m_Modifications:
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449813443309620445, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+      propertyPath: m_Name
+      value: SM_Generic_SkyDome 1 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
 --- !u!4 &109720530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1df4ac7fbcc02bb43ab074f5e5a0fcfe, type: 3}
@@ -24112,6 +24186,14 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 4494516356837643934, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
   m_PrefabInstance: {fileID: 1927383620468626659}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Scenes/Perception Edge Game/Day 1.unity
+========
+--- !u!4 &1750580936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7449813443309326589, guid: 7c66f2f081211ed43aabf354ac69cb29, type: 3}
+  m_PrefabInstance: {fileID: 106679426}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>>> a553ee371575a75974933c0c909bd11a9827462d:Assets/Scenes/Perception Edge Game/Day 2.unity
 --- !u!43 &1754872151
 Mesh:
   m_ObjectHideFlags: 0
@@ -26559,6 +26641,113 @@ PrefabInstance:
 Animator:
   m_CorrespondingSourceObject: {fileID: 2164250672673085932, guid: 96cca1bd89d9539418caccb80e380388, type: 3}
   m_PrefabInstance: {fileID: 1662431339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1916775170
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1618251261}
+    m_Modifications:
+    - target: {fileID: 2786858639919433677, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_Name
+      value: Shop UI (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.84700006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.86659265
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.13800001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.499878
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+--- !u!224 &1916775171 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6552561834793516283, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+  m_PrefabInstance: {fileID: 1916775170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1916775172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2786858639919433677, guid: e84c673276fda18469e72dcd74d76747, type: 3}
+  m_PrefabInstance: {fileID: 1916775170}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1919800510
 PrefabInstance:
@@ -32068,7 +32257,11 @@ PrefabInstance:
     - target: {fileID: 6398318103202965152, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: shopUI
       value: 
+<<<<<<<< HEAD:Assets/Scenes/Perception Edge Game/Day 1.unity
       objectReference: {fileID: 450463636}
+========
+      objectReference: {fileID: 1916775172}
+>>>>>>>> a553ee371575a75974933c0c909bd11a9827462d:Assets/Scenes/Perception Edge Game/Day 2.unity
     - target: {fileID: 6398318103202965152, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: InteractText
       value: 
@@ -33469,7 +33662,10 @@ PrefabInstance:
     - {fileID: 1742614563037415802, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 1830774136453330550, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 8874468730986981668, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+<<<<<<<< HEAD:Assets/Scenes/Perception Edge Game/Day 1.unity
     - {fileID: 8003886918729521029, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+========
+>>>>>>>> a553ee371575a75974933c0c909bd11a9827462d:Assets/Scenes/Perception Edge Game/Day 2.unity
     - {fileID: 368945683591149983, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 360862290737369432, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
@@ -33537,13 +33733,21 @@ PrefabInstance:
       addedObject: {fileID: 1814344922}
     - targetCorrespondingSourceObject: {fileID: 3115624580659809227, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: -1
+<<<<<<<< HEAD:Assets/Scenes/Perception Edge Game/Day 1.unity
       addedObject: {fileID: 450463635}
+========
+      addedObject: {fileID: 1916775171}
+>>>>>>>> a553ee371575a75974933c0c909bd11a9827462d:Assets/Scenes/Perception Edge Game/Day 2.unity
     - targetCorrespondingSourceObject: {fileID: 3115624580659809227, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1864169698}
     - targetCorrespondingSourceObject: {fileID: 1839305651628058414, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: 0
+<<<<<<<< HEAD:Assets/Scenes/Perception Edge Game/Day 1.unity
       addedObject: {fileID: 1189210304}
+========
+      addedObject: {fileID: 1750580936}
+>>>>>>>> a553ee371575a75974933c0c909bd11a9827462d:Assets/Scenes/Perception Edge Game/Day 2.unity
     - targetCorrespondingSourceObject: {fileID: 3592263539219991215, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1690695173}
