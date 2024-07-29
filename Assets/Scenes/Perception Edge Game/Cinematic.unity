@@ -999,7 +999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 30.558807}
+  m_AnchoredPosition: {x: 0, y: 30.558838}
   m_SizeDelta: {x: 285.2354, y: 61.117615}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467814700
@@ -44627,6 +44627,7 @@ MonoBehaviour:
     m_Bits: 32768
   pickUpMoneyText: {fileID: 0}
   moneyCountText: {fileID: 0}
+  InteractText: {fileID: 0}
   shopUI: {fileID: 0}
   breadPrice: 6
   eggPrice: 4
@@ -44635,6 +44636,7 @@ MonoBehaviour:
   eggPrefab: {fileID: 9112462144247730713, guid: 9d9f5f4dfd7da4e43934996f55341583, type: 3}
   orangePrefab: {fileID: 8462944261276933237, guid: aed26b4c98d06fb42902f3aba1dd1281, type: 3}
   spawnPoint: {fileID: 0}
+  inside: 0
 --- !u!114 &1709538588 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 906703304278342585, guid: afec815ecdf55f34692e632cb7ae66d7, type: 3}
@@ -45639,11 +45641,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Generic_SkyDome 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505653873, guid: 4c296059fcc1b2b4e8f8038e36e67917, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c296059fcc1b2b4e8f8038e36e67917, type: 3}
+--- !u!1001 &4814731603519627279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 48.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.538798
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505488977, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564473412505653873, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
+      propertyPath: m_Name
+      value: SM_Generic_SkyDome 1 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb71aeb02c4b0ad4f952ca1ec04458fb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -45672,6 +45735,7 @@ SceneRoots:
   - {fileID: 2045562276}
   - {fileID: 916764627}
   - {fileID: 777164571868854018}
+  - {fileID: 4814731603519627279}
   - {fileID: 2693565115179989072}
   - {fileID: 2179685865466456845}
   - {fileID: 782388975112352836}
