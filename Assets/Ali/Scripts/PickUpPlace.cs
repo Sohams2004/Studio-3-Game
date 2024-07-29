@@ -52,7 +52,7 @@ public class PickUpPlace : MonoBehaviour
         {
             DrinkOrangeJuice();
             damageScript.ThirstRecovered(40);
-            
+
         }
 
         if (isLookingAtPanWithFriedEgg && Input.GetKeyDown(KeyCode.F))

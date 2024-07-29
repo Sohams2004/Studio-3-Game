@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
 
 public class ShopUI : MonoBehaviour
 {
@@ -17,6 +14,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] LayerMask moneyLayer;
 
     [SerializeField] TextMeshProUGUI pickUpMoneyText, moneyCountText;
+    [SerializeField] TMP_Text InteractText;
 
     [SerializeField] GameObject shopUI;
 
@@ -26,15 +24,28 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] Transform spawnPoint;
 
+    [SerializeField] bool inside;
+
     // Start is called before the first frame update
     void Start()
     {
+        inside = false;
         shopUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (inside && Input.GetKey(KeyCode.E))
+        {
+
+            shopUI.SetActive(true);
+            InteractText.text = string.Empty;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+        }
+
         //Money();
     }
 
@@ -65,20 +76,26 @@ public class ShopUI : MonoBehaviour
     {
         if (other.CompareTag("Pay Station"))
         {
-            shopUI.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            inside = true;
+            InteractText.text = "Press E to Interact";
+
         }
     }
-
-    void OnTriggerExit(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Pay Station"))
         {
-            shopUI.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            inside = true;
+            InteractText.text = "Press E to Interact";
+
+
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        shopUI.SetActive(false);
+        InteractText.text = string.Empty;
+        inside = false;
     }
 
     public void BuyBread()
@@ -119,6 +136,11 @@ public class ShopUI : MonoBehaviour
 
     public void CloseUI()
     {
+        Time.timeScale = 1;
         shopUI.SetActive(false);
+        InteractText.text = string.Empty;
+        inside = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

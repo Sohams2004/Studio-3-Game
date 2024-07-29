@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LampTutorial : MonoBehaviour
@@ -28,7 +26,7 @@ public class LampTutorial : MonoBehaviour
                 {
                     isLightOn = !isLightOn; // Toggle the light state
                     lightSource.SetActive(isLightOn);
-                    
+
                     // Play the sound effect when toggling the light
                     if (audioSource != null && lightToggleSound != null)
                     {

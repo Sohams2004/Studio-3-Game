@@ -26,7 +26,7 @@ public class MainGame : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             tigerAnimator.Play("Eat");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }

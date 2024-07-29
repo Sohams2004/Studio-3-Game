@@ -4,12 +4,11 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public TextMeshProUGUI CurtainsTask;
-    
+
 
     public TMP_Text promptText;
     public Animator objectAnimator;
-    public AudioClip interactionSound;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private bool playerInRange = false;
     [SerializeField] private bool hasInteracted = false;
 
@@ -29,7 +28,7 @@ public class Interactable : MonoBehaviour
             objectAnimator.SetBool("Blindsup", true);
             objectAnimator.SetBool("Blindsdown", false);
             hasInteracted = true;
-            audioSource.PlayOneShot(interactionSound);
+            audioSource.Play();
 
             CurtainsTask.text = "Curtains Opened";
             CurtainsTask.color = Color.green;
@@ -41,7 +40,7 @@ public class Interactable : MonoBehaviour
             objectAnimator.SetBool("Blindsdown", true);
             hasInteracted = false;
 
-            audioSource.PlayOneShot(interactionSound);
+            audioSource.Play();
         }
         /*    PlayBlindAnim();
         }

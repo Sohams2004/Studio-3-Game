@@ -13,19 +13,19 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex;
+    [SerializeField] int paperNoteIndex, doorIndex, sitIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
     [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor;
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoorOpen, isBlinds, isBlindsOpen;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -37,13 +37,16 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
-    [SerializeField] Image crosshair, paperNote, handSign;
+    [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
     [SerializeField] Transform[] itemFrames;
 
     [SerializeField] Material shapeMaterial;
+
+    [SerializeField] AudioSource opendoor;
+    [SerializeField] AudioSource closedoor;
 
     [SerializeField] Shader outlineShader;
     [SerializeField] Shader standard;
@@ -60,6 +63,7 @@ public class ObjectPickUp : MonoBehaviour
     HotBar hotbar;
     public Movement movement;
     ShopUI shopUI;
+    DoorAnimation doorAnimation;
 
     private void Start()
     {
@@ -485,11 +489,20 @@ public class ObjectPickUp : MonoBehaviour
         {
             isDoor = true;
             door = hit1.collider.gameObject;
-            door.GetComponent<DoorAnimation>();
-            if (Input.GetKeyDown(KeyCode.E) && isDoor)
+            var animation = door.GetComponent<Animator>();
+            if (Input.GetKeyDown(KeyCode.E) && isDoor && doorIndex % 2 != 0)
             {
                 isDoorOpen = true;
-               
+                closedoor.Stop();
+                opendoor.Play();
+                animation.Play("Door Opening");
+            }
+
+            else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0) 
+            {
+                opendoor.Stop();
+                closedoor.Play();
+                animation.Play("Door Closing");
             }
         }
 
@@ -497,6 +510,33 @@ public class ObjectPickUp : MonoBehaviour
         {
             isDoor = false;
             door = null;
+        }
+    }
+
+    void Sit()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
+
+        if (isRay)
+        {
+            isChair = true;
+            chairSign.gameObject.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E) && isChair && sitIndex % 2 != 0)
+            {
+                isSitting = true;
+            }
+            
+            else if (Input.GetKeyDown(KeyCode.E) && isSitting && sitIndex % 2 == 0)
+            {
+                isSitting = false;
+            }
+        }
+
+        if(!isRay)
+        {
+            isChair = false;
+            chairSign.gameObject.SetActive(false);
         }
     }
 
@@ -534,6 +574,7 @@ public class ObjectPickUp : MonoBehaviour
         OpenDoor();
         /*BlindsOpen();*/
         Money();
+        Sit();
     }
 }
 
