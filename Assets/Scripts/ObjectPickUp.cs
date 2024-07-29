@@ -65,6 +65,8 @@ public class ObjectPickUp : MonoBehaviour
     ShopUI shopUI;
     DoorAnimation doorAnimation;
 
+    [SerializeField] Animator doorAnimator;
+
     private void Start()
     {
         camera = Camera.main;
@@ -489,20 +491,22 @@ public class ObjectPickUp : MonoBehaviour
         {
             isDoor = true;
             door = hit1.collider.gameObject;
-            var animation = door.GetComponent<Animator>();
+            doorAnimator = door.GetComponent<Animator>();
             if (Input.GetKeyDown(KeyCode.E) && isDoor && doorIndex % 2 != 0)
             {
+                doorIndex++;
                 isDoorOpen = true;
-                closedoor.Stop();
-                opendoor.Play();
-                animation.Play("Door Opening");
+                doorAnimator.Play("Door Opening");
+                //closedoor.Stop();
+                //opendoor.Play();
             }
 
             else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0) 
             {
-                opendoor.Stop();
-                closedoor.Play();
-                animation.Play("Door Closing");
+                doorIndex++;
+                doorAnimator.Play("Door Closing");
+                //opendoor.Stop();
+                //closedoor.Play();
             }
         }
 
@@ -510,6 +514,7 @@ public class ObjectPickUp : MonoBehaviour
         {
             isDoor = false;
             door = null;
+            doorAnimator = null;
         }
     }
 
@@ -524,11 +529,13 @@ public class ObjectPickUp : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && isChair && sitIndex % 2 != 0)
             {
+                sitIndex++;
                 isSitting = true;
             }
             
             else if (Input.GetKeyDown(KeyCode.E) && isSitting && sitIndex % 2 == 0)
             {
+                sitIndex--;
                 isSitting = false;
             }
         }

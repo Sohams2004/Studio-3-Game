@@ -9,24 +9,50 @@ public class CarFear : MonoBehaviour
 
     [SerializeField] float carSpeed;
 
+    [SerializeField] bool isCarMoving;
+
+    [SerializeField] Transform carSpawn;
+
     [SerializeField] Cars cars;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Car Fear"))
         {
-            CarsAttractToPlayer();
+            Instantiate(car, carSpawn.position, Quaternion.Euler(0, -180f, 0));
             cars = car.GetComponent<Cars>();
 
-            cars.enabled = false;
+            cars.carSpeed = 40;
+
+            var carCollider = car.GetComponent<BoxCollider>();
+            carCollider.enabled = false;
+
+            //cars.enabled = false;
+
+            isCarMoving = true;
+
+            Destroy(other.gameObject);
         }
     }
 
     void CarsAttractToPlayer()
     {
-        car = GameObject.FindWithTag("Car");
+        //car = GameObject.FindWithTag("Car");
+
         carRb = car.GetComponent<Rigidbody>();
-        Vector3 attractCar = (car.transform.position - gameObject.transform.forward).normalized;
-        carRb.velocity = attractCar * carSpeed;
+        Vector3 Distance = (gameObject.transform.position - car.transform.position).normalized;
+        carRb.AddForce(Distance * carSpeed * Time.deltaTime);
+
+
+        //Vector3 moveCar = Distance * carSpeed * Time.deltaTime;
+        //carRb.MovePosition(carRb.position + moveCar);
+    }
+
+    private void Update()
+    {
+        if(isCarMoving)
+        {
+            CarsAttractToPlayer();
+        }
     }
 }

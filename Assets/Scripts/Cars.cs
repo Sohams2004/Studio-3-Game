@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cars : MonoBehaviour
 {
-    [SerializeField] private float carSpeed;
+    [SerializeField] public float carSpeed;
     [SerializeField] private float destroyCarIn;
 
     [SerializeField] Rigidbody rb;
