@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+
 
 
 public class ObjectPickUp : MonoBehaviour
@@ -9,11 +11,13 @@ public class ObjectPickUp : MonoBehaviour
     public GameObject panel; //for the task list
     public TextMeshProUGUI CashTask; //to reference the task text
 
+    [SerializeField] GameObject mainPlayer, secondPlayer;
+
     [SerializeField] float rayLength;
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex;
+    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
@@ -21,11 +25,11 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning, isSecondPlayerActive;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer, blindsLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -37,6 +41,8 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
+    [SerializeField] TextMeshProUGUI blindsTask;
+
     [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
@@ -47,6 +53,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
+    [SerializeField] AudioSource blindsAudio;
 
     [SerializeField] Shader outlineShader;
     [SerializeField] Shader standard;
@@ -60,21 +67,25 @@ public class ObjectPickUp : MonoBehaviour
     GameObject parentObj;
     GameObject place;
     GameObject money;
-    [SerializeField] GameObject door;
+    [SerializeField] GameObject door, blinds;
 
     HotBar hotbar;
     public Movement movement;
     ShopUI shopUI;
     DoorAnimation doorAnimation;
+    Sitting2 sitting;
 
-    [SerializeField] Animator doorAnimator;
+    [SerializeField] Animator doorAnimator, blindsAnimator;
 
     private void Start()
     {
+        secondPlayer.SetActive(false);
+
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
         movement = FindObjectOfType<Movement>();
         shopUI = FindObjectOfType<ShopUI>();
+        sitting = FindObjectOfType<Sitting2>();
 
         //outlineShader = Shader.Find("Outline");
         outlineMaterial = new Material(outlineShader);
@@ -522,55 +533,53 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    /*void Sit()
+
+
+    void BlindsOpen()
     {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
 
         if (isRay)
         {
-            isChair = true;
-            chairSign.gameObject.SetActive(true);
+            isBlinds = true;
+            blinds = hit1.collider.gameObject;
+            blindsAnimator = blinds.GetComponent<Animator>();
+            blindsAudio = GetComponent<AudioSource>();
 
-            if (Input.GetKeyDown(KeyCode.E) && isChair && sitIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.E) && isBlinds && blindsIndex % 2 != 0)
             {
-                sitIndex++;
-                isSitting = true;
+                isBlindsOpen = true;
+                blindsAnimator.SetBool("Blindsup", true);
+                blindsAnimator.SetBool("Blindsdown", false);
+                blindsTask.color = Color.green;
+
+                if (blindsAudio != null)
+                {
+                    blindsAudio.Play();
+                }
             }
 
-            else if (Input.GetKeyDown(KeyCode.E) && isSitting && sitIndex % 2 == 0)
+            if (Input.GetKeyDown(KeyCode.E) && isBlindsOpen && blindsIndex % 2 == 0)
             {
-                sitIndex++;
-                isSitting = false;
+                isBlindsOpen = true;
+                blindsAnimator.SetBool("Blindsup", false);
+                blindsAnimator.SetBool("Blindsdown", true);
+
+                if (blindsAudio != null)
+                {
+                    blindsAudio.Play();
+                }
             }
         }
 
         else if (!isRay)
         {
-            isChair = false;
-            chairSign.gameObject.SetActive(false);
+            isBlinds = false;
+            blinds = null;
+            blindsAnimator = null;
+            blindsAudio = null;
         }
-    }*/
-
-    /* void BlindsOpen()
-     {
-         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
-
-         if (isRay)
-         {
-             isBlinds = true;
-
-             if (Input.GetKeyDown(KeyCode.E) && isBlinds)
-             {
-                 isBlindsOpen = true;
-             }
-         }
-
-         else if (!isRay)
-         {
-             isBlinds = false;
-         }
-
-     }*/
+    }
 
     void TapWater()
     {
@@ -603,6 +612,45 @@ public class ObjectPickUp : MonoBehaviour
 
     }
 
+    async void Sit()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
+
+        if (isRay)
+        {
+            isChair = true;
+            chairSign.gameObject.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.F) && !isSecondPlayerActive)
+            {
+                isSitting = !isSitting;
+                sitIndex++;
+            }
+        }
+
+        else if (!isRay)
+        {
+            isChair = false;
+            chairSign.gameObject.SetActive(false);
+        }
+
+        if (isSitting)
+        {
+            mainPlayer.SetActive(false);
+            secondPlayer.SetActive(true);
+            await Task.Delay(5000);
+            isSecondPlayerActive = true;
+        }
+
+        if (isSecondPlayerActive)
+        {
+            mainPlayer.SetActive(true);
+            secondPlayer.SetActive(false);
+            await Task.Delay(5000);
+            isSecondPlayerActive = false;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -614,9 +662,9 @@ public class ObjectPickUp : MonoBehaviour
         PaperNote();
         PlaceObjects();
         OpenDoor();
-        /*BlindsOpen();*/
+        BlindsOpen();
         Money();
-        //Sit();
+        Sit();
         TapWater();
     }
 }
