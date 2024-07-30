@@ -17,7 +17,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex, tvIndex;
+    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex, tvIndex, shopIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
@@ -25,11 +25,11 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning, isSecondPlayerActive, isTV, isTVOn;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning, isSecondPlayerActive, isTV, isTVOn, isShop, isShopOn;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer, blindsLayer, tvLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer, blindsLayer, tvLayer, shopLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -68,6 +68,7 @@ public class ObjectPickUp : MonoBehaviour
     GameObject place;
     GameObject money;
     [SerializeField] GameObject door, blinds;
+    [SerializeField] GameObject shopUi;
 
     HotBar hotbar;
     public Movement movement;
@@ -682,15 +683,20 @@ public class ObjectPickUp : MonoBehaviour
 
                 tvTask.text = "Tv On";
                 tvTask.color = Color.green;
+
+                tvIndex++;
             }
 
             else if (Input.GetKeyDown(KeyCode.E) && isTVOn && tvIndex % 2 == 0)
             {
+                isTVOn = false;
                 screen.SetActive(false);
                 staticnoice.Stop();
                 voice.Stop();
                 LightmapSettings.lightmaps = lightmapsOff;
                 hasInteracted = false;
+
+                tvIndex++;
             }
         }
 
@@ -698,6 +704,36 @@ public class ObjectPickUp : MonoBehaviour
         {
             isTV = false;
         }
+    }
+
+    void Shop()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, shopLayer);
+
+        if (isRay)
+        {
+            isShop = true;
+
+            if (Input.GetKeyDown(KeyCode.E) && isShop && shopIndex % 2 != 0)
+            {
+                isShopOn = true;
+                shopUi.SetActive(true);
+                shopIndex++;
+            }
+            
+            if (Input.GetKeyDown(KeyCode.E) && isShopOn && shopIndex % 2 == 0)
+            {
+                isShopOn = false;
+                shopUi.SetActive(true);
+                shopIndex++;
+            }
+        }
+
+        else if (!isRay)
+        {
+            isShop = false;
+        }
+
     }
 
     private void OnDrawGizmos()
@@ -716,5 +752,6 @@ public class ObjectPickUp : MonoBehaviour
         Sit();
         TapWater();
         Television();
+        Shop();
     }
 }
