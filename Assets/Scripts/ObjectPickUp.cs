@@ -522,7 +522,7 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    void Sit()
+    /*void Sit()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
 
@@ -539,7 +539,7 @@ public class ObjectPickUp : MonoBehaviour
 
             else if (Input.GetKeyDown(KeyCode.E) && isSitting && sitIndex % 2 == 0)
             {
-                sitIndex--;
+                sitIndex++;
                 isSitting = false;
             }
         }
@@ -549,7 +549,7 @@ public class ObjectPickUp : MonoBehaviour
             isChair = false;
             chairSign.gameObject.SetActive(false);
         }
-    }
+    }*/
 
     /* void BlindsOpen()
      {
@@ -579,16 +579,10 @@ public class ObjectPickUp : MonoBehaviour
         if (isRay)
         {
             isTapWater = true;
-            if (Input.GetKeyDown(KeyCode.E) && isTapWater && tapWaterIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                isTapWaterRunning = true;
-                tapWater.Play();
-            }
-
-            if (Input.GetKeyDown(KeyCode.E) && isTapWaterRunning && tapWaterIndex % 2 == 0)
-            {
-                isTapWaterRunning = false;
-                tapWater.Stop();
+                isTapWaterRunning = !isTapWaterRunning;
+                tapWaterIndex++;
             }
         }
 
@@ -596,6 +590,17 @@ public class ObjectPickUp : MonoBehaviour
         {
             isTapWater = false;
         }
+
+        if (isTapWaterRunning)
+        {
+            tapWater.Play();
+        }
+
+        else if (!isTapWaterRunning)
+        {
+            tapWater.Stop();
+        }
+
     }
 
     private void OnDrawGizmos()
@@ -611,7 +616,7 @@ public class ObjectPickUp : MonoBehaviour
         OpenDoor();
         /*BlindsOpen();*/
         Money();
-        Sit();
+        //Sit();
         TapWater();
     }
 }
