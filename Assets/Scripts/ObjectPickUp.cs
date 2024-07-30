@@ -17,7 +17,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex;
+    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex, tvIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
@@ -25,11 +25,11 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning, isSecondPlayerActive;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning, isSecondPlayerActive, isTV, isTVOn;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer, blindsLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer, blindsLayer, tvLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -77,6 +77,19 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Animator doorAnimator, blindsAnimator;
 
+    //Television
+    public TextMeshProUGUI tvTask;
+
+    [SerializeField] GameObject screen;
+    public LightmapData[] lightmapsOn;
+    public LightmapData[] lightmapsOff;
+
+    [SerializeField] AudioSource voice;
+    [SerializeField] AudioSource staticnoice;
+    [SerializeField] bool hasInteracted = false;
+    [SerializeField] bool playerInRange = false;
+    [SerializeField] TMP_Text tvtext;
+
     private void Start()
     {
         secondPlayer.SetActive(false);
@@ -87,6 +100,8 @@ public class ObjectPickUp : MonoBehaviour
         shopUI = FindObjectOfType<ShopUI>();
         sitting = FindObjectOfType<Sitting2>();
 
+        screen.SetActive(false);
+        LightmapSettings.lightmaps = lightmapsOff;
         //outlineShader = Shader.Find("Outline");
         outlineMaterial = new Material(outlineShader);
 
@@ -533,8 +548,6 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-
-
     void BlindsOpen()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
@@ -651,6 +664,42 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    void Television()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, tvLayer);
+        if (isRay)
+        {
+            isTV = true;
+
+            if (Input.GetKeyDown(KeyCode.E) && isTV && tvIndex % 2 != 0)
+            {
+                isTVOn = true;
+                screen.SetActive(true);
+                staticnoice.Play();
+                voice.Play();
+                LightmapSettings.lightmaps = lightmapsOn;
+                hasInteracted = true;
+
+                tvTask.text = "Tv On";
+                tvTask.color = Color.green;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.E) && isTVOn && tvIndex % 2 == 0)
+            {
+                screen.SetActive(false);
+                staticnoice.Stop();
+                voice.Stop();
+                LightmapSettings.lightmaps = lightmapsOff;
+                hasInteracted = false;
+            }
+        }
+
+        else if(!isRay)
+        {
+            isTV = false;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -666,5 +715,6 @@ public class ObjectPickUp : MonoBehaviour
         Money();
         Sit();
         TapWater();
+        Television();
     }
 }
