@@ -13,7 +13,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex, doorIndex, sitIndex;
+    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
@@ -21,11 +21,11 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting;
+    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -52,6 +52,8 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] Shader standard;
     [SerializeField] Material outlineMaterial;
 
+    [SerializeField] ParticleSystem tapWater;
+
     RaycastHit hit1;
     GameObject hitObj;
 
@@ -76,6 +78,8 @@ public class ObjectPickUp : MonoBehaviour
 
         //outlineShader = Shader.Find("Outline");
         outlineMaterial = new Material(outlineShader);
+
+        tapWater.Stop();
     }
 
     void ObjectDetect()
@@ -501,7 +505,7 @@ public class ObjectPickUp : MonoBehaviour
                 //opendoor.Play();
             }
 
-            else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0) 
+            else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0)
             {
                 doorIndex++;
                 doorAnimator.Play("Door Closing");
@@ -532,7 +536,7 @@ public class ObjectPickUp : MonoBehaviour
                 sitIndex++;
                 isSitting = true;
             }
-            
+
             else if (Input.GetKeyDown(KeyCode.E) && isSitting && sitIndex % 2 == 0)
             {
                 sitIndex--;
@@ -540,7 +544,7 @@ public class ObjectPickUp : MonoBehaviour
             }
         }
 
-        if(!isRay)
+        else if (!isRay)
         {
             isChair = false;
             chairSign.gameObject.SetActive(false);
@@ -568,6 +572,32 @@ public class ObjectPickUp : MonoBehaviour
 
      }*/
 
+    void TapWater()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, tapWaterLayer);
+
+        if (isRay)
+        {
+            isTapWater = true;
+            if (Input.GetKeyDown(KeyCode.E) && isTapWater && tapWaterIndex % 2 != 0)
+            {
+                isTapWaterRunning = true;
+                tapWater.Play();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && isTapWaterRunning && tapWaterIndex % 2 == 0)
+            {
+                isTapWaterRunning = false;
+                tapWater.Stop();
+            }
+        }
+
+        else if (!isRay)
+        {
+            isTapWater = false;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -582,6 +612,6 @@ public class ObjectPickUp : MonoBehaviour
         /*BlindsOpen();*/
         Money();
         Sit();
+        TapWater();
     }
 }
-
