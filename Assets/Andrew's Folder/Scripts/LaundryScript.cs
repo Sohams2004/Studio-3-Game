@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,8 @@ public class LaundryScript : MonoBehaviour
     [SerializeField] AudioClip limitReachedClip;
     private AudioSource audioSource;
     private int points = 20;
+
+    public TextMeshProUGUI laundryTask;
 
     private void Awake()
     {
@@ -41,6 +44,8 @@ public class LaundryScript : MonoBehaviour
                 if (points == 0)
                 {
                     PlayLimitReachedClip();
+                    laundryTask.text = "Clothes washed";
+                    laundryTask.color = Color.green;
                 }
             }
             Destroy(other.gameObject);
