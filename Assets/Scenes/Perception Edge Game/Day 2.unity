@@ -23368,6 +23368,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1103882761297548365, guid: d562cc0a17cad3f4b997c42c552cb6f2, type: 3}
+--- !u!1001 &1578500426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1098804951}
+    m_Modifications:
+    - target: {fileID: 2514757034177363814, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283282417498806658, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: pointText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283282417498806658, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: laundryTask
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312205201351159226, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+      propertyPath: m_Name
+      value: Laundry Task
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2514757034177363814, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+--- !u!4 &1578500427 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5188929327712225795, guid: ae88b6bb95230954a8c8868600af63f4, type: 3}
+  m_PrefabInstance: {fileID: 1578500426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1584584017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2946566050933703702, guid: cc2264f637d637f46b4a07399afddb0d, type: 3}
@@ -35837,6 +35912,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 360862290737369432, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1265906847}
+    - targetCorrespondingSourceObject: {fileID: 360862290737369432, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1578500427}
     - targetCorrespondingSourceObject: {fileID: 360862290737369432, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 534654169}
