@@ -9,10 +9,17 @@ public class LaundryScript : MonoBehaviour
     private AudioSource audioSource;
     private int points = 20;
 
+    [SerializeField] GameObject laundryFull;
+    [SerializeField] GameObject laundryFull2;
+    [SerializeField] GameObject laundryDone;
+
     public TextMeshProUGUI laundryTask;
 
     private void Awake()
     {
+        laundryFull.SetActive(false);
+        laundryFull2.SetActive(false);
+        laundryDone.SetActive(false);
         UpdateUI();
     }
 
@@ -41,9 +48,23 @@ public class LaundryScript : MonoBehaviour
             if (points > 0)
             {
                 Points--;
+
+                if (points == 19)
+                {
+                    laundryFull.SetActive(true);
+                }
+
+                if (points == 10)
+                {
+                    laundryFull2.SetActive(true);
+                    laundryFull.SetActive(false);
+                }
+
                 if (points == 0)
                 {
                     PlayLimitReachedClip();
+                    laundryDone.SetActive(true);
+                    laundryFull2.SetActive(false);
                     laundryTask.text = "Clothes washed";
                     laundryTask.color = Color.green;
                 }
