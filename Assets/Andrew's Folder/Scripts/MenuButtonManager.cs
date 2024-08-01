@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtonManager : MonoBehaviour
 {
@@ -69,5 +70,25 @@ public class MenuButtonManager : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
+    }
+
+    public void LoadTutorialScene()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void LoadDay1Scene()
+    {
+        SceneManager.LoadScene("Day 1");
+    }
+
+    public void LoadDay2Scene()
+    {
+        SceneManager.LoadScene("Day 2");
+    }
+
+    public void LoadDay3Scene()
+    {
+        SceneManager.LoadScene("Day 3");
     }
 }
