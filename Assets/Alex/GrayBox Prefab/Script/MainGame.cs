@@ -1,12 +1,11 @@
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainGame : MonoBehaviour
 {
     public Transform player;
     public float speed = 5f;
-    [SerializeField] Animator tigerAnimator;
+
 
 
     async void Update()
@@ -23,10 +22,9 @@ public class MainGame : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Chair"))
         {
-            tigerAnimator.Play("Eat");
-            SceneManager.LoadScene(3);
+            Destroy(gameObject);
         }
     }
 }

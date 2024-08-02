@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraShut : MonoBehaviour
 {
@@ -11,11 +10,13 @@ public class CameraShut : MonoBehaviour
     public string nextSceneName; // Name of the next scene to load
 
     private bool animationStarted = false; // Flag to check if the animation has already started
+    [SerializeField] LoadingScene scene;
 
     void Start()
     {
         // Start the animation after the specified delay
         Invoke("StartAnimation", delayBeforeAnimation);
+        scene.LoadingScreen.SetActive(false);
     }
 
     void Update()
@@ -51,9 +52,8 @@ public class CameraShut : MonoBehaviour
     {
         // Wait for the specified animation duration
         yield return new WaitForSeconds(animationDuration);
-
-        // Load the next scene
-        SceneManager.LoadScene(nextSceneName);
+        scene.LoadingScreen.SetActive(true);
+        scene.LoadScene(2);
     }
 
 
