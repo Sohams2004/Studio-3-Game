@@ -15,6 +15,8 @@ public class TherapistAnimatorController : MonoBehaviour
 
     void Update()
     {
+
+
         timer += Time.deltaTime;
         if (timer >= delayBeforeStanding)
         {
