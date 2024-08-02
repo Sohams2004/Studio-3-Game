@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class DoorAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] LoadingScene scene;
     [SerializeField] TMP_Text doortext;
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
     [SerializeField] bool isOpen = false;
     [SerializeField] bool inDoor = false;
 
-
+    private void Start()
+    {
+        scene.LoadingScreen.SetActive(false);
+    }
     private async void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !isOpen & inDoor)
@@ -72,7 +75,8 @@ public class DoorAnimation : MonoBehaviour
 
         closedoor.Stop();
         opendoor.Play();
-        animator.Play("Door Opening");
+        scene.LoadingScreen.SetActive(true);
+        scene.LoadScene(4);
 
 
 
@@ -81,8 +85,8 @@ public class DoorAnimation : MonoBehaviour
     {
         opendoor.Stop();
         closedoor.Play();
-        animator.Play("Door Closing");
-
+        scene.LoadingScreen.SetActive(true);
+        scene.LoadScene(4);
 
     }
 }
