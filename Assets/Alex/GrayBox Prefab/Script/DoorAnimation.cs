@@ -56,10 +56,12 @@ public class DoorAnimation : MonoBehaviour
             if (!isOpen)
             {
                 inDoor = true;
+                doortext.text = "Press E to Interact";
             }
             if (isOpen)
             {
                 inDoor = true;
+                doortext.text = "Press E to Interact";
             }
 
         }
@@ -76,7 +78,7 @@ public class DoorAnimation : MonoBehaviour
         closedoor.Stop();
         opendoor.Play();
         scene.LoadingScreen.SetActive(true);
-        scene.LoadScene(4);
+        scene.LoadScene(3);
 
 
 
@@ -86,7 +88,7 @@ public class DoorAnimation : MonoBehaviour
         opendoor.Stop();
         closedoor.Play();
         scene.LoadingScreen.SetActive(true);
-        scene.LoadScene(4);
+        scene.LoadScene(3);
 
     }
 }
