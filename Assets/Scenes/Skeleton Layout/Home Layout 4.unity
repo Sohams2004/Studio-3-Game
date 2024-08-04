@@ -5705,6 +5705,14 @@ PrefabInstance:
       value: Car Spawner (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3675271973046637048, guid: b96663e7894f7874496f5c30a60df80c, type: 3}
+      propertyPath: numberOfCars
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675271973046637048, guid: b96663e7894f7874496f5c30a60df80c, type: 3}
+      propertyPath: spawnInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675271973046637048, guid: b96663e7894f7874496f5c30a60df80c, type: 3}
       propertyPath: carsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 1102102086214914, guid: 3a0cb68fc702c9244a3eca2dd547fb82, type: 3}
@@ -16911,6 +16919,57 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1338271066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338271068}
+  - component: {fileID: 1338271067}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1338271067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338271066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287a1bfc32616144eaf7cd93ecc334b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 0}
+  gridArraySize: 0
+  gridNodeCountX: 0
+  gridNodeCountZ: 0
+  nodeWidth: 1
+  nodeHeight: 1
+  isWalkable: 0
+--- !u!4 &1338271068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338271066}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -48.72591, y: -7.6671166, z: 22.26095}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1339598161
 Mesh:
   m_ObjectHideFlags: 0
@@ -30388,3 +30447,4 @@ SceneRoots:
   - {fileID: 209731363}
   - {fileID: 1607788926}
   - {fileID: 64591836}
+  - {fileID: 1338271068}
