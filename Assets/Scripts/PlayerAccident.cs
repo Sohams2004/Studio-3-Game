@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAccident : MonoBehaviour
@@ -7,6 +6,8 @@ public class PlayerAccident : MonoBehaviour
     [SerializeField] float timeToDieAfterCrash;
     [SerializeField] Rigidbody rb;
     [SerializeField] Movement movement;
+
+    [SerializeField] bool isCrashed;
 
     [SerializeField] GameObject gameOverPAnel;
 
@@ -22,12 +23,16 @@ public class PlayerAccident : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.None;
             movement.enabled = false;
+            isCrashed = true;
         }
     }
 
     private void Update()
     {
-        StartCoroutine(GameOver());
+        if (isCrashed)
+        {
+            StartCoroutine(GameOver());
+        }
     }
 
     IEnumerator GameOver()
