@@ -14960,6 +14960,7 @@ MonoBehaviour:
   closedoor: {fileID: 700238977}
   isOpen: 0
   inDoor: 0
+  loadScene: {fileID: 0}
 --- !u!65 &546489269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105947,7 +105948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 368945683591149983, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 372168671446797680, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
@@ -106238,9 +106239,73 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4300000, guid: 6317ffd37e01e154ba346c24df76a87b, type: 3}
     - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-      propertyPath: items.Array.size
-      value: 1
+      propertyPath: item1
+      value: 
+      objectReference: {fileID: 669706912}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: item2
+      value: 
+      objectReference: {fileID: 1680575300}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: item3
+      value: 
+      objectReference: {fileID: 34827899}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: item4
+      value: 
+      objectReference: {fileID: 496484280}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: item5
+      value: 
+      objectReference: {fileID: 240626101}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: currentObject
+      value: 
+      objectReference: {fileID: 48280615}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: numberOfItems
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: items.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[0]
+      value: 
+      objectReference: {fileID: 669706912}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[1]
+      value: 
+      objectReference: {fileID: 1680575300}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[2]
+      value: 
+      objectReference: {fileID: 34827899}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[3]
+      value: 
+      objectReference: {fileID: 354236681}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[4]
+      value: 
+      objectReference: {fileID: 1681686317}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[5]
+      value: 
+      objectReference: {fileID: 496484280}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[6]
+      value: 
+      objectReference: {fileID: 240626101}
+    - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: inventory.Array.data[7]
+      value: 
+      objectReference: {fileID: 48280615}
     - target: {fileID: 501901090534439110, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_IsActive
       value: 1

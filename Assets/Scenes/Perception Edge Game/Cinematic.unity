@@ -617,6 +617,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cfb10b2d0a38cb945b7937ec7a91b2e7, type: 3}
   m_PrefabInstance: {fileID: 511192083}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &170703549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2023158029880551236, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
+  m_PrefabInstance: {fileID: 518219567044070319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &264914646
 GameObject:
   m_ObjectHideFlags: 0
@@ -44925,7 +44936,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 71589132}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2571448299459534508, guid: cc2264f637d637f46b4a07399afddb0d, type: 3}
       propertyPath: m_Name
@@ -44976,18 +44987,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2264f637d637f46b4a07399afddb0d, type: 3}
---- !u!4 &1533077942 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2946566050933703702, guid: cc2264f637d637f46b4a07399afddb0d, type: 3}
-  m_PrefabInstance: {fileID: 1533077941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1584310589
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 71589132}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 100000, guid: f9ec2f5b43ac0204199acdb66395048b, type: 3}
       propertyPath: m_Name
@@ -45038,11 +45044,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9ec2f5b43ac0204199acdb66395048b, type: 3}
---- !u!4 &1584310590 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: f9ec2f5b43ac0204199acdb66395048b, type: 3}
-  m_PrefabInstance: {fileID: 1584310589}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1588116214
 GameObject:
   m_ObjectHideFlags: 0
@@ -45746,6 +45747,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebe5a0144f9f9b4e842aa65c6aa8276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1942198150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8823796957108988243, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
+  m_PrefabInstance: {fileID: 518219567044070319}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &2030721773
 Mesh:
   m_ObjectHideFlags: 0
@@ -45942,10 +45954,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1737512382}
   animationTriggerName: CameraShut
-  delayBeforeAnimation: 40
+  delayBeforeAnimation: 10
   animationDuration: 3
   nextSceneName: Tutorial
   scene: {fileID: 1942198149}
+  loadScene: {fileID: 2072796399}
 --- !u!4 &2045562276
 Transform:
   m_ObjectHideFlags: 0
@@ -45961,6 +45974,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2072796399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7321054874119573285, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
+  m_PrefabInstance: {fileID: 518219567044070319}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &518219567044070319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45969,6 +45987,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1475453810}
     m_Modifications:
+    - target: {fileID: 1008816147434963948, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 1942198150}
+    - target: {fileID: 1008816147434963948, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
+      propertyPath: loadingText
+      value: 
+      objectReference: {fileID: 170703549}
     - target: {fileID: 2205372360939463413, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -46051,7 +46077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6169524853494053861, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7321054874119573285, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_Name
@@ -46059,11 +46085,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321054874119573285, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778304348528716429, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
+      propertyPath: m_text
+      value: '"Key facts. Schizophrenia causes psychosis and is associated with considerable
+        disability and may affect all areas of life including personal, family, social,
+        educational, and occupational functioning. "'
       objectReference: {fileID: 0}
     - target: {fileID: 8044247389382332408, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46596,3 +46628,5 @@ SceneRoots:
   - {fileID: 782388975112352836}
   - {fileID: 2180808383536874287}
   - {fileID: 5759378535531711159}
+  - {fileID: 1533077941}
+  - {fileID: 1584310589}
