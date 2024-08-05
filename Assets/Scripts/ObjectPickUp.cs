@@ -94,7 +94,7 @@ public class ObjectPickUp : MonoBehaviour
     private void Start()
     {
         secondPlayer.SetActive(false);
-
+        isBlinds = false;
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
         movement = FindObjectOfType<Movement>();
@@ -514,7 +514,7 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    void OpenDoor()
+    async void OpenDoor()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
 
@@ -528,16 +528,20 @@ public class ObjectPickUp : MonoBehaviour
                 doorIndex++;
                 isDoorOpen = true;
                 doorAnimator.Play("Door Opening");
-                //closedoor.Stop();
-                //opendoor.Play();
+                closedoor.Stop();
+                opendoor.Play();
+                await Task.Delay(2000);
+
             }
 
             else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0)
             {
                 doorIndex++;
                 doorAnimator.Play("Door Closing");
-                //opendoor.Stop();
-                //closedoor.Play();
+                opendoor.Stop();
+                closedoor.Play();
+                await Task.Delay(2000);
+
             }
         }
 
@@ -560,10 +564,11 @@ public class ObjectPickUp : MonoBehaviour
             blindsAnimator = blinds.GetComponent<Animator>();
             blindsAudio = GetComponent<AudioSource>();
 
-            if (Input.GetKeyDown(KeyCode.E) && isBlinds && blindsIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.E) && !isBlinds && blindsIndex % 2 != 0)
             {
-                isBlindsOpen = true;
-                blindsAnimator.Play("OpenCurtain");
+
+                isDoorOpen = true;
+                blindsAnimator.Play("Open Curtain");
 
                 blindsTask.color = Color.green;
 
@@ -575,8 +580,8 @@ public class ObjectPickUp : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && isBlindsOpen && blindsIndex % 2 == 0)
             {
-                isBlindsOpen = true;
-                blindsAnimator.Play("CloseCurtain");
+
+                blindsAnimator.Play("Close Curtain");
 
                 if (blindsAudio != null)
                 {
