@@ -9,6 +9,8 @@ public class LaundryScript : MonoBehaviour
     private AudioSource audioSource;
     private int points = 20;
 
+    [SerializeField] Animator machineActivate;
+
     [SerializeField] GameObject laundryFull;
     [SerializeField] GameObject laundryFull2;
     [SerializeField] GameObject laundryDone;
@@ -45,6 +47,8 @@ public class LaundryScript : MonoBehaviour
     {
         if (other.CompareTag("Clothing"))
         {
+            machineActivate.Play("Laundry Activate");
+
             if (points > 0)
             {
                 Points--;

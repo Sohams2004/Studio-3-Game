@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 1671623527696460309}
   - component: {fileID: 906703304278342585}
   - component: {fileID: 2859267225685218599}
-  m_Layer: 8
+  m_Layer: 23
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -307,12 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7baaed23b9b81a41a494bddf2678564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 7000
-  currentHP: 0
+  maxHP: 1000
   sanity: 0
   hunger: 0
   thirst: 0
-  dmgOverTime: 0
   sanityDecreaseRate: 2
   hungerDecreaseRate: 5
   thirstDecreaseRate: 6
@@ -320,6 +318,9 @@ MonoBehaviour:
   sanityBar: {fileID: 0}
   hungerBar: {fileID: 0}
   thirstBar: {fileID: 0}
+  hasInteracted: 0
+  postProcessingVolume: {fileID: 0}
+  vignette: {fileID: 0}
 --- !u!114 &2859267225685218599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,12 +338,15 @@ MonoBehaviour:
   pickUpLayer:
     serializedVersion: 2
     m_Bits: 8
+  damageScript: {fileID: 0}
   drinkText: {fileID: 0}
   eatText: {fileID: 0}
   drinkSound: {fileID: 0}
   eatSound: {fileID: 0}
+  toastEatSound: {fileID: 0}
   DrinkTask: {fileID: 0}
-  EatTask: {fileID: 0}
+  EatEggTask: {fileID: 0}
+  EatToastTask: {fileID: 0}
 --- !u!1 &5649070780666332201
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +359,7 @@ GameObject:
   - component: {fileID: 2947920708447387960}
   - component: {fileID: 938455057589133328}
   - component: {fileID: 5089894040340347143}
-  m_Layer: 8
+  m_Layer: 23
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -441,9 +445,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb70c881411d284a81779765035908f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  CashTask: {fileID: 0}
+  mainPlayer: {fileID: 0}
+  secondPlayer: {fileID: 0}
   rayLength: 3
   moneyCount: 0
   paperNoteIndex: 5
+  doorIndex: 0
+  sitIndex: 0
+  tapWaterIndex: 0
+  blindsIndex: 0
+  tvIndex: 0
+  shopIndex: 0
   cubeCount: 0
   sphereCount: 0
   coneCount: 0
@@ -453,9 +467,20 @@ MonoBehaviour:
   isPaperNote: 0
   isPaperNotePicked: 0
   cannotPickUp: 0
+  isPicked: 0
   isDoor: 0
   isDoorOpen: 0
-  isPicked: 0
+  isBlinds: 0
+  isBlindsOpen: 0
+  isChair: 0
+  isSitting: 0
+  isTapWater: 0
+  isTapWaterRunning: 0
+  isSecondPlayerActive: 0
+  isTV: 0
+  isTVOn: 0
+  isShop: 0
+  isShopOn: 0
   pickUpPoint: {fileID: 1803966482503588163}
   pickableObj:
     serializedVersion: 2
@@ -466,15 +491,29 @@ MonoBehaviour:
   placeLayer:
     serializedVersion: 2
     m_Bits: 1024
-  doorLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   moneyLayer:
     serializedVersion: 2
     m_Bits: 32768
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  chairLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  tapWaterLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  blindsLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  tvLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  shopLayer:
+    serializedVersion: 2
+    m_Bits: 0
   objectRb: {fileID: 0}
   pickableObject: {fileID: 0}
-  door: {fileID: 0}
   camera: {fileID: 0}
   pickDropObjectText: {fileID: 0}
   interactionText: {fileID: 0}
@@ -485,13 +524,36 @@ MonoBehaviour:
   sphereCountText: {fileID: 0}
   coneCountText: {fileID: 0}
   moneyCountText: {fileID: 0}
+  blindsTask: {fileID: 0}
   crosshair: {fileID: 0}
   paperNote: {fileID: 0}
   handSign: {fileID: 0}
+  chairSign: {fileID: 0}
   cubeImg: {fileID: 0}
   sphereImg: {fileID: 0}
   coneImg: {fileID: 0}
   itemFrames: []
+  shapeMaterial: {fileID: 0}
+  opendoor: {fileID: 0}
+  closedoor: {fileID: 0}
+  blindsAudio: {fileID: 0}
+  outlineShader: {fileID: 0}
+  standard: {fileID: 0}
+  outlineMaterial: {fileID: 0}
+  tapWater: {fileID: 0}
+  door: {fileID: 0}
+  blinds: {fileID: 0}
+  shopUi: {fileID: 0}
+  movement: {fileID: 0}
+  doorAnimator: {fileID: 0}
+  blindsAnimator: {fileID: 0}
+  tvTask: {fileID: 0}
+  screen: {fileID: 0}
+  voice: {fileID: 0}
+  staticnoice: {fileID: 0}
+  hasInteracted: 0
+  playerInRange: 0
+  tvtext: {fileID: 0}
 --- !u!81 &5089894040340347143
 AudioListener:
   m_ObjectHideFlags: 0
