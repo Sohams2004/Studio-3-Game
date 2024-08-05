@@ -27,8 +27,8 @@ public class CarManager : MonoBehaviour
         }
         StartCoroutine(SpawnCarsAtIntervals());*/
 
-        aStar = GetComponent<AStar>();
-        grid = GetComponent<Grid>();
+        aStar = FindObjectOfType<AStar>();
+        grid = FindObjectOfType<Grid>();   
     }
 
     /*void SpawnCars()
@@ -73,9 +73,12 @@ public class CarManager : MonoBehaviour
         List<Node> path = aStar.GetPath(start, end);
         if (path != null && carsPrefab.Count > 0)
         {
+            Vector3 startPosition = grid.WorldPosition(start);
+            Debug.Log(startPosition + " " + start);
+
             GameObject randomCarPrefab = carsPrefab[Random.Range(0, carsPrefab.Count)];
 
-            GameObject carObject = Instantiate(randomCarPrefab, transform);
+            GameObject carObject = Instantiate(randomCarPrefab, startPosition, Quaternion.Euler(0, 180, 0));
             Cars car = carObject.GetComponent<Cars>();
             if (car != null)
             {
