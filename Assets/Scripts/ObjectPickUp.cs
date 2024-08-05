@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
 
 
 
@@ -563,8 +563,8 @@ public class ObjectPickUp : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && isBlinds && blindsIndex % 2 != 0)
             {
                 isBlindsOpen = true;
-                blindsAnimator.SetBool("Blindsup", true);
-                blindsAnimator.SetBool("Blindsdown", false);
+                blindsAnimator.Play("OpenCurtain");
+
                 blindsTask.color = Color.green;
 
                 if (blindsAudio != null)
@@ -576,8 +576,7 @@ public class ObjectPickUp : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && isBlindsOpen && blindsIndex % 2 == 0)
             {
                 isBlindsOpen = true;
-                blindsAnimator.SetBool("Blindsup", false);
-                blindsAnimator.SetBool("Blindsdown", true);
+                blindsAnimator.Play("CloseCurtain");
 
                 if (blindsAudio != null)
                 {
@@ -700,7 +699,7 @@ public class ObjectPickUp : MonoBehaviour
             }
         }
 
-        else if(!isRay)
+        else if (!isRay)
         {
             isTV = false;
         }
@@ -720,7 +719,7 @@ public class ObjectPickUp : MonoBehaviour
                 shopUi.SetActive(true);
                 shopIndex++;
             }
-            
+
             if (Input.GetKeyDown(KeyCode.E) && isShopOn && shopIndex % 2 == 0)
             {
                 isShopOn = false;

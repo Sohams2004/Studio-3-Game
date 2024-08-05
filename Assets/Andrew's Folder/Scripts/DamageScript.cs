@@ -4,7 +4,8 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class DamageScript : MonoBehaviour
 {
-    public int maxHP = 200;
+    public int maxHP = 1000;
+    public int startingstat = 900;
     public float sanity;
     public float hunger;
     public float thirst;
@@ -20,7 +21,7 @@ public class DamageScript : MonoBehaviour
     public BarLogic thirstBar;
 
     [SerializeField] bool hasInteracted;
-
+    [SerializeField] Movement move;
     [SerializeField] PostProcessVolume postProcessingVolume;
     [SerializeField] Vignette vignette;
     void Start()
@@ -28,14 +29,14 @@ public class DamageScript : MonoBehaviour
         Time.timeScale = 1f;
         gameOverScreen.SetActive(false);
         sanity = maxHP;
-        hunger = maxHP;
-        thirst = maxHP;
+        hunger = startingstat;
+        thirst = startingstat;
         hasInteracted = false;
         sanityBar.SetMaxValue(maxHP);
         hungerBar.SetMaxValue(maxHP);
         thirstBar.SetMaxValue(maxHP);
 
-        postProcessingVolume.profile.TryGetSettings(out vignette);
+
     }
 
     void Update()
@@ -85,21 +86,36 @@ public class DamageScript : MonoBehaviour
     {
         hunger += heal;
         hungerBar.SetValue(sanity);
+        if (hunger > startingstat)
+        {
+            move.movementSpeed = 1.5f;
+        }
+        else if (hunger < startingstat)
+        {
+            move.movementSpeed = 2f;
+        }
         if (hunger > maxHP)
         {
             hunger = maxHP;
         }
-
     }
     public void ThirstRecovered(int heal)
     {
         thirst += heal;
         thirstBar.SetValue(sanity);
+        if (thirst > startingstat)
+        {
+            postProcessingVolume.profile.TryGetSettings(out vignette);
+        }
+        else if (thirst < startingstat)
+        {
+            move.movementSpeed = 2f;
+        }
+
         if (thirst > maxHP)
         {
             thirst = maxHP;
         }
-
     }
     async void DamageReceived(int damage)
     {
@@ -122,7 +138,7 @@ public class DamageScript : MonoBehaviour
             GameOver();
         }
     }
-    public void HydrasionReduced(int damage)
+    public void ThirstReduced(int damage)
     {
         thirst -= damage;
         thirstBar.SetValue(sanity);
