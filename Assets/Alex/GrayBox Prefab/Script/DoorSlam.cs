@@ -9,7 +9,7 @@ public class DoorSlam : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            anim.Play("DoorSlam");
+            anim.Play("Door Slam");
             slam.Play();
             await Task.Delay(100);
 

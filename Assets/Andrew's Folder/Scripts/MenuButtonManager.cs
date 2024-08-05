@@ -79,16 +79,16 @@ public class MenuButtonManager : MonoBehaviour
 
     public void LoadDay1Scene()
     {
-        SceneManager.LoadScene("Day 1");
+        SceneManager.LoadScene("Day 0");
     }
 
     public void LoadDay2Scene()
     {
-        SceneManager.LoadScene("Day 2");
+        SceneManager.LoadScene("Day 1");
     }
 
     public void LoadDay3Scene()
     {
-        SceneManager.LoadScene("Day 3");
+        SceneManager.LoadScene("Day 2");
     }
 }
