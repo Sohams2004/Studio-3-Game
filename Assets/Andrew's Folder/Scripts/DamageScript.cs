@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class DamageScript : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class DamageScript : MonoBehaviour
     [SerializeField] Vignette vignette;
 
     [SerializeField] TextMeshProUGUI causeOfDeathText;
+
     void Start()
     {
         Time.timeScale = 1f;
@@ -167,6 +169,7 @@ public class DamageScript : MonoBehaviour
 
     void GameOver()
     {
+        SceneManager.LoadScene("Game Over");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
