@@ -24,16 +24,24 @@ public class Grid : MonoBehaviour
 
         nodes = new Node[gridArraySize];
 
-        for (int x = 0; x < gridNodeCountZ; x++)
+        Vector3 gameObjPos = gameObject.transform.position;
+
+        for (int z = 0; z < gridNodeCountZ; z++)
         {
-            for (int z = 0; z < gridNodeCountX; z++)
+            for (int x = 0; x < gridNodeCountX; x++)
             {
                 int a = x + z * gridNodeCountX;
 
                 Vector3Int gridPos = new Vector3Int(x, 0, z);
                 Vector3 worldPos = new Vector3(x * nodeWidth, 0, z * nodeHeight);
+                Vector3 spawnPos = gameObjPos + worldPos;
+
 
                 GameObject go = null;
+
+                go = Instantiate(nodePrefab, spawnPos, Quaternion.identity);
+                go.transform.localScale = new Vector3(nodeWidth, 1, nodeHeight);
+                go.transform.parent = gameObject.transform;
 
                 bool isWalkable = !Physics.CheckBox(worldPos, new Vector3(nodeWidth / 2.0f, 0, nodeHeight / 2.0f));
 
@@ -46,5 +54,11 @@ public class Grid : MonoBehaviour
     {
         int i = GridPosition.x + GridPosition.z * gridNodeCountX;
         return nodes[i];
+    }
+
+    public Vector3 WorldPosition(Vector3Int gridPos)
+    {
+        Vector3 gameObjectPos = gameObject.transform.position;
+        return new Vector3(gridPos.x * nodeWidth, gridPos.y, gridPos.z * nodeHeight);
     }
 }

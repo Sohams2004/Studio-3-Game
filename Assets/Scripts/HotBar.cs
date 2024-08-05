@@ -121,14 +121,13 @@ public class HotBar : MonoBehaviour
                     DisableItems();
                     items[newIndex].SetActive(true);
                     currentObject = items[newIndex];
-                    items[newIndex] = objectPickUp.pickableObject;
+                objectPickUp.pickableObject = currentObject;
                     objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+
+                    Debug.Log(items[newIndex]);
                     break;
                 }
-            }
-        
-
-        
+            }    
     }
 
     /*public void Inventory()

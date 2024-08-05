@@ -15,8 +15,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
             CheckAllObjectsInPlace();
         }
-
-
     }
 
     private void CheckAllObjectsInPlace()
