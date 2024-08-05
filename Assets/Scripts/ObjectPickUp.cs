@@ -70,7 +70,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] GameObject door, blinds;
     [SerializeField] GameObject shopUi;
 
-    HotBar hotbar;
+    [SerializeField] HotBar hotbar;
     public Movement movement;
     ShopUI shopUI;
     DoorAnimation doorAnimation;
@@ -120,13 +120,13 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.enabled = false;
             isObject = true;
 
-            Renderer renderer = hitObj.GetComponent<Renderer>();
+            /*Renderer renderer = hitObj.GetComponent<Renderer>();
 
             if (renderer != null)
             {
                 shapeMaterial = renderer.material;
                 shapeMaterial.shader = outlineShader;
-            }
+            }*/
         }
 
         else if (!isRay)
@@ -136,10 +136,10 @@ public class ObjectPickUp : MonoBehaviour
             handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
 
-            if (shapeMaterial != null)
+            /*if (shapeMaterial != null)
             {
                 shapeMaterial.shader = standard;
-            }
+            }*/
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
@@ -155,6 +155,7 @@ public class ObjectPickUp : MonoBehaviour
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
 
+
                 for (int i = 0; i < hotbar.items.Count; i++)
                 {
                     if (hotbar.items[i] == null)
@@ -165,7 +166,7 @@ public class ObjectPickUp : MonoBehaviour
 
                         /*if (pickableObject.tag == "Cube" && cubeCount < 1)
                         {
-                            
+
                         }
 
                         if (pickableObject.tag == "Cone" && coneCount < 1)
@@ -182,6 +183,8 @@ public class ObjectPickUp : MonoBehaviour
                         break;
                     }
                 }
+
+
 
                 //hotbar.Inventory();
 
