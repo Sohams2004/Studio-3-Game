@@ -10,10 +10,10 @@ public class DoorAnimation : MonoBehaviour
     [SerializeField] AudioSource closedoor;
     [SerializeField] bool isOpen = false;
     [SerializeField] bool inDoor = false;
-
+    [SerializeField] GameObject loadScene;
     private void Start()
     {
-        scene.LoadingScreen.SetActive(false);
+        loadScene.SetActive(false);
     }
     private async void Update()
     {
@@ -77,8 +77,9 @@ public class DoorAnimation : MonoBehaviour
 
         closedoor.Stop();
         opendoor.Play();
-        scene.LoadingScreen.SetActive(true);
-        scene.LoadScene(3);
+        loadScene.SetActive(true);
+        scene.LoadScene("Day 0");
+
 
 
 
@@ -87,8 +88,9 @@ public class DoorAnimation : MonoBehaviour
     {
         opendoor.Stop();
         closedoor.Play();
-        scene.LoadingScreen.SetActive(true);
-        scene.LoadScene(3);
+        loadScene.SetActive(true);
+        scene.LoadScene("Day 0");
+
 
     }
 }

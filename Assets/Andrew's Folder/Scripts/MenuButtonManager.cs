@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuButtonManager : MonoBehaviour
 {
@@ -8,7 +7,12 @@ public class MenuButtonManager : MonoBehaviour
     public GameObject controlsPanel;
     public GameObject referencesPanel;
     public GameObject mainMenuPanel;
-
+    [SerializeField] GameObject loadScene;
+    [SerializeField] LoadingScene scene;
+    private void Start()
+    {
+        loadScene.SetActive(false);
+    }
     private void SwitchPanels(GameObject panelToDisable, GameObject panelToEnable)
     {
         if (panelToDisable != null)
@@ -74,21 +78,25 @@ public class MenuButtonManager : MonoBehaviour
 
     public void LoadTutorialScene()
     {
-        SceneManager.LoadScene("Tutorial");
+        loadScene.SetActive(true);
+        scene.LoadScene("Tutorial");
     }
 
     public void LoadDay1Scene()
     {
-        SceneManager.LoadScene("Day 0");
+        loadScene.SetActive(true);
+        scene.LoadScene("Day 0");
     }
 
     public void LoadDay2Scene()
     {
-        SceneManager.LoadScene("Day 1");
+        loadScene.SetActive(true);
+        scene.LoadScene("Day 1");
     }
 
     public void LoadDay3Scene()
     {
-        SceneManager.LoadScene("Day 2");
+        loadScene.SetActive(true);
+        scene.LoadScene("Day 2");
     }
 }

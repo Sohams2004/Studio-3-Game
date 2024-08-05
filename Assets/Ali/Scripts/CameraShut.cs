@@ -11,12 +11,13 @@ public class CameraShut : MonoBehaviour
 
     private bool animationStarted = false; // Flag to check if the animation has already started
     [SerializeField] LoadingScene scene;
+    [SerializeField] GameObject loadScene;
 
     void Start()
     {
         // Start the animation after the specified delay
         Invoke("StartAnimation", delayBeforeAnimation);
-        scene.LoadingScreen.SetActive(false);
+        loadScene.SetActive(false);
     }
 
     void Update()
@@ -52,8 +53,8 @@ public class CameraShut : MonoBehaviour
     {
         // Wait for the specified animation duration
         yield return new WaitForSeconds(animationDuration);
-        scene.LoadingScreen.SetActive(true);
-        scene.LoadScene(2);
+        loadScene.SetActive(true);
+        scene.LoadScene("Tutorial");
     }
 
 
