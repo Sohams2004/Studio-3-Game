@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -24,6 +25,8 @@ public class DamageScript : MonoBehaviour
     [SerializeField] Movement move;
     [SerializeField] PostProcessVolume postProcessingVolume;
     [SerializeField] Vignette vignette;
+
+    [SerializeField] TextMeshProUGUI causeOfDeathText;
     void Start()
     {
         Time.timeScale = 1f;
@@ -50,9 +53,22 @@ public class DamageScript : MonoBehaviour
         hungerBar.SetValue(hunger);
         thirstBar.SetValue(thirst);
 
-        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
+        if (sanity <= 0)
         {
             GameOver();
+            causeOfDeathText.text = "Jake went INSANE!";
+        }
+
+        if (hunger <= 0)
+        {
+            GameOver();
+            causeOfDeathText.text = "Should have eaten enough";
+        }
+
+        if (thirst <= 0)
+        {
+            GameOver();
+            causeOfDeathText.text = "Always stay hydrated";
         }
 
 
