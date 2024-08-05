@@ -1316,6 +1316,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.022456137, y: 0.02245614, z: 0.06981282}
   m_Center: {x: -0.00000023841858, y: 0.00000020768493, z: 0.000000718981}
+--- !u!54 &34827907
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34827899}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!28 &34850869
 Texture2D:
   m_ObjectHideFlags: 0
@@ -61843,6 +61870,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4709070194599658847, guid: 2790c865069d29c4fbce805908450622, type: 3}
       insertIndex: -1
       addedObject: {fileID: 34827903}
+    - targetCorrespondingSourceObject: {fileID: 4709070194599658847, guid: 2790c865069d29c4fbce805908450622, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 34827907}
     - targetCorrespondingSourceObject: {fileID: 187099356014382034, guid: 2790c865069d29c4fbce805908450622, type: 3}
       insertIndex: -1
       addedObject: {fileID: 496484283}
@@ -76159,6 +76189,17 @@ Texture2D:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1661481134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b7a1fff30f03b4ca71aa84f91b3a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!28 &1662117489
 Texture2D:
   m_ObjectHideFlags: 0
@@ -126061,6 +126102,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 8053912802754070048, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.401
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053912802754070048, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.239
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053912802754070048, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.523
+      objectReference: {fileID: 0}
     - target: {fileID: 8054138009303380488, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
       value: 23
@@ -128345,6 +128398,10 @@ PrefabInstance:
       propertyPath: blinds
       value: 
       objectReference: {fileID: 1209872518}
+    - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: hotbar
+      value: 
+      objectReference: {fileID: 1661481134}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: screen
       value: 
