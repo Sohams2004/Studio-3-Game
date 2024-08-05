@@ -20,7 +20,7 @@ public class Flushing : MonoBehaviour
                 audioSource.Play();
                 await Task.Delay(100);
                 objectAnimator.SetBool("Flush", false);
-                damageScript.HydrasionReduced(20);
+                damageScript.ThirstReduced(20);
                 damageScript.HungerReduced(30);
 
 
@@ -39,7 +39,7 @@ public class Flushing : MonoBehaviour
                 audioSource.Play();
                 await Task.Delay(100);
                 objectAnimator.SetBool("Flush", false);
-                damageScript.HydrasionReduced(20);
+                damageScript.ThirstReduced(20);
                 damageScript.HungerReduced(30);
             }
         }

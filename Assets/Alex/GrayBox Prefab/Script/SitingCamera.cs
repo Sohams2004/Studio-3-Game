@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public class SitingCamera : MonoBehaviour
+{
+    Vector3 direction;
+
+    [SerializeField] public float mouseSense;
+
+    [SerializeField] Transform player;
+    public Camera cam;
+    public float xRotation;
+    private void Start()
+    {
+        Transform currentRotation = cam.transform;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        player = GetComponent<Transform>();
+        Application.targetFrameRate = 60;
+    }
+
+    void CamControl()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSense * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSense * Time.deltaTime;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -60f, 54f);
+        player.Rotate(Vector3.up * mouseX);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+
+    }
+
+    private void Update()
+    {
+        CamControl();
+    }
+
+}
