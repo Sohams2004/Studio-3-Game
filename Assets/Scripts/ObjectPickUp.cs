@@ -718,7 +718,14 @@ public class ObjectPickUp : MonoBehaviour
             {
                 isShopOn = true;
                 shopUi.SetActive(true);
+                shopUi.transform.GetChild(0).gameObject.SetActive(false);
+                shopUi.transform.GetChild(1).gameObject.SetActive(false);
+                shopUi.transform.GetChild(2).gameObject.SetActive(false);
+
                 shopIndex++;
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             
             if (Input.GetKeyDown(KeyCode.E) && isShopOn && shopIndex % 2 == 0)
