@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class PlayerAccident : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerAccident : MonoBehaviour
     [SerializeField] bool isCrashed;
 
     [SerializeField] GameObject gameOverPAnel;
+
+    [SerializeField] TextMeshProUGUI causeOfDeathText;
 
     private void Start()
     {
@@ -24,6 +27,8 @@ public class PlayerAccident : MonoBehaviour
             rb.constraints = RigidbodyConstraints.None;
             movement.enabled = false;
             isCrashed = true;
+
+            causeOfDeathText.text = "You did not check the road!";
         }
     }
 
@@ -40,6 +45,6 @@ public class PlayerAccident : MonoBehaviour
         yield return new WaitForSeconds(timeToDieAfterCrash);
         Time.timeScale = 0f;
         //ACTIVATE GAMEOVER PANEL HERE BELOW
-
+        gameOverPAnel.SetActive(true);
     }
 }

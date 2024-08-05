@@ -26,10 +26,34 @@ public class AStar : MonoBehaviour
         grid = FindObjectOfType<Grid>();
     }
 
-    private void Update()
+    /*private void Update()
     {
         startNode = grid.GetNode(startNodeGridPos);
         goalNode = grid.GetNode(goalNodeGridPos);
+
+       
+
+        Node currentNode = startNode;
+        openList.Add(currentNode);
+
+        while (openList.Count > 0)
+        {
+           
+
+            if (currentNode == goalNode)
+            {
+                FindPath(currentNode);
+                finalPath.Reverse();
+            }
+
+            
+        }
+    }*/
+
+    public List<Node> GetPath(Vector3Int startPos, Vector3Int goalPos)
+    {
+        startNode = grid.GetNode(startPos);
+        goalNode = grid.GetNode(goalPos);
 
         finalPath.Clear();
         openList.Clear();
@@ -44,7 +68,7 @@ public class AStar : MonoBehaviour
             openList.Sort();
             currentNode = openList[0];
 
-            if(currentNode.versionNumber < globalVersionNumber)
+            if (currentNode.versionNumber < globalVersionNumber)
             {
                 currentNode.GCost = 0;
                 currentNode.HCost = 0;
@@ -60,19 +84,20 @@ public class AStar : MonoBehaviour
             {
                 FindPath(currentNode);
                 finalPath.Reverse();
+                return finalPath; 
             }
 
             neighbors.Clear();
 
             Vector3Int topNodePos = currentNode.GridPos + new Vector3Int(0, 0, 1);
-            if(topNodePos.z < grid.gridNodeCountZ)
+            if (topNodePos.z < grid.gridNodeCountZ)
             {
                 Node topNode = grid.GetNode(topNodePos);
                 neighbors.Add(topNode);
             }
 
             Vector3Int bottomNodePos = currentNode.GridPos + new Vector3Int(0, 0, -1);
-            if(bottomNodePos.z >= 0)
+            if (bottomNodePos.z >= 0)
             {
                 Node bottomNode = grid.GetNode(bottomNodePos);
                 neighbors.Add(bottomNode);
@@ -123,6 +148,7 @@ public class AStar : MonoBehaviour
                 }
             }
         }
+        return null;
     }
 
     void FindPath(Node node)

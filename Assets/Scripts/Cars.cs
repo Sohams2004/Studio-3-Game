@@ -1,29 +1,54 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Cars : MonoBehaviour
 {
-    [SerializeField] public float carSpeed;
-    [SerializeField] private float destroyCarIn;
 
-    [SerializeField] Rigidbody rb;
+    public float carSpeed = 5f;
+    public float stopDuration = 3f;
+    private List<Node> path;
+    private int currentPathIndex = 0;
+    private bool isStopped = false;
+    private float stopTimer = 0f;
 
-    private void Awake()
+    public void SetPath(List<Node> newPath)
     {
-        rb = GetComponent<Rigidbody>();
-        StartCoroutine(DestroyCar());
+        path = newPath;
+        currentPathIndex = 0;
+        transform.position = path[0].WorldPos;
     }
 
     private void Update()
     {
-        //gameObject.transform.Translate(Vector3.forward * carSpeed * Time.deltaTime);
-        Vector3 movement = transform.forward * carSpeed;
-        rb.velocity = movement;
+        if (path == null || currentPathIndex >= path.Count)
+        {
+            return;
+        }
+
+
+        if (isStopped)
+        {
+            stopTimer += Time.deltaTime;
+            if (stopTimer >= stopDuration)
+            {
+                isStopped = false;
+                stopTimer = 0f;
+            }
+            return;
+        }
+
+        Vector3 targetPosition = path[currentPathIndex].WorldPos;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, carSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        {
+            currentPathIndex++;
+            if (currentPathIndex < path.Count && Random.value < 0.1f)
+            {
+                isStopped = true;
+            }
+        }
     }
 
-    IEnumerator DestroyCar()
-    {
-        yield return new WaitForSeconds(destroyCarIn);
-        Destroy(gameObject);
-    }
 }

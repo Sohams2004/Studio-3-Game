@@ -5,15 +5,33 @@ using UnityEngine;
 public class CarManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> carsPrefab;
-    [SerializeField] float startTime, endTime;
+    [SerializeField] float spawnTime, spawnInterval;
 
     [SerializeField] Transform[] points;
+
+    [SerializeField] Vector3Int start, end;
 
     [SerializeField] int numberOfCars;
     [SerializeField] int maxnumberOfCars;
     [SerializeField] int currentNoOfCars;
 
-    void SpawnCars()
+    [SerializeField] AStar aStar;
+    [SerializeField] Grid grid;
+
+    private void Start()
+    {
+        /*if (points == null || points.Length == 0)
+        {
+            Debug.LogError("Points array is empty!");
+            return;
+        }
+        StartCoroutine(SpawnCarsAtIntervals());*/
+
+        aStar = GetComponent<AStar>();
+        grid = GetComponent<Grid>();
+    }
+
+    /*void SpawnCars()
     {
         for (int i = 0; i < numberOfCars; i++)
         {
@@ -48,15 +66,35 @@ public class CarManager : MonoBehaviour
             SpawnCars();
         }
         Debug.Log("Finished instantiating cars.");
+    }*/
+
+    void SpawnCars()
+    {
+        List<Node> path = aStar.GetPath(start, end);
+        if (path != null && carsPrefab.Count > 0)
+        {
+            GameObject randomCarPrefab = carsPrefab[Random.Range(0, carsPrefab.Count)];
+
+            GameObject carObject = Instantiate(randomCarPrefab, transform);
+            Cars car = carObject.GetComponent<Cars>();
+            if (car != null)
+            {
+                car.SetPath(path);
+            }
+            else
+            {
+                Debug.LogError("Car component not found on the spawned car prefab!");
+            }
+        }
     }
 
-    private void Start()
+    private void Update()
     {
-        if (points == null || points.Length == 0)
+        spawnTime += Time.deltaTime;
+        if (spawnTime >= spawnInterval && transform.childCount < numberOfCars)
         {
-            Debug.LogError("Points array is empty!");
-            return;
+            SpawnCars();
+            spawnTime = 0f;
         }
-        StartCoroutine(SpawnCarsAtIntervals());
     }
 }
