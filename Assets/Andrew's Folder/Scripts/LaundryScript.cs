@@ -47,7 +47,7 @@ public class LaundryScript : MonoBehaviour
     {
         if (other.CompareTag("Clothing"))
         {
-            machineActivate.Play("Laundry Activate");
+            machineActivate.Play("LaundryNewAnim");
 
             if (points > 0)
             {
