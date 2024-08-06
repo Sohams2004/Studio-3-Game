@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SleepTrigger : MonoBehaviour
+public class SleepTriggerDay : MonoBehaviour
 {
     public Camera sleepingCamera;
     public Animator cameraAnimator;
@@ -19,7 +19,7 @@ public class SleepTrigger : MonoBehaviour
 
             sleepingCamera.gameObject.SetActive(true);
             loadScene.SetActive(true);
-            scene.LoadScene("Day 1");
+            scene.LoadScene("Day 2");
         }
     }
     void OnTriggerEnter(Collider other)

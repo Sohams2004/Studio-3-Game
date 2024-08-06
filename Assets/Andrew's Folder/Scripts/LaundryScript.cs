@@ -7,7 +7,7 @@ public class LaundryScript : MonoBehaviour
     [SerializeField] Text pointText;
     [SerializeField] AudioClip limitReachedClip;
     private AudioSource audioSource;
-    private int points = 20;
+    private int points = 10;
 
     [SerializeField] Animator machineActivate;
 
@@ -47,18 +47,19 @@ public class LaundryScript : MonoBehaviour
     {
         if (other.CompareTag("Clothing"))
         {
+            machineActivate.Play("Door Closing Animation");
             machineActivate.Play("Laundry Activate");
 
             if (points > 0)
             {
                 Points--;
 
-                if (points == 19)
+                if (points == 10)
                 {
                     laundryFull.SetActive(true);
                 }
 
-                if (points == 10)
+                if (points == 5)
                 {
                     laundryFull2.SetActive(true);
                     laundryFull.SetActive(false);
@@ -69,6 +70,7 @@ public class LaundryScript : MonoBehaviour
                     PlayLimitReachedClip();
                     laundryDone.SetActive(true);
                     laundryFull2.SetActive(false);
+                    machineActivate.Play("Door Opening Animation");
                     laundryTask.text = "Clothes washed";
                     laundryTask.color = Color.green;
                 }
