@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class SleepTrigger : MonoBehaviour
@@ -7,17 +9,19 @@ public class SleepTrigger : MonoBehaviour
     [SerializeField] GameObject loadScene;
     [SerializeField] LoadingScene scene;
     [SerializeField] bool insidde = false;
+    [SerializeField] TMP_Text sleepText;
     private void Start()
     {
         loadScene.SetActive(false);
     }
-    private void Update()
+    private async void Update()
     {
-        if (insidde && Input.GetKeyDown(KeyCode.E))
+        if (insidde && Input.GetKey(KeyCode.E))
         {
             cameraAnimator.SetTrigger("SleepTrigger");
 
             sleepingCamera.gameObject.SetActive(true);
+            await Task.Delay(1000);
             loadScene.SetActive(true);
             scene.LoadScene("Day 1");
         }
@@ -26,6 +30,7 @@ public class SleepTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sleepText.text = "End the Day";
             insidde = true;
         }
     }
@@ -33,6 +38,7 @@ public class SleepTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sleepText.text = "End the Day";
             insidde = true;
         }
     }
@@ -40,6 +46,7 @@ public class SleepTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sleepText.text = string.Empty;
             insidde = false;
         }
     }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SleepTriggerDay : MonoBehaviour
@@ -11,13 +12,14 @@ public class SleepTriggerDay : MonoBehaviour
     {
         loadScene.SetActive(false);
     }
-    private void Update()
+    private async void Update()
     {
         if (insidde && Input.GetKeyDown(KeyCode.E))
         {
             cameraAnimator.SetTrigger("SleepTrigger");
 
             sleepingCamera.gameObject.SetActive(true);
+            await Task.Delay(1000);
             loadScene.SetActive(true);
             scene.LoadScene("Day 2");
         }
