@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] DamageScript damageScript;
     void Start()
     {
+        damageScript = FindObjectOfType<DamageScript>();
         damageScript.hunger = damageScript.startingstat;
         damageScript.thirst = damageScript.startingstat;
         WakeUpCamera.gameObject.SetActive(true);

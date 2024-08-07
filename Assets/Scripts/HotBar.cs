@@ -17,7 +17,7 @@ public class HotBar : MonoBehaviour
 
     [SerializeField] bool itemsFull;
 
-    ObjectPickUp objectPickUp;
+    [SerializeField] ObjectPickUp objectPickUp;
 
     private void Start()
     {

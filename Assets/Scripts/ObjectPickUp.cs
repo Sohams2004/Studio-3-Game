@@ -93,7 +93,7 @@ public class ObjectPickUp : MonoBehaviour
 
     private void Start()
     {
-        secondPlayer.SetActive(false);
+        //secondPlayer.SetActive(false);
         isBlinds = false;
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
@@ -393,10 +393,8 @@ public class ObjectPickUp : MonoBehaviour
                 {
                     Debug.Log("Placeddd");
 
-                    pickableObject.transform.parent = null;
                     //hotbar.items.Remove(pickableObject);
-                    cannotPickUp = false;
-                    isPicked = false;
+                    hotbar.currentObject.transform.parent = null;
                     // pickableObject.transform.position = place.transform.position;
                     //pickableObject.transform.rotation = Quaternion.identity;
 
@@ -405,8 +403,8 @@ public class ObjectPickUp : MonoBehaviour
                         if (hotbar.items[i] == pickableObject)
                         {
                             itemCount--;
-                            hotbar.items[i].transform.position = place.transform.position;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
+                            hotbar.items[i].transform.position = place.transform.position;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
                             objectRb = null;
@@ -437,6 +435,9 @@ public class ObjectPickUp : MonoBehaviour
                             break;
                         }
                     }
+
+                    cannotPickUp = false;
+                    isPicked = false;
                 }
             }
 

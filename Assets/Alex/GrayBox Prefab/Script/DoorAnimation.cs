@@ -13,7 +13,8 @@ public class DoorAnimation : MonoBehaviour
 
     private void Start()
     {
-        scene.LoadingScreen.SetActive(false);
+        scene = FindObjectOfType<LoadingScene>();
+        scene.gameObject.SetActive(false);
     }
     private async void Update()
     {
