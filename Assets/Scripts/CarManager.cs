@@ -4,34 +4,38 @@ using UnityEngine;
 
 public class CarManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> carsPrefab;
-    [SerializeField] float spawnTime, spawnInterval;
-
-    [SerializeField] Transform[] points;
+    /*[SerializeField] float spawnTime, spawnInterval;
 
     [SerializeField] Vector3Int start, end;
+
+
+
+    [SerializeField] AStar aStar;
+    [SerializeField] Grid grid;*/
+
+    [SerializeField] List<GameObject> carsPrefab;
+    [SerializeField] Transform[] points;
 
     [SerializeField] int numberOfCars;
     [SerializeField] int maxnumberOfCars;
     [SerializeField] int currentNoOfCars;
 
-    [SerializeField] AStar aStar;
-    [SerializeField] Grid grid;
+    [SerializeField] float startTime, endTime;
 
     private void Start()
     {
-        /*if (points == null || points.Length == 0)
+        if (points == null || points.Length == 0)
         {
             Debug.LogError("Points array is empty!");
             return;
         }
-        StartCoroutine(SpawnCarsAtIntervals());*/
+        StartCoroutine(SpawnCarsAtIntervals());
 
-        aStar = FindObjectOfType<AStar>();
-        grid = FindObjectOfType<Grid>();   
+        //aStar = FindObjectOfType<AStar>();
+        //grid = FindObjectOfType<Grid>();   
     }
 
-    /*void SpawnCars()
+    void SpawnCars()
     {
         for (int i = 0; i < numberOfCars; i++)
         {
@@ -66,9 +70,9 @@ public class CarManager : MonoBehaviour
             SpawnCars();
         }
         Debug.Log("Finished instantiating cars.");
-    }*/
+    }
 
-    void SpawnCars()
+    /*void SpawnCars()
     {
         List<Node> path = aStar.GetPath(start, end);
         if (path != null && carsPrefab.Count > 0)
@@ -99,5 +103,5 @@ public class CarManager : MonoBehaviour
             SpawnCars();
             spawnTime = 0f;
         }
-    }
+    }*/
 }
