@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class ParentRoomKey : MonoBehaviour
     {
         pickedkey = false;
     }
-    private void OnTriggerEnter(Collider other)
+    private async void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -26,11 +27,13 @@ public class ParentRoomKey : MonoBehaviour
                 keyCollected.SetActive(true);
 
                 pickedkey = true;
+                await Task.Delay(1000);
+                promptText.text = string.Empty;
 
             }
         }
     }
-    private void OnTriggerStay(Collider other)
+    private async void OnTriggerStay(Collider other)
     {
         promptText.text = "Press E to interact";
         if (Input.GetKeyDown(KeyCode.E))
@@ -43,7 +46,8 @@ public class ParentRoomKey : MonoBehaviour
             keyCollected.SetActive(true);
 
             pickedkey = true;
-
+            await Task.Delay(1000);
+            promptText.text = string.Empty;
         }
     }
     private void OnTriggerExit(Collider other)

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class SleepTriggerDay : MonoBehaviour
@@ -8,6 +9,7 @@ public class SleepTriggerDay : MonoBehaviour
     [SerializeField] GameObject loadScene;
     [SerializeField] LoadingScene scene;
     [SerializeField] bool insidde = false;
+    [SerializeField] TMP_Text sleepText;
     private void Start()
     {
         loadScene.SetActive(false);
@@ -28,6 +30,7 @@ public class SleepTriggerDay : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sleepText.text = "End the Day";
             insidde = true;
         }
     }
@@ -35,6 +38,7 @@ public class SleepTriggerDay : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sleepText.text = "End the Day";
             insidde = true;
         }
     }
@@ -42,6 +46,7 @@ public class SleepTriggerDay : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sleepText.text = string.Empty;
             insidde = false;
         }
     }

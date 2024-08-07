@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class WhisperKnock : MonoBehaviour
 {
-    [SerializeField] AudioSource whisper;
+
     [SerializeField] AudioSource knock;
     [SerializeField] TMP_Text doortext;
     [SerializeField] ParentRoomKey roomKey;
-    [SerializeField] DoorAnimation doorAnimation;
+    [SerializeField] DoorAnimationInGame doorAnimation;
     [SerializeField] bool isNowOpen = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            whisper.Play();
+
             doortext.text = "Parent Room";
             if (Input.GetKeyDown(KeyCode.E) && !roomKey.pickedkey)
             {
@@ -22,7 +22,7 @@ public class WhisperKnock : MonoBehaviour
             }
             if (roomKey.pickedkey && !isNowOpen)
             {
-                whisper.Stop();
+
                 knock.Stop();
                 doortext.text = "Press E to Open";
                 if (Input.GetKeyDown(KeyCode.E))
@@ -50,7 +50,7 @@ public class WhisperKnock : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            whisper.Play();
+
             doortext.text = "Parent Room";
             if (Input.GetKeyDown(KeyCode.E) && !roomKey.pickedkey)
             {
@@ -59,7 +59,7 @@ public class WhisperKnock : MonoBehaviour
             }
             if (roomKey.pickedkey && !isNowOpen)
             {
-                whisper.Stop();
+
                 knock.Stop();
                 doortext.text = "Press E to Open";
                 if (Input.GetKeyDown(KeyCode.E))

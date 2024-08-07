@@ -29,7 +29,6 @@ public class Interactable : MonoBehaviour
             objectAnimator.SetBool("Blindsdown", false);
             hasInteracted = true;
             audioSource.Play();
-
             CurtainsTask.text = "Curtains Opened";
             CurtainsTask.color = Color.green;
 
