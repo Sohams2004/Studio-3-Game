@@ -16,7 +16,7 @@ public class Blinking : MonoBehaviour
 
     IEnumerator PlayAnimationAfterDelayCoroutine()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delayToBlink);
 
         animator.SetTrigger(parameterName);
     }
