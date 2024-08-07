@@ -6,7 +6,7 @@ public class Blinking : MonoBehaviour
 {
      public Animator animator; 
     public string parameterName; 
-    public float delay = 5f; 
+    public float delayToBlink = 5f; 
 
     void Start()
     {
