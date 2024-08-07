@@ -8912,7 +8912,6 @@ GameObject:
   m_Component:
   - component: {fileID: 305802697}
   - component: {fileID: 305802696}
-  - component: {fileID: 305802699}
   - component: {fileID: 305802700}
   m_Layer: 0
   m_Name: SitPlayerCOntrooler
@@ -8957,18 +8956,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &305802699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305802695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a593867cd83fffc4e8f349a60238f91a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &305802700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12810,6 +12797,10 @@ PrefabInstance:
     - target: {fileID: 6101922723942782924, guid: b96663e7894f7874496f5c30a60df80c, type: 3}
       propertyPath: m_Layer
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6101922723942782924, guid: b96663e7894f7874496f5c30a60df80c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6163015065801354872, guid: b96663e7894f7874496f5c30a60df80c, type: 3}
       propertyPath: m_Layer
@@ -36092,7 +36083,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PanWithFriedEgg
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 102828160019205635, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
+    - {fileID: 3580947262334902971, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
+    - {fileID: 372549713239048495, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
+    - {fileID: 2435905901624243139, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -37142,7 +37137,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1062562054486368380, guid: d5e6b8eef582ec34fbe5b0e70f796fbe, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -39665,28 +39661,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &856388360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2436767393897217291, guid: 74c5837eeb264594d919689fda307727, type: 3}
-  m_PrefabInstance: {fileID: 1693425170}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &856388366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 63323773958774870, guid: 74c5837eeb264594d919689fda307727, type: 3}
   m_PrefabInstance: {fileID: 1693425170}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &856388367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856388360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbf512cb2a49fd4094924b18e62c8d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &857734322
 Mesh:
   m_ObjectHideFlags: 0
@@ -45067,7 +45046,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1062562054486368380, guid: d5e6b8eef582ec34fbe5b0e70f796fbe, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -46631,7 +46611,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PanWithFriedEgg
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2435905901624243139, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
+    - {fileID: 372549713239048495, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
+    - {fileID: 3580947262334902971, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
+    - {fileID: 102828160019205635, guid: b407c152631cf49478e36b7b23c8cb50, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -84644,10 +84628,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7175120901984944606, guid: 74c5837eeb264594d919689fda307727, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2436767393897217291, guid: 74c5837eeb264594d919689fda307727, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 856388367}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c5837eeb264594d919689fda307727, type: 3}
 --- !u!43 &1694007637
 Mesh:
@@ -134583,6 +134564,7 @@ PrefabInstance:
     - {fileID: 309101304106509043, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 5438856426997759703, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 4859685054356788066, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+    - {fileID: 7400348837831343495, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6809469241933391961, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 4264591334691120564, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
