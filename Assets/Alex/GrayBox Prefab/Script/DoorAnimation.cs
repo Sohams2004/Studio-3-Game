@@ -19,12 +19,14 @@ public class DoorAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !isOpen & inDoor)
         {
+            await Task.Delay(3000);
             OpenDoor();
             await Task.Delay(2000);
             isOpen = true;
         }
         if (Input.GetKeyDown(KeyCode.E) && isOpen & inDoor)
         {
+            await Task.Delay(3000);
             CloseDoor();
             await Task.Delay(2000);
             isOpen = false;
