@@ -11,7 +11,7 @@ public class ObjectPickUp : MonoBehaviour
     public GameObject panel; //for the task list
     public TextMeshProUGUI CashTask; //to reference the task text
 
-    [SerializeField] GameObject mainPlayer, secondPlayer;
+    [SerializeField] GameObject mainPlayer;
 
     [SerializeField] float rayLength;
 
@@ -634,45 +634,45 @@ public class ObjectPickUp : MonoBehaviour
 
     }
 
-    async void Sit()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
+    /*  async void Sit()
+      {
+          bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
 
-        if (isRay)
-        {
-            isChair = true;
-            chairSign.gameObject.SetActive(true);
+          if (isRay)
+          {
+              isChair = true;
+              chairSign.gameObject.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.F) && !isSecondPlayerActive)
-            {
-                isSitting = !isSitting;
-                sitIndex++;
-            }
-        }
+              if (Input.GetKeyDown(KeyCode.F) && !isSecondPlayerActive)
+              {
+                  isSitting = !isSitting;
+                  sitIndex++;
+              }
+          }
 
-        else if (!isRay)
-        {
-            isChair = false;
-            chairSign.gameObject.SetActive(false);
-        }
+          else if (!isRay)
+          {
+              isChair = false;
+              chairSign.gameObject.SetActive(false);
+          }
 
-        if (isSitting)
-        {
-            mainPlayer.SetActive(false);
-            secondPlayer.SetActive(true);
-            await Task.Delay(5000);
-            isSecondPlayerActive = true;
-        }
+          if (isSitting)
+          {
+              mainPlayer.SetActive(false);
 
-        if (isSecondPlayerActive)
-        {
-            mainPlayer.SetActive(true);
-            secondPlayer.SetActive(false);
-            await Task.Delay(5000);
-            isSecondPlayerActive = false;
-        }
-    }
+              await Task.Delay(5000);
+              isSecondPlayerActive = true;
+          }
 
+          if (isSecondPlayerActive)
+          {
+              mainPlayer.SetActive(true);
+
+              await Task.Delay(5000);
+              isSecondPlayerActive = false;
+          }
+      }
+  */
     void Television()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, tvLayer);
@@ -764,7 +764,7 @@ public class ObjectPickUp : MonoBehaviour
         OpenDoor();
         BlindsOpen();
         Money();
-        Sit();
+        /* Sit();*/
         TapWater();
         Television();
         Shop();
