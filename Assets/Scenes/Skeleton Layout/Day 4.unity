@@ -15433,18 +15433,14 @@ MonoBehaviour:
   - {fileID: 1027750582790248, guid: ad243c631b2416848bb1c6cdeae0efe3, type: 3}
   - {fileID: 1847148240549790, guid: 2419831b6e60e134fa091d6d9592fbd4, type: 3}
   - {fileID: 7504133749518221062, guid: fe7c7f2a34e7eb34f9c4be03d560e857, type: 3}
-  spawnTime: 0
-  spawnInterval: 5
   points:
   - {fileID: 1274710373}
   - {fileID: 473285193}
-  start: {x: 0, y: 0, z: 0}
-  end: {x: 0, y: 0, z: 1}
   numberOfCars: 1
   maxnumberOfCars: 2147483647
   currentNoOfCars: 0
-  aStar: {fileID: 0}
-  grid: {fileID: 0}
+  startTime: 5
+  endTime: 10
 --- !u!4 &1047994579
 Transform:
   m_ObjectHideFlags: 0
@@ -33854,6 +33850,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: a46c18fa6f1d2074183f1596080b58ae, type: 2}
+    - target: {fileID: 3137474269847875584, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3150138095603506692, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -35586,6 +35586,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1640730594}
+    - target: {fileID: 6439861173707975581, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Depth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439861173707975581, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 28672
+      objectReference: {fileID: 0}
     - target: {fileID: 6441240841224180756, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Intensity
       value: 2
@@ -35730,6 +35738,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b9d90005c5219949b2b8828e0fd6502, type: 2}
+    - target: {fileID: 6783785203940761179, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Depth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783785203940761179, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783785203940761179, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6789629633114413071, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -37018,6 +37038,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3366cccc5fce2a9468bdad3ff15ee92c, type: 2}
+    - target: {fileID: 9136028655178730888, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9141371371929069689, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
       value: 
