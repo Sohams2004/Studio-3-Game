@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -46,6 +47,8 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
+
+    [SerializeField] List<GameObject> objects; 
 
     [SerializeField] Transform[] itemFrames;
 
