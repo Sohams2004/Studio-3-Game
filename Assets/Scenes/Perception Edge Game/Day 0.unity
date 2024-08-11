@@ -67817,6 +67817,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!20 &1607809500 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6439861173707975581, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1608784106
 GameObject:
   m_ObjectHideFlags: 0
@@ -96212,14 +96217,14 @@ PrefabInstance:
     - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: currentObject
       value: 
-      objectReference: {fileID: 48280615}
+      objectReference: {fileID: 0}
     - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: numberOfItems
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: items.Array.size
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 493911358958660329, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: inventory.Array.size
@@ -112541,6 +112546,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 6439861173707975581, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439861173707975581, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_RenderingPath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439861173707975581, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 28672
+      objectReference: {fileID: 0}
     - target: {fileID: 6440656604416488284, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
       value: 23
@@ -113419,7 +113436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783785203940761179, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 2147483647
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6785606000736018331, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
@@ -119238,6 +119255,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: objectsCamera
+      value: 
+      objectReference: {fileID: 1607809500}
+    - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: shapeMaterial
       value: 
       objectReference: {fileID: 2100000, guid: fc753d75885ab864dbdf1b3f236d08b7, type: 2}
@@ -119776,6 +119797,10 @@ PrefabInstance:
     - target: {fileID: 9136028655178730888, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136028655178730888, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9138322271947989660, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
