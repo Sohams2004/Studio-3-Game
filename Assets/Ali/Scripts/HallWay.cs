@@ -9,12 +9,12 @@ public class HallWay : MonoBehaviour
    public GameObject hallway;
     public GameObject finalDoor;  // The final door to be disabled
     public GameObject monster;
+    public GameObject invisibleWall;  // The invisible wall to be enabled/disabled
     public Transform monsterStartPosition;
     public AudioSource scarySound;
     public float monsterFollowDelay = 3f;  // Delay before monster starts following
     public Transform player;
     public Transform playerResetPosition;  // The position to reset the player to
-    public string newSceneName;  // The name of the scene to load
 
     private bool monsterActive = false;
 
@@ -29,6 +29,14 @@ public class HallWay : MonoBehaviour
 
                 // Activate the monster after a delay
                 Invoke(nameof(ActivateMonster), 2f);  // 2-second delay before activating the monster
+            }
+            else if (CompareTag("ThirdTrigger"))
+            {
+                // Enable the invisible wall when the third collider is triggered
+                if (invisibleWall != null)
+                {
+                    invisibleWall.SetActive(true);
+                }
             }
             else if (CompareTag("FinalTrigger"))
             {
@@ -61,11 +69,14 @@ public class HallWay : MonoBehaviour
         if (finalDoor != null) finalDoor.SetActive(false);
         if (monster != null) monster.SetActive(false);
 
+        // Disable the invisible wall
+        if (invisibleWall != null)
+        {
+            invisibleWall.SetActive(false);
+        }
+
         // Reset the player's position
         ResetPlayerPosition();
-
-        // Load the new scene
-        //LoadNewScene();
     }
 
     void ResetPlayerPosition()
@@ -79,20 +90,6 @@ public class HallWay : MonoBehaviour
         else
         {
             Debug.LogError("Player reset position is not assigned.");
-        }
-    }
-
-    void LoadNewScene()
-    {
-        if (!string.IsNullOrEmpty(newSceneName))
-        {
-            // Debug statement to check scene name before loading
-            Debug.Log($"Loading scene: {newSceneName}");
-            SceneManager.LoadScene(newSceneName);
-        }
-        else
-        {
-            Debug.LogError("New scene name is not assigned.");
         }
     }
 }

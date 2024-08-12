@@ -8630,6 +8630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355611093}
   - component: {fileID: 355611092}
+  - component: {fileID: 355611094}
   m_Layer: 0
   m_Name: ThirdCollider
   m_TagString: ThirdTrigger
@@ -8673,6 +8674,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &355611094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355611090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hallway: {fileID: 0}
+  finalDoor: {fileID: 0}
+  monster: {fileID: 0}
+  invisibleWall: {fileID: 1669818291}
+  monsterStartPosition: {fileID: 0}
+  scarySound: {fileID: 0}
+  monsterFollowDelay: 3
+  player: {fileID: 0}
+  playerResetPosition: {fileID: 0}
 --- !u!114 &356237633 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7297873931092848612, guid: 20e028051e12e424e8994714926553c4, type: 3}
@@ -17834,12 +17856,12 @@ MonoBehaviour:
   hallway: {fileID: 1422365485}
   finalDoor: {fileID: 0}
   monster: {fileID: 448538014}
+  invisibleWall: {fileID: 0}
   monsterStartPosition: {fileID: 387832810}
   scarySound: {fileID: 448538015}
   monsterFollowDelay: 3
   player: {fileID: 124166693}
   playerResetPosition: {fileID: 0}
-  newSceneName: Day 1
 --- !u!65 &858693620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33271,6 +33293,7 @@ GameObject:
   - component: {fileID: 1669818294}
   - component: {fileID: 1669818293}
   - component: {fileID: 1669818292}
+  - component: {fileID: 1669818296}
   m_Layer: 0
   m_Name: InvisibleWall
   m_TagString: Untagged
@@ -33364,6 +33387,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669818296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669818291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hallway: {fileID: 0}
+  finalDoor: {fileID: 0}
+  monster: {fileID: 0}
+  invisibleWall: {fileID: 1669818291}
+  monsterStartPosition: {fileID: 0}
+  scarySound: {fileID: 0}
+  monsterFollowDelay: 3
+  player: {fileID: 0}
+  playerResetPosition: {fileID: 0}
 --- !u!1 &1671168782 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1679035102577038, guid: 25236079c9f60024fa37eb8a8eeac99c, type: 3}
@@ -38943,12 +38987,12 @@ MonoBehaviour:
   hallway: {fileID: 1422365485}
   finalDoor: {fileID: 1913292288}
   monster: {fileID: 448538014}
+  invisibleWall: {fileID: 1669818291}
   monsterStartPosition: {fileID: 0}
   scarySound: {fileID: 0}
   monsterFollowDelay: 3
   player: {fileID: 124166693}
   playerResetPosition: {fileID: 747329801}
-  newSceneName: Day 1
 --- !u!1 &1915803574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3983390707303719056, guid: aeb274f5a2226c548badf43303f5fe7b, type: 3}
