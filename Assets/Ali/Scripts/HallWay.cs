@@ -17,6 +17,7 @@ public class HallWay : MonoBehaviour
     public Transform playerResetPosition;  // The position to reset the player to
 
     private bool monsterActive = false;
+    private bool invisibleWallEnabled = false;  // Flag to track if the invisible wall has been enabled
 
     void OnTriggerEnter(Collider other)
     {
@@ -24,19 +25,20 @@ public class HallWay : MonoBehaviour
         {
             if (CompareTag("SecondTrigger") && !monsterActive)
             {
-                // Enable the hallway when the second collider is triggered
+                // Enable the hallway and final door when the second collider is triggered
                 hallway.SetActive(true);
                 finalDoor.SetActive(true);
 
                 // Activate the monster after a delay
                 Invoke(nameof(ActivateMonster), 2f);  // 2-second delay before activating the monster
             }
-            else if (CompareTag("ThirdTrigger"))
+            else if (CompareTag("ThirdTrigger") && !invisibleWallEnabled)
             {
                 // Enable the invisible wall when the third collider is triggered
                 if (invisibleWall != null)
                 {
                     invisibleWall.SetActive(true);
+                    invisibleWallEnabled = true;  // Set flag to true so it won't be enabled again
                 }
             }
             else if (CompareTag("FinalTrigger"))
