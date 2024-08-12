@@ -10,7 +10,7 @@ public class PullWindowBar : MonoBehaviour
     private async void Start()
     {
         footStep.Play();
-        await Task.Delay(4000);
+        await Task.Delay(5000);
         footStep.Stop();
         window.Play("Open Door Window");
         blind.Play();

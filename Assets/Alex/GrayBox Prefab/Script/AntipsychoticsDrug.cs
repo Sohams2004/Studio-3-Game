@@ -8,7 +8,7 @@ public class AntipsychoticsDrug : MonoBehaviour
     public bool medicinedone = false;
     [SerializeField] DamageScript damageScript;
     private bool playerInRange = false;
-
+    public bool medwithnofood = false;
 
     // Update is called once per frame
     async void Update()
@@ -21,7 +21,7 @@ public class AntipsychoticsDrug : MonoBehaviour
             MedicineTask.text = "Took Medicine";
             MedicineTask.color = Color.green;
             medicinedone = true;
-
+            medwithnofood = true;
         }
     }
 
