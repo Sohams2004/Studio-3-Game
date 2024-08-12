@@ -5,27 +5,49 @@ using UnityEngine.SceneManagement;
 
 public class MonsterAI : MonoBehaviour
 {
-    private Transform target;
-    public float speed = 5f;
+    public Transform player;  // Reference to the player
+    public float moveSpeed = 5f;  // Speed at which the monster moves
 
-    public void StartFollowing(Transform player)
+    private void Update()
     {
-        target = player;
-    }
-
-    void Update()
-    {
-        if (target != null)
+        if (player != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            MoveTowardsPlayer();
+            FacePlayer();
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void MoveTowardsPlayer()
     {
+        // Calculate the direction to the player
+        Vector3 direction = (player.position - transform.position).normalized;
+
+        // Move the monster towards the player
+        transform.position += direction * moveSpeed * Time.deltaTime;
+    }
+
+    private void FacePlayer()
+    {
+        // Calculate the rotation needed to face the player
+        Quaternion targetRotation = Quaternion.LookRotation(player.position - transform.position);
+
+        // Smoothly rotate the monster to face the player
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * moveSpeed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the monster collided with the player
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload scene on collision
+            // Reload the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    // Method to set the player reference
+    public void SetPlayer(Transform playerTransform)
+    {
+        player = playerTransform;
     }
 }

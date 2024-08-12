@@ -59,7 +59,16 @@ public class HallWay : MonoBehaviour
 
     void StartMonsterFollow()
     {
-        monster.GetComponent<MonsterAI>().StartFollowing(player);
+        // Ensure the MonsterAI component is present and set the player
+        MonsterAI monsterAI = monster.GetComponent<MonsterAI>();
+        if (monsterAI != null)
+        {
+            monsterAI.SetPlayer(player);
+        }
+        else
+        {
+            Debug.LogError("MonsterAI component not found on monster.");
+        }
     }
 
     void HandleFinalTrigger()
