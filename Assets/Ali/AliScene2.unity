@@ -8630,7 +8630,6 @@ GameObject:
   m_Component:
   - component: {fileID: 355611093}
   - component: {fileID: 355611092}
-  - component: {fileID: 355611091}
   m_Layer: 0
   m_Name: ThirdCollider
   m_TagString: ThirdTrigger
@@ -8638,26 +8637,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &355611091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355611090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hallway: {fileID: 1422365485}
-  invisibleWall: {fileID: 1669818291}
-  monster: {fileID: 448538014}
-  monsterStartPosition: {fileID: 387832810}
-  playerResetPosition: {fileID: 747329801}
-  scarySound: {fileID: 448538015}
-  monsterFollowDelay: 3
-  player: {fileID: 124166693}
 --- !u!65 &355611092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10836,7 +10815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &448538015
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10945,7 +10924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5d56f60dee30246aa6ac7a74051890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
 --- !u!65 &448538017
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15953,7 +15932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747329801}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlayerResetPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15968,7 +15947,7 @@ Transform:
   m_GameObject: {fileID: 747329800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.605, y: -1.817, z: 11.261}
+  m_LocalPosition: {x: -35.605, y: -1.975, z: 11.261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17853,13 +17832,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallway: {fileID: 1422365485}
-  invisibleWall: {fileID: 1669818291}
+  finalDoor: {fileID: 0}
   monster: {fileID: 448538014}
   monsterStartPosition: {fileID: 387832810}
-  playerResetPosition: {fileID: 747329801}
   scarySound: {fileID: 448538015}
   monsterFollowDelay: 3
   player: {fileID: 124166693}
+  playerResetPosition: {fileID: 0}
+  newSceneName: Day 1
 --- !u!65 &858693620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38854,7 +38834,7 @@ GameObject:
   - component: {fileID: 1913292292}
   - component: {fileID: 1913292291}
   - component: {fileID: 1913292290}
-  - component: {fileID: 1913292289}
+  - component: {fileID: 1913292294}
   m_Layer: 0
   m_Name: FinalCollider
   m_TagString: FinalTrigger
@@ -38862,26 +38842,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1913292289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913292288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hallway: {fileID: 1422365485}
-  invisibleWall: {fileID: 1669818291}
-  monster: {fileID: 448538014}
-  monsterStartPosition: {fileID: 387832810}
-  playerResetPosition: {fileID: 747329801}
-  scarySound: {fileID: 448538015}
-  monsterFollowDelay: 3
-  player: {fileID: 124166693}
 --- !u!65 &1913292290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38962,12 +38922,33 @@ Transform:
   m_GameObject: {fileID: 1913292288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -67.93, y: -2.0193, z: 10.474}
+  m_LocalPosition: {x: -49.32, y: -2.0193, z: 10.53}
   m_LocalScale: {x: 1, y: 2.2834, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913292294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913292288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hallway: {fileID: 1422365485}
+  finalDoor: {fileID: 1913292288}
+  monster: {fileID: 448538014}
+  monsterStartPosition: {fileID: 0}
+  scarySound: {fileID: 0}
+  monsterFollowDelay: 3
+  player: {fileID: 124166693}
+  playerResetPosition: {fileID: 747329801}
+  newSceneName: Day 1
 --- !u!1 &1915803574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3983390707303719056, guid: aeb274f5a2226c548badf43303f5fe7b, type: 3}
