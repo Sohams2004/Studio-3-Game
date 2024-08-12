@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.SceneManagement;
 
 public class DamageScript : MonoBehaviour
 {
@@ -28,6 +27,8 @@ public class DamageScript : MonoBehaviour
     [SerializeField] Vignette vignette;
 
     [SerializeField] TextMeshProUGUI causeOfDeathText;
+    [SerializeField] GameObject loadScene;
+    [SerializeField] LoadingScene scene;
 
     void Start()
     {
@@ -57,8 +58,7 @@ public class DamageScript : MonoBehaviour
 
         if (sanity <= 0)
         {
-            GameOver();
-            causeOfDeathText.text = "Jake went INSANE!";
+            GameOverSanity();
         }
 
         if (hunger <= 0)
@@ -141,38 +141,32 @@ public class DamageScript : MonoBehaviour
 
         sanityBar.SetValue(sanity);
         await Task.Delay(2000);
-        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
-        {
-            GameOver();
-        }
+
     }
     public void HungerReduced(int damage)
     {
         hunger -= damage;
         hungerBar.SetValue(sanity);
 
-        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
-        {
-            GameOver();
-        }
     }
     public void ThirstReduced(int damage)
     {
         thirst -= damage;
         thirstBar.SetValue(sanity);
 
-        if (sanity <= 0 || hunger <= 0 || thirst <= 0)
-        {
-            GameOver();
-        }
     }
 
     void GameOver()
     {
-        SceneManager.LoadScene("Game Over");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
         Time.timeScale = 0f;
+    }
+    void GameOverSanity()
+    {
+        loadScene.SetActive(true);
+        scene.LoadScene("Game Over");
+
     }
 }

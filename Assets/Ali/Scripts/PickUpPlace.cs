@@ -26,7 +26,7 @@ public class PickUpPlace : MonoBehaviour
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
     private bool isLookingAtBurnedToast = false; // Boolean to check if looking at burned toast
-
+    public bool eatdone = false;
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Left mouse button
@@ -159,6 +159,7 @@ public class PickUpPlace : MonoBehaviour
 
         DrinkTask.text = "Drank Juice"; // Update TextMeshPro text
         DrinkTask.color = Color.green;
+        eatdone = true;
     }
 
     void EatPanWithFriedEgg()
@@ -168,7 +169,7 @@ public class PickUpPlace : MonoBehaviour
         eatText.gameObject.SetActive(false);
         eatSound.Play();
         isLookingAtPanWithFriedEgg = false;
-
+        eatdone = true;
         EatEggTask.text = "Ate Egg";
         EatEggTask.color = Color.green;
     }
@@ -183,7 +184,7 @@ public class PickUpPlace : MonoBehaviour
             toastEatSound.Play();
         }
         isLookingAtBurnedToast = false;
-
+        eatdone = true;
         EatToastTask.text = "Ate Toast";
         EatToastTask.color = Color.green;
 

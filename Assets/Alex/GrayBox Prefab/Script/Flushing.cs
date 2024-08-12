@@ -5,7 +5,6 @@ using UnityEngine;
 public class Flushing : MonoBehaviour
 {
     public TMP_Text promptText;
-    public Animator objectAnimator;
     [SerializeField] AudioSource audioSource;
     [SerializeField] DamageScript damageScript;
 
@@ -16,10 +15,9 @@ public class Flushing : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                objectAnimator.SetBool("Flush", true);
+
                 audioSource.Play();
                 await Task.Delay(100);
-                objectAnimator.SetBool("Flush", false);
                 damageScript.ThirstReduced(20);
                 damageScript.HungerReduced(30);
 
@@ -35,10 +33,8 @@ public class Flushing : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                objectAnimator.SetBool("Flush", true);
                 audioSource.Play();
                 await Task.Delay(100);
-                objectAnimator.SetBool("Flush", false);
                 damageScript.ThirstReduced(20);
                 damageScript.HungerReduced(30);
             }

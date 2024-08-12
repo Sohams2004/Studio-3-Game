@@ -10,6 +10,7 @@ public class SleepTriggerDay : MonoBehaviour
     [SerializeField] LoadingScene scene;
     [SerializeField] bool insidde = false;
     [SerializeField] TMP_Text sleepText;
+    [SerializeField] Day1TaskTrack taskTrack;
     private void Start()
     {
         loadScene.SetActive(false);
@@ -19,7 +20,7 @@ public class SleepTriggerDay : MonoBehaviour
         if (insidde && Input.GetKeyDown(KeyCode.E))
         {
             cameraAnimator.SetTrigger("SleepTrigger");
-
+            sleepText.text = string.Empty;
             sleepingCamera.gameObject.SetActive(true);
             await Task.Delay(1000);
             loadScene.SetActive(true);
@@ -28,7 +29,7 @@ public class SleepTriggerDay : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && taskTrack.alltaskdone)
         {
             sleepText.text = "End the Day";
             insidde = true;
@@ -36,7 +37,7 @@ public class SleepTriggerDay : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && taskTrack.alltaskdone)
         {
             sleepText.text = "End the Day";
             insidde = true;
