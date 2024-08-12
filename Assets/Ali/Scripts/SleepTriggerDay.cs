@@ -11,6 +11,7 @@ public class SleepTriggerDay : MonoBehaviour
     [SerializeField] bool insidde = false;
     [SerializeField] TMP_Text sleepText;
     [SerializeField] Day1TaskTrack taskTrack;
+
     private void Start()
     {
         loadScene.SetActive(false);

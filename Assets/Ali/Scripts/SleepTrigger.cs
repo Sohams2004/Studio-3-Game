@@ -10,6 +10,7 @@ public class SleepTrigger : MonoBehaviour
     [SerializeField] LoadingScene scene;
     [SerializeField] bool insidde = false;
     [SerializeField] TMP_Text sleepText;
+    [SerializeField] Day2TaskTrack taskTrack1;
     private void Start()
     {
         loadScene.SetActive(false);
@@ -28,7 +29,7 @@ public class SleepTrigger : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && taskTrack1.firstdaytaskdone)
         {
             sleepText.text = "End the Day";
             insidde = true;
@@ -36,7 +37,7 @@ public class SleepTrigger : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && taskTrack1.firstdaytaskdone)
         {
             sleepText.text = "End the Day";
             insidde = true;

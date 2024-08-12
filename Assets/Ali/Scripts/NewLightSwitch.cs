@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class NewLightSwitch : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class NewLightSwitch : MonoBehaviour
     private AudioSource audioSource;
     private bool playerInRange = false;
     private bool lightOn = false;
-
+    public bool lightdone = false;
     public TextMeshProUGUI LightsTask;
 
     void Start()
@@ -65,5 +63,6 @@ public class NewLightSwitch : MonoBehaviour
 
         LightsTask.text = "Lights switched";
         LightsTask.color = Color.green;
+        lightdone = true;
     }
 }

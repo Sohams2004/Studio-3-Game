@@ -11,11 +11,12 @@ public class ObjectPickUp : MonoBehaviour
 {
     public GameObject panel; //for the task list
     public TextMeshProUGUI CashTask; //to reference the task text
-
+    [SerializeField] GameObject lundry;
     [SerializeField] GameObject mainPlayer;
     public bool moneydone = false;
+    public bool tvdone = false;
     [SerializeField] float rayLength;
-
+    public bool cleanupDone = false;
     [SerializeField] float moneyCount;
 
     [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex, tvIndex, shopIndex;
@@ -42,7 +43,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
-    [SerializeField] TextMeshProUGUI blindsTask;
+    [SerializeField] TextMeshProUGUI blindsTask, cleanupTask;
 
     [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
@@ -65,7 +66,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] ParticleSystem tapWater;
 
     RaycastHit hit1;
-    GameObject hitObj;
+    [SerializeField] GameObject hitObj;
 
     GameObject parentObj;
     GameObject place;
@@ -363,6 +364,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNoteIndex++;
             isPaperNotePicked = true;
             paperNote.gameObject.SetActive(true);
+
             movement.enabled = false;
         }
 
@@ -373,7 +375,7 @@ public class ObjectPickUp : MonoBehaviour
             isPaperNotePicked = false;
             paperNote.gameObject.SetActive(false);
             movement.enabled = true;
-
+            lundry.gameObject.SetActive(true);
             panel.SetActive(true); //activate the tasklist 
         }
 
@@ -393,6 +395,8 @@ public class ObjectPickUp : MonoBehaviour
             crosshair.color = Color.green;
             pickDropObjectText.text = string.Empty;
             placeObjectText.text = "Place object";
+            cleanupTask.color = Color.green;
+            cleanupDone = true;
             print(pickableObject.name);
 
             if (hotbar.currentObject.tag == place.tag)
@@ -413,6 +417,7 @@ public class ObjectPickUp : MonoBehaviour
                             itemCount--;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
                             hotbar.items[i].transform.position = place.transform.position;
+                            //hotbar.items[i].layer = default;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
                             objectRb = null;
@@ -700,7 +705,7 @@ public class ObjectPickUp : MonoBehaviour
 
                 tvTask.text = "Tv On";
                 tvTask.color = Color.green;
-
+                tvdone = true;
                 tvIndex++;
             }
 
@@ -773,6 +778,17 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    void ObjectLayer()
+    {
+        if (isObject)
+        {
+            if (hitObj.tag == "Cube" || hitObj.tag == "Cone" || hitObj.tag == "Sphere")
+            {
+                hitObj.layer = pickableObj;
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -791,5 +807,6 @@ public class ObjectPickUp : MonoBehaviour
         Television();
         Shop();
         ObjectCameraActivate();
+        ObjectLayer();  
     }
 }
