@@ -27,8 +27,8 @@ public class DamageScript : MonoBehaviour
     [SerializeField] Vignette vignette;
 
     [SerializeField] TextMeshProUGUI causeOfDeathText;
-    [SerializeField] GameObject loadScene;
-    [SerializeField] LoadingScene scene;
+    public GameObject loadScene;
+    public LoadingScene scene;
 
     void Start()
     {

@@ -8,7 +8,7 @@ public class LaundryScript : MonoBehaviour
     [SerializeField] AudioClip limitReachedClip;
     private AudioSource audioSource;
     private int points = 10;
-
+    public bool laundry = false;
     [SerializeField] Animator machineActivate;
 
     [SerializeField] GameObject laundryFull;
@@ -73,6 +73,7 @@ public class LaundryScript : MonoBehaviour
                     machineActivate.Play("Door Opening Animation");
                     laundryTask.text = "Clothes washed";
                     laundryTask.color = Color.green;
+                    laundry = true;
                 }
             }
             Destroy(other.gameObject);
