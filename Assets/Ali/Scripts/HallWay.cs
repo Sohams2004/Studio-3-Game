@@ -26,6 +26,7 @@ public class HallWay : MonoBehaviour
             {
                 // Enable the hallway when the second collider is triggered
                 hallway.SetActive(true);
+                finalDoor.SetActive(true);
 
                 // Activate the monster after a delay
                 Invoke(nameof(ActivateMonster), 2f);  // 2-second delay before activating the monster

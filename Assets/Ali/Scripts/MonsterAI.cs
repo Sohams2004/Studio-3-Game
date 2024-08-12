@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MonsterAI : MonoBehaviour
 {
-    public Transform player;  // Reference to the player
+   public Transform player;  // Reference to the player
     public float moveSpeed = 5f;  // Speed at which the monster moves
+    public float rotationSpeed = 5f; // Speed at which the monster rotates
 
     private void Update()
     {
@@ -28,11 +29,15 @@ public class MonsterAI : MonoBehaviour
 
     private void FacePlayer()
     {
-        // Calculate the rotation needed to face the player
-        Quaternion targetRotation = Quaternion.LookRotation(player.position - transform.position);
+        // Calculate the direction to the player
+        Vector3 direction = (player.position - transform.position).normalized;
 
-        // Smoothly rotate the monster to face the player
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * moveSpeed);
+        // Apply a 90-degree rotation around the Y-axis
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        targetRotation *= Quaternion.Euler(0, 90, 0);  // Rotate 90 degrees around the Y-axis
+
+        // Smoothly rotate the monster to face the player with the added rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
