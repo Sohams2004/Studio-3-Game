@@ -13,7 +13,7 @@ public class ObjectPickUp : MonoBehaviour
     public TextMeshProUGUI CashTask; //to reference the task text
 
     [SerializeField] GameObject mainPlayer;
-
+    public bool moneydone = false;
     [SerializeField] float rayLength;
 
     [SerializeField] float moneyCount;
@@ -516,6 +516,7 @@ public class ObjectPickUp : MonoBehaviour
 
                 CashTask.text = "Cash Collected"; //two lines to update task text
                 CashTask.color = Color.green;
+                moneydone = true;
 
             }
         }
@@ -761,7 +762,7 @@ public class ObjectPickUp : MonoBehaviour
 
     void ObjectCameraActivate()
     {
-        if(isPicked)
+        if (isPicked)
         {
             objectsCamera.enabled = true;
         }

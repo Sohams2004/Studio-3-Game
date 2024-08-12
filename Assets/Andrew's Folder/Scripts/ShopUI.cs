@@ -4,7 +4,7 @@ using UnityEngine;
 public class ShopUI : MonoBehaviour
 {
     RaycastHit hit1;
-
+    public bool shopdone = false;
     public TextMeshProUGUI shopingTask;
     [SerializeField] float rayLength;
 
@@ -37,7 +37,7 @@ public class ShopUI : MonoBehaviour
     {
         if (inside && Input.GetKey(KeyCode.E))
         {
-            shopingTask.color = Color.green;
+
             shopUI.SetActive(true);
             InteractText.text = string.Empty;
             Cursor.lockState = CursorLockMode.None;
@@ -103,7 +103,8 @@ public class ShopUI : MonoBehaviour
         if (moneyCount >= breadPrice)
         {
             Debug.Log("Purachased Bread");
-
+            shopdone = true;
+            shopingTask.color = Color.green;
             moneyCount -= breadPrice;
             moneyCountText.text = string.Format("$ " + moneyCount);
             Instantiate(breadPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -115,7 +116,8 @@ public class ShopUI : MonoBehaviour
         if (moneyCount >= eggPrice)
         {
             Debug.Log("Purachased eggs");
-
+            shopdone = true;
+            shopingTask.color = Color.green;
             moneyCount -= eggPrice;
             moneyCountText.text = string.Format("$ " + moneyCount);
             Instantiate(eggPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -127,7 +129,8 @@ public class ShopUI : MonoBehaviour
         if (moneyCount >= orangePrice)
         {
             Debug.Log("Purachased orange");
-
+            shopdone = true;
+            shopingTask.color = Color.green;
             moneyCount -= orangePrice;
             moneyCountText.text = string.Format("$ " + moneyCount);
             Instantiate(orangePrefab, spawnPoint.position, spawnPoint.rotation);

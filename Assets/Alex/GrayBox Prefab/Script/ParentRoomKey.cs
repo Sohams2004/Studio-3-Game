@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParentRoomKey : MonoBehaviour
 {
     public TextMeshProUGUI KeyTask; //this to reference the text in inspector
-
+    public bool keydone = false;
     public TMP_Text promptText;
     private AudioSource audioSource;
     [SerializeField] GameObject keyCollected;
@@ -25,7 +25,7 @@ public class ParentRoomKey : MonoBehaviour
 
                 key.SetActive(false);
                 keyCollected.SetActive(true);
-
+                keydone = true;
                 pickedkey = true;
                 await Task.Delay(1000);
                 promptText.text = string.Empty;
@@ -38,13 +38,14 @@ public class ParentRoomKey : MonoBehaviour
         promptText.text = "Press E to interact";
         if (Input.GetKeyDown(KeyCode.E))
         {
-            KeyTask.text = "Key Collected"; // the two lines that update the text when picking the key
-            KeyTask.color = Color.green;
+
 
 
             key.SetActive(false);
             keyCollected.SetActive(true);
-
+            KeyTask.text = "Key Collected";
+            KeyTask.color = Color.green;
+            keydone = true;
             pickedkey = true;
             await Task.Delay(1000);
             promptText.text = string.Empty;
