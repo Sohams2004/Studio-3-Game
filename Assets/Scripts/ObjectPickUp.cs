@@ -66,7 +66,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] ParticleSystem tapWater;
 
     RaycastHit hit1;
-    GameObject hitObj;
+    [SerializeField] GameObject hitObj;
 
     GameObject parentObj;
     GameObject place;
@@ -417,6 +417,7 @@ public class ObjectPickUp : MonoBehaviour
                             itemCount--;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
                             hotbar.items[i].transform.position = place.transform.position;
+                            //hotbar.items[i].layer = default;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
                             objectRb = null;
@@ -777,6 +778,17 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    void ObjectLayer()
+    {
+        if (isObject)
+        {
+            if (hitObj.tag == "Cube" || hitObj.tag == "Cone" || hitObj.tag == "Sphere")
+            {
+                hitObj.layer = pickableObj;
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -795,5 +807,6 @@ public class ObjectPickUp : MonoBehaviour
         Television();
         Shop();
         ObjectCameraActivate();
+        ObjectLayer();  
     }
 }
