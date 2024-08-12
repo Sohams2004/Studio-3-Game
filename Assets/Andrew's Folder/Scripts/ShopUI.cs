@@ -5,8 +5,7 @@ public class ShopUI : MonoBehaviour
 {
     RaycastHit hit1;
 
-    GameObject money;
-
+    public TextMeshProUGUI shopingTask;
     [SerializeField] float rayLength;
 
     [SerializeField] public float moneyCount;
@@ -38,7 +37,7 @@ public class ShopUI : MonoBehaviour
     {
         if (inside && Input.GetKey(KeyCode.E))
         {
-
+            shopingTask.color = Color.green;
             shopUI.SetActive(true);
             InteractText.text = string.Empty;
             Cursor.lockState = CursorLockMode.None;
@@ -76,6 +75,7 @@ public class ShopUI : MonoBehaviour
     {
         if (other.CompareTag("Pay Station"))
         {
+
             inside = true;
             InteractText.text = "Press E to Interact";
 
