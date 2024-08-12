@@ -22,7 +22,7 @@ public class ParentRoomKey : MonoBehaviour
             promptText.text = "Press E to interact";
             if (Input.GetKeyDown(KeyCode.E))
             {
-                promptText.text = string.Empty;
+
                 key.SetActive(false);
                 keyCollected.SetActive(true);
 
@@ -41,7 +41,7 @@ public class ParentRoomKey : MonoBehaviour
             KeyTask.text = "Key Collected"; // the two lines that update the text when picking the key
             KeyTask.color = Color.green;
 
-            promptText.text = string.Empty;
+
             key.SetActive(false);
             keyCollected.SetActive(true);
 

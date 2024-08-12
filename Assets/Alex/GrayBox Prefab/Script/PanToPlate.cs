@@ -23,7 +23,7 @@ public class PanTOPlate : MonoBehaviour
         // Ensure blenderAnimator is assigned
         if (blenderAnimator == null)
         {
-            Debug.LogError("FryingPan Animator is not assigned!");
+            Debug.Log("FryingPan Animator is not assigned!");
         }
     }
 
