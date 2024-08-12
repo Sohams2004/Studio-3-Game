@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 500841113}
   parameterName: Blink
-  delay: 1
+  delayToBlink: 5
 --- !u!1001 &511192083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45294,6 +45294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa99ebd70b891244497b8c65ebb349ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopdone: 0
+  shopingTask: {fileID: 0}
   rayLength: 5
   moneyCount: 0
   moneyLayer:
@@ -46077,7 +46079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6169524853494053861, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7321054874119573285, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_Name
@@ -46085,7 +46087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321054874119573285, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7778304348528716429, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_text
@@ -46095,7 +46097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044247389382332408, guid: 21d092e4c69183945a2fea2dc99b37c3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
