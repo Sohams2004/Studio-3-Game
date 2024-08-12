@@ -54,15 +54,19 @@ public class WaterBottle : MonoBehaviour
         // Check if the drink key is pressed
         if (currentBottle != null && Input.GetKeyDown(drinkKey))
         {
-            damageScript.ThirstRecovered(40);
-            Destroy(currentBottle);
+            
+            
             audioSource.PlayOneShot(drinkingSound); // Play the drinking sound effect
             if (currentText != null)
             {
                 currentText.SetActive(false);
                 currentText = null;
             }
+            Destroy(currentBottle);
             currentBottle = null;
+            
+            damageScript.ThirstRecovered(40);
         }
+
     }
 }

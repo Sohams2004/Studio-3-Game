@@ -5,9 +5,9 @@ public class HotBar : MonoBehaviour
 {
 
     public List<GameObject> items;
-    public List<GameObject> inventory;
+    //public List<GameObject> inventory;
 
-    [SerializeField] GameObject item1, item2, item3, item4, item5;
+    //[SerializeField] GameObject item1, item2, item3, item4, item5;
 
     [SerializeField] public GameObject currentObject;
 
@@ -19,7 +19,7 @@ public class HotBar : MonoBehaviour
 
     [SerializeField] ObjectPickUp objectPickUp;
 
-    private void Start()
+    private void Awake()
     {
         objectPickUp = FindObjectOfType<ObjectPickUp>();
         //items = new GameObject[numberOfItems];

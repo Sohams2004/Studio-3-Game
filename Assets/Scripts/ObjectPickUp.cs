@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] public GameObject pickableObject;
 
-    [SerializeField] Camera camera;
+    [SerializeField] Camera camera, objectsCamera;
 
     [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText, pickUpMoneyText;
 
@@ -46,6 +47,8 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
+
+    [SerializeField] List<GameObject> objects;
 
     [SerializeField] Transform[] itemFrames;
 
@@ -107,6 +110,11 @@ public class ObjectPickUp : MonoBehaviour
         outlineMaterial = new Material(outlineShader);
 
         tapWater.Stop();
+    }
+
+    private void Awake()
+    {
+        objectsCamera.enabled = false;
     }
 
     void ObjectDetect()
@@ -751,6 +759,19 @@ public class ObjectPickUp : MonoBehaviour
 
     }
 
+    void ObjectCameraActivate()
+    {
+        if(isPicked)
+        {
+            objectsCamera.enabled = true;
+        }
+
+        else
+        {
+            objectsCamera.enabled = false;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -768,5 +789,6 @@ public class ObjectPickUp : MonoBehaviour
         TapWater();
         Television();
         Shop();
+        ObjectCameraActivate();
     }
 }

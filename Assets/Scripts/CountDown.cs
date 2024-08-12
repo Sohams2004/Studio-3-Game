@@ -10,19 +10,75 @@ public class CountDown : MonoBehaviour
     [SerializeField] LoadingScene scene;
     [SerializeField] TextMeshProUGUI secondsText;
     [SerializeField] TextMeshProUGUI minutesText;
+    [SerializeField] TextMeshProUGUI amPMText;
+    [SerializeField] TextMeshProUGUI colon;
+
+    [SerializeField] bool isPM;
+
+
+    private void Start()
+    {
+        secondsText.color = Color.green;
+        minutesText.color = Color.green;
+        colon.color = Color.green;
+        amPMText.color = Color.green;
+    }
 
     void Timer()
     {
-        seconds -= Time.deltaTime;
+        seconds += Time.deltaTime * 3f;
 
-        if (seconds <= 0)
+        if (seconds >= 59)
         {
-            seconds = 60;
-            minutes--;
+            seconds = 00;
+            minutes++;
         }
 
-        secondsText.text = string.Format("" + Mathf.RoundToInt(seconds));
-        minutesText.text = string.Format(minutes + " :");
+        if (minutes > 12)
+        {
+            minutes = 1;
+        }
+
+        if (minutes >= 12)
+        {
+            isPM = true;
+            amPMText.text = "pm";
+        }
+
+        if (seconds <= 9)
+        {
+            secondsText.text = string.Format("0" + Mathf.RoundToInt(seconds));
+        }
+        else if(seconds >= 9)
+        {
+            secondsText.text = string.Format("" + Mathf.RoundToInt(seconds));
+        }
+
+        if (minutes < 10)
+        {
+            minutesText.text = string.Format("0" + minutes);
+        }
+
+        else if (minutes >= 10)
+        {
+            minutesText.text = string.Format("" + minutes);
+        }
+
+        if(isPM)
+        {
+            if (minutes == 7)
+            {
+                secondsText.color = Color.red;
+                minutesText.color = Color.red;
+                colon.color = Color.red;
+                amPMText.color = Color.red;
+            }
+
+            if (minutes == 8)
+            {
+                seconds += Time.deltaTime * 0;
+            }
+        }
     }
 
     void MoveToNextScene()
