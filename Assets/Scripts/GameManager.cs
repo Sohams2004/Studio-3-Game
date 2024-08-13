@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu Layout");
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && pauseIndex % 2 is 0)
