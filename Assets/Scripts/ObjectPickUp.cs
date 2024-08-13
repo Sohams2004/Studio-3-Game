@@ -545,7 +545,7 @@ public class ObjectPickUp : MonoBehaviour
             {
                 doorIndex++;
                 isDoorOpen = true;
-                doorAnimator.Play("Door Opening");
+                doorAnimator.Play("Door Open");
                 closedoor.Stop();
                 opendoor.Play();
                 await Task.Delay(2000);
@@ -555,7 +555,7 @@ public class ObjectPickUp : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0)
             {
                 doorIndex++;
-                doorAnimator.Play("Door Closing");
+                doorAnimator.Play("Door Close");
                 opendoor.Stop();
                 closedoor.Play();
                 await Task.Delay(2000);
@@ -807,6 +807,6 @@ public class ObjectPickUp : MonoBehaviour
         Television();
         Shop();
         ObjectCameraActivate();
-        ObjectLayer();  
+        ObjectLayer();
     }
 }
