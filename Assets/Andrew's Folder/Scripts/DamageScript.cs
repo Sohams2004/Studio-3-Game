@@ -135,7 +135,7 @@ public class DamageScript : MonoBehaviour
             thirst = maxHP;
         }
     }
-    async void DamageReceived(int damage)
+    public async void DamageReceived(int damage)
     {
         sanity -= damage;
 
