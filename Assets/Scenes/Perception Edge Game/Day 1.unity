@@ -52017,7 +52017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   pauseIndex: 0
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 2021505814}
 --- !u!4 &1265906847
 Transform:
   m_ObjectHideFlags: 0
@@ -95238,6 +95238,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 788141070927059884, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1265906846}
+    - target: {fileID: 788141070927059884, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
     - target: {fileID: 2945455875476075814, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -95326,11 +95334,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8158252890057145999, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1265906846}
+    - target: {fileID: 8158252890057145999, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
+--- !u!1 &2021505814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2945455875476075814, guid: 21fb398dd3cf3744582dea0876eb630e, type: 3}
+  m_PrefabInstance: {fileID: 2021505813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!28 &2023472401
 Texture2D:
   m_ObjectHideFlags: 0
