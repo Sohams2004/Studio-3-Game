@@ -84322,6 +84322,81 @@ Texture2D:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1615652636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615652639}
+  - component: {fileID: 1615652638}
+  - component: {fileID: 1615652637}
+  m_Layer: 5
+  m_Name: CrosshairAli
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1615652637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615652636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1615652638
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615652636}
+  m_CullTransparentMesh: 1
+--- !u!224 &1615652639
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615652636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.10075309, y: 0.10075309, z: 0.10075309}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3567868213318672168}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!28 &1619851245
 Texture2D:
   m_ObjectHideFlags: 0
@@ -98724,6 +98799,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 90362549670873891, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
       insertIndex: 3
+      addedObject: {fileID: 6982820337040257085}
+    - targetCorrespondingSourceObject: {fileID: 90362549670873891, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
+      insertIndex: 4
       addedObject: {fileID: 6982820337040257084}
   m_SourcePrefab: {fileID: 100100000, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
 --- !u!1001 &459212937959379555
@@ -106694,7 +106772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3246085953877101021, guid: d167bbcc9a230814993d6a524100a840, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5348411784287288742, guid: d167bbcc9a230814993d6a524100a840, type: 3}
       propertyPath: m_Pivot.x
@@ -107007,6 +107085,7 @@ RectTransform:
   - {fileID: 1864169698}
   - {fileID: 1044493541}
   - {fileID: 166157773}
+  - {fileID: 1615652639}
   m_Father: {fileID: 6780735874054318402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -107390,6 +107469,10 @@ PrefabInstance:
     - target: {fileID: 2840378793553519369, guid: 0a6ad2ae19813c141a77f27e34a98bdd, type: 3}
       propertyPath: m_Name
       value: Hand sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840378793553519369, guid: 0a6ad2ae19813c141a77f27e34a98bdd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -109294,6 +109377,24 @@ MonoBehaviour:
   audioSource: {fileID: 1787410576}
   drinkingSound: {fileID: 8300000, guid: 6b7ed4266bcce6d4a837bc977d030ef8, type: 3}
   damageScript: {fileID: 6982820337040257081}
+--- !u!114 &6982820337040257085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738080552152024473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52107c3f851e454abb478472fec35d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairImage: {fileID: 1615652637}
+  defaultColor: {r: 1, g: 0, b: 0, a: 1}
+  highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1947762200
 --- !u!1001 &6997376491874990096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118475,6 +118576,10 @@ PrefabInstance:
     - target: {fileID: 5466452437791806789, guid: 238dbace5f1536344bb5f196078f0afe, type: 3}
       propertyPath: m_Name
       value: Crosshair
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466452437791806789, guid: 238dbace5f1536344bb5f196078f0afe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8890067722446664979, guid: 238dbace5f1536344bb5f196078f0afe, type: 3}
       propertyPath: m_Type
