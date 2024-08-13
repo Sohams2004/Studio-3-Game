@@ -73,7 +73,7 @@ public class DoorAnimationInGame : MonoBehaviour
     }
     public void OpenDoor()
     {
-        doorAnimator.Play("Door Opening");
+        doorAnimator.Play("Door Open");
         closedoor.Stop();
         opendoor.Play();
 
@@ -84,7 +84,7 @@ public class DoorAnimationInGame : MonoBehaviour
     }
     public void CloseDoor()
     {
-        doorAnimator.Play("Door Closing");
+        doorAnimator.Play("Door Close");
         opendoor.Stop();
         closedoor.Play();
 
