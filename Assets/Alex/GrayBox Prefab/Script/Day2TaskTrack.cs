@@ -11,7 +11,7 @@ public class Day2TaskTrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectPickUp.cleanupDone && objectPickUp.tvdone && lightSwitch.lightdone && pickUpPlace.eatdone && laundryScript.laundryTask)
+        if (objectPickUp.tvdone && lightSwitch.lightdone && pickUpPlace.eatdone && laundryScript.laundryTask)
         {
             firstdaytaskdone = true;
         }

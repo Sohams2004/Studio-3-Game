@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Start : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class Start : MonoBehaviour
     {
         loadScene.SetActive(true);
         scene.LoadScene("Cinematic");
-        SceneManager.LoadScene(1);
+
 
     }
 }
