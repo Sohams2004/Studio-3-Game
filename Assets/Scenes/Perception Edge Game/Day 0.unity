@@ -11710,7 +11710,7 @@ PrefabInstance:
     - target: {fileID: 6550958361988280150, guid: 563f3a85784116041af3a7419946fcd9, type: 3}
       propertyPath: damageScript
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 270223307}
     - target: {fileID: 6550958361988280150, guid: 563f3a85784116041af3a7419946fcd9, type: 3}
       propertyPath: playerCamera
       value: 
@@ -24506,6 +24506,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1508949454286758333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
   m_PrefabInstance: {fileID: 1927383620468626659}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &615685561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2200963542902253931, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617489729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1949371687273005935, guid: 2790c865069d29c4fbce805908450622, type: 3}
@@ -41636,6 +41647,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 725498091}
   m_SourcePrefab: {fileID: 100100000, guid: 2420cb3f76be87949964f354f37260ec, type: 3}
+--- !u!1 &702725620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6479792062747606453, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &703044678
 Mesh:
   m_ObjectHideFlags: 0
@@ -42072,6 +42088,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 788dae44ebdcf0945a2352f24e858fe4, type: 3}
+--- !u!114 &750742523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7235735053245566598, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &754124821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8689177693261667084, guid: 96cca1bd89d9539418caccb80e380388, type: 3}
@@ -43260,6 +43287,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6276108387672755222, guid: 1954e6ea919a3ab45996ff7e2fce2131, type: 3}
   m_PrefabInstance: {fileID: 787445991}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &792711541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3278600360027578465, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &798649821
 Mesh:
   m_ObjectHideFlags: 0
@@ -92978,7 +93016,7 @@ MonoBehaviour:
   roomLight: {fileID: 1886055494}
   switchSound: {fileID: 8300000, guid: 9eff3324d6755714aa5fbebfc8431131, type: 3}
   lightdone: 0
-  LightsTask: {fileID: 0}
+  LightsTask: {fileID: 615685561}
 --- !u!82 &2004557360
 AudioSource:
   m_ObjectHideFlags: 0
@@ -118512,7 +118550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300708412688308269, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4301802160228911742, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
@@ -124116,7 +124154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6294247176451463952, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Name
-      value: Air out your room
+      value: Light Room
       objectReference: {fileID: 0}
     - target: {fileID: 6294247176451463952, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
@@ -125392,7 +125430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783785203940761179, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6785606000736018331, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
@@ -131227,6 +131265,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1209872518}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: hitObj
+      value: 
+      objectReference: {fileID: 702725620}
+    - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: hotbar
       value: 
       objectReference: {fileID: 1661481134}
@@ -131249,7 +131291,7 @@ PrefabInstance:
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: tvtext
       value: 
-      objectReference: {fileID: 1877825862}
+      objectReference: {fileID: 750742523}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: tvIndex
       value: 1
@@ -131303,9 +131345,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: cleanupTask
+      value: 
+      objectReference: {fileID: 792711541}
+    - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: staticnoice
       value: 
       objectReference: {fileID: 1525765466}
+    - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: watchAMovie
+      value: 
+      objectReference: {fileID: 750742523}
     - target: {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: doorAnimator
       value: 

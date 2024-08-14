@@ -15,6 +15,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] GameObject mainPlayer;
     public bool moneydone = false;
     public bool tvdone = false;
+    
     [SerializeField] float rayLength;
     public bool cleanupDone = false;
     [SerializeField] float moneyCount;
@@ -43,7 +44,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
-    [SerializeField] TextMeshProUGUI blindsTask, cleanupTask;
+    [SerializeField] TextMeshProUGUI blindsTask, cleanupTask, watchAMovie;
 
     [SerializeField] Image crosshair, paperNote, handSign, chairSign;
 
@@ -93,7 +94,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] AudioSource staticnoice;
     [SerializeField] bool hasInteracted = false;
     [SerializeField] bool playerInRange = false;
-    [SerializeField] TMP_Text tvtext;
+
 
     private void Start()
     {
@@ -702,9 +703,7 @@ public class ObjectPickUp : MonoBehaviour
                 voice.Play();
                 LightmapSettings.lightmaps = lightmapsOn;
                 hasInteracted = true;
-
-                tvTask.text = "Tv On";
-                tvTask.color = Color.green;
+                watchAMovie.color = Color.green;
                 tvdone = true;
                 tvIndex++;
             }
