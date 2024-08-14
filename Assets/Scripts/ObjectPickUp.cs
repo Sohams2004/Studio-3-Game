@@ -9,30 +9,26 @@ using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
-    public GameObject panel; //for the task list
-    public TextMeshProUGUI CashTask; //to reference the task text
-    [SerializeField] GameObject lundry;
+    RaycastHit hit1;
+
     [SerializeField] GameObject mainPlayer;
-    public bool moneydone = false;
-    public bool tvdone = false;
     
     [SerializeField] float rayLength;
     public bool cleanupDone = false;
-    [SerializeField] float moneyCount;
 
-    [SerializeField] int paperNoteIndex, doorIndex, sitIndex, tapWaterIndex, blindsIndex, tvIndex, shopIndex;
+    [SerializeField] int sitIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
     [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
+    [SerializeField] bool isObject, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isDoor, isDoorOpen, isBlinds, isBlindsOpen, isChair, isSitting, isTapWater, isTapWaterRunning, isSecondPlayerActive, isTV, isTVOn, isShop, isShopOn;
+    [SerializeField] public bool isPicked, isChair, isSitting,isSecondPlayerActive;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer, doorLayer, chairLayer, tapWaterLayer, blindsLayer, tvLayer, shopLayer;
+    [SerializeField] LayerMask pickableObj, placeLayer, chairLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
@@ -40,78 +36,30 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] Camera camera, objectsCamera;
 
-    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText, pickUpMoneyText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, placeObjectText, inventoryFullText;
 
-    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
+    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
 
-    [SerializeField] TextMeshProUGUI blindsTask, cleanupTask, watchAMovie;
+    [SerializeField] TextMeshProUGUI cleanupTask;
 
-    [SerializeField] Image crosshair, paperNote, handSign, chairSign;
+    [SerializeField] Image crosshair, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
-    [SerializeField] List<GameObject> objects;
-
-    [SerializeField] Transform[] itemFrames;
-
-    [SerializeField] Material shapeMaterial;
-
-    [SerializeField] AudioSource opendoor;
-    [SerializeField] AudioSource closedoor;
-    [SerializeField] AudioSource blindsAudio;
-
-    [SerializeField] Shader outlineShader;
-    [SerializeField] Shader standard;
-    [SerializeField] Material outlineMaterial;
-
-    [SerializeField] ParticleSystem tapWater;
-
-    RaycastHit hit1;
     [SerializeField] GameObject hitObj;
 
-    GameObject parentObj;
     GameObject place;
-    GameObject money;
-    [SerializeField] GameObject door, blinds;
-    [SerializeField] GameObject shopUi;
 
     [SerializeField] HotBar hotbar;
     public Movement movement;
-    ShopUI shopUI;
-    DoorAnimation doorAnimation;
     Sitting2 sitting;
-
-    [SerializeField] Animator doorAnimator, blindsAnimator;
-
-    //Television
-    public TextMeshProUGUI tvTask;
-
-    [SerializeField] GameObject screen;
-    public LightmapData[] lightmapsOn;
-    public LightmapData[] lightmapsOff;
-
-    [SerializeField] AudioSource voice;
-    [SerializeField] AudioSource staticnoice;
-    [SerializeField] bool hasInteracted = false;
-    [SerializeField] bool playerInRange = false;
-
 
     private void Start()
     {
-        //secondPlayer.SetActive(false);
-        isBlinds = false;
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
         movement = FindObjectOfType<Movement>();
-        shopUI = FindObjectOfType<ShopUI>();
         sitting = FindObjectOfType<Sitting2>();
-
-        screen.SetActive(false);
-        LightmapSettings.lightmaps = lightmapsOff;
-        //outlineShader = Shader.Find("Outline");
-        outlineMaterial = new Material(outlineShader);
-
-        tapWater.Stop();
     }
 
     private void Awake()
@@ -129,14 +77,6 @@ public class ObjectPickUp : MonoBehaviour
             handSign.gameObject.SetActive(true);
             crosshair.enabled = false;
             isObject = true;
-
-            /*Renderer renderer = hitObj.GetComponent<Renderer>();
-
-            if (renderer != null)
-            {
-                shapeMaterial = renderer.material;
-                shapeMaterial.shader = outlineShader;
-            }*/
         }
 
         else if (!isRay)
@@ -145,16 +85,11 @@ public class ObjectPickUp : MonoBehaviour
             pickDropObjectText.text = string.Empty;
             handSign.gameObject.SetActive(false);
             crosshair.enabled = true;
-
-            /*if (shapeMaterial != null)
-            {
-                shapeMaterial.shader = standard;
-            }*/
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
         {
-            if (/*hotbar.items.Length <= hotbar.numberOfItems*/ itemCount < maxNumberOfItems)
+            if (itemCount < maxNumberOfItems)
             {
                 objectRb = hitObj.GetComponent<Rigidbody>();
                 pickableObject = hitObj.gameObject;
@@ -172,31 +107,9 @@ public class ObjectPickUp : MonoBehaviour
                     {
                         itemCount++;
                         hotbar.items.Add(pickableObject);
-                        //pickableObject = null;
-
-                        /*if (pickableObject.tag == "Cube" && cubeCount < 1)
-                        {
-
-                        }
-
-                        if (pickableObject.tag == "Cone" && coneCount < 1)
-                        {
-                            hotbar.items[i] = pickableObject;
-                            pickableObject = null;
-                        }
-
-                        if (pickableObject.tag == "Sphere" && sphereCount < 1)
-                        {
-                            hotbar.items[i] = pickableObject;
-                            pickableObject = null;
-                        }*/
                         break;
                     }
                 }
-
-
-
-                //hotbar.Inventory();
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -340,51 +253,6 @@ public class ObjectPickUp : MonoBehaviour
         inventoryFullText.text = string.Empty;
     }
 
-    void PaperNote()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer);
-        if (isRay)
-        {
-            Debug.Log("Note detected");
-
-            isPaperNote = true;
-
-            if (!isPaperNotePicked)
-                interactionText.text = "Press E to interact";
-        }
-
-        else if (!isRay)
-        {
-            isPaperNote = false;
-            interactionText.text = string.Empty;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.E) && isPaperNote && paperNoteIndex % 2 != 0)
-        {
-            paperNoteIndex++;
-            isPaperNotePicked = true;
-            paperNote.gameObject.SetActive(true);
-
-            movement.enabled = false;
-        }
-
-        else if (Input.GetKeyDown(KeyCode.E) && isPaperNotePicked && paperNoteIndex % 2 == 0)
-        {
-            paperNoteIndex++;
-            isPaperNote = false;
-            isPaperNotePicked = false;
-            paperNote.gameObject.SetActive(false);
-            movement.enabled = true;
-            lundry.gameObject.SetActive(true);
-            panel.SetActive(true); //activate the tasklist 
-        }
-
-        if (isPaperNotePicked)
-        {
-            interactionText.text = string.Empty;
-        }
-    }
 
     void PlaceObjects()
     {
@@ -405,11 +273,7 @@ public class ObjectPickUp : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     Debug.Log("Placeddd");
-
-                    //hotbar.items.Remove(pickableObject);
                     hotbar.currentObject.transform.parent = null;
-                    // pickableObject.transform.position = place.transform.position;
-                    //pickableObject.transform.rotation = Quaternion.identity;
 
                     for (int i = 0; i < hotbar.items.Count; i++)
                     {
@@ -418,7 +282,6 @@ public class ObjectPickUp : MonoBehaviour
                             itemCount--;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
                             hotbar.items[i].transform.position = place.transform.position;
-                            //hotbar.items[i].layer = default;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
                             objectRb = null;
@@ -463,192 +326,7 @@ public class ObjectPickUp : MonoBehaviour
             placeObjectText.text = string.Empty;
         }
     }
-
-    /* void OpenDoor()
-     {
-         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
-         if (isRay && !isDoorOpen)
-         {
-             Debug.Log("Door detected");
-             hitDoor = hit1.collider.gameObject;
-             parentObj = hitDoor.transform.parent.gameObject;
-             doorOpenText.text = "Press E to open the door";
-
-             isDoor = true;
-         }
-
-         else if (isRay && isDoorOpen)
-         {
-             doorOpenText.text = "Press E to close the door";
-         }
-
-         else if (!isRay)
-         {
-             doorOpenText.text = string.Empty;
-         }
-
-
-         if (Input.GetKeyDown(KeyCode.E) && isDoor)
-         {
-             isDoorOpen = true;
-             door = hitDoor;
-             parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-         }
-
-         if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && isRay)
-         {
-             isDoorOpen = false;
-             parentObj.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-         }
-
-
-     }*/
-
-    void Money()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
-        if (isRay)
-        {
-            Debug.Log("Money");
-
-            money = hit1.collider.gameObject;
-            pickUpMoneyText.text = "Press E to pick up Money";
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                shopUI.moneyCount += 5f;
-                moneyCountText.text = string.Format("$ " + shopUI.moneyCount);
-                money.SetActive(false);
-
-                CashTask.text = "Cash Collected"; //two lines to update task text
-                CashTask.color = Color.green;
-                moneydone = true;
-
-            }
-        }
-
-        else if (!isRay)
-        {
-            pickUpMoneyText.text = string.Empty;
-        }
-    }
-
-    async void OpenDoor()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, doorLayer);
-
-        if (isRay)
-        {
-            isDoor = true;
-            door = hit1.collider.gameObject;
-            doorAnimator = door.GetComponent<Animator>();
-            if (Input.GetKeyDown(KeyCode.E) && isDoor && doorIndex % 2 != 0)
-            {
-                doorIndex++;
-                isDoorOpen = true;
-                doorAnimator.Play("Door Open");
-                closedoor.Stop();
-                opendoor.Play();
-                await Task.Delay(2000);
-
-            }
-
-            else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0)
-            {
-                doorIndex++;
-                doorAnimator.Play("Door Close");
-                opendoor.Stop();
-                closedoor.Play();
-                await Task.Delay(2000);
-
-            }
-        }
-
-        else if (!isRay)
-        {
-            isDoor = false;
-            door = null;
-            doorAnimator = null;
-        }
-    }
-
-    void BlindsOpen()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
-
-        if (isRay)
-        {
-            isBlinds = true;
-            blinds = hit1.collider.gameObject;
-            blindsAnimator = blinds.GetComponent<Animator>();
-            blindsAudio = GetComponent<AudioSource>();
-
-            if (Input.GetKeyDown(KeyCode.E) && !isBlinds && blindsIndex % 2 != 0)
-            {
-
-                isDoorOpen = true;
-                blindsAnimator.Play("Open Curtain");
-
-                blindsTask.color = Color.green;
-
-                if (blindsAudio != null)
-                {
-                    blindsAudio.Play();
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.E) && isBlindsOpen && blindsIndex % 2 == 0)
-            {
-
-                blindsAnimator.Play("Close Curtain");
-
-                if (blindsAudio != null)
-                {
-                    blindsAudio.Play();
-                }
-            }
-        }
-
-        else if (!isRay)
-        {
-            isBlinds = false;
-            blinds = null;
-            blindsAnimator = null;
-            blindsAudio = null;
-        }
-    }
-
-    void TapWater()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, tapWaterLayer);
-
-        if (isRay)
-        {
-            isTapWater = true;
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                isTapWaterRunning = !isTapWaterRunning;
-                tapWaterIndex++;
-            }
-        }
-
-        else if (!isRay)
-        {
-            isTapWater = false;
-        }
-
-        if (isTapWaterRunning)
-        {
-            tapWater.Play();
-        }
-
-        else if (!isTapWaterRunning)
-        {
-            tapWater.Stop();
-        }
-
-    }
-
+  
     /*  async void Sit()
       {
           bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
@@ -688,82 +366,7 @@ public class ObjectPickUp : MonoBehaviour
           }
       }
   */
-    void Television()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, tvLayer);
-        if (isRay)
-        {
-            isTV = true;
-
-            if (Input.GetKeyDown(KeyCode.E) && isTV && tvIndex % 2 != 0)
-            {
-                isTVOn = true;
-                screen.SetActive(true);
-                staticnoice.Play();
-                voice.Play();
-                LightmapSettings.lightmaps = lightmapsOn;
-                hasInteracted = true;
-                watchAMovie.color = Color.green;
-                tvdone = true;
-                tvIndex++;
-            }
-
-            else if (Input.GetKeyDown(KeyCode.E) && isTVOn && tvIndex % 2 == 0)
-            {
-                isTVOn = false;
-                screen.SetActive(false);
-                staticnoice.Stop();
-                voice.Stop();
-                LightmapSettings.lightmaps = lightmapsOff;
-                hasInteracted = false;
-
-                tvIndex++;
-            }
-        }
-
-        else if (!isRay)
-        {
-            isTV = false;
-        }
-    }
-
-    void Shop()
-    {
-        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, shopLayer);
-
-        if (isRay)
-        {
-            isShop = true;
-
-            if (Input.GetKeyDown(KeyCode.E) && isShop && shopIndex % 2 != 0)
-            {
-                isShopOn = true;
-                shopUi.SetActive(true);
-                shopUi.transform.GetChild(0).gameObject.SetActive(false);
-                shopUi.transform.GetChild(1).gameObject.SetActive(false);
-                shopUi.transform.GetChild(2).gameObject.SetActive(false);
-
-                shopIndex++;
-
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.E) && isShopOn && shopIndex % 2 == 0)
-            {
-                isShopOn = false;
-                shopUi.SetActive(true);
-                shopIndex++;
-            }
-        }
-
-        else if (!isRay)
-        {
-            isShop = false;
-        }
-
-    }
-
+   
     void ObjectCameraActivate()
     {
         if (isPicked)
@@ -796,15 +399,8 @@ public class ObjectPickUp : MonoBehaviour
     private void Update()
     {
         ObjectDetect();
-        PaperNote();
         PlaceObjects();
-        OpenDoor();
-        BlindsOpen();
-        Money();
         /* Sit();*/
-        TapWater();
-        Television();
-        Shop();
         ObjectCameraActivate();
         ObjectLayer();
     }
