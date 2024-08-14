@@ -162,11 +162,13 @@ public class DamageScript : MonoBehaviour
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
         Time.timeScale = 0f;
+        
     }
     void GameOverSanity()
     {
         loadScene.SetActive(true);
         scene.LoadScene("Game Over");
+        SanityRecovered(100);
 
     }
 }
