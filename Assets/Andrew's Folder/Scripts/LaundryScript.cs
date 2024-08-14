@@ -7,7 +7,7 @@ public class LaundryScript : MonoBehaviour
     [SerializeField] Text pointText;
     [SerializeField] AudioClip limitReachedClip;
     private AudioSource audioSource;
-    private int points = 10;
+    private int points = 5;
     public bool laundry = false;
     [SerializeField] Animator machineActivate;
 
@@ -54,12 +54,12 @@ public class LaundryScript : MonoBehaviour
             {
                 Points--;
 
-                if (points == 10)
+                if (points == 5)
                 {
                     laundryFull.SetActive(true);
                 }
 
-                if (points == 5)
+                if (points == 2)
                 {
                     laundryFull2.SetActive(true);
                     laundryFull.SetActive(false);

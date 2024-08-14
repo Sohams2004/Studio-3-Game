@@ -49,7 +49,7 @@ public class CountDown : MonoBehaviour
         {
             secondsText.text = string.Format("0" + Mathf.RoundToInt(seconds));
         }
-        else if(seconds >= 9)
+        else if (seconds >= 9)
         {
             secondsText.text = string.Format("" + Mathf.RoundToInt(seconds));
         }
@@ -64,7 +64,7 @@ public class CountDown : MonoBehaviour
             minutesText.text = string.Format("" + minutes);
         }
 
-        if(isPM)
+        if (isPM)
         {
             if (minutes == 7)
             {
@@ -86,7 +86,7 @@ public class CountDown : MonoBehaviour
         if (minutes <= 0)
         {
             loadScene.SetActive(true);
-            scene.LoadScene("Cinematic");
+            scene.LoadScene("Good End Scene");
 
         }
     }

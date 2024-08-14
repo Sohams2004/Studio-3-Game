@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MonsterAI : MonoBehaviour
 {
-   public Transform player;  // Reference to the player
+    public Transform player;  // Reference to the player
     public float moveSpeed = 5f;  // Speed at which the monster moves
     public float rotationSpeed = 5f; // Speed at which the monster rotates
-
+    [SerializeField] DamageScript damageScript;
     private void Update()
     {
         if (player != null)
@@ -45,8 +42,7 @@ public class MonsterAI : MonoBehaviour
         // Check if the monster collided with the player
         if (other.CompareTag("Player"))
         {
-            // Reload the current scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            damageScript.DamageReceived(100);
         }
     }
 

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HallWay : MonoBehaviour
 {
-      
-   public GameObject hallway;
+
+    public GameObject hallway;
     public GameObject finalDoor;  // The final door to be disabled
     public GameObject monster;
     public GameObject invisibleWall;  // The invisible wall to be enabled/disabled
@@ -23,6 +20,7 @@ public class HallWay : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            RenderSettings.fog = true;
             if (CompareTag("SecondTrigger") && !monsterActive)
             {
                 // Enable the hallway and final door when the second collider is triggered

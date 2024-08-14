@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -9813,6 +9813,7 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 2
   rotationSpeed: 5
+  damageScript: {fileID: 0}
 --- !u!65 &223968452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10864,6 +10865,7 @@ MonoBehaviour:
   player: {fileID: 1698208193}
   moveSpeed: 1.5
   rotationSpeed: 5
+  damageScript: {fileID: 270223307}
 --- !u!1 &258635856
 GameObject:
   m_ObjectHideFlags: 0
