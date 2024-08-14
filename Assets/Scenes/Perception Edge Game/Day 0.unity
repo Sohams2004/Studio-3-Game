@@ -13643,7 +13643,7 @@ GameObject:
   - component: {fileID: 227488777}
   - component: {fileID: 227488776}
   - component: {fileID: 227488775}
-  m_Layer: 13
+  m_Layer: 23
   m_Name: LightButton (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14122,6 +14122,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 8450778268493296008, guid: de43df8106e376a47b94a1d62552bb69, type: 3}
   m_PrefabInstance: {fileID: 1681447429}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &230355803 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 520643376460544856, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &231658368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7433023189977318323, guid: 2f97e22859460e640a17fd889cfe2cc4, type: 3}
@@ -62266,7 +62277,7 @@ GameObject:
   - component: {fileID: 1493314236}
   - component: {fileID: 1493314235}
   - component: {fileID: 1493314234}
-  m_Layer: 13
+  m_Layer: 23
   m_Name: ActualButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91077,18 +91088,6 @@ Light:
   m_CorrespondingSourceObject: {fileID: 8657624977372599460, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
   m_PrefabInstance: {fileID: 1927383620468626659}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1886055495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1893408164 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7153905855448372128, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
@@ -92939,7 +92938,7 @@ GameObject:
   - component: {fileID: 2004557361}
   - component: {fileID: 2004557360}
   - component: {fileID: 2004557358}
-  m_Layer: 13
+  m_Layer: 23
   m_Name: LightButtonTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92973,7 +92972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd0c6ddce207ac4d9887a0a4da6fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: {fileID: 1886055495}
+  promptText: {fileID: 230355803}
   switchAnimator: {fileID: 1493314234}
   animationTriggerName: SwitchLight
   roomLight: {fileID: 1886055494}
