@@ -6,7 +6,7 @@ public class ParentRoomKey : MonoBehaviour
 {
     public TextMeshProUGUI KeyTask; //this to reference the text in inspector
     public bool keydone = false;
-    public TMP_Text promptText;
+    //public TMP_Text promptText;
     private AudioSource audioSource;
     [SerializeField] GameObject keyCollected;
     [SerializeField] GameObject key;
@@ -19,7 +19,7 @@ public class ParentRoomKey : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            promptText.text = "Press E to interact";
+            //promptText.text = "Press E to interact";
             if (Input.GetKeyDown(KeyCode.E))
             {
 
@@ -28,14 +28,14 @@ public class ParentRoomKey : MonoBehaviour
                 keydone = true;
                 pickedkey = true;
                 await Task.Delay(1000);
-                promptText.text = string.Empty;
+                //promptText.text = string.Empty;
 
             }
         }
     }
     private async void OnTriggerStay(Collider other)
     {
-        promptText.text = "Press E to interact";
+        //promptText.text = "Press E to interact";
         if (Input.GetKeyDown(KeyCode.E))
         {
 
@@ -48,11 +48,11 @@ public class ParentRoomKey : MonoBehaviour
             keydone = true;
             pickedkey = true;
             await Task.Delay(1000);
-            promptText.text = string.Empty;
+            //promptText.text = string.Empty;
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        promptText.text = string.Empty;
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    promptText.text = string.Empty;
+   // }
 }

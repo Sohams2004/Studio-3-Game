@@ -90,9 +90,7 @@ public class DoorAnimation : MonoBehaviour
     {
         opendoor.Stop();
         closedoor.Play();
-        loadScene.SetActive(true);
-        scene.LoadScene("Day 0");
-
+       
 
     }
 }
