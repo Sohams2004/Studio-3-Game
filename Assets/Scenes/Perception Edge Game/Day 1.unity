@@ -1887,6 +1887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laundry Task Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6702958149421145328, guid: c1c4b3cb638c0e64b9730b38674e6859, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1752297350350964595, guid: c1c4b3cb638c0e64b9730b38674e6859, type: 3}
@@ -80949,6 +80953,16 @@ Texture2D:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1471063974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067803981393155330, guid: 8ec28cfb80ae38d4eab8dc21dbfcd305, type: 3}
+  m_PrefabInstance: {fileID: 1228942278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1471063977 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3265678105473679234, guid: 8ec28cfb80ae38d4eab8dc21dbfcd305, type: 3}
+  m_PrefabInstance: {fileID: 1228942278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!28 &1474943978
 Texture2D:
   m_ObjectHideFlags: 0
@@ -98661,10 +98675,19 @@ PrefabInstance:
       addedObject: {fileID: 6982820337040257084}
     - targetCorrespondingSourceObject: {fileID: 832408667665302346, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 4943731398667193022}
+      addedObject: {fileID: 4943731398667193031}
     - targetCorrespondingSourceObject: {fileID: 832408667665302346, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
       insertIndex: 4
+      addedObject: {fileID: 4943731398667193030}
+    - targetCorrespondingSourceObject: {fileID: 832408667665302346, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 4943731398667193022}
+    - targetCorrespondingSourceObject: {fileID: 832408667665302346, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
+      insertIndex: 6
       addedObject: {fileID: 4943731398667193025}
+    - targetCorrespondingSourceObject: {fileID: 832408667665302346, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 4943731398667193026}
   m_SourcePrefab: {fileID: 100100000, guid: 5fe7c813677457c42b551a2e36484e7d, type: 3}
 --- !u!1001 &459212937959379555
 PrefabInstance:
@@ -107487,6 +107510,78 @@ MonoBehaviour:
   isShop: 0
   isShopOn: 0
   shopUi: {fileID: 2279299785178312060}
+--- !u!114 &4943731398667193026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903817588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a1ca4eb3f20b24fb6c5855286a84b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 3
+  paperNoteIndex: 1
+  paperNoteLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  isPaperNote: 0
+  isPaperNotePicked: 0
+  interactionText: {fileID: 5036438749799317662}
+  paperNote: {fileID: 8154654215665908333}
+  laundry: {fileID: 200442139}
+  panel: {fileID: 200442139}
+--- !u!114 &4943731398667193030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903817588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4082166595cdbf545809df07de437258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 3
+  doorIndex: 1
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  isDoor: 0
+  isDoorOpen: 0
+  door: {fileID: 1471063974}
+  doorAnimator: {fileID: 1471063977}
+  opendoor: {fileID: 8545920611783187368}
+  closedoor: {fileID: 8545920611783187368}
+--- !u!114 &4943731398667193031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903817588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1ceb87b224c2141b58042c90e933ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 3
+  tvIndex: 1
+  tvLayer:
+    serializedVersion: 2
+    m_Bits: 268435456
+  isTV: 0
+  isTVOn: 0
+  tvDone: 0
+  hasInteracted: 0
+  playerInRange: 0
+  watchAMovie: {fileID: 0}
+  screen: {fileID: 1222519298}
+  voice: {fileID: 1222519300}
+  staticnoice: {fileID: 1525765466}
 --- !u!1001 &5009754671707663265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108827,7 +108922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7679861684711948589, guid: 2a828507a113fe94ba105cede3982084, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8237127102647012522, guid: 2a828507a113fe94ba105cede3982084, type: 3}
       propertyPath: m_Pivot.x
@@ -117805,6 +117900,10 @@ PrefabInstance:
     - target: {fileID: 4887105959034015198, guid: c3bb476392dc92a48810323649b31764, type: 3}
       propertyPath: m_Name
       value: List
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887105959034015198, guid: c3bb476392dc92a48810323649b31764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
