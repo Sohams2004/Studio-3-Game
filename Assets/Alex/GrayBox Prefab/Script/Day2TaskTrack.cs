@@ -10,7 +10,7 @@ public class Day2TaskTrack : MonoBehaviour
     [SerializeField] Piano piano;
     public bool firstdaytaskdone = false;
 
-    private void Start()
+    private void Awake()
     {
         objectPickUp = FindObjectOfType<ObjectPickUp>();
         lightSwitch = FindObjectOfType<NewLightSwitch>();
