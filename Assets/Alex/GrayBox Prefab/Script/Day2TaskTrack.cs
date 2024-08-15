@@ -9,7 +9,7 @@ public class Day2TaskTrack : MonoBehaviour
     [SerializeField] Television television;
     public bool firstdaytaskdone = false;
 
-    private void Start()
+    private void Awake()
     {
         objectPickUp = FindObjectOfType<ObjectPickUp>();
         lightSwitch = FindObjectOfType<NewLightSwitch>();
