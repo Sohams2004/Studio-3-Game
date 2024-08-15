@@ -18,6 +18,7 @@ public class CountDown : MonoBehaviour
 
     private void Start()
     {
+        loadScene.SetActive(false);
         secondsText.color = Color.green;
         minutesText.color = Color.green;
         colon.color = Color.green;
@@ -76,6 +77,7 @@ public class CountDown : MonoBehaviour
 
             if (minutes == 8)
             {
+
                 seconds += Time.deltaTime * 0;
             }
         }
@@ -83,12 +85,13 @@ public class CountDown : MonoBehaviour
 
     void MoveToNextScene()
     {
-        if (minutes <= 0)
+        if (minutes == 8 && isPM)
         {
             loadScene.SetActive(true);
             scene.LoadScene("Good End Scene");
-
         }
+
+
     }
 
     private void Update()
