@@ -29,9 +29,12 @@ public class Blinds : MonoBehaviour
             blindsAudio = blinds.GetComponent<AudioSource>();
             
 
-            if (Input.GetKeyDown(KeyCode.E) && !isBlinds && blindsIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.E) && isBlinds && blindsIndex % 2 != 0)
             {
+                Debug.Log("Blinds open");
+
                 blindsIndex++;
+                isBlindsOpen = true;
 
                 blindsAnimator.Play("Open Curtain");
 
@@ -45,7 +48,10 @@ public class Blinds : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && isBlindsOpen && blindsIndex % 2 == 0)
             {
+                Debug.Log("Blinds close");
+
                 blindsIndex++;
+                isBlindsOpen = false;
 
                 blindsAnimator.Play("Close Curtain");
 
