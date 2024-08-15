@@ -7,7 +7,7 @@ public class LaundryScript : MonoBehaviour
     [SerializeField] Text pointText;
     [SerializeField] AudioClip limitReachedClip;
     private AudioSource audioSource;
-    private int points = 5;
+    public int points = 5;
     public bool laundry = false;
     [SerializeField] Animator machineActivate;
 
@@ -18,9 +18,12 @@ public class LaundryScript : MonoBehaviour
     public TextMeshProUGUI laundryTask;
 
     HotBar hotBar;
+    ObjectPickUp objectPickUp;
 
     private void Awake()
     {
+        objectPickUp = FindObjectOfType<ObjectPickUp>();
+
         laundryFull.SetActive(false);
         laundryFull2.SetActive(false);
         laundryDone.SetActive(false);
@@ -52,7 +55,7 @@ public class LaundryScript : MonoBehaviour
         {
             machineActivate.Play("Door Closing Animation");
             machineActivate.Play("Laundry Activate");
-            
+
             if (points > 0)
             {
                 Points--;
@@ -80,6 +83,10 @@ public class LaundryScript : MonoBehaviour
                     laundry = true;
                 }
             }
+            objectPickUp.clothCount -= 1;
+            objectPickUp.clothCountText.text = objectPickUp.clothCount.ToString();
+            hotBar.currentObject.SetActive(false);
+            hotBar.currentObject.transform.parent = null;
             hotBar.items.Remove(hotBar.currentObject);
 
             Destroy(other.gameObject);

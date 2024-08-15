@@ -9,6 +9,8 @@ public class HallWay : MonoBehaviour
     public GameObject invisibleWall;  // The invisible wall to be enabled/disabled
     public Transform monsterStartPosition;
     public AudioSource scarySound;
+    public AudioSource scarySound2;
+    public AudioSource scarySound3;
     public float monsterFollowDelay = 5f;  // Delay before monster starts following
     public Transform player;
     public Transform playerResetPosition;  // The position to reset the player to
@@ -52,6 +54,8 @@ public class HallWay : MonoBehaviour
         monster.transform.position = monsterStartPosition.position;
         monster.SetActive(true);
         scarySound.Play();
+        scarySound2.Play();
+        scarySound3.Play();
         monsterActive = true;
 
         // Start the monster follow sequence after the sound delay

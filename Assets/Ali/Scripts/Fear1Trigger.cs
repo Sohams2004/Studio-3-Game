@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Fear1Trigger : MonoBehaviour
 {
-    public AudioSource audioSource; // The AudioSource component with the audio clip
-    public GameObject humanPrefab; // The human prefab to instantiate
-    public Transform spawnPoint; // The point where the human will be spawned
+   public AudioSource audioSource;
+    public GameObject humanPrefab;
+    public Transform spawnPoint;
 
-    private bool hasTriggered = false; // To ensure the action happens only once
-    private GameObject instantiatedHuman; // To keep track of the instantiated human
+    private bool hasTriggered = false;
+    private GameObject instantiatedHuman;
 
     void OnTriggerEnter(Collider other)
     {
@@ -23,6 +23,9 @@ public class Fear1Trigger : MonoBehaviour
     private void InstantiateHuman()
     {
         instantiatedHuman = Instantiate(humanPrefab, spawnPoint.position, spawnPoint.rotation);
+
+        // Start the fade-out process 1 second after the human is instantiated
+        StartCoroutine(FadeOutHuman(0.01f, 7f)); // 1-second delay, 5-second fade duration
     }
 
     private void PlayAudioAndDestroyHuman()
@@ -35,5 +38,60 @@ public class Fear1Trigger : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Destroy(instantiatedHuman);
+    }
+
+    private IEnumerator FadeOutHuman(float delay, float fadeDuration)
+    {
+        yield return new WaitForSeconds(delay); // Delay before starting fade-out
+
+        float rate = 1.0f / fadeDuration;
+        float progress = 0.0f;
+
+        Renderer[] renderers = instantiatedHuman.GetComponentsInChildren<Renderer>();
+
+        // Switch all materials to transparent mode
+        foreach (Renderer renderer in renderers)
+        {
+            foreach (Material mat in renderer.materials)
+            {
+                // Ensure the material is in Transparent mode
+                mat.SetFloat("_Mode", 2); // Set material mode to Transparent
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.EnableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = 5000;
+            }
+        }
+
+        // Fade out
+        while (progress < 1.0f)
+        {
+            foreach (Renderer renderer in renderers)
+            {
+                foreach (Material mat in renderer.materials)
+                {
+                    Color color = mat.color;
+                    color.a = Mathf.Lerp(1.0f, 0.0f, progress);
+                    mat.color = color;
+                }
+            }
+
+            progress += rate * Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure all are fully transparent at the end
+        foreach (Renderer renderer in renderers)
+        {
+            foreach (Material mat in renderer.materials)
+            {
+                Color color = mat.color;
+                color.a = 0.0f;
+                mat.color = color;
+            }
+        }
     }
 }
