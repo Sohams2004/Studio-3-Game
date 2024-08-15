@@ -7,6 +7,7 @@ public class Day2TaskTrack : MonoBehaviour
     [SerializeField] PickUpPlace pickUpPlace;
     [SerializeField] LaundryScript laundryScript;
     [SerializeField] Television television;
+    [SerializeField] Piano piano;
     public bool firstdaytaskdone = false;
 
     private void Awake()
@@ -21,7 +22,7 @@ public class Day2TaskTrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (television.tvDone && lightSwitch.lightdone && pickUpPlace.eatdone && laundryScript.laundryTask)
+        if (piano.playPianoDone && television.tvDone && lightSwitch.lightdone && pickUpPlace.eatdone && laundryScript.laundryTask)
         {
             firstdaytaskdone = true;
         }

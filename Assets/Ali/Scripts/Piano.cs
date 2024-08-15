@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Piano : MonoBehaviour
@@ -9,7 +8,9 @@ public class Piano : MonoBehaviour
 
     // Assign the specific note sound effects for each key
     public AudioClip[] pianoNotes;  // Array to hold 24 AudioClips
-
+    [SerializeField]
+    private TextMeshProUGUI playPianoTask;
+    public bool playPianoDone = false;
     private AudioSource audioSource;
 
     private void Start()
@@ -26,6 +27,8 @@ public class Piano : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))  // Check for left mouse button click
         {
+            playPianoTask.color = Color.green;
+            playPianoDone = true;
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hit;
 
