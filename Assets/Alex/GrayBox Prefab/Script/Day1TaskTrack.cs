@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Day1TaskTrack : MonoBehaviour
 {
@@ -9,21 +8,13 @@ public class Day1TaskTrack : MonoBehaviour
     [SerializeField] ParentRoomKey parentRoomKey;
     [SerializeField] MoneyCollect moneyCollect;
     [SerializeField] AntipsychoticsDrug antipsychoticsDrug;
+    [SerializeField] FrontDoorKey frontDoorKey;
 
     // Update is called once per frame
 
-    private void Awake()
-    {
-        pickupPlace = FindObjectOfType<PickUpPlace>();
-        shopUI = FindObjectOfType<ShopUI>();
-        parentRoomKey = FindObjectOfType<ParentRoomKey>();
-        moneyCollect = FindObjectOfType<MoneyCollect>();
-        antipsychoticsDrug = FindObjectOfType<AntipsychoticsDrug>();
-    }
-
     void Update()
     {
-        if (pickupPlace.eatdone && shopUI.shopdone && parentRoomKey.keydone && moneyCollect.moneydone && antipsychoticsDrug.medicinedone)
+        if (frontDoorKey.key2done && pickupPlace.eatdone && shopUI.shopdone && parentRoomKey.keydone && moneyCollect.moneydone && antipsychoticsDrug.medicinedone)
         {
             alltaskdone = true;
         }
