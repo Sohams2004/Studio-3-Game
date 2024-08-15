@@ -18,7 +18,8 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int sitIndex;
 
-    [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
+    [SerializeField] int cubeCount, sphereCount, coneCount,  itemCount;
+    [SerializeField] public int clothCount;
 
     [SerializeField] int maxNumberOfItems;
 
@@ -39,10 +40,11 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] TextMeshProUGUI pickDropObjectText, placeObjectText, inventoryFullText;
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+    [SerializeField] public TextMeshProUGUI clothCountText;
 
     [SerializeField] TextMeshProUGUI cleanupTask;
 
-    [SerializeField] Image crosshair, handSign, chairSign;
+    [SerializeField] Image crosshair, handSign, chairSign, clothImg;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
@@ -131,6 +133,13 @@ public class ObjectPickUp : MonoBehaviour
 
                     sphereCountText.text = sphereCount.ToString();
                 }
+
+                if (pickableObject.tag == "Clothing")
+                {
+                    clothCount++;
+
+                    clothCountText.text = clothCount.ToString();
+                }
             }
 
             else
@@ -210,6 +219,18 @@ public class ObjectPickUp : MonoBehaviour
                     sphereImg.gameObject.SetActive(false);
                 }
             }
+
+            if (dropObjectTag == "Clothing")
+            {
+                clothCount--;
+
+                clothCountText.text = clothCount.ToString();
+
+                if (clothCount == 0)
+                {
+                    clothImg.gameObject.SetActive(false);
+                }
+            }
         }
 
         if (pickableObject != null)
@@ -228,6 +249,11 @@ public class ObjectPickUp : MonoBehaviour
             {
                 coneImg.gameObject.SetActive(true);
             }
+
+            if (pickableObject.tag == "Clothing")
+            {
+                clothImg.gameObject.SetActive(true);
+            }
         }
 
         if (cubeCount == 0)
@@ -243,6 +269,11 @@ public class ObjectPickUp : MonoBehaviour
         if (sphereCount == 0)
         {
             sphereImg.gameObject.SetActive(false);
+        }
+
+        if (clothCount == 0)
+        {
+            clothImg.gameObject.SetActive(false) ;
         }
     }
 

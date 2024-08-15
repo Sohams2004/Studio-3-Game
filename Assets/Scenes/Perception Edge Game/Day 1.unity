@@ -17855,7 +17855,7 @@ GameObject:
   - component: {fileID: 240774212}
   - component: {fileID: 240774211}
   m_Layer: 23
-  m_Name: Cone img (1)
+  m_Name: orange img (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17900,7 +17900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 352ffed7e8a212e4ab70315cf226590d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e390715fb60c9b7498bdd213b7cd438b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -51023,7 +51023,7 @@ GameObject:
   - component: {fileID: 1146852784}
   - component: {fileID: 1146852783}
   m_Layer: 23
-  m_Name: Cube img (1)
+  m_Name: eggs img (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51068,7 +51068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 33eb325f7f1d61c4fb4077d72ca787b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19bf4fc7e17c16e4f84cdad66a5dfa12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89669,7 +89669,7 @@ GameObject:
   - component: {fileID: 1725997539}
   - component: {fileID: 1725997538}
   m_Layer: 23
-  m_Name: Sphere img (1)
+  m_Name: Bread img (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89714,7 +89714,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b88e4bd1a5cbb42bf249b886015b0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a9d26a15c15398499b0e38166fc6558, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -112140,6 +112140,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3920205076953357227, guid: ad6c8e2db86943a4085288d530816715, type: 3}
+      propertyPath: m_TagString
+      value: Cube
+      objectReference: {fileID: 0}
     - target: {fileID: 4068817503338921869, guid: ad6c8e2db86943a4085288d530816715, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -112589,10 +112593,18 @@ PrefabInstance:
     - target: {fileID: 579848286031383064, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 33eb325f7f1d61c4fb4077d72ca787b4, type: 3}
+      objectReference: {fileID: 21300000, guid: 19bf4fc7e17c16e4f84cdad66a5dfa12, type: 3}
+    - target: {fileID: 755433750552928734, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
+      propertyPath: m_Name
+      value: Orange img
+      objectReference: {fileID: 0}
     - target: {fileID: 755433750552928734, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605235099417544950, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
+      propertyPath: m_Name
+      value: Bread img
       objectReference: {fileID: 0}
     - target: {fileID: 1605235099417544950, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_IsActive
@@ -112604,7 +112616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2474878814475996147, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947405447022795170, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_Pivot.x
@@ -112707,6 +112719,10 @@ PrefabInstance:
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6434411972929949204, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
+      propertyPath: m_Name
+      value: Eggs  img
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434411972929949204, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -112737,7 +112753,7 @@ PrefabInstance:
     - target: {fileID: 7677447593425874915, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 352ffed7e8a212e4ab70315cf226590d, type: 3}
+      objectReference: {fileID: 21300000, guid: e390715fb60c9b7498bdd213b7cd438b, type: 3}
     - target: {fileID: 7677447593425874915, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -112750,6 +112766,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8673690858604503466, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a9d26a15c15398499b0e38166fc6558, type: 3}
     - target: {fileID: 8673690858604503466, guid: d00343deaad28974d91b424cb3725ec0, type: 3}
       propertyPath: m_Color.b
       value: 0
