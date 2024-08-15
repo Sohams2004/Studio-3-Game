@@ -56,6 +56,7 @@ public class LaundryScript : MonoBehaviour
 
                 if (points == 5)
                 {
+                    PlayLimitReachedClip();
                     laundryFull.SetActive(true);
                 }
 
@@ -67,7 +68,7 @@ public class LaundryScript : MonoBehaviour
 
                 if (points == 0)
                 {
-                    PlayLimitReachedClip();
+
                     laundryDone.SetActive(true);
                     laundryFull2.SetActive(false);
                     machineActivate.Play("Door Opening Animation");
