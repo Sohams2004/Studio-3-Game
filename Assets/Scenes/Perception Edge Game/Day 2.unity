@@ -77548,7 +77548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 00156ea248b22374f99aca88aae849c5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -161778,81 +161778,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
---- !u!1 &1597999965
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1597999966}
-  - component: {fileID: 1597999967}
-  - component: {fileID: 1597999968}
-  m_Layer: 0
-  m_Name: FirstCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1597999966
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597999965}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.42152652, z: -0, w: 0.90681607}
-  m_LocalPosition: {x: -35.293, y: -2.137, z: 12.699614}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -49.862, z: 0}
---- !u!65 &1597999967
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597999965}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7682275, y: 1, z: 4.509074}
-  m_Center: {x: -0.6691732, y: 0, z: -0.19447611}
---- !u!114 &1597999968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597999965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hallway: {fileID: 0}
-  finalDoor: {fileID: 0}
-  monster: {fileID: 0}
-  invisibleWall: {fileID: 0}
-  monsterStartPosition: {fileID: 0}
-  scarySound: {fileID: 0}
-  monsterFollowDelay: 3
-  player: {fileID: 0}
-  playerResetPosition: {fileID: 1413479630}
 --- !u!28 &1598703949
 Texture2D:
   m_ObjectHideFlags: 0
@@ -172068,81 +171993,6 @@ Transform:
   - {fileID: 1455237729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1751911833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1751911835}
-  - component: {fileID: 1751911834}
-  - component: {fileID: 1751911836}
-  m_Layer: 0
-  m_Name: SecondCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1751911834
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751911833}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7984495, y: 1, z: 2.1758747}
-  m_Center: {x: -1.1907103, y: 0, z: -0.2899409}
---- !u!4 &1751911835
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751911833}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.42152652, z: -0, w: 0.90681607}
-  m_LocalPosition: {x: -35.843, y: -2.137, z: 12.347}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -49.862, z: 0}
---- !u!114 &1751911836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751911833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ce5ed880ad43e459daf44a304b4e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hallway: {fileID: 0}
-  finalDoor: {fileID: 0}
-  monster: {fileID: 0}
-  invisibleWall: {fileID: 0}
-  monsterStartPosition: {fileID: 0}
-  scarySound: {fileID: 0}
-  monsterFollowDelay: 3
-  player: {fileID: 0}
-  playerResetPosition: {fileID: 1413479630}
 --- !u!1 &1751969322
 GameObject:
   m_ObjectHideFlags: 0
@@ -226884,8 +226734,6 @@ SceneRoots:
   - {fileID: 747156053}
   - {fileID: 12835614}
   - {fileID: 1313809368}
-  - {fileID: 1597999966}
-  - {fileID: 1751911835}
   - {fileID: 1751470972}
   - {fileID: 1751969323}
   - {fileID: 1387007087}
