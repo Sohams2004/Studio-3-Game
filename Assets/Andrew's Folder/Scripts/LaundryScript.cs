@@ -17,6 +17,8 @@ public class LaundryScript : MonoBehaviour
 
     public TextMeshProUGUI laundryTask;
 
+    HotBar hotBar;
+
     private void Awake()
     {
         laundryFull.SetActive(false);
@@ -28,6 +30,7 @@ public class LaundryScript : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        hotBar = FindObjectOfType<HotBar>();
     }
 
     public int Points
@@ -49,7 +52,7 @@ public class LaundryScript : MonoBehaviour
         {
             machineActivate.Play("Door Closing Animation");
             machineActivate.Play("Laundry Activate");
-
+            
             if (points > 0)
             {
                 Points--;
@@ -76,6 +79,8 @@ public class LaundryScript : MonoBehaviour
                     laundry = true;
                 }
             }
+            hotBar.items.Remove(hotBar.currentObject);
+
             Destroy(other.gameObject);
         }
     }

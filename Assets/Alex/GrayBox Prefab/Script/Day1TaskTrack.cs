@@ -12,7 +12,7 @@ public class Day1TaskTrack : MonoBehaviour
 
     // Update is called once per frame
 
-    private void Start()
+    private void Awake()
     {
         pickupPlace = FindObjectOfType<PickUpPlace>();
         shopUI = FindObjectOfType<ShopUI>();
