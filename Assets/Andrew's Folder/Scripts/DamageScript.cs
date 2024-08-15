@@ -64,7 +64,7 @@ public class DamageScript : MonoBehaviour
         if (hunger <= 0)
         {
             GameOver();
-            causeOfDeathText.text = "Should have eaten enough";
+            causeOfDeathText.text = "Should have eaten something";
         }
 
         if (thirst <= 0)
@@ -162,7 +162,7 @@ public class DamageScript : MonoBehaviour
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
         Time.timeScale = 0f;
-        
+
     }
     void GameOverSanity()
     {
