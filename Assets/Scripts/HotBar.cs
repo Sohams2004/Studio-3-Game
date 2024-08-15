@@ -85,70 +85,47 @@ public class HotBar : MonoBehaviour
              objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
          }*/
 
+        int currentIndex = -1;
 
-        
-        
-            int currentIndex = -1;
-
-            if( mouseScroll > 0 )
-            {
-                direction = 1;
-            }
-            else
-            {
-                direction = -1;
-            }
-
-            for ( int i = 0; i < items.Count; i++ )
-            {
-                if (items[i] != null && items[i].activeSelf)
-                {
-                    currentIndex = i;
-                    break;
-                }
-            }
-
-            if (currentIndex == -1)
-            {
-                currentIndex = 0;
-            }
-
-            for (int i = 0; i < items.Count; i++)
-            {
-                int newIndex = (currentIndex + direction + items.Count) % items.Count;
-                if (items[newIndex] is not null)
-                {
-                    DisableItems();
-                    items[newIndex].SetActive(true);
-                    currentObject = items[newIndex];
-                    objectPickUp.pickableObject = currentObject;
-                    objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
-
-                    Debug.Log(items[newIndex]);
-                    break;
-                }
-            }    
-    }
-
-    /*public void Inventory()
-    {
-        if (items[0] != null && items[1] != null && items[2] != null)
+        if (mouseScroll > 0)
         {
-            itemsFull = true;
+            direction = 1;
         }
-
         else
         {
-            itemsFull = false;
+            direction = -1;
         }
 
-        if (itemsFull && objectPickUp.pickableObject != null)
+        for (int i = 0; i < items.Count; i++)
         {
-            print(objectPickUp.pickableObject);
-            inventory.Add(objectPickUp.pickableObject);
+            if (items[i] != null && items[i].activeSelf)
+            {
+                currentIndex = i;
+                break;
+            }
         }
-    }*/
 
+        if (currentIndex == -1)
+        {
+            currentIndex = 0;
+        }
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            int newIndex = (currentIndex + direction + items.Count) % items.Count;
+            if (items[newIndex] is not null)
+            {
+                DisableItems();
+                items[newIndex].SetActive(true);
+                currentObject = items[newIndex];
+                objectPickUp.pickableObject = currentObject;
+                objectPickUp.objectRb = currentObject.GetComponent<Rigidbody>();
+
+                Debug.Log(items[newIndex]);
+                break;
+            }
+        }
+    }
 
     void DisableItems()
     {

@@ -18,7 +18,8 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int sitIndex;
 
-    [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
+    [SerializeField] int cubeCount, sphereCount, coneCount,  itemCount;
+    [SerializeField] public int clothCount;
 
     [SerializeField] int maxNumberOfItems;
 
@@ -39,10 +40,11 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] TextMeshProUGUI pickDropObjectText, placeObjectText, inventoryFullText;
 
     [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+    [SerializeField] public TextMeshProUGUI clothCountText;
 
     [SerializeField] TextMeshProUGUI cleanupTask;
 
-    [SerializeField] Image crosshair, handSign, chairSign;
+    [SerializeField] Image crosshair, handSign, chairSign, clothImg;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
@@ -131,6 +133,13 @@ public class ObjectPickUp : MonoBehaviour
 
                     sphereCountText.text = sphereCount.ToString();
                 }
+
+                if (pickableObject.tag == "Clothing")
+                {
+                    clothCount++;
+
+                    clothCountText.text = clothCount.ToString();
+                }
             }
 
             else
@@ -210,6 +219,18 @@ public class ObjectPickUp : MonoBehaviour
                     sphereImg.gameObject.SetActive(false);
                 }
             }
+
+            if (dropObjectTag == "Clothing")
+            {
+                clothCount--;
+
+                clothCountText.text = clothCount.ToString();
+
+                if (clothCount == 0)
+                {
+                    clothImg.gameObject.SetActive(false);
+                }
+            }
         }
 
         if (pickableObject != null)
@@ -228,6 +249,11 @@ public class ObjectPickUp : MonoBehaviour
             {
                 coneImg.gameObject.SetActive(true);
             }
+
+            if (pickableObject.tag == "Clothing")
+            {
+                clothImg.gameObject.SetActive(true);
+            }
         }
 
         if (cubeCount == 0)
@@ -243,6 +269,11 @@ public class ObjectPickUp : MonoBehaviour
         if (sphereCount == 0)
         {
             sphereImg.gameObject.SetActive(false);
+        }
+
+        if (clothCount == 0)
+        {
+            clothImg.gameObject.SetActive(false) ;
         }
     }
 
@@ -282,6 +313,7 @@ public class ObjectPickUp : MonoBehaviour
                             itemCount--;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
                             hotbar.items[i].transform.position = place.transform.position;
+                            hotbar.items[i].transform.rotation = place.transform.rotation;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
                             objectRb = null;
@@ -326,46 +358,6 @@ public class ObjectPickUp : MonoBehaviour
             placeObjectText.text = string.Empty;
         }
     }
-  
-    /*  async void Sit()
-      {
-          bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
-
-          if (isRay)
-          {
-              isChair = true;
-              chairSign.gameObject.SetActive(true);
-
-              if (Input.GetKeyDown(KeyCode.F) && !isSecondPlayerActive)
-              {
-                  isSitting = !isSitting;
-                  sitIndex++;
-              }
-          }
-
-          else if (!isRay)
-          {
-              isChair = false;
-              chairSign.gameObject.SetActive(false);
-          }
-
-          if (isSitting)
-          {
-              mainPlayer.SetActive(false);
-
-              await Task.Delay(5000);
-              isSecondPlayerActive = true;
-          }
-
-          if (isSecondPlayerActive)
-          {
-              mainPlayer.SetActive(true);
-
-              await Task.Delay(5000);
-              isSecondPlayerActive = false;
-          }
-      }
-  */
    
     void ObjectCameraActivate()
     {
@@ -380,7 +372,7 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    void ObjectLayer()
+    /*void ObjectLayer()
     {
         if (isObject)
         {
@@ -389,7 +381,7 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.layer = pickableObj;
             }
         }
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
@@ -402,6 +394,6 @@ public class ObjectPickUp : MonoBehaviour
         PlaceObjects();
         /* Sit();*/
         ObjectCameraActivate();
-        ObjectLayer();
+        //ObjectLayer();
     }
 }
