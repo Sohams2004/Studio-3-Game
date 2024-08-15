@@ -282,6 +282,7 @@ public class ObjectPickUp : MonoBehaviour
                             itemCount--;
                             hotbar.items[i].transform.rotation = Quaternion.identity;
                             hotbar.items[i].transform.position = place.transform.position;
+                            hotbar.items[i].transform.rotation = place.transform.rotation;
                             hotbar.items.Remove(hotbar.currentObject);
                             pickableObject = null;
                             objectRb = null;
@@ -326,46 +327,6 @@ public class ObjectPickUp : MonoBehaviour
             placeObjectText.text = string.Empty;
         }
     }
-  
-    /*  async void Sit()
-      {
-          bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, chairLayer);
-
-          if (isRay)
-          {
-              isChair = true;
-              chairSign.gameObject.SetActive(true);
-
-              if (Input.GetKeyDown(KeyCode.F) && !isSecondPlayerActive)
-              {
-                  isSitting = !isSitting;
-                  sitIndex++;
-              }
-          }
-
-          else if (!isRay)
-          {
-              isChair = false;
-              chairSign.gameObject.SetActive(false);
-          }
-
-          if (isSitting)
-          {
-              mainPlayer.SetActive(false);
-
-              await Task.Delay(5000);
-              isSecondPlayerActive = true;
-          }
-
-          if (isSecondPlayerActive)
-          {
-              mainPlayer.SetActive(true);
-
-              await Task.Delay(5000);
-              isSecondPlayerActive = false;
-          }
-      }
-  */
    
     void ObjectCameraActivate()
     {
@@ -380,7 +341,7 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
-    void ObjectLayer()
+    /*void ObjectLayer()
     {
         if (isObject)
         {
@@ -389,7 +350,7 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.layer = pickableObj;
             }
         }
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
@@ -402,6 +363,6 @@ public class ObjectPickUp : MonoBehaviour
         PlaceObjects();
         /* Sit();*/
         ObjectCameraActivate();
-        ObjectLayer();
+        //ObjectLayer();
     }
 }
