@@ -33,8 +33,8 @@ public class DoorOpen : MonoBehaviour
                 doorIndex++;
                 isDoorOpen = true;
                 doorAnimator.Play("Door Open");
-                //closedoor.Stop();
-                //opendoor.Play();
+                closedoor.Stop();
+                opendoor.Play();
                 await Task.Delay(2000);
 
             }
@@ -44,8 +44,8 @@ public class DoorOpen : MonoBehaviour
                 doorIndex++;
                 isDoorOpen = false;
                 doorAnimator.Play("Door Close");
-                //opendoor.Stop();
-                //closedoor.Play();
+                opendoor.Stop();
+                closedoor.Play();
                 await Task.Delay(2000);
 
             }

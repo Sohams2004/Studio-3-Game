@@ -15,7 +15,7 @@ public class PaperNote : MonoBehaviour
     [SerializeField] bool isPaperNote, isPaperNotePicked;
     [SerializeField] TextMeshProUGUI interactionText;
     [SerializeField] Image paperNote;
-    [SerializeField] GameObject lundry;
+    [SerializeField] GameObject laundry;
     public GameObject panel;
 
 
@@ -62,7 +62,7 @@ public class PaperNote : MonoBehaviour
             isPaperNotePicked = false;
             paperNote.gameObject.SetActive(false);
             movement.enabled = true;
-            lundry.gameObject.SetActive(true);
+            laundry.gameObject.SetActive(true);
             panel.SetActive(true); //activate the tasklist 
         }
 
