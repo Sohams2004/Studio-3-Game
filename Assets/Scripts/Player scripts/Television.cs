@@ -19,7 +19,7 @@ public class Television : MonoBehaviour
     [SerializeField] bool hasInteracted = false;
     [SerializeField] bool playerInRange = false;
 
-    public TextMeshProUGUI tvTask, watchAMovie;
+    public TextMeshProUGUI  watchAMovie;
 
     [SerializeField] GameObject screen;
 

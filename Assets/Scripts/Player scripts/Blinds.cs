@@ -24,6 +24,7 @@ public class Blinds : MonoBehaviour
         if (isRay)
         {
             isBlinds = true;
+            isBlindsOpen = false;
             blinds = hit1.collider.gameObject;
             blindsAnimator = blinds.GetComponent<Animator>();
             blindsAudio = blinds.GetComponent<AudioSource>();
@@ -36,7 +37,7 @@ public class Blinds : MonoBehaviour
                 blindsIndex++;
                 isBlindsOpen = true;
 
-                blindsAnimator.Play("Open Curtain");
+                blindsAnimator.Play("Close Curtain");
 
                 blindsTask.color = Color.green;
 
@@ -53,7 +54,7 @@ public class Blinds : MonoBehaviour
                 blindsIndex++;
                 isBlindsOpen = false;
 
-                blindsAnimator.Play("Close Curtain");
+                blindsAnimator.Play("Open Curtain");
 
                 if (blindsAudio != null)
                 {
