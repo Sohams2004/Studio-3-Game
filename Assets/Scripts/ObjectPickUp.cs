@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,20 +10,20 @@ public class ObjectPickUp : MonoBehaviour
     RaycastHit hit1;
 
     [SerializeField] GameObject mainPlayer;
-    
+
     [SerializeField] float rayLength;
     public bool cleanupDone = false;
 
     [SerializeField] int sitIndex;
 
-    [SerializeField] int cubeCount, sphereCount, coneCount,  itemCount;
+    [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
     [SerializeField] public int clothCount;
 
     [SerializeField] int maxNumberOfItems;
 
     [SerializeField] bool isObject, cannotPickUp;
 
-    [SerializeField] public bool isPicked, isChair, isSitting,isSecondPlayerActive;
+    [SerializeField] public bool isPicked, isChair, isSitting, isSecondPlayerActive;
 
     [SerializeField] Transform pickUpPoint;
 
@@ -154,7 +152,7 @@ public class ObjectPickUp : MonoBehaviour
         }
 
         if (isObject)
-            pickDropObjectText.text = "Press E to pick up";
+            pickDropObjectText.text = "Press E to Pick Up";
 
         else if (isPicked)
         {
@@ -273,7 +271,7 @@ public class ObjectPickUp : MonoBehaviour
 
         if (clothCount == 0)
         {
-            clothImg.gameObject.SetActive(false) ;
+            clothImg.gameObject.SetActive(false);
         }
     }
 
@@ -294,15 +292,16 @@ public class ObjectPickUp : MonoBehaviour
             print(place.gameObject);
             crosshair.color = Color.green;
             pickDropObjectText.text = string.Empty;
-            placeObjectText.text = "Place object";
-            cleanupTask.color = Color.green;
-            cleanupDone = true;
+            placeObjectText.text = "Place Object";
+
             print(pickableObject.name);
 
             if (hotbar.currentObject.tag == place.tag)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    cleanupTask.color = Color.green;
+                    cleanupDone = true;
                     Debug.Log("Placeddd");
                     hotbar.currentObject.transform.parent = null;
 
@@ -358,7 +357,7 @@ public class ObjectPickUp : MonoBehaviour
             placeObjectText.text = string.Empty;
         }
     }
-   
+
     void ObjectCameraActivate()
     {
         if (isPicked)

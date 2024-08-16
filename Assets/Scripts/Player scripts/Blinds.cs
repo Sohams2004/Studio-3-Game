@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +13,7 @@ public class Blinds : MonoBehaviour
     [SerializeField] Animator blindsAnimator;
     [SerializeField] AudioSource blindsAudio;
     [SerializeField] TextMeshProUGUI blindsTask;
+    public bool lighton;
 
 
     void BlindsOpen()
@@ -28,7 +27,7 @@ public class Blinds : MonoBehaviour
             blinds = hit1.collider.gameObject;
             blindsAnimator = blinds.GetComponent<Animator>();
             blindsAudio = blinds.GetComponent<AudioSource>();
-            
+
 
             if (Input.GetKeyDown(KeyCode.E) && isBlinds && blindsIndex % 2 != 0)
             {
@@ -40,7 +39,7 @@ public class Blinds : MonoBehaviour
                 blindsAnimator.Play("Close Curtain");
 
                 blindsTask.color = Color.green;
-
+                lighton = true;
                 if (blindsAudio != null)
                 {
                     blindsAudio.Play();
