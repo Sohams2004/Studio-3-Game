@@ -52,7 +52,7 @@ public class WhisperKnock : MonoBehaviour
         {
 
             doortext.text = "Parent Room";
-            if (Input.GetKeyDown(KeyCode.E) && !roomKey.pickedkey)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !roomKey.pickedkey)
             {
                 knock.Play();
                 doortext.text = "Locked";
@@ -61,8 +61,8 @@ public class WhisperKnock : MonoBehaviour
             {
 
                 knock.Stop();
-                doortext.text = "Press E to Open";
-                if (Input.GetKeyDown(KeyCode.E))
+                doortext.text = "Press LeftClick to Open";
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     doorAnimation.OpenDoor();
                     isNowOpen = true;
@@ -70,8 +70,8 @@ public class WhisperKnock : MonoBehaviour
 
                 if (isNowOpen)
                 {
-                    doortext.text = "Press E to Close";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    doortext.text = "Press LeftClick to Close";
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         doorAnimation.CloseDoor();
                         isNowOpen = false;
