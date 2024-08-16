@@ -29,7 +29,7 @@ public class Blinds : MonoBehaviour
             blindsAudio = blinds.GetComponent<AudioSource>();
 
 
-            if (Input.GetKeyDown(KeyCode.E) && isBlinds && blindsIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isBlinds && blindsIndex % 2 != 0)
             {
                 Debug.Log("Blinds open");
 
@@ -46,7 +46,7 @@ public class Blinds : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && isBlindsOpen && blindsIndex % 2 == 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isBlindsOpen && blindsIndex % 2 == 0)
             {
                 Debug.Log("Blinds close");
 

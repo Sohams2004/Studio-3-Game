@@ -46,7 +46,7 @@ public class PaperNote : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.E) && isPaperNote && paperNoteIndex % 2 != 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isPaperNote && paperNoteIndex % 2 != 0)
         {
             paperNoteIndex++;
             isPaperNotePicked = true;
@@ -55,7 +55,7 @@ public class PaperNote : MonoBehaviour
             movement.enabled = false;
         }
 
-        else if (Input.GetKeyDown(KeyCode.E) && isPaperNotePicked && paperNoteIndex % 2 == 0)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && isPaperNotePicked && paperNoteIndex % 2 == 0)
         {
             paperNoteIndex++;
             isPaperNote = false;

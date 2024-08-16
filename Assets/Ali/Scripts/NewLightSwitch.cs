@@ -35,7 +35,7 @@ public class NewLightSwitch : MonoBehaviour
                 playerInRange = true;
                 /*  promptText.text = lightOn ? "Press E to Switch Off The Light" : "Press E to Switch On The Light";*/
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     ToggleLight();
                 }

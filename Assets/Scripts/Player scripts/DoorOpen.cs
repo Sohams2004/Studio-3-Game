@@ -28,7 +28,7 @@ public class DoorOpen : MonoBehaviour
             isDoor = true;
             door = hit1.collider.gameObject;
             doorAnimator = door.GetComponent<Animator>();
-            if (Input.GetKeyDown(KeyCode.E) && isDoor && doorIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isDoor && doorIndex % 2 != 0)
             {
                 doorIndex++;
                 isDoorOpen = true;
@@ -39,7 +39,7 @@ public class DoorOpen : MonoBehaviour
 
             }
 
-            else if (Input.GetKeyDown(KeyCode.E) && isDoorOpen && doorIndex % 2 == 0)
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && isDoorOpen && doorIndex % 2 == 0)
             {
                 doorIndex++;
                 isDoorOpen = false;
