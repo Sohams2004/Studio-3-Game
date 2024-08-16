@@ -3169,17 +3169,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74365511}
   m_Mesh: {fileID: -5786352474729385974, guid: 1bcd5e9b1c9fb1145af744d737dd2c3c, type: 3}
---- !u!114 &75117474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 520643376460544856, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-  m_PrefabInstance: {fileID: 1927383620468626659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!28 &75801524
 Texture2D:
   m_ObjectHideFlags: 0
@@ -10833,7 +10822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd0c6ddce207ac4d9887a0a4da6fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: {fileID: 75117474}
   switchAnimator: {fileID: 1654829092}
   animationTriggerName: SwitchLight
   roomLight: {fileID: 775894219}
@@ -175380,6 +175368,7 @@ MonoBehaviour:
   blindsAnimator: {fileID: 0}
   blindsAudio: {fileID: 1333905737}
   blindsTask: {fileID: 0}
+  lighton: 0
 --- !u!28 &1818892525
 Texture2D:
   m_ObjectHideFlags: 0
@@ -216480,6 +216469,22 @@ PrefabInstance:
     - target: {fileID: 5698240996524891879, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700010751677389115, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Size.x
+      value: 3.4451084
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700010751677389115, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Size.z
+      value: 1.3912325
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700010751677389115, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Center.x
+      value: 1.2225538
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700010751677389115, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: m_Center.z
+      value: -0.19561613
       objectReference: {fileID: 0}
     - target: {fileID: 5700071645594940166, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Layer
