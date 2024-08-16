@@ -13,7 +13,8 @@ public class HallWay : MonoBehaviour
     public AudioSource scarySound3;
     public float monsterFollowDelay = 5f;  // Delay before monster starts following
     public Transform player;
-    public Transform playerResetPosition;  // The position to reset the player to
+    public Transform playerResetPosition;
+    [SerializeField] GameObject door;// The position to reset the player to
 
     private bool monsterActive = false;
     private bool invisibleWallEnabled = false;  // Flag to track if the invisible wall has been enabled
@@ -22,6 +23,7 @@ public class HallWay : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             RenderSettings.fog = true;
             if (CompareTag("SecondTrigger") && !monsterActive)
             {
@@ -34,6 +36,7 @@ public class HallWay : MonoBehaviour
             }
             else if (CompareTag("ThirdTrigger") && !invisibleWallEnabled)
             {
+                door.SetActive(false);
                 // Enable the invisible wall when the third collider is triggered
                 if (invisibleWall != null)
                 {
@@ -43,6 +46,7 @@ public class HallWay : MonoBehaviour
             }
             else if (CompareTag("FinalTrigger"))
             {
+                door.SetActive(true);
                 // Perform actions when the final trigger is hit
                 HandleFinalTrigger();
             }

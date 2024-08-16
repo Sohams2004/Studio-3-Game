@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using UnityEngine.Device;
 using TMPro;
+using UnityEngine;
 
 public class Television : MonoBehaviour
 {
@@ -19,7 +14,7 @@ public class Television : MonoBehaviour
     [SerializeField] bool hasInteracted = false;
     [SerializeField] bool playerInRange = false;
 
-    public TextMeshProUGUI  watchAMovie;
+    public TextMeshProUGUI watchAMovie;
 
     [SerializeField] GameObject screen;
 

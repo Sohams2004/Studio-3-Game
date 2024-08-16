@@ -51,7 +51,7 @@ public class WhisperKnock : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            doortext.text = "Parent Room";
+
             if (Input.GetKeyDown(KeyCode.E) && !roomKey.pickedkey)
             {
                 knock.Play();

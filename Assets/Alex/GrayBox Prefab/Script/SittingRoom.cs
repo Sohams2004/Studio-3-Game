@@ -14,7 +14,7 @@ public class SittingRoom : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            doortext.text = "Parent Room";
+
             if (Input.GetKeyDown(KeyCode.E) && !doorKey.pickedkeysittingroom)
             {
                 knock.Play();
@@ -51,7 +51,7 @@ public class SittingRoom : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            doortext.text = "Parent Room";
+
             if (Input.GetKeyDown(KeyCode.E) && !doorKey.pickedkeysittingroom)
             {
                 knock.Play();
