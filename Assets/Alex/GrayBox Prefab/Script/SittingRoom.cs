@@ -15,7 +15,7 @@ public class SittingRoom : MonoBehaviour
         {
 
             doortext.text = "Parent Room";
-            if (Input.GetKeyDown(KeyCode.E) && !doorKey.pickedkeysittingroom)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !doorKey.pickedkeysittingroom)
             {
                 knock.Play();
                 doortext.text = "Locked";
@@ -24,8 +24,8 @@ public class SittingRoom : MonoBehaviour
             {
 
                 knock.Stop();
-                doortext.text = "Press E to Open";
-                if (Input.GetKeyDown(KeyCode.E))
+                doortext.text = "Press LeftClick to Open";
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     doorAnimation.OpenDoor();
                     isNowOpen = true;
@@ -33,8 +33,8 @@ public class SittingRoom : MonoBehaviour
 
                 if (isNowOpen)
                 {
-                    doortext.text = "Press E to Close";
-                    if (Input.GetKeyDown(KeyCode.E))
+                    doortext.text = "Press LeftClick to Close";
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         doorAnimation.CloseDoor();
                         isNowOpen = false;
