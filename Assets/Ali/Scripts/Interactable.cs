@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
+        if (playerInRange && Input.GetKeyDown(KeyCode.Mouse0) && !hasInteracted)
         {
             objectAnimator.SetBool("Blindsup", true);
             objectAnimator.SetBool("Blindsdown", false);
@@ -33,7 +33,7 @@ public class Interactable : MonoBehaviour
             CurtainsTask.color = Color.green;
 
         }
-        else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
+        else if (playerInRange && Input.GetKeyDown(KeyCode.Mouse0) && hasInteracted)
         {
             objectAnimator.SetBool("Blindsup", false);
             objectAnimator.SetBool("Blindsdown", true);
@@ -81,12 +81,12 @@ public class Interactable : MonoBehaviour
             if (!hasInteracted)
             {
                 playerInRange = true;
-                promptText.text = "Press E to interact";
+                promptText.text = "Press LeftClick to interact";
             }
             else if (hasInteracted)
             {
                 playerInRange = true;
-                promptText.text = "Press E to interact";
+                promptText.text = "Press LeftClick to interact";
             }
 
 
@@ -100,12 +100,12 @@ public class Interactable : MonoBehaviour
             if (!hasInteracted)
             {
                 playerInRange = true;
-                promptText.text = "Press E to interact";
+                promptText.text = "Press LeftClick to interact";
             }
             else if (hasInteracted)
             {
                 playerInRange = true;
-                promptText.text = "Press E to interact";
+                promptText.text = "Press LeftClick to interact";
             }
 
 

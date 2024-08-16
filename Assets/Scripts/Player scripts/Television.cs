@@ -42,7 +42,7 @@ public class Television : MonoBehaviour
         {
             isTV = true;
 
-            if (Input.GetKeyDown(KeyCode.E) && isTV && tvIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isTV && tvIndex % 2 != 0)
             {
                 isTVOn = true;
                 screen.SetActive(true);
@@ -55,7 +55,7 @@ public class Television : MonoBehaviour
                 tvIndex++;
             }
 
-            else if (Input.GetKeyDown(KeyCode.E) && isTVOn && tvIndex % 2 == 0)
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && isTVOn && tvIndex % 2 == 0)
             {
                 isTVOn = false;
                 screen.SetActive(false);

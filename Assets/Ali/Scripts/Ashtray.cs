@@ -26,7 +26,7 @@ public class Ashtray : MonoBehaviour
                 interactionText.position = hit.transform.position + Vector3.up * 0.5f; // Adjust the position of the text as needed
                 interactionText.gameObject.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     // Play the interaction sound from the ashtray
                     AudioSource audioSource = hit.collider.GetComponent<AudioSource>();

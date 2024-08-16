@@ -25,7 +25,7 @@ public class WaterTap : MonoBehaviour
         if (isRay)
         {
             isTapWater = true;
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 isTapWaterRunning = !isTapWaterRunning;
                 tapWaterIndex++;
