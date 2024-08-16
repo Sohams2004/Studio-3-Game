@@ -23,7 +23,7 @@ public class TelevisionInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
+        if (playerInRange && Input.GetKeyDown(KeyCode.Mouse0) && !hasInteracted)
         {
             screen.SetActive(true);
             staticnoice.Play();
@@ -35,7 +35,7 @@ public class TelevisionInteraction : MonoBehaviour
             tvTask.color = Color.green;
         }
 
-        else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
+        else if (playerInRange && Input.GetKeyDown(KeyCode.Mouse0) && hasInteracted)
         {
             screen.SetActive(false);
             staticnoice.Stop();

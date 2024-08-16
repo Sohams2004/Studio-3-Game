@@ -17,14 +17,14 @@ public class DoorAnimation : MonoBehaviour
     }
     private async void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isOpen & inDoor)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isOpen & inDoor)
         {
             await Task.Delay(3000);
             OpenDoor();
             await Task.Delay(2000);
             isOpen = true;
         }
-        if (Input.GetKeyDown(KeyCode.E) && isOpen & inDoor)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isOpen & inDoor)
         {
             await Task.Delay(3000);
             CloseDoor();
@@ -58,12 +58,12 @@ public class DoorAnimation : MonoBehaviour
             if (!isOpen)
             {
                 inDoor = true;
-                doortext.text = "Press E to Interact";
+                doortext.text = "Press MouseleftClick to Interact";
             }
             if (isOpen)
             {
                 inDoor = true;
-                doortext.text = "Press E to Interact";
+                doortext.text = "Press MouseleftClick to Interact";
             }
 
         }
