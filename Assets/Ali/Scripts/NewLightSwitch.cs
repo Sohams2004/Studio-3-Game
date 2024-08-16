@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NewLightSwitch : MonoBehaviour
 {
-    public TextMeshProUGUI promptText; // TextMeshProUGUI to display the prompt
+    /* public TextMeshProUGUI promptText; // TextMeshProUGUI to display the prompt*/
     public Animator switchAnimator; // Animator for the light switch
     public string animationTriggerName = "ToggleSwitch"; // Animation trigger name
     public Light roomLight; // Light to be controlled
@@ -16,7 +16,7 @@ public class NewLightSwitch : MonoBehaviour
 
     void Start()
     {
-        promptText.text = string.Empty;
+        /* promptText.text = string.Empty;*/
 
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
@@ -33,7 +33,7 @@ public class NewLightSwitch : MonoBehaviour
             if (hit.collider.gameObject == gameObject)
             {
                 playerInRange = true;
-                promptText.text = lightOn ? "Press E to Switch Off The Light" : "Press E to Switch On The Light";
+                /*  promptText.text = lightOn ? "Press E to Switch Off The Light" : "Press E to Switch On The Light";*/
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -43,13 +43,13 @@ public class NewLightSwitch : MonoBehaviour
             else
             {
                 playerInRange = false;
-                promptText.text = string.Empty;
+                /*  promptText.text = string.Empty;*/
             }
         }
         else
         {
             playerInRange = false;
-            promptText.text = string.Empty;
+            /*   promptText.text = string.Empty;*/
         }
     }
 
@@ -59,7 +59,7 @@ public class NewLightSwitch : MonoBehaviour
         roomLight.enabled = lightOn;
         switchAnimator.SetTrigger(animationTriggerName);
         audioSource.PlayOneShot(switchSound);
-        promptText.text = lightOn ? "Press E to Switch Off The Light" : "Press E to Switch On The Light";
+        /* promptText.text = lightOn ? "Press E to Switch Off The Light" : "Press E to Switch On The Light";*/
 
         LightsTask.text = "Lights switched";
         LightsTask.color = Color.green;

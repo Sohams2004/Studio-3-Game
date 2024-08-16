@@ -53,23 +53,27 @@ public class LaundryScript : MonoBehaviour
     {
         if (other.CompareTag("Clothing"))
         {
-            machineActivate.Play("Door Closing Animation");
-            machineActivate.Play("Laundry Activate");
+
 
             if (points > 0)
             {
+                machineActivate.Play("Door Closing Animation");
+                machineActivate.Play("Laundry Activate");
+
+                PlayLimitReachedClip();
                 Points--;
 
                 if (points == 5)
                 {
-                    PlayLimitReachedClip();
                     laundryFull.SetActive(true);
+
                 }
 
                 if (points == 2)
                 {
                     laundryFull2.SetActive(true);
                     laundryFull.SetActive(false);
+
                 }
 
                 if (points == 0)
@@ -78,6 +82,7 @@ public class LaundryScript : MonoBehaviour
                     laundryDone.SetActive(true);
                     laundryFull2.SetActive(false);
                     machineActivate.Play("Door Opening Animation");
+                    audioSource.Stop();
                     laundryTask.text = "Clothes washed";
                     laundryTask.color = Color.green;
                     laundry = true;

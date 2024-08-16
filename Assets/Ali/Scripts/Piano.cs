@@ -27,13 +27,14 @@ public class Piano : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))  // Check for left mouse button click
         {
-            playPianoTask.color = Color.green;
-            playPianoDone = true;
+
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, raycastDistance, interactableLayer))
             {
+                playPianoTask.color = Color.green;
+                playPianoDone = true;
                 // Check if the object hit is a piano key
                 if (hit.collider.CompareTag("PianoKey"))
                 {

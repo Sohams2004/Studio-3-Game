@@ -36,9 +36,9 @@ public class CameraShakeEffect : MonoBehaviour
         {
             float hungerValue = hungerSlider.value;
 
-            if (hungerValue < 500 && antipsychoticsDrug.medwithnofood)
+            if (hungerValue < 500)
             {
-                if (!isShaking)
+                if (!isShaking && antipsychoticsDrug.medwithnofood == true)
                 {
                     shakeCoroutine = StartCoroutine(ShakeCamera());
                     await Task.Delay(5000);
