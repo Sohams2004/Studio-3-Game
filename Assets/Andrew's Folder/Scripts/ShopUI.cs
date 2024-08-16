@@ -35,7 +35,7 @@ public class ShopUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inside && Input.GetKey(KeyCode.E))
+        if (inside && Input.GetKey(KeyCode.Mouse0))
         {
 
             shopUI.SetActive(true);
@@ -77,7 +77,7 @@ public class ShopUI : MonoBehaviour
         {
 
             inside = true;
-            InteractText.text = "Press E to Interact";
+            InteractText.text = "Press LeftClick to Interact";
 
         }
     }
@@ -86,7 +86,7 @@ public class ShopUI : MonoBehaviour
         if (other.CompareTag("Pay Station"))
         {
             inside = true;
-            InteractText.text = "Press E to Interact";
+            InteractText.text = "Press LeftClick to Interact";
 
 
         }

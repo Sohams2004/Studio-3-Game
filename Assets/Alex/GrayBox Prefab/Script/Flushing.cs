@@ -13,7 +13,7 @@ public class Flushing : MonoBehaviour
         if (other.CompareTag("Player"))
 
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
                 audioSource.Play();
@@ -31,7 +31,7 @@ public class Flushing : MonoBehaviour
         if (other.CompareTag("Player"))
 
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 audioSource.Play();
                 await Task.Delay(100);

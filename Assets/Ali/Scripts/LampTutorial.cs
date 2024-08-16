@@ -5,7 +5,7 @@ public class LampTutorial : MonoBehaviour
     public GameObject lamp; // Assign the lamp object in the Inspector
     public GameObject lightSource; // Assign the specific light source to activate
     public GameObject lightText; // Assign the 3D Text object in the Inspector
-    public KeyCode lightKey = KeyCode.E;
+    public KeyCode lightKey = KeyCode.Mouse0;
     public AudioSource audioSource; // Assign the AudioSource in the Inspector
     public AudioClip lightToggleSound; // Assign the sound effect in the Inspector
 

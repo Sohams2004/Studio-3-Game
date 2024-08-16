@@ -25,7 +25,7 @@ public class BigClock : MonoBehaviour
             {
                 interactionText.gameObject.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     // Play the interaction sound from the clock
                     AudioSource audioSource = hit.collider.GetComponent<AudioSource>();

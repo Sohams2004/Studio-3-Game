@@ -20,7 +20,7 @@ public class FrontDoorKey : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //promptText.text = "Press E to interact";
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
                 key.SetActive(false);
@@ -36,7 +36,7 @@ public class FrontDoorKey : MonoBehaviour
     private async void OnTriggerStay(Collider other)
     {
         //promptText.text = "Press E to interact";
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
 
