@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
@@ -20,7 +18,7 @@ public class Shop : MonoBehaviour
         {
             isShop = true;
 
-            if (Input.GetKeyDown(KeyCode.E) && isShop && shopIndex % 2 != 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isShop && shopIndex % 2 != 0)
             {
                 isShopOn = true;
                 shopUi.SetActive(true);
@@ -34,7 +32,7 @@ public class Shop : MonoBehaviour
                 Cursor.visible = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && isShopOn && shopIndex % 2 == 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isShopOn && shopIndex % 2 == 0)
             {
                 isShopOn = false;
                 shopUi.SetActive(true);

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +22,7 @@ public class PaperNote : MonoBehaviour
     {
         movement = FindObjectOfType<Movement>();
     }
-    
+
     void PaperList()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer);
@@ -36,7 +33,7 @@ public class PaperNote : MonoBehaviour
             isPaperNote = true;
 
             if (!isPaperNotePicked)
-                interactionText.text = "Press E to interact";
+                interactionText.text = "Left Click to Interact";
         }
 
         else if (!isRay)

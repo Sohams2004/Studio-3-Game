@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class MoneyCollect : MonoBehaviour
 {
@@ -30,9 +27,9 @@ public class MoneyCollect : MonoBehaviour
             Debug.Log("Money");
 
             money = hit1.collider.gameObject;
-            pickUpMoneyText.text = "Press E to pick up Money";
+            pickUpMoneyText.text = "Press LeftClick to Interact";
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 shopUI.moneyCount += 5f;
                 moneyCountText.text = string.Format("$ " + shopUI.moneyCount);

@@ -6,7 +6,10 @@ using UnityEngine.Rendering.PostProcessing;
 public class DamageScript : MonoBehaviour
 {
     public int maxHP = 1000;
-    public int startingstat = 900;
+    public int startingsanity;
+    public int startingstat;
+    public int startinghunger = 900;
+    public int startingthirst = 900;
     public float sanity;
     public float hunger;
     public float thirst;
@@ -34,9 +37,9 @@ public class DamageScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameOverScreen.SetActive(false);
-        sanity = maxHP;
-        hunger = startingstat;
-        thirst = startingstat;
+        sanity = startingsanity;
+        hunger = startinghunger;
+        thirst = startingthirst;
         hasInteracted = false;
         sanityBar.SetMaxValue(maxHP);
         hungerBar.SetMaxValue(maxHP);
@@ -121,11 +124,11 @@ public class DamageScript : MonoBehaviour
     {
         thirst += heal;
         thirstBar.SetValue(sanity);
-        if (thirst > startingstat)
+        if (thirst > startingthirst)
         {
             postProcessingVolume.profile.TryGetSettings(out vignette);
         }
-        else if (thirst < startingstat)
+        else if (thirst < startingthirst)
         {
             move.movementSpeed = 2f;
         }
