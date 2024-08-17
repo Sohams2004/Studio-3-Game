@@ -17,7 +17,7 @@ public class ObjectPickUp : MonoBehaviour
     [SerializeField] int sitIndex;
 
     [SerializeField] int cubeCount, sphereCount, coneCount, eggCount, orangeCount, breadCount, itemCount;
-    [SerializeField] public int clothCount;
+    /*   [SerializeField] public int clothCount;*/
 
     [SerializeField] int maxNumberOfItems;
 
@@ -42,7 +42,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI cleanupTask;
 
-    [SerializeField] Image crosshair, handSign, chairSign, clothImg;
+    [SerializeField] Image crosshair, handSign, chairSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg, eggImg, orangeImg, breadImg;
 
@@ -132,12 +132,12 @@ public class ObjectPickUp : MonoBehaviour
                     sphereCountText.text = sphereCount.ToString();
                 }
 
-                if (pickableObject.tag == "Clothing")
-                {
-                    clothCount++;
+                /*  if (pickableObject.tag == "Clothing")
+                  {
+                      clothCount++;
 
-                    clothCountText.text = clothCount.ToString();
-                }
+                      clothCountText.text = clothCount.ToString();
+                  }*/
 
                 if (pickableObject.tag == "Egg")
                 {
@@ -157,7 +157,7 @@ public class ObjectPickUp : MonoBehaviour
                 {
                     breadCount++;
 
-                    breadCountText.text = breadCount.ToString();    
+                    breadCountText.text = breadCount.ToString();
                 }
             }
 
@@ -239,17 +239,17 @@ public class ObjectPickUp : MonoBehaviour
                 }
             }
 
-            if (dropObjectTag == "Clothing")
-            {
-                clothCount--;
+            /* if (dropObjectTag == "Clothing")
+             {
+                 clothCount--;
 
-                clothCountText.text = clothCount.ToString();
+                 clothCountText.text = clothCount.ToString();
 
-                if (clothCount == 0)
-                {
-                    clothImg.gameObject.SetActive(false);
-                }
-            }
+                 if (clothCount == 0)
+                 {
+                     clothImg.gameObject.SetActive(false);
+                 }
+             }*/
 
             if (dropObjectTag == "Egg")
             {
@@ -262,7 +262,7 @@ public class ObjectPickUp : MonoBehaviour
                     eggImg.gameObject.SetActive(false);
                 }
             }
-            
+
             if (dropObjectTag == "Orange")
             {
                 orangeCount--;
@@ -305,10 +305,10 @@ public class ObjectPickUp : MonoBehaviour
                 coneImg.gameObject.SetActive(true);
             }
 
-            if (pickableObject.tag == "Clothing")
+            /*if (pickableObject.tag == "Clothing")
             {
                 clothImg.gameObject.SetActive(true);
-            }
+            }*/
 
             if (pickableObject.tag == "Egg")
             {
@@ -341,14 +341,14 @@ public class ObjectPickUp : MonoBehaviour
             sphereImg.gameObject.SetActive(false);
         }
 
-        if (clothCount == 0)
-        {
-            clothImg.gameObject.SetActive(false);
-        }
+        /* if (clothCount == 0)
+         {
+             clothImg.gameObject.SetActive(false);
+         }*/
 
         if (eggCount == 0)
         {
-            eggImg.gameObject .SetActive(false);
+            eggImg.gameObject.SetActive(false);
         }
 
         if (orangeCount == 0)

@@ -87,8 +87,8 @@ public class CountDown : MonoBehaviour
     {
         if (minutes == 8 && isPM)
         {
-            loadScene.SetActive(true);
             scene.LoadScene("Good End Scene");
+            loadScene.SetActive(true);
         }
 
 

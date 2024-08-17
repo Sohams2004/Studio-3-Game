@@ -799,11 +799,6 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 9145918484882366379, guid: dcaa99ea637430845913a4e155f6108d, type: 3}
   m_PrefabInstance: {fileID: 750641265}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &750641269 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 801493221985874226, guid: dcaa99ea637430845913a4e155f6108d, type: 3}
-  m_PrefabInstance: {fileID: 750641265}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &750641270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,9 +862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  waitTime: 5
+  waitTime: 5.8
   turnSpeed: 90
-  animEnemy: {fileID: 750641269}
   pathHolder: {fileID: 1272033071}
 --- !u!1001 &1240156908
 PrefabInstance:
