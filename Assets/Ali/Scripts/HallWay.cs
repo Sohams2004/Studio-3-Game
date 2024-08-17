@@ -14,7 +14,9 @@ public class HallWay : MonoBehaviour
     public float monsterFollowDelay = 5f;  // Delay before monster starts following
     public Transform player;
     public Transform playerResetPosition;
-    [SerializeField] GameObject door;// The position to reset the player to
+    [SerializeField] GameObject door;
+    [SerializeField] GameObject littleGirl;
+    [SerializeField] GameObject fence;
 
     private bool monsterActive = false;
     private bool invisibleWallEnabled = false;  // Flag to track if the invisible wall has been enabled
@@ -30,7 +32,8 @@ public class HallWay : MonoBehaviour
                 // Enable the hallway and final door when the second collider is triggered
                 hallway.SetActive(true);
                 finalDoor.SetActive(true);
-
+                littleGirl.SetActive(false);
+                fence.SetActive(false);
                 // Activate the monster after a delay
                 Invoke(nameof(ActivateMonster), 2f);  // 2-second delay before activating the monster
             }
@@ -41,11 +44,14 @@ public class HallWay : MonoBehaviour
                 if (invisibleWall != null)
                 {
                     invisibleWall.SetActive(true);
-                    invisibleWallEnabled = true;  // Set flag to true so it won't be enabled again
+                    invisibleWallEnabled = true;
+                    // Set flag to true so it won't be enabled again
                 }
             }
             else if (CompareTag("FinalTrigger"))
             {
+                littleGirl.SetActive(true);
+                fence.SetActive(true);
                 door.SetActive(true);
                 // Perform actions when the final trigger is hit
                 HandleFinalTrigger();

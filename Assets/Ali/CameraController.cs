@@ -9,8 +9,8 @@ public class CameraController : MonoBehaviour
     {
         damageScript.loadScene.SetActive(false);
         damageScript = FindObjectOfType<DamageScript>();
-        damageScript.hunger = damageScript.startingstat;
-        damageScript.thirst = damageScript.startingstat;
+        damageScript.hunger = damageScript.startinghunger;
+        damageScript.thirst = damageScript.startingthirst;
         WakeUpCamera.gameObject.SetActive(true);
         playerCamera.gameObject.SetActive(false);
     }
