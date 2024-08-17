@@ -34,19 +34,21 @@ public class HallWay : MonoBehaviour
                 finalDoor.SetActive(true);
                 littleGirl.SetActive(false);
                 fence.SetActive(false);
+                invisibleWall.SetActive(false);
                 // Activate the monster after a delay
                 Invoke(nameof(ActivateMonster), 2f);  // 2-second delay before activating the monster
             }
             else if (CompareTag("ThirdTrigger") && !invisibleWallEnabled)
             {
                 door.SetActive(false);
-                // Enable the invisible wall when the third collider is triggered
-                if (invisibleWall != null)
-                {
-                    invisibleWall.SetActive(true);
-                    invisibleWallEnabled = true;
-                    // Set flag to true so it won't be enabled again
-                }
+                invisibleWall.SetActive(true);
+                invisibleWallEnabled = true;
+                /* // Enable the invisible wall when the third collider is triggered
+                 if (invisibleWall != null)
+                 {
+
+                     // Set flag to true so it won't be enabled again
+                 }*/
             }
             else if (CompareTag("FinalTrigger"))
             {
