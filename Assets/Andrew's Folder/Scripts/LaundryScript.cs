@@ -17,12 +17,12 @@ public class LaundryScript : MonoBehaviour
 
     public TextMeshProUGUI laundryTask;
 
-    HotBar hotBar;
-    ObjectPickUp objectPickUp;
+    /*    HotBar hotBar;
+        ObjectPickUp objectPickUp;*/
 
     private void Awake()
     {
-        objectPickUp = FindObjectOfType<ObjectPickUp>();
+        /*  objectPickUp = FindObjectOfType<ObjectPickUp>();*/
 
         laundryFull.SetActive(false);
         laundryFull2.SetActive(false);
@@ -33,7 +33,7 @@ public class LaundryScript : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        hotBar = FindObjectOfType<HotBar>();
+        /*  hotBar = FindObjectOfType<HotBar>();*/
     }
 
     public int Points
@@ -88,11 +88,11 @@ public class LaundryScript : MonoBehaviour
                     laundry = true;
                 }
             }
-            objectPickUp.clothCount -= 1;
-            objectPickUp.clothCountText.text = objectPickUp.clothCount.ToString();
-            hotBar.currentObject.SetActive(false);
-            hotBar.currentObject.transform.parent = null;
-            hotBar.items.Remove(hotBar.currentObject);
+            /* objectPickUp.clothCount -= 1;
+             objectPickUp.clothCountText.text = objectPickUp.clothCount.ToString();
+             hotBar.currentObject.SetActive(false);
+             hotBar.currentObject.transform.parent = null;
+             hotBar.items.Remove(hotBar.currentObject);*/
 
             Destroy(other.gameObject);
         }

@@ -169,8 +169,8 @@ public class DamageScript : MonoBehaviour
     }
     void GameOverSanity()
     {
-        loadScene.SetActive(true);
         scene.LoadScene("Game Over");
+        loadScene.SetActive(true);
         SanityRecovered(100);
 
     }
