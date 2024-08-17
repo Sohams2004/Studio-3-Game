@@ -16,7 +16,7 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] int sitIndex;
 
-    [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
+    [SerializeField] int cubeCount, sphereCount, coneCount, eggCount, orangeCount, breadCount, itemCount;
     [SerializeField] public int clothCount;
 
     [SerializeField] int maxNumberOfItems;
@@ -37,14 +37,14 @@ public class ObjectPickUp : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI pickDropObjectText, placeObjectText, inventoryFullText;
 
-    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, eggCountText, orangeCountText, breadCountText;
     [SerializeField] public TextMeshProUGUI clothCountText;
 
     [SerializeField] TextMeshProUGUI cleanupTask;
 
     [SerializeField] Image crosshair, handSign, chairSign, clothImg;
 
-    [SerializeField] Image cubeImg, sphereImg, coneImg;
+    [SerializeField] Image cubeImg, sphereImg, coneImg, eggImg, orangeImg, breadImg;
 
     [SerializeField] GameObject hitObj;
 
@@ -138,6 +138,27 @@ public class ObjectPickUp : MonoBehaviour
 
                     clothCountText.text = clothCount.ToString();
                 }
+
+                if (pickableObject.tag == "Egg")
+                {
+                    eggCount++;
+
+                    eggCountText.text = eggCount.ToString();
+                }
+
+                if (pickableObject.tag == "Orange")
+                {
+                    orangeCount++;
+
+                    orangeCountText.text = orangeCount.ToString();
+                }
+
+                if (pickableObject.tag == "Toast")
+                {
+                    breadCount++;
+
+                    breadCountText.text = breadCount.ToString();    
+                }
             }
 
             else
@@ -229,6 +250,42 @@ public class ObjectPickUp : MonoBehaviour
                     clothImg.gameObject.SetActive(false);
                 }
             }
+
+            if (dropObjectTag == "Egg")
+            {
+                eggCount--;
+
+                eggCountText.text = eggCount.ToString();
+
+                if (eggCount == 0)
+                {
+                    eggImg.gameObject.SetActive(false);
+                }
+            }
+            
+            if (dropObjectTag == "Orange")
+            {
+                orangeCount--;
+
+                orangeCountText.text = orangeCount.ToString();
+
+                if (orangeCount == 0)
+                {
+                    orangeImg.gameObject.SetActive(false);
+                }
+            }
+
+            if (dropObjectTag == "Toast")
+            {
+                breadCount--;
+
+                breadCountText.text = breadCount.ToString();
+
+                if (breadCount == 0)
+                {
+                    breadImg.gameObject.SetActive(false);
+                }
+            }
         }
 
         if (pickableObject != null)
@@ -252,6 +309,21 @@ public class ObjectPickUp : MonoBehaviour
             {
                 clothImg.gameObject.SetActive(true);
             }
+
+            if (pickableObject.tag == "Egg")
+            {
+                eggImg.gameObject.SetActive(true);
+            }
+
+            if (pickableObject.tag == "Orange")
+            {
+                orangeImg.gameObject.SetActive(true);
+            }
+
+            if (pickableObject.tag == "Toast")
+            {
+                breadImg.gameObject.SetActive(true);
+            }
         }
 
         if (cubeCount == 0)
@@ -272,6 +344,21 @@ public class ObjectPickUp : MonoBehaviour
         if (clothCount == 0)
         {
             clothImg.gameObject.SetActive(false);
+        }
+
+        if (eggCount == 0)
+        {
+            eggImg.gameObject .SetActive(false);
+        }
+
+        if (orangeCount == 0)
+        {
+            orangeImg.gameObject.SetActive(false);
+        }
+
+        if (breadCount == 0)
+        {
+            breadImg.gameObject.SetActive(false);
         }
     }
 
@@ -336,6 +423,27 @@ public class ObjectPickUp : MonoBehaviour
                                 sphereCount--;
 
                                 sphereCountText.text = sphereCount.ToString();
+                            }
+
+                            if (hotbar.currentObject.tag == "Egg")
+                            {
+                                eggCount--;
+
+                                eggCountText.text = eggCount.ToString();
+                            }
+
+                            if (hotbar.currentObject.tag == "Orange")
+                            {
+                                orangeCount--;
+
+                                orangeCountText.text = orangeCount.ToString();
+                            }
+
+                            if (hotbar.currentObject.tag == "Toast")
+                            {
+                                breadCount--;
+
+                                breadCountText.text = breadCount.ToString();
                             }
 
                             hotbar.currentObject = null;
