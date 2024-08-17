@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4489629591929108794}
   - component: {fileID: 6520005107697542299}
   - component: {fileID: 1655923125381968707}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: '"F" to Eat'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
       propertyPath: m_TagString
-      value: FriedEgg
+      value: PanWithFriedEgg
       objectReference: {fileID: 0}
     - target: {fileID: 7084173820294782843, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
       propertyPath: m_Layer
@@ -266,10 +266,40 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4489629591929108794}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8310754310193380431}
     - targetCorrespondingSourceObject: {fileID: 632901940371611727, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1889436752529733010}
   m_SourcePrefab: {fileID: 100100000, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
+--- !u!1 &5862859664192739676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
+  m_PrefabInstance: {fileID: 6745378615025837069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8310754310193380431
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862859664192739676}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6148788888159700034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 632901940371611727, guid: 3bb3a1d3fb59c0540bc1a985839eb965, type: 3}
