@@ -7,7 +7,7 @@ public class CloseWhisperer : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        await Task.Delay(1950);
+        await Task.Delay(19500);
         behindYou.Play();
     }
 

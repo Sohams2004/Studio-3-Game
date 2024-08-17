@@ -10,7 +10,7 @@ public class ParentRoomKey : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] GameObject keyCollected;
     [SerializeField] GameObject key;
-    public bool pickedkey;
+    public bool pickedkey = false;
     private void Start()
     {
         pickedkey = false;
@@ -54,5 +54,5 @@ public class ParentRoomKey : MonoBehaviour
     //private void OnTriggerExit(Collider other)
     //{
     //    promptText.text = string.Empty;
-   // }
+    // }
 }

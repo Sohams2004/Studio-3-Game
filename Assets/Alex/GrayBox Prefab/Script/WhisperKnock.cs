@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,26 @@ public class WhisperKnock : MonoBehaviour
     [SerializeField] ParentRoomKey roomKey;
     [SerializeField] DoorAnimationInGame doorAnimation;
     [SerializeField] bool isNowOpen = false;
+    private async void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !doorAnimation.isOpen && doorAnimation.inDoor)
+        {
+            doorAnimation.OpenDoor();
+            await Task.Delay(2000);
+            doorAnimation.isOpen = true;
+        }
+
+        if (doorAnimation.isOpen && doorAnimation.inDoor)
+        {
+            doortext.text = string.Empty;
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                doorAnimation.CloseDoor();
+                await Task.Delay(1800);
+                doorAnimation.isOpen = false;
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -24,29 +45,16 @@ public class WhisperKnock : MonoBehaviour
             {
 
                 knock.Stop();
-                doortext.text = "Press LeftClick to Open";
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    doorAnimation.OpenDoor();
-                    isNowOpen = true;
-                }
+                doortext.text = string.Empty;
+                doorAnimation.inDoor = true;
 
-                if (isNowOpen)
-                {
-                    doortext.text = "Press LeftClick to Close";
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        doorAnimation.CloseDoor();
-                        isNowOpen = false;
-                    }
-                }
             }
         }
 
     }
 
 
-    private void OnTriggerStay(Collider other)
+    private async void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -59,30 +67,15 @@ public class WhisperKnock : MonoBehaviour
             }
             if (roomKey.pickedkey && !isNowOpen)
             {
-
                 knock.Stop();
-                doortext.text = "Press E to Open";
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    doorAnimation.OpenDoor();
-                    isNowOpen = true;
-                }
-
-                if (isNowOpen)
-                {
-                    doortext.text = "Press E to Close";
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        doorAnimation.CloseDoor();
-                        isNowOpen = false;
-                    }
-                }
+                doorAnimation.inDoor = true;
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        doorAnimation.inDoor = false;
         doortext.text = string.Empty;
     }
 }

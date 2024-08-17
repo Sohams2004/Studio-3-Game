@@ -8,8 +8,8 @@ public class DoorAnimationInGame : MonoBehaviour
     [SerializeField] TMP_Text doortext;
     [SerializeField] AudioSource opendoor;
     [SerializeField] AudioSource closedoor;
-    [SerializeField] bool isOpen = false;
-    [SerializeField] bool inDoor = false;
+    public bool isOpen = false;
+    public bool inDoor = false;
     [SerializeField] Animator doorAnimator;
 
     private async void Update()
