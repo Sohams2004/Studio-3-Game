@@ -3,20 +3,13 @@ using UnityEngine;
 
 public class NPCPathMovement : MonoBehaviour
 {
-    public static event System.Action OnGuardHasSpottedPlayer;
-    public float speed = 5;
-    public float waitTime = .3f;
+    public float speed = 20;
+    public float waitTime = 0.1f;
     public float turnSpeed = 90;
-
-
-
-
     public Transform pathHolder;
 
     void Start()
     {
-
-
         Vector3[] waypoints = new Vector3[pathHolder.childCount];
         for (int i = 0; i < waypoints.Length; i++)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CarFear2 : MonoBehaviour
 {
     [SerializeField] GameObject car;
-
+    [SerializeField] NPCPathMovement movement;
     private void Start()
     {
         car.SetActive(false);
@@ -13,6 +13,7 @@ public class CarFear2 : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             car.SetActive(true);
+
             Destroy(gameObject);
         }
 

@@ -12,7 +12,6 @@ public class LoadingScene : MonoBehaviour
     {
         StartCoroutine(LoadAsync(sceneName));
     }
-
     IEnumerator LoadAsync(string sceneName)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
@@ -22,7 +21,6 @@ public class LoadingScene : MonoBehaviour
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             loadingBar.value = progress;
             loadingText.text = (progress * 100f).ToString("F0") + "%";
-
             yield return null;
         }
     }

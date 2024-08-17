@@ -54,7 +54,7 @@ public class WhisperKnock : MonoBehaviour
     }
 
 
-    private async void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {

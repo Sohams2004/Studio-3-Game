@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -9,12 +10,31 @@ public class SittingRoom : MonoBehaviour
     [SerializeField] FrontDoorKey doorKey;
     [SerializeField] DoorAnimationInGame doorAnimation;
     [SerializeField] bool isNowOpen = false;
+    private async void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !doorAnimation.isOpen && doorAnimation.inDoor)
+        {
+            doorAnimation.OpenDoor();
+            await Task.Delay(2000);
+            doorAnimation.isOpen = true;
+        }
+
+        if (doorAnimation.isOpen && doorAnimation.inDoor)
+        {
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                doorAnimation.CloseDoor();
+                await Task.Delay(1800);
+                doorAnimation.isOpen = false;
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-
-           
+            doortext.text = "Locked";
             if (Input.GetKeyDown(KeyCode.Mouse0) && !doorKey.pickedkeysittingroom)
             {
                 knock.Play();
@@ -24,22 +44,9 @@ public class SittingRoom : MonoBehaviour
             {
 
                 knock.Stop();
-                doortext.text = "Press LeftClick to Open";
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    doorAnimation.OpenDoor();
-                    isNowOpen = true;
-                }
+                doortext.text = string.Empty;
+                doorAnimation.inDoor = true;
 
-                if (isNowOpen)
-                {
-                    doortext.text = "Press LeftClick to Close";
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        doorAnimation.CloseDoor();
-                        isNowOpen = false;
-                    }
-                }
             }
         }
 
@@ -50,39 +57,24 @@ public class SittingRoom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-            doortext.text = "Parent Room";
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !doorKey.pickedkeysittingroom)
+            doortext.text = "Locked";
+            if (Input.GetKeyDown(KeyCode.E) && !doorKey.pickedkeysittingroom)
             {
                 knock.Play();
                 doortext.text = "Locked";
             }
             if (doorKey.pickedkeysittingroom && !isNowOpen)
             {
-
                 knock.Stop();
-                doortext.text = "Press LeftClick to Open";
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    doorAnimation.OpenDoor();
-                    isNowOpen = true;
-                }
-
-                if (isNowOpen)
-                {
-                    doortext.text = "Press LeftClick to Close";
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        doorAnimation.CloseDoor();
-                        isNowOpen = false;
-                    }
-                }
+                doorAnimation.inDoor = true;
+                doortext.text = string.Empty;
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        doorAnimation.inDoor = false;
         doortext.text = string.Empty;
     }
 }
