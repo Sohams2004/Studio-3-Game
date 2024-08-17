@@ -50,6 +50,7 @@ public class HallWay : MonoBehaviour
             }
             else if (CompareTag("FinalTrigger"))
             {
+                invisibleWall.SetActive(false);
                 littleGirl.SetActive(true);
                 fence.SetActive(true);
                 door.SetActive(true);

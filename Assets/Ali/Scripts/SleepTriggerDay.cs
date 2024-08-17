@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -16,16 +15,14 @@ public class SleepTriggerDay : MonoBehaviour
     {
         loadScene.SetActive(false);
     }
-    private async void Update()
+    private void Update()
     {
         if (insidde && Input.GetKeyDown(KeyCode.E))
         {
-            cameraAnimator.SetTrigger("SleepTrigger");
-            sleepText.text = string.Empty;
-            sleepingCamera.gameObject.SetActive(true);
-            await Task.Delay(1000);
-            loadScene.SetActive(true);
-            scene.LoadScene("Day 2");
+            NextDay();
+            /* cameraAnimator.SetTrigger("SleepTrigger");
+             sleepingCamera.gameObject.SetActive(true);*/
+
         }
     }
     void OnTriggerEnter(Collider other)
@@ -51,5 +48,12 @@ public class SleepTriggerDay : MonoBehaviour
             sleepText.text = string.Empty;
             insidde = false;
         }
+    }
+    void NextDay()
+    {
+        loadScene.SetActive(true);
+        scene.LoadScene("Day 2");
+
+
     }
 }
