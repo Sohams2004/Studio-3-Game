@@ -11,25 +11,25 @@ public class PickUpPlace : MonoBehaviour
     [SerializeField] DamageScript damageScript;
     private GameObject orangeJuice;
     private GameObject panWithFriedEgg;
-    private GameObject burnedToast; // Reference for burned toast
+    private GameObject burnedToast; 
 
     public TextMeshPro drinkText;
     public TextMeshPro eatText;
     public AudioSource drinkSound;
     public AudioSource eatSound;
-    public AudioSource toastEatSound; // Change to AudioSource
+    public AudioSource toastEatSound; 
 
-    public TextMeshProUGUI DrinkTask; // Reference to your Drink Juice UI TextMeshPro object
-    public TextMeshProUGUI EatEggTask; // Reference to your Eat Egg UI TextMeshPro object
+    public TextMeshProUGUI DrinkTask; 
+    public TextMeshProUGUI EatEggTask; 
     public TextMeshProUGUI EatToastTask;
 
     private bool isLookingAtOrangeJuice = false;
     private bool isLookingAtPanWithFriedEgg = false;
-    private bool isLookingAtBurnedToast = false; // Boolean to check if looking at burned toast
+    private bool isLookingAtBurnedToast = false; 
     public bool eatdone = false;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button
+        if (Input.GetMouseButtonDown(0)) 
         {
             if (pickedObject == null)
             {
@@ -62,7 +62,7 @@ public class PickUpPlace : MonoBehaviour
 
         }
 
-        if (isLookingAtBurnedToast && Input.GetKeyDown(KeyCode.F)) // Interaction for burned toast
+        if (isLookingAtBurnedToast && Input.GetKeyDown(KeyCode.F)) 
         {
             damageScript.HungerRecovered(60);
             EatBurnedToast();
@@ -122,7 +122,7 @@ public class PickUpPlace : MonoBehaviour
                 isLookingAtPanWithFriedEgg = true;
                 Debug.Log("Looking at Pan With Fried Egg");
             }
-            else if (hit.collider.gameObject.CompareTag("BurnedToast")) // Check for burned toast
+            else if (hit.collider.gameObject.CompareTag("BurnedToast")) 
             {
                 burnedToast = hit.collider.gameObject;
                 eatText.transform.position = burnedToast.transform.position + new Vector3(0, 1, 0);
@@ -136,7 +136,7 @@ public class PickUpPlace : MonoBehaviour
                 eatText.gameObject.SetActive(false);
                 isLookingAtOrangeJuice = false;
                 isLookingAtPanWithFriedEgg = false;
-                isLookingAtBurnedToast = false; // Reset burned toast boolean
+                isLookingAtBurnedToast = false; 
             }
         }
         else
@@ -145,7 +145,7 @@ public class PickUpPlace : MonoBehaviour
             eatText.gameObject.SetActive(false);
             isLookingAtOrangeJuice = false;
             isLookingAtPanWithFriedEgg = false;
-            isLookingAtBurnedToast = false; // Reset burned toast boolean
+            isLookingAtBurnedToast = false; 
         }
     }
 
@@ -157,7 +157,7 @@ public class PickUpPlace : MonoBehaviour
         drinkSound.Play();
         isLookingAtOrangeJuice = false;
 
-        DrinkTask.text = "Drank Juice"; // Update TextMeshPro text
+        DrinkTask.text = "Drank Juice"; 
         DrinkTask.color = Color.green;
         eatdone = true;
     }

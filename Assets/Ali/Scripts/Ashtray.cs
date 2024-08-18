@@ -5,13 +5,13 @@ using TMPro;
 
 public class Ashtray : MonoBehaviour
 {
-     public float interactionDistance = 3f; // Adjust as necessary
-    public Transform interactionText; // Assign the 3D Text transform in the Inspector
-    public LayerMask interactableLayer; // Assign the layer of interactable objects
+    public float interactionDistance = 3f; 
+    public Transform interactionText; 
+    public LayerMask interactableLayer; 
 
     void Start()
     {
-        interactionText.gameObject.SetActive(false); // Hide the interaction text initially
+        interactionText.gameObject.SetActive(false); 
     }
 
     void Update()
@@ -23,18 +23,18 @@ public class Ashtray : MonoBehaviour
         {
             if (hit.collider.CompareTag("Ashtray"))
             {
-                interactionText.position = hit.transform.position + Vector3.up * 0.5f; // Adjust the position of the text as needed
+                interactionText.position = hit.transform.position + Vector3.up * 0.5f; 
                 interactionText.gameObject.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    // Play the interaction sound from the ashtray
+                    
                     AudioSource audioSource = hit.collider.GetComponent<AudioSource>();
                     if (audioSource != null)
                     {
                         audioSource.Play();
                     }
-                    // Additional interaction logic can go here
+                    
                 }
             }
             else

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EatToastBurned : MonoBehaviour
 {
-    public string interactionKey = "E";  // Key to interact with the burned toast
-    public AudioClip eatSound;  // Sound to play when the toast is eaten
-    public LayerMask interactableLayer;  // Layer mask for interactable objects
+    public string interactionKey = "E";  
+    public AudioClip eatSound;  
+    public LayerMask interactableLayer;  
 
     private AudioSource audioSource;
 
@@ -26,21 +26,20 @@ public class EatToastBurned : MonoBehaviour
     void CheckForBurnedToast()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = transform.position + transform.forward;  // Adjust the ray origin slightly forward
+        Vector3 rayOrigin = transform.position + transform.forward;  
         if (Physics.Raycast(rayOrigin, transform.forward, out hit, Mathf.Infinity, interactableLayer))
         {
-            Debug.Log("Raycast hit: " + hit.collider.name);  // Debug statement to check what the raycast hits
+            Debug.Log("Raycast hit: " + hit.collider.name);  
 
             if (hit.collider.CompareTag("BurnedToast"))
             {
-                Debug.Log("Burned toast detected!");  // Debug statement for toast detection
+                Debug.Log("Burned toast detected!");  
 
                 Destroy(hit.collider.gameObject);
                 if (eatSound != null)
                 {
                     audioSource.PlayOneShot(eatSound);
                 }
-                // Update UI or other game elements here if needed
             }
         }
     }

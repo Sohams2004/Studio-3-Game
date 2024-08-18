@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Radio : MonoBehaviour
 {
-    public float raycastDistance = 5f;  // Distance for the raycast
-    public LayerMask interactableLayer;  // Layer for interactable objects
+    public float raycastDistance = 5f;  
+    public LayerMask interactableLayer;  
 
     private AudioSource audioSource;
     private bool isMuted = false;
 
     private void Start()
     {
-        // Get the AudioSource component attached to the same GameObject
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -22,14 +21,13 @@ public class Radio : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))  // Check for left mouse button click
+        if (Input.GetMouseButtonDown(0))  
         {
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, raycastDistance, interactableLayer))
             {
-                // Check if the object hit is the radio
                 if (hit.collider.CompareTag("Radio"))
                 {
                     ToggleSound();
@@ -46,18 +44,18 @@ public class Radio : MonoBehaviour
         {
             if (isMuted)
             {
-                audioSource.mute = false;  // Unmute the sound
+                audioSource.mute = false;  
                 isMuted = false;
             }
             else
             {
-                audioSource.mute = true;  // Mute the sound
+                audioSource.mute = true;  
                 isMuted = true;
             }
         }
         else
         {
-            audioSource.Play();  // Play the sound if it is not playing
+            audioSource.Play();  
             isMuted = false;
         }
     }

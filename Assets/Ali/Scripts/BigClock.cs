@@ -5,13 +5,13 @@ using TMPro;
 
 public class BigClock : MonoBehaviour
 {
-     public float interactionDistance = 3f; // Adjust as necessary
-    public Transform interactionText; // Assign the 3D Text transform in the Inspector
-    public LayerMask interactableLayer; // Assign the layer of interactable objects
+    public float interactionDistance = 3f; 
+    public Transform interactionText; 
+    public LayerMask interactableLayer; 
 
     void Start()
     {
-        interactionText.gameObject.SetActive(false); // Hide the interaction text initially
+        interactionText.gameObject.SetActive(false); 
     }
 
     void Update()
@@ -27,13 +27,11 @@ public class BigClock : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    // Play the interaction sound from the clock
                     AudioSource audioSource = hit.collider.GetComponent<AudioSource>();
                     if (audioSource != null)
                     {
                         audioSource.Play();
                     }
-                    // Additional interaction logic can go here
                 }
             }
             else

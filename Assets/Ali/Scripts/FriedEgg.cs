@@ -3,22 +3,21 @@ using UnityEngine;
 
 public class FriedEgg : MonoBehaviour
 {
-    public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
-    public Transform spawnPoint; // Spawn point for the result object
-    public AudioClip interactionSound; // Sound to play during interaction
-    public Animator blenderAnimator; // Animator component for the blender animations
+    public GameObject resultObjectPrefab; 
+    public Transform spawnPoint; 
+    public AudioClip interactionSound; 
+    public Animator blenderAnimator; 
 
-    private GameObject placedObject; // Reference to the object currently placed on the trigger
+    private GameObject placedObject; 
     [SerializeField] GameObject parent;
     private bool isObjectPlaced = false;
 
-    private AudioSource audioSource; // AudioSource component for playing sounds
+    private AudioSource audioSource; 
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>(); // Get AudioSource component
+        audioSource = GetComponent<AudioSource>(); 
 
-        // Ensure blenderAnimator is assigned
         if (blenderAnimator == null)
         {
             Debug.LogError("FryingPan Animator is not assigned!");
@@ -27,40 +26,38 @@ public class FriedEgg : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isObjectPlaced && other.CompareTag("Egg")) // Check if the object entering is the player's object
+        if (!isObjectPlaced && other.CompareTag("Egg")) 
         {
-            placedObject = other.gameObject; // Assign the placed object
+            placedObject = other.gameObject; 
             isObjectPlaced = true;
 
-            // Play animation using Animator trigger
+            
             if (blenderAnimator != null)
             {
                 blenderAnimator.SetTrigger("Fry");
             }
 
-            // Play sound if AudioSource and sound clip are assigned
+            
             if (audioSource != null && interactionSound != null)
             {
                 audioSource.PlayOneShot(interactionSound);
             }
 
-            //Destroy(placedObject);
-
-            // Start coroutine to wait and then spawn result object
+            
             StartCoroutine(WaitAndSpawnObject(placedObject));
         }
     }
 
     private IEnumerator WaitAndSpawnObject(GameObject placedObject)
     {
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        yield return new WaitForSeconds(2f); 
 
-        // Instantiate the result object at the spawn point
+        
         GameObject resultObject = Instantiate(resultObjectPrefab, spawnPoint.position, spawnPoint.rotation);
         resultObject.transform.parent = parent.transform;
 
-        // Clean up or reset as needed
-        Destroy(placedObject); // Destroy the placed object
+        
+        Destroy(placedObject); 
         isObjectPlaced = false;
     }
 }

@@ -4,14 +4,14 @@ public class HallWay : MonoBehaviour
 {
 
     public GameObject hallway;
-    public GameObject finalDoor;  // The final door to be disabled
+    public GameObject finalDoor;  
     public GameObject monster;
-    public GameObject invisibleWall;  // The invisible wall to be enabled/disabled
+    public GameObject invisibleWall;  
     public Transform monsterStartPosition;
     public AudioSource scarySound;
     public AudioSource scarySound2;
     public AudioSource scarySound3;
-    public float monsterFollowDelay = 5f;  // Delay before monster starts following
+    public float monsterFollowDelay = 5f;  
     public Transform player;
     public Transform playerResetPosition;
     [SerializeField] GameObject door;
@@ -19,7 +19,7 @@ public class HallWay : MonoBehaviour
     [SerializeField] GameObject fence;
 
     private bool monsterActive = false;
-    private bool invisibleWallEnabled = false;  // Flag to track if the invisible wall has been enabled
+    private bool invisibleWallEnabled = false;  
 
     void OnTriggerEnter(Collider other)
     {
@@ -29,21 +29,21 @@ public class HallWay : MonoBehaviour
             RenderSettings.fog = true;
             if (CompareTag("SecondTrigger") && !monsterActive)
             {
-                // Enable the hallway and final door when the second collider is triggered
+                
                 hallway.SetActive(true);
                 finalDoor.SetActive(true);
                 littleGirl.SetActive(false);
                 fence.SetActive(false);
                 invisibleWall.SetActive(false);
-                // Activate the monster after a delay
-                Invoke(nameof(ActivateMonster), 2f);  // 2-second delay before activating the monster
+                
+                Invoke(nameof(ActivateMonster), 2f);  
             }
             else if (CompareTag("ThirdTrigger") && !invisibleWallEnabled)
             {
                 door.SetActive(false);
                 invisibleWall.SetActive(true);
                 invisibleWallEnabled = true;
-                /* // Enable the invisible wall when the third collider is triggered
+                /* // 
                  if (invisibleWall != null)
                  {
 
@@ -56,7 +56,6 @@ public class HallWay : MonoBehaviour
                 littleGirl.SetActive(true);
                 fence.SetActive(true);
                 door.SetActive(true);
-                // Perform actions when the final trigger is hit
                 HandleFinalTrigger();
             }
         }
@@ -71,13 +70,13 @@ public class HallWay : MonoBehaviour
         scarySound3.Play();
         monsterActive = true;
 
-        // Start the monster follow sequence after the sound delay
+        
         Invoke(nameof(StartMonsterFollow), monsterFollowDelay);
     }
 
     void StartMonsterFollow()
     {
-        // Ensure the MonsterAI component is present and set the player
+        
         MonsterAI monsterAI = monster.GetComponent<MonsterAI>();
         if (monsterAI != null)
         {
@@ -91,18 +90,16 @@ public class HallWay : MonoBehaviour
 
     void HandleFinalTrigger()
     {
-        // Disable hallway, final door, and monster
+        
         if (hallway != null) hallway.SetActive(false);
         if (finalDoor != null) finalDoor.SetActive(false);
         if (monster != null) monster.SetActive(false);
 
-        // Disable the invisible wall
         if (invisibleWall != null)
         {
             invisibleWall.SetActive(false);
         }
 
-        // Reset the player's position
         ResetPlayerPosition();
     }
 
@@ -111,12 +108,8 @@ public class HallWay : MonoBehaviour
         if (playerResetPosition != null)
         {
             player.position = playerResetPosition.position;
-            // Optionally reset the player's rotation if needed
             player.rotation = playerResetPosition.rotation;
         }
-        else
-        {
-            Debug.LogError("Player reset position is not assigned.");
-        }
+        
     }
 }
