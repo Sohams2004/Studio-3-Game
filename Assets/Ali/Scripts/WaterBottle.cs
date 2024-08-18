@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class WaterBottle : MonoBehaviour
 {
-    public GameObject[] waterBottles; // Assign the water bottles in the Inspector
-    public GameObject[] drinkTexts; // Assign the corresponding 3D Text objects in the Inspector
+    public GameObject[] waterBottles; 
+    public GameObject[] drinkTexts; 
     public KeyCode drinkKey = KeyCode.F;
-    public AudioSource audioSource; // Assign the AudioSource in the Inspector
-    public AudioClip drinkingSound; // Assign the drinking sound effect in the Inspector
+    public AudioSource audioSource; 
+    public AudioClip drinkingSound; 
     [SerializeField] DamageScript damageScript;
     private GameObject currentBottle = null;
     private GameObject currentText = null;
 
     void Update()
     {
-        // Check if the player is looking at an object with the tag "Bottle"
+        
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
         {
@@ -51,12 +51,12 @@ public class WaterBottle : MonoBehaviour
             currentBottle = null;
         }
 
-        // Check if the drink key is pressed
+        
         if (currentBottle != null && Input.GetKeyDown(drinkKey))
         {
 
 
-            audioSource.PlayOneShot(drinkingSound); // Play the drinking sound effect
+            audioSource.PlayOneShot(drinkingSound); 
             if (currentText != null)
             {
                 currentText.SetActive(false);

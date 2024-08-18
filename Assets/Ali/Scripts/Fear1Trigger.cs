@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Fear1Trigger : MonoBehaviour
 {
-   public AudioSource audioSource;
+    public AudioSource audioSource;
     public GameObject humanPrefab;
     public Transform spawnPoint;
 
@@ -24,8 +24,8 @@ public class Fear1Trigger : MonoBehaviour
     {
         instantiatedHuman = Instantiate(humanPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        // Start the fade-out process 1 second after the human is instantiated
-        StartCoroutine(FadeOutHuman(0.01f, 7f)); // 1-second delay, 5-second fade duration
+        
+        StartCoroutine(FadeOutHuman(0.01f, 7f)); 
     }
 
     private void PlayAudioAndDestroyHuman()
@@ -42,14 +42,12 @@ public class Fear1Trigger : MonoBehaviour
 
     private IEnumerator FadeOutHuman(float delay, float fadeDuration)
     {
-        yield return new WaitForSeconds(delay); // Delay before starting fade-out
+        yield return new WaitForSeconds(delay); 
 
         float rate = 1.0f / fadeDuration;
         float progress = 0.0f;
 
         Renderer[] renderers = instantiatedHuman.GetComponentsInChildren<Renderer>();
-
-        // Switch all materials to transparent mode
         foreach (Renderer renderer in renderers)
         {
             foreach (Material mat in renderer.materials)
@@ -66,7 +64,7 @@ public class Fear1Trigger : MonoBehaviour
             }
         }
 
-        // Fade out
+       
         while (progress < 1.0f)
         {
             foreach (Renderer renderer in renderers)
@@ -83,7 +81,6 @@ public class Fear1Trigger : MonoBehaviour
             yield return null;
         }
 
-        // Ensure all are fully transparent at the end
         foreach (Renderer renderer in renderers)
         {
             foreach (Material mat in renderer.materials)

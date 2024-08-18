@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TherapistAnimatorController : MonoBehaviour
 {
-    public float delayBeforeStanding = 5f; // Time in seconds before the therapist stands up
+    public float delayBeforeStanding = 5f; 
     private Animator animator;
     private float timer;
 

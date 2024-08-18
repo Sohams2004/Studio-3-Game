@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class LightSwitch : MonoBehaviour
 {
-    public TextMeshProUGUI promptText; // TextMeshProUGUI to display the prompt
+    public TextMeshProUGUI promptText; 
 
-    public Animator switchAnimator; // Animator for the light switch
-    public string animationTriggerName = "ToggleSwitch"; // Animation trigger name
-    public Light roomLight; // Light to be controlled
-    public AudioClip switchSound; // Sound effect for the switch
+    public Animator switchAnimator; 
+    public string animationTriggerName = "ToggleSwitch"; 
+    public Light roomLight; 
+    public AudioClip switchSound; 
     private AudioSource audioSource;
     private bool playerInRange = false;
     private bool lightOn = false;

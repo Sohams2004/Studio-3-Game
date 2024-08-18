@@ -12,7 +12,7 @@ public class Sitting2 : MonoBehaviour
     void Start()
     {
         chair.SetActive(false);
-        secondPlayer.SetActive(false); // Ensure the second player is inactive at the start
+        secondPlayer.SetActive(false); 
     }
 
     /* void Update()
@@ -47,7 +47,7 @@ public class Sitting2 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        // Check if the collider has the tag "Chair"
+        
         if (other.CompareTag("Player"))
         {
             if (!isSecondPlayerActive)
@@ -65,7 +65,7 @@ public class Sitting2 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        // Check if the collider has the tag "Chair"
+    
         if (other.CompareTag("Player"))
         {
             if (!isSecondPlayerActive)

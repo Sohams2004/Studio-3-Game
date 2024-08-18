@@ -9,7 +9,7 @@ public class WalkAnim : MonoBehaviour
 
     void Update()
     {
-        // Detect if any of the movement keys are pressed
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             isWalking = true;
@@ -19,7 +19,7 @@ public class WalkAnim : MonoBehaviour
             isWalking = false;
         }
 
-        // Update the animator parameter
+        
         animator.SetBool("isWalking", isWalking);
     }
 }

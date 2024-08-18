@@ -5,19 +5,19 @@ using TMPro;
 
 public class Sitting : MonoBehaviour
 {
-     public GameObject mainPlayer;
+    public GameObject mainPlayer;
     public GameObject secondPlayer;
     public Camera secondPlayerCamera;
     public Animator secondPlayerAnimator;
-    public TextMeshProUGUI pressEToSitUI; // UI element to show "Press E to Sit"
-    public TextMeshProUGUI pressEToStandUI; // UI element to show "Press E to Stand"
+    public TextMeshProUGUI pressEToSitUI; 
+    public TextMeshProUGUI pressEToStandUI; 
     private bool isMainPlayerActive = true;
     private bool isInChairTrigger = false;
 
     void Start()
     {
-        pressEToSitUI.gameObject.SetActive(false); // Hide the "Press E to Sit" UI at start
-        pressEToStandUI.gameObject.SetActive(false); // Hide the "Press E to Stand" UI at start
+        pressEToSitUI.gameObject.SetActive(false); 
+        pressEToStandUI.gameObject.SetActive(false); 
     }
 
     void Update()
@@ -41,9 +41,9 @@ public class Sitting : MonoBehaviour
         secondPlayer.SetActive(true);
         secondPlayerCamera.enabled = true;
         Camera.main.enabled = false;
-        secondPlayerAnimator.Play("SitAnimation");  // Replace with your sitting animation name
-        pressEToSitUI.gameObject.SetActive(false); // Hide the "Press E to Sit" UI
-        pressEToStandUI.gameObject.SetActive(true); // Show the "Press E to Stand" UI
+        secondPlayerAnimator.Play("SitAnimation");  
+        pressEToSitUI.gameObject.SetActive(false); 
+        pressEToStandUI.gameObject.SetActive(true); 
         isMainPlayerActive = false;
     }
 
@@ -53,8 +53,8 @@ public class Sitting : MonoBehaviour
         mainPlayer.SetActive(true);
         secondPlayerCamera.enabled = false;
         Camera.main.enabled = true;
-        pressEToStandUI.gameObject.SetActive(false); // Hide the "Press E to Stand" UI
-        pressEToSitUI.gameObject.SetActive(true); // Show the "Press E to Sit" UI
+        pressEToStandUI.gameObject.SetActive(false); 
+        pressEToSitUI.gameObject.SetActive(true); 
         isMainPlayerActive = true;
     }
 
@@ -65,7 +65,7 @@ public class Sitting : MonoBehaviour
             isInChairTrigger = true;
             if (isMainPlayerActive)
             {
-                pressEToSitUI.gameObject.SetActive(true); // Show the "Press E to Sit" UI
+                pressEToSitUI.gameObject.SetActive(true); 
             }
         }
     }
@@ -75,8 +75,8 @@ public class Sitting : MonoBehaviour
         if (other.CompareTag("Chair"))
         {
             isInChairTrigger = false;
-            pressEToSitUI.gameObject.SetActive(false); // Hide the "Press E to Sit" UI
-            pressEToStandUI.gameObject.SetActive(false); // Hide the "Press E to Stand" UI
+            pressEToSitUI.gameObject.SetActive(false); 
+            pressEToStandUI.gameObject.SetActive(false); 
         }
     }
 }

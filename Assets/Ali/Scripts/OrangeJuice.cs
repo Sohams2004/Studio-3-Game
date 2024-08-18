@@ -3,21 +3,20 @@ using UnityEngine;
 
 public class OrangeJuice : MonoBehaviour
 {
-    public GameObject resultObjectPrefab; // Prefab of the result object to instantiate after a delay
-    public Transform spawnPoint; // Spawn point for the result object
-    public AudioClip interactionSound; // Sound to play during interaction
-    public Animator blenderAnimator; // Animator component for the blender animations
+    public GameObject resultObjectPrefab; 
+    public Transform spawnPoint; 
+    public AudioClip interactionSound; 
+    public Animator blenderAnimator; 
 
-    private GameObject placedObject; // Reference to the object currently placed on the trigger
+    private GameObject placedObject; 
     private bool isObjectPlaced = false;
 
-    private AudioSource audioSource; // AudioSource component for playing sounds
+    private AudioSource audioSource; 
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>(); // Get AudioSource component
+        audioSource = GetComponent<AudioSource>(); 
 
-        // Ensure blenderAnimator is assigned
         if (blenderAnimator == null)
         {
             Debug.LogError("Blender Animator is not assigned!");
@@ -26,24 +25,22 @@ public class OrangeJuice : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isObjectPlaced && other.CompareTag("Orange")) // Check if the object entering is the player's object
+        if (!isObjectPlaced && other.CompareTag("Orange")) 
         {
-            placedObject = other.gameObject; // Assign the placed object
+            placedObject = other.gameObject; 
             isObjectPlaced = true;
 
-            // Play animation using Animator trigger
             if (blenderAnimator != null)
             {
                 blenderAnimator.SetTrigger("Blend");
             }
 
-            // Play sound if AudioSource and sound clip are assigned
             if (audioSource != null && interactionSound != null)
             {
                 audioSource.PlayOneShot(interactionSound);
             }
 
-            // Start coroutine to wait and then spawn result object
+            
             StartCoroutine(WaitAndSpawnObject(placedObject));
         }
     }
@@ -51,13 +48,12 @@ public class OrangeJuice : MonoBehaviour
     private IEnumerator WaitAndSpawnObject(GameObject placedObject)
     {
         Destroy(placedObject);
-        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        yield return new WaitForSeconds(2f); 
 
-        // Instantiate the result object at the spawn point
+        
         GameObject resultObject = Instantiate(resultObjectPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        // Clean up or reset as needed
-        // Destroy the placed object
+        
         isObjectPlaced = false;
     }
 }

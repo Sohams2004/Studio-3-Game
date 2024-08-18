@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Cooking : MonoBehaviour
 {
-    public GameObject milkshakeCupPrefab; // Assign the milkshake cup prefab in the inspector
-    public GameObject sushiPrefab; // Assign the sushi prefab in the inspector
-    public Transform spawnPoint; // Assign the desired spawn point in the inspector
+    public GameObject milkshakeCupPrefab; 
+    public GameObject sushiPrefab; 
+    public Transform spawnPoint; 
 
     private bool isFirstObjectInBox = false;
     private bool isSecondObjectInBox = false;
