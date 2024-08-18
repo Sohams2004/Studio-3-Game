@@ -13,6 +13,7 @@ public class Flushing : MonoBehaviour
         if (other.CompareTag("Player"))
 
         {
+            promptText.text = "Press LeftClick to Flush";
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
@@ -31,6 +32,7 @@ public class Flushing : MonoBehaviour
         if (other.CompareTag("Player"))
 
         {
+            promptText.text = "Press LeftClick to Flush";
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 audioSource.Play();
@@ -39,5 +41,9 @@ public class Flushing : MonoBehaviour
                 damageScript.HungerReduced(30);
             }
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        promptText.text = string.Empty;
     }
 }

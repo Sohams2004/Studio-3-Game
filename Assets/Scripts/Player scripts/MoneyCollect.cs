@@ -9,7 +9,7 @@ public class MoneyCollect : MonoBehaviour
     [SerializeField] LayerMask moneyLayer;
     [SerializeField] GameObject money;
     [SerializeField] TextMeshProUGUI pickUpMoneyText, moneyCountText, CashTask;
-    [SerializeField] public bool moneydone = false;
+    public bool moneydone = false;
 
 
     ShopUI shopUI;

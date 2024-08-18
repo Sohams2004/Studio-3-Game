@@ -17,10 +17,10 @@ public class AntipsychoticsDrug : MonoBehaviour
         {
             await Task.Delay(1000);
             damageScript.SanityRecovered(100);
-
+            medicinedone = true;
             MedicineTask.text = "Took Medicine";
             MedicineTask.color = Color.green;
-            medicinedone = true;
+
             medwithnofood = true;
         }
     }

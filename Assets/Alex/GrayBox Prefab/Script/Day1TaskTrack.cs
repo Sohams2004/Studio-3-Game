@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Day1TaskTrack : MonoBehaviour
 {
-    public bool alltaskdone = false;
+    public bool alltaskdonetwo = false;
     [SerializeField] PickUpPlace pickupPlace;
     [SerializeField] ShopUI shopUI;
     [SerializeField] ParentRoomKey parentRoomKey;
@@ -14,9 +14,10 @@ public class Day1TaskTrack : MonoBehaviour
 
     void Update()
     {
-        if (frontDoorKey.key2done && pickupPlace.eatdone && shopUI.shopdone && parentRoomKey.keydone && moneyCollect.moneydone && antipsychoticsDrug.medicinedone)
+
+        if (frontDoorKey.pickedkeysittingroom && pickupPlace.eatdone && shopUI.shopdone && parentRoomKey.keydone && moneyCollect.moneydone)
         {
-            alltaskdone = true;
+            alltaskdonetwo = true;
         }
     }
 }

@@ -42,6 +42,7 @@ public class CameraShakeEffect : MonoBehaviour
                 {
                     shakeCoroutine = StartCoroutine(ShakeCamera());
                     await Task.Delay(5000);
+                    StopCoroutine(shakeCoroutine);
                 }
 
 

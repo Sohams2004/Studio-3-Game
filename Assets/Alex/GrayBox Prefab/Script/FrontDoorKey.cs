@@ -24,11 +24,11 @@ public class FrontDoorKey : MonoBehaviour
             {
 
                 key.SetActive(false);
-                keyCollected.SetActive(true);
                 key2done = true;
+                keyCollected.SetActive(true);
+
                 pickedkeysittingroom = true;
-                await Task.Delay(1000);
-                //promptText.text = string.Empty;
+
 
             }
         }
