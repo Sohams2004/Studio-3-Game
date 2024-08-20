@@ -6,7 +6,6 @@ public class Movement : MonoBehaviour
     public float sprintSpeed = 4;
     public float walkSpeed = 2;
     [SerializeField] private Rigidbody playerRb;
-    [SerializeField] DamageScript damageScript;
 
     [SerializeField] AudioSource footSteps;
 
@@ -34,7 +33,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            movementSpeed = sprintSpeed;
+            movementSpeed += sprintSpeed;
 
         }
 

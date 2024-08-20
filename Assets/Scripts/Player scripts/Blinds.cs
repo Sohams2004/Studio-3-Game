@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class Blinds : MonoBehaviour
     public bool lighton;
 
 
-    void BlindsOpen()
+    async void BlindsOpen()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, blindsLayer);
 
@@ -34,7 +35,7 @@ public class Blinds : MonoBehaviour
                 Debug.Log("Blinds open");
 
                 blindsIndex++;
-                isBlindsOpen = true;
+
 
                 blindsAnimator.Play("Close Curtain");
 
@@ -44,6 +45,7 @@ public class Blinds : MonoBehaviour
                 {
                     blindsAudio.Play();
                 }
+                isBlindsOpen = true;
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && isBlindsOpen && blindsIndex % 2 == 0)
@@ -51,7 +53,7 @@ public class Blinds : MonoBehaviour
                 Debug.Log("Blinds close");
 
                 blindsIndex++;
-                isBlindsOpen = false;
+
 
                 blindsAnimator.Play("Open Curtain");
 
@@ -59,6 +61,8 @@ public class Blinds : MonoBehaviour
                 {
                     blindsAudio.Play();
                 }
+                await Task.Delay(1000);
+                isBlindsOpen = false;
             }
         }
 
