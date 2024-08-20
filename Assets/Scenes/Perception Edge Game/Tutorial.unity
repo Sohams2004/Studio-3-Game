@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Therapist: Use mouse click to interact with objects and F to consume...'
+  m_text: 'Therapist: Use mouse click to interact, F to consume Food.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6cc37607cae9254a8b953409bc2ca6f, type: 2}
   m_sharedMaterial: {fileID: 9097212192445987218, guid: e6cc37607cae9254a8b953409bc2ca6f, type: 2}
@@ -9265,7 +9265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050920342728278483, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_Size.x
-      value: 1.8416263
+      value: 1.4491656
       objectReference: {fileID: 0}
     - target: {fileID: 5050920342728278483, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_Size.y
@@ -9273,11 +9273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050920342728278483, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_Size.z
-      value: 4.8256197
+      value: 2.5857654
       objectReference: {fileID: 0}
     - target: {fileID: 5050920342728278483, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_Center.x
-      value: -0.8907757
+      value: -0.6945446
       objectReference: {fileID: 0}
     - target: {fileID: 5050920342728278483, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_Center.y
@@ -9285,7 +9285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050920342728278483, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_Center.z
-      value: -2.507233
+      value: -3.6271553
       objectReference: {fileID: 0}
     - target: {fileID: 5162303907859158741, guid: 364f9dbef7cfc1647a5edbe90b8240eb, type: 3}
       propertyPath: m_IsActive
@@ -15394,6 +15394,10 @@ PrefabInstance:
     - target: {fileID: 918805818902740817, guid: 76b23758953ddca44bec8f2be94bc4f7, type: 3}
       propertyPath: m_Name
       value: Office_room_props
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758507399024342969, guid: 76b23758953ddca44bec8f2be94bc4f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.134
       objectReference: {fileID: 0}
     - target: {fileID: 7080791707151187521, guid: 76b23758953ddca44bec8f2be94bc4f7, type: 3}
       propertyPath: m_Layer
@@ -68225,8 +68229,8 @@ Transform:
   m_GameObject: {fileID: 1686715364}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.3474, y: 0, z: 0}
+  m_LocalScale: {x: 1.0695, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 441956797}
@@ -68250,8 +68254,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 0.092642546, z: 10}
+  m_Center: {x: 0, y: 0.008660197, z: 0}
 --- !u!1 &1696818401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7592977215538603244, guid: 302076e25a418954fb6acadb8434b8f6, type: 3}
@@ -68670,7 +68674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5942108814701645947, guid: 8edc20b0135e4354d926e8d241518973, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.93
+      value: 10.912
       objectReference: {fileID: 0}
     - target: {fileID: 5942108814701645947, guid: 8edc20b0135e4354d926e8d241518973, type: 3}
       propertyPath: m_LocalPosition.z
