@@ -50,6 +50,9 @@ public class DamageScript : MonoBehaviour
 
     void Update()
     {
+        OverDrank();
+        OverEat();
+
 
         sanity -= sanityDecreaseRate * Time.deltaTime;
         hunger -= hungerDecreaseRate * Time.deltaTime;
@@ -107,14 +110,7 @@ public class DamageScript : MonoBehaviour
     {
         hunger += heal;
         hungerBar.SetValue(sanity);
-        if (hunger > startingstat)
-        {
-            move.movementSpeed = 1.5f;
-        }
-        else if (hunger < startingstat)
-        {
-            move.movementSpeed = 2f;
-        }
+
         if (hunger > maxHP)
         {
             hunger = maxHP;
@@ -124,14 +120,7 @@ public class DamageScript : MonoBehaviour
     {
         thirst += heal;
         thirstBar.SetValue(sanity);
-        if (thirst > startingthirst)
-        {
-            postProcessingVolume.profile.TryGetSettings(out vignette);
-        }
-        else if (thirst < startingthirst)
-        {
-            move.movementSpeed = 2f;
-        }
+
 
         if (thirst > maxHP)
         {
@@ -172,6 +161,29 @@ public class DamageScript : MonoBehaviour
         scene.LoadScene("Game Over");
         loadScene.SetActive(true);
         SanityRecovered(100);
+
+    }
+    void OverEat()
+    {
+        if (hunger > startingstat)
+        {
+            move.movementSpeed = 1.5f;
+        }
+        else if (hunger <= startingstat)
+        {
+            move.movementSpeed = 2f;
+        }
+    }
+    void OverDrank()
+    {
+        if (thirst > startingthirst)
+        {
+            move.movementSpeed = 1.5f;
+        }
+        else if (thirst < startingthirst)
+        {
+            move.movementSpeed = 2f;
+        }
 
     }
 }
