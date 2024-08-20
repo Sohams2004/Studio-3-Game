@@ -174010,11 +174010,10 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1947893272
---- !u!114 &1698208195
+--- !u!114 &1698208202 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+  m_PrefabInstance: {fileID: 1927383620468626659}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270223274}
   m_Enabled: 1
@@ -174022,11 +174021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2f4c8da4ab09b45a2798a8681fb740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  sprintSpeed: 3
-  walkSpeed: 2
-  playerRb: {fileID: 1927383620468626663}
-  footSteps: {fileID: 270223299}
 --- !u!4 &1700253484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8342743444747048550, guid: ba03996898c66054cb036fa4cf90feba, type: 3}
@@ -223680,6 +223674,10 @@ PrefabInstance:
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6398318103202965152, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: shopingTask
+      value: 
+      objectReference: {fileID: 928055796}
+    - target: {fileID: 6398318103202965152, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: InteractText
       value: 
       objectReference: {fileID: 666139976}
@@ -230351,7 +230349,7 @@ PrefabInstance:
     - target: {fileID: 8815944882827306202, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: move
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1698208202}
     - target: {fileID: 8815944882827306202, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: maxHP
       value: 1000
@@ -231618,7 +231616,6 @@ PrefabInstance:
     - {fileID: 7376172403025347588, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 5503736690784521030, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-    - {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6809469241933391961, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 4264591334691120564, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
@@ -231888,9 +231885,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6133534272875204986, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: -1
       addedObject: {fileID: 270223299}
-    - targetCorrespondingSourceObject: {fileID: 6133534272875204986, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1698208195}
     - targetCorrespondingSourceObject: {fileID: 4082584536453552970, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1815827015}
@@ -232293,11 +232287,6 @@ BoxCollider:
 --- !u!82 &1927383620468626662 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4702281493490491644, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-  m_PrefabInstance: {fileID: 1927383620468626659}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1927383620468626663 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 7061374068364064118, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
   m_PrefabInstance: {fileID: 1927383620468626659}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1927383620468626664 stripped

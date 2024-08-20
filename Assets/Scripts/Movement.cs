@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            movementSpeed += sprintSpeed;
+            movementSpeed = sprintSpeed;
 
         }
 
