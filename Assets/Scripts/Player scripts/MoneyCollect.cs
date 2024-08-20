@@ -8,7 +8,7 @@ public class MoneyCollect : MonoBehaviour
     [SerializeField] float rayLength;
     [SerializeField] LayerMask moneyLayer;
     [SerializeField] GameObject money;
-    [SerializeField] TextMeshProUGUI pickUpMoneyText, moneyCountText, CashTask;
+    [SerializeField] TextMeshProUGUI moneyCountText, CashTask;
     public bool moneydone = false;
 
 
@@ -27,7 +27,7 @@ public class MoneyCollect : MonoBehaviour
             Debug.Log("Money");
 
             money = hit1.collider.gameObject;
-            pickUpMoneyText.text = "Press LeftClick to Interact";
+
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -45,7 +45,7 @@ public class MoneyCollect : MonoBehaviour
         else if (!isRay)
         {
             money = null;
-            pickUpMoneyText.text = string.Empty;
+
         }
     }
 
