@@ -173682,17 +173682,6 @@ Texture2D:
     offset: 0
     size: 0
     path: 
---- !u!114 &1698208182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
-  m_PrefabInstance: {fileID: 1927383620468626659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270223274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2f4c8da4ab09b45a2798a8681fb740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1698208183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222611,9 +222600,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 270223299}
     - target: {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: sprintSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: damageScript
       value: 
       objectReference: {fileID: 270223307}
+    - target: {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+      propertyPath: movementSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6137725174691191354, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -230094,7 +230091,7 @@ PrefabInstance:
     - target: {fileID: 8815944882827306202, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: move
       value: 
-      objectReference: {fileID: 1698208182}
+      objectReference: {fileID: 0}
     - target: {fileID: 8815944882827306202, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
       propertyPath: maxHP
       value: 1000
@@ -231361,6 +231358,7 @@ PrefabInstance:
     - {fileID: 7376172403025347588, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 5503736690784521030, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 8920444590061928307, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
+    - {fileID: 6137663284861316333, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6809469241933391961, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
     - {fileID: 4264591334691120564, guid: b18e7ba550b28134aa42a48286176d91, type: 3}
