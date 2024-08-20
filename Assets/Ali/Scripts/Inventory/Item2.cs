@@ -32,7 +32,7 @@ public class Item2 : MonoBehaviour
     void Update()
     {
         // Check for object pickup
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hit;
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
