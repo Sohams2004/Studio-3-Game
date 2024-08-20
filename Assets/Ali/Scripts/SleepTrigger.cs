@@ -16,7 +16,7 @@ public class SleepTrigger : MonoBehaviour
     }
     private void Update()
     {
-        if (insidde && Input.GetKey(KeyCode.E))
+        if (insidde && Input.GetKey(KeyCode.Mouse0))
         {
             NextDay();
 

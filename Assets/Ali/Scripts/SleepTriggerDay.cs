@@ -17,7 +17,7 @@ public class SleepTriggerDay : MonoBehaviour
     }
     private void Update()
     {
-        if (inside && Input.GetKeyDown(KeyCode.E))
+        if (inside && Input.GetKeyDown(KeyCode.Mouse0))
         {
             NextDay();
             /* cameraAnimator.SetTrigger("SleepTrigger");

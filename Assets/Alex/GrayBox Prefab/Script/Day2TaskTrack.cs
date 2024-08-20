@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Day2TaskTrack : MonoBehaviour
 {
-    [SerializeField] ObjectPickUp objectPickUp;
     [SerializeField] NewLightSwitch lightSwitch;
     [SerializeField] PickUpPlace pickUpPlace;
     [SerializeField] LaundryScript laundryScript;
@@ -15,7 +14,7 @@ public class Day2TaskTrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (piano.playPianoDone && television.tvDone && pickUpPlace.eatdone && laundryScript.laundryTask && objectPickUp.cleanupDone && lightSwitch.lightdone || blinds.lighton && piano.playPianoDone && television.tvDone && pickUpPlace.eatdone && laundryScript.laundryTask && objectPickUp.cleanupDone)
+        if (piano.playPianoDone && television.tvDone && pickUpPlace.eatdone && laundryScript.laundryTask && lightSwitch.lightdone || blinds.lighton && piano.playPianoDone && television.tvDone && pickUpPlace.eatdone && laundryScript.laundryTask)
         {
             firstdaytaskdone = true;
         }
