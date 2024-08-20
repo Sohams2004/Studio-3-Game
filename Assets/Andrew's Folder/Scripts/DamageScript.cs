@@ -167,22 +167,22 @@ public class DamageScript : MonoBehaviour
     {
         if (hunger > startingstat)
         {
-            move.movementSpeed = 1.5f;
+            move.walkSpeed = 1f;
         }
         else if (hunger <= startingstat)
         {
-            move.movementSpeed = 2f;
+            move.walkSpeed = 2f;
         }
     }
     void OverDrank()
     {
         if (thirst > startingthirst)
         {
-            move.movementSpeed = 1.5f;
+            move.sprintSpeed = 2f;
         }
         else if (thirst < startingthirst)
         {
-            move.movementSpeed = 2f;
+            move.sprintSpeed = 3f;
         }
 
     }
