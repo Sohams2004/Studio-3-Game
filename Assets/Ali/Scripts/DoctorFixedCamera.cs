@@ -29,8 +29,11 @@ public class DoctorFixedCamera : MonoBehaviour
         {
             isSwitching = true;
             StartCoroutine(SwapCameraAndEnablePlayer());
+            
         }
     }
+
+    
 
     private IEnumerator SwapCameraAndEnablePlayer()
     {
