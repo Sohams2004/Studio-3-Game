@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4643309919629816600}
   - component: {fileID: 4150913678646537914}
   - component: {fileID: 4327924790391845034}
-  - component: {fileID: 3739845403732604038}
   m_Layer: 0
   m_Name: LightButtonTrigger
   m_TagString: Untagged
@@ -151,23 +150,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3739845403732604038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554251996687563149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe00aaddf8b2934b99a70bc6cdd2709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptText: {fileID: 0}
-  switchAnimator: {fileID: 8168433982321032676}
-  animationTriggerName: SwitchLight
-  roomLight: {fileID: 0}
-  switchSound: {fileID: 8300000, guid: 9eff3324d6755714aa5fbebfc8431131, type: 3}
 --- !u!1 &2304529569173500568
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,9 +5184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ed0bdded900bd44b5d7e2b115fc760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurtainsTask: {fileID: 0}
   promptText: {fileID: 0}
   objectAnimator: {fileID: 4400246994586005147}
-  interactionSound: {fileID: 8300000, guid: daf33b32820ab9e4992d6077ab095b57, type: 3}
+  audioSource: {fileID: 0}
+  playerInRange: 0
+  hasInteracted: 0
 --- !u!65 &4349715149196402943
 BoxCollider:
   m_ObjectHideFlags: 0
