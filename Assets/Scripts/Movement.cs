@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float movementSpeed = 2f;
-
+    public float movementSpeed;
+    public float sprintSpeed = 4;
+    public float walkSpeed = 2;
     [SerializeField] private Rigidbody playerRb;
+    [SerializeField] DamageScript damageScript;
 
     [SerializeField] AudioSource footSteps;
 
 
     private void Start()
     {
+        movementSpeed = walkSpeed;
         playerRb = GetComponent<Rigidbody>();
     }
 
@@ -23,21 +26,23 @@ public class Movement : MonoBehaviour
         Vector3 moveDirection = (transform.forward * inputz + transform.right * inputx) * movementSpeed * 100 * Time.deltaTime;
         playerRb.velocity = new(moveDirection.x, playerRb.velocity.y, moveDirection.z);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            movementSpeed *= 1.5f;
-        }
 
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            movementSpeed = 2f;
-        }
 
     }
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            movementSpeed = sprintSpeed;
 
+        }
+
+        else
+        {
+            movementSpeed = walkSpeed;
+
+        }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             Debug.Log("Footsteps");
