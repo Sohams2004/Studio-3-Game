@@ -1,14 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Item2 : MonoBehaviour
 {
     [SerializeField] TMP_Text pickUpText;
     public Camera playerCamera; // Assign your player camera
-    public GameObject uiPanel;  // Assign the entire UI panel
     public Image orangeImage;   // Assign UI Image component for orange
     public Image toastImage;    // Assign UI Image component for toast
     public Image eggImage;      // Assign UI Image component for egg
@@ -23,11 +21,7 @@ public class Item2 : MonoBehaviour
     private List<GameObject> pickedItems = new List<GameObject>();
     private Dictionary<string, List<GameObject>> itemDictionary = new Dictionary<string, List<GameObject>>();
 
-    void Start()
-    {
-        // Disable the entire UI panel initially
-        uiPanel.SetActive(false);
-    }
+
 
     void Update()
     {
@@ -85,8 +79,8 @@ public class Item2 : MonoBehaviour
 
     void UpdateUI()
     {
-        // Enable the UI panel
-        uiPanel.SetActive(true);
+
+
 
         // Hide all UI elements initially
         orangeImage.enabled = false;
