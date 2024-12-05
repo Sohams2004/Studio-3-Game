@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,46 +6,67 @@ using UnityEngine.UI;
 
 public class ObjectPickUp : MonoBehaviour
 {
+    //public GameObject panel; //for the task list
+    public TextMeshProUGUI CashTask; //to reference the task text
+
     [SerializeField] float rayLength;
+
+    [SerializeField] float moneyCount;
 
     [SerializeField] int paperNoteIndex;
 
-    [SerializeField] int cubeCount, sphereCount, coneCount;
+    [SerializeField] int cubeCount, sphereCount, coneCount, itemCount;
 
-    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp, isDoor, isDoorOpen;
+    [SerializeField] int maxNumberOfItems;
 
-    [SerializeField] public bool isPicked;
+    [SerializeField] bool isObject, isPaperNote, isPaperNotePicked, cannotPickUp;
+
+    [SerializeField] public bool isPicked, isDoorOpen, isBlinds, isBlindsOpen;
 
     [SerializeField] Transform pickUpPoint;
 
-    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, doorLayer;
+    [SerializeField] LayerMask pickableObj, paperNoteLayer, placeLayer, moneyLayer;
 
     [SerializeField] public Rigidbody objectRb;
 
-    [SerializeField] public GameObject pickableObject, door;
+    [SerializeField] public GameObject pickableObject;
 
     [SerializeField] Camera camera;
 
-    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText;
+    [SerializeField] TextMeshProUGUI pickDropObjectText, interactionText, placeObjectText, inventoryFullText, pickUpMoneyText;
 
-    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText;
+    [SerializeField] TextMeshProUGUI cubeCountText, sphereCountText, coneCountText, moneyCountText;
 
-    [SerializeField] Image crosshair, paperNote;
+    [SerializeField] Image crosshair, paperNote, handSign;
 
     [SerializeField] Image cubeImg, sphereImg, coneImg;
 
+    [SerializeField] Transform[] itemFrames;
+
+    [SerializeField] Material shapeMaterial;
+
+    [SerializeField] Shader outlineShader;
+    [SerializeField] Shader standard;
+    [SerializeField] Material outlineMaterial;
+
     RaycastHit hit1;
     GameObject hitObj;
-    GameObject hitDoor;
+
     GameObject parentObj;
     GameObject place;
+    GameObject money;
 
     HotBar hotbar;
+    public Movement movement;
 
     private void Start()
     {
         camera = Camera.main;
         hotbar = FindObjectOfType<HotBar>();
+        movement = FindObjectOfType<Movement>();
+
+        //outlineShader = Shader.Find("Outline");
+        outlineMaterial = new Material(outlineShader);
     }
 
     void ObjectDetect()
@@ -54,20 +76,32 @@ public class ObjectPickUp : MonoBehaviour
         {
             Debug.Log("Object detected");
             hitObj = hit1.collider.gameObject;
-            crosshair.color = Color.green;
+            handSign.gameObject.SetActive(true);
+            crosshair.enabled = false;
             isObject = true;
+
+            Renderer renderer = hitObj.GetComponent<Renderer>();
+
+            if (renderer != null)
+            {
+                shapeMaterial = renderer.material;
+                shapeMaterial.shader = outlineShader;
+            }
         }
 
         else if (!isRay)
         {
             isObject = false;
             pickDropObjectText.text = string.Empty;
-            crosshair.color = Color.red;
+            handSign.gameObject.SetActive(false);
+            crosshair.enabled = true;
+
+            shapeMaterial.shader = standard;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && isObject)
         {
-            if (hotbar.items.Count < 5)
+            if (/*hotbar.items.Length <= hotbar.numberOfItems*/ itemCount < maxNumberOfItems)
             {
                 objectRb = hitObj.GetComponent<Rigidbody>();
                 pickableObject = hitObj.gameObject;
@@ -77,7 +111,36 @@ public class ObjectPickUp : MonoBehaviour
                 hitObj.transform.parent = camera.transform;
                 objectRb.constraints = RigidbodyConstraints.FreezeAll;
                 pickDropObjectText.text = string.Empty;
-                hotbar.items.Add(pickableObject);
+
+                for (int i = 0; i < hotbar.items.Count; i++)
+                {
+                    if (hotbar.items[i] == null)
+                    {
+                        itemCount++;
+                        hotbar.items.Add(pickableObject);
+                        //pickableObject = null;
+
+                        /*if (pickableObject.tag == "Cube" && cubeCount < 1)
+                        {
+                            
+                        }
+
+                        if (pickableObject.tag == "Cone" && coneCount < 1)
+                        {
+                            hotbar.items[i] = pickableObject;
+                            pickableObject = null;
+                        }
+
+                        if (pickableObject.tag == "Sphere" && sphereCount < 1)
+                        {
+                            hotbar.items[i] = pickableObject;
+                            pickableObject = null;
+                        }*/
+                        break;
+                    }
+                }
+
+                //hotbar.Inventory();
 
                 if (pickableObject.tag == "Cube")
                 {
@@ -101,14 +164,9 @@ public class ObjectPickUp : MonoBehaviour
                 }
             }
 
-            if (hotbar.items.Count >= 5)
-            {
-                cannotPickUp = true;
-            }
-
             else
             {
-                cannotPickUp = false;
+                StartCoroutine(TextPopUp());
             }
         }
 
@@ -128,10 +186,20 @@ public class ObjectPickUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && isPicked)
         {
             string dropObjectTag = pickableObject.tag;
-
             pickableObject.transform.parent = null;
-            hotbar.items.Remove(pickableObject);
-            pickableObject = null;
+
+            for (int i = 0; i < hotbar.items.Count; i++)
+            {
+                if (hotbar.items[i] == pickableObject)
+                {
+                    itemCount--;
+                    hotbar.items.Remove(hotbar.currentObject);
+                    pickableObject = null;
+                    hotbar.currentObject = null;
+                    break;
+                }
+            }
+
             hotbar.currentObject = hitObj;
             cannotPickUp = false;
             isPicked = false;
@@ -209,6 +277,13 @@ public class ObjectPickUp : MonoBehaviour
         }
     }
 
+    IEnumerator TextPopUp()
+    {
+        inventoryFullText.text = "Inventory Full";
+        yield return new WaitForSeconds(1);
+        inventoryFullText.text = string.Empty;
+    }
+
     void PaperNote()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, paperNoteLayer);
@@ -234,6 +309,7 @@ public class ObjectPickUp : MonoBehaviour
             paperNoteIndex++;
             isPaperNotePicked = true;
             paperNote.gameObject.SetActive(true);
+            movement.enabled = false;
         }
 
         else if (Input.GetKeyDown(KeyCode.E) && isPaperNotePicked && paperNoteIndex % 2 == 0)
@@ -242,6 +318,9 @@ public class ObjectPickUp : MonoBehaviour
             isPaperNote = false;
             isPaperNotePicked = false;
             paperNote.gameObject.SetActive(false);
+            movement.enabled = true;
+
+            //panel.SetActive(true); //activate the tasklist 
         }
 
         if (isPaperNotePicked)
@@ -249,30 +328,73 @@ public class ObjectPickUp : MonoBehaviour
             interactionText.text = string.Empty;
         }
     }
-
     void PlaceObjects()
     {
         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, placeLayer);
         if (isRay && isPicked)
         {
-            Debug.Log("Place detected");
             place = hit1.collider.gameObject;
+            print(place.gameObject);
             crosshair.color = Color.green;
             pickDropObjectText.text = string.Empty;
             placeObjectText.text = "Place object";
             print(pickableObject.name);
 
-            if (Input.GetMouseButtonDown(0))
+            if (hotbar.currentObject.tag == place.tag)
             {
-                Debug.Log("Placeddd");
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log("Placeddd");
 
-                pickableObject.transform.parent = null;
-                hotbar.items.Remove(pickableObject);
-                cannotPickUp = false;
-                isPicked = false;
-                pickableObject.transform.position = place.transform.position;
-                pickableObject.transform.rotation = Quaternion.identity;
+                    pickableObject.transform.parent = null;
+                    //hotbar.items.Remove(pickableObject);
+                    cannotPickUp = false;
+                    isPicked = false;
+                    // pickableObject.transform.position = place.transform.position;
+                    //pickableObject.transform.rotation = Quaternion.identity;
+
+                    for (int i = 0; i < hotbar.items.Count; i++)
+                    {
+                        if (hotbar.items[i] == pickableObject)
+                        {
+                            itemCount--;
+                            hotbar.items[i].transform.position = place.transform.position;
+                            hotbar.items[i].transform.rotation = Quaternion.identity;
+                            hotbar.items.Remove(hotbar.currentObject);
+                            pickableObject = null;
+
+                            if (hotbar.currentObject.tag == "Cube")
+                            {
+                                cubeCount--;
+
+                                cubeCountText.text = cubeCount.ToString();
+                            }
+
+                            if (hotbar.currentObject.tag == "Cone")
+                            {
+                                coneCount--;
+
+                                coneCountText.text = coneCount.ToString();
+                            }
+
+                            if (hotbar.currentObject.tag == "Sphere")
+                            {
+                                sphereCount--;
+
+                                sphereCountText.text = sphereCount.ToString();
+                            }
+
+                            hotbar.currentObject = null;
+
+
+
+
+                            break;
+                        }
+                    }
+                }
             }
+
         }
 
         else if (!isRay)
@@ -322,6 +444,74 @@ public class ObjectPickUp : MonoBehaviour
 
      }*/
 
+    void Money()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength, moneyLayer);
+        if (isRay)
+        {
+            Debug.Log("Money");
+
+            money = hit1.collider.gameObject;
+            pickUpMoneyText.text = "Press E to pick up Money";
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                moneyCount += 5f;
+                moneyCountText.text = string.Format("$ " + moneyCount);
+                money.SetActive(false);
+
+                CashTask.text = "Cash Collected"; //two lines to update task text
+                CashTask.color = Color.green;
+
+            }
+        }
+
+        else if (!isRay)
+        {
+            pickUpMoneyText.text = string.Empty;
+        }
+    }
+
+    /*void OpenDoor()
+    {
+        bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
+
+        if (isRay)
+        {
+            isDoor = true;
+            if (Input.GetKeyDown(KeyCode.E) && isDoor)
+            {
+                isDoorOpen = true;
+            }
+        }
+
+        else if (!isRay)
+        {
+            isDoor = false;
+        }
+    }*/
+
+    /* void BlindsOpen()
+     {
+         bool isRay = Physics.Raycast(transform.position, transform.forward, out hit1, rayLength);
+
+         if (isRay)
+         {
+             isBlinds = true;
+
+             if (Input.GetKeyDown(KeyCode.E) && isBlinds)
+             {
+                 isBlindsOpen = true;
+             }
+         }
+
+         else if (!isRay)
+         {
+             isBlinds = false;
+         }
+
+     }*/
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, transform.forward * rayLength);
@@ -333,6 +523,8 @@ public class ObjectPickUp : MonoBehaviour
         PaperNote();
         PlaceObjects();
         /* OpenDoor();*/
+        /*BlindsOpen();*/
+        Money();
     }
 }
 

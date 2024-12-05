@@ -352840,9 +352840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 2062006758}
-  promptMessage: Suck the medicine
   objectAnimator: {fileID: 1765374367}
-  animationTriggerName: TakeMedicine
   interactionSound: {fileID: 8300000, guid: d5aeba0785245764083ad072770a8c87, type: 3}
 --- !u!82 &872039471
 AudioSource:
@@ -357889,9 +357887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 1934594126}
-  promptMessage: Press E to open curtains
   objectAnimator: {fileID: 2119848289}
-  animationTriggerName: OpenCurtains
   interactionSound: {fileID: 0}
 --- !u!43 &1241330889
 Mesh:
@@ -390730,12 +390726,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   item1: {fileID: 0}
   item2: {fileID: 0}
   item3: {fileID: 0}
   item4: {fileID: 0}
   item5: {fileID: 0}
   currentObject: {fileID: 0}
+  numberOfItems: 3
 --- !u!4 &1809983400
 Transform:
   m_ObjectHideFlags: 0

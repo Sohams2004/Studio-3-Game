@@ -13,6 +13,8 @@ public class LightSwitch : MonoBehaviour
     private bool playerInRange = false;
     private bool lightOn = false;
 
+    public TextMeshProUGUI LightsTask;
+
     void Start()
     {
         promptText.text = string.Empty;
@@ -65,5 +67,8 @@ public class LightSwitch : MonoBehaviour
         switchAnimator.SetTrigger(animationTriggerName);
         audioSource.PlayOneShot(switchSound);
         promptText.text = "Press E to Switch Off The Light";
+
+        LightsTask.text = "Lights switched";
+        LightsTask.color = Color.green;
     }
 }

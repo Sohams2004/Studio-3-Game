@@ -3,22 +3,23 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public TextMeshProUGUI CurtainsTask;
+    
+
     public TMP_Text promptText;
     public Animator objectAnimator;
     public AudioClip interactionSound;
     private AudioSource audioSource;
-    private bool playerInRange = false;
-    private bool hasInteracted = false;
+    [SerializeField] private bool playerInRange = false;
+    [SerializeField] private bool hasInteracted = false;
+
 
     void Start()
     {
+
         promptText.text = string.Empty;
-        /* promptText.text = promptMessage; // Set the prompt message*/
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+
     }
 
     void Update()
@@ -29,15 +30,50 @@ public class Interactable : MonoBehaviour
             objectAnimator.SetBool("Blindsdown", false);
             hasInteracted = true;
             audioSource.PlayOneShot(interactionSound);
+
+            CurtainsTask.text = "Curtains Opened";
+            CurtainsTask.color = Color.green;
+
         }
         else if (playerInRange && Input.GetKeyDown(KeyCode.E) && hasInteracted)
         {
-            objectAnimator.SetBool("Blindsdown", true);
             objectAnimator.SetBool("Blindsup", false);
+            objectAnimator.SetBool("Blindsdown", true);
             hasInteracted = false;
 
             audioSource.PlayOneShot(interactionSound);
         }
+        /*    PlayBlindAnim();
+        }
+
+        void PlayBlindAnim()
+        {
+            if (objectPickUp.isBlinds)
+            {
+                promptText.text = "Press E to interact";
+
+                if (Input.GetKeyDown(KeyCode.E) && !objectPickUp.isBlindsOpen)
+                {
+                    objectAnimator.SetBool("Blindsup", true);
+                    objectAnimator.SetBool("Blindsdown", false);
+                    hasInteracted = true;
+                    audioSource.PlayOneShot(interactionSound);
+                }  
+            }
+
+            else if (!objectPickUp.isBlinds)
+            {
+                promptText.text = string.Empty;
+
+                if (Input.GetKeyDown(KeyCode.E) && objectPickUp.isBlindsOpen)
+                {
+                    objectAnimator.SetBool("Blindsdown", true);
+                    objectAnimator.SetBool("Blindsup", false);
+                    hasInteracted = false;
+
+                    audioSource.PlayOneShot(interactionSound);
+                }
+            }*/
     }
 
     void OnTriggerEnter(Collider other)
@@ -87,6 +123,4 @@ public class Interactable : MonoBehaviour
 
         }
     }
-
-
 }
